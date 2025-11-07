@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+  <meta name="keywords" content="museum, technology" />
+  <meta name="author" content="Анна Чижик" />
+  <title>mc2: art and innovations in museums</title>
+</head>
+
+<body class="page">
+  
+  <main>
+    
+    <div class="cursor"></div>
+    <div class="cursor-border"></div>
+    <header>
+      <a href="#home" class="logo"
+        ><img
+          width="250"
+          src="logo.png"
+        />
+        &nbsp;с<sup style="font-size: 12px;">2</sup>&nbsp; command
+      </a>
+      <nav class="site-nav">
+        <ul class="underline-menu">
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#directions">Проекты</a></li>
+          <li><a href="#aims">AIMs-2025</a></li>
+          <li><a href="#partners">Партнеры</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+
+      </nav>
+      <div class="language-switcher">
+        <a href="index.html" class="lang " data-lang="ru">РУ</a> | 
+        <a href="index-sr.html" class="lang" data-lang="sr">СР</a> | 
+        <a href="index-en.html" class="lang" data-lang="en">EN</a> |
+        <a href="index-fr.html" class="lang" data-lang="fr">FR</a>
+      </div>
+      
+    </header>
+    <input type="checkbox" id="burger-toggle" />
+    <label for="burger-toggle" class="burger-menu">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </label>
+    <div class="overlay"></div>
+    <nav class="burger-nav">
+      <ul>
+        <li><a href="#about">О нас</a></li>
+          <li><a href="#directions">Проекты</a></li>
+          <li><a href="#aims">AIMs-2025</a></li>
+          <li><a href="#partners">Партнеры</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+      </ul>
+    </nav>
+    <main>
+      <!-- Интро -->
+      <section class="intro-section" id="home">
+        <h1>
+          Discover. Discuss. Find like-minded people.
+        </h1>
+        <h2>AIMs - seminar where museums and technology meet</h2>
+        <a
+          class="btn btn-ghost btn-gradient"
+          href="#contacts"
+        >
+          participate
+        </a>
+      </section>
+
+      <!-- Раздел "О семинаре" -->
+      <section class="normal-section dark-background" id="about">
+  <div class="about-aims-wrapper">
+    <div class="important-dates">
+      <h2>Important dates</h2>
+
+      <div class="tabs">
+        <span class="tab active" data-city="belgrade">Belgrade</span>
+        <span class="tab" data-city="spb">St. Petersburg</span>
+      </div>
+
+      <!-- Belgrade timeline -->
+      <div class="dates-timeline" id="belgrade-timeline">
+        <div class="timeline-item">
+          <div class="date-bubble">10 June</div>
+          <div class="timeline-text">Uploading case study</div>
+        </div>
+        <div class="timeline-item">
+          <div class="date-bubble">25 June</div>
+          <div class="timeline-text">AIMs seminar in Belgrade</div>
+        </div>
+        <div class="timeline-item">
+          <div class="date-bubble">1 July</div>
+          <div class="timeline-text">Publication of best projects</div>
+        </div>
+      </div>
+
+      <!-- Saint Petersburg timeline -->
+      <div class="dates-timeline hidden" id="spb-timeline">
+        <div class="timeline-item">
+          <div class="date-bubble">5 March</div>
+          <div class="timeline-text">Opening of submissions</div>
+        </div>
+        <div class="timeline-item">
+          <div class="date-bubble">20 May</div>
+          <div class="timeline-text">Notification of participants</div>
+        </div>
+        <div class="timeline-item">
+          <div class="date-bubble">25 June</div>
+          <div class="timeline-text">AIMs seminar in St. Petersburg</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-aims">
+      <h2>About AIMS</h2>
+      <p>
+        Explore the prospects of integrating digital technologies into the
+        museum space at our international AIMs seminar.
+      </p>
+      <p>
+        While focused on innovation and digital transformation in museums,
+        the seminar is dedicated to scenography, storytelling, and visitor
+        experience. Our goal is to explore how new tools reshape exhibitions
+        and perception.
+      </p>
+      <p>
+        The seminar is held in two locations: Belgrade (Serbia) and Saint
+        Petersburg (Russia).
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+
+  <!-- Раздел "Контактов" -->
+  <section class="normal-section dark-background" id="contacts">
+    <div class="titles">
+      <h1 class="cross-bar-glitch dark" data-slice="20">Будем на связи!</h1>
+      
+    </div>
+    <div class="contact-form">
+      <form id="contact-form" action="https://formspree.io/f/xovvplde" method="POST" onsubmit="submitForm(event)">
+        <label for="name">Ваше имя</label>
+        <input type="text" name="name" required placeholder="Введите ваше имя" />
+        
+        <label for="email">Ваша почта</label>
+        <input type="email" name="email" required placeholder="Введите вашу почту" />
+        
+        <label for="message">Сообщение</label>
+        <textarea name="message" rows="4" required placeholder="Напишите ваше сообщение"></textarea>
+        
+        <button type="submit" class="btn btn-ghost">Отправить</button>
+    </form>
+    
+    <!-- Попап -->
+    
+    <div class="popup hidden" id="popup-success" style="display:none;">
+      <div class="popup-content">
+        <span class="popup-close">&times;</span>
+        <h2>Ваше сообщение отправлено!</h2>
+        <p>Спасибо за обращение. Мы свяжемся с вами в ближайшее время.</p>
+      </div>
+    </div>
+    
+
+  </div>
+    
+  </section>
+  
+  
+</main>
+
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
