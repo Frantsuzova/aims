@@ -1270,32 +1270,7 @@ main #sponsors .sponsors-list li a img {
 }
 
 
-.keywords-block {
-  background-color: #2d2d2d;
-  color: #c5c8c6;
-  padding: 10px 15px;
-  border-radius: 8px;
-  font-family: 'Courier New', monospace;
-  font-size: 14px;
-  line-height: 1.5;
-  width: fit-content;
-  max-width: 400px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  position: relative;
-}
-.keywords-label{
-  font-weight: bold;
-  color: #569cd6; /* Светло-голубой оттенок для выделения */
-}
-.blinking-cursor {
-  animation: blink 1s step-start infinite;
-}
 
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
 
 .language-switcher {
   position: fixed;
@@ -1932,5 +1907,143 @@ main #sponsors .sponsors-list li a img {
   display: none;
 }
 
+.section-title {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 40px;
+  color: rgb(0, 0, 0);
+}
+
+.themes-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 40px 80px;
+}
+
+/* Левая колонка с градиентными карточками */
+.themes-left {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.theme-box {
+  background: #02b6c8; /* базовый для совместимости */
+  color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.theme-box h3 {
+  margin: 0 0 6px 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.theme-box p {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: #eaf7fa;
+}
+
+/* три оттенка — ступенчато, без градиента */
+.themes-left .theme-box:nth-child(1) {
+  background-color: #29b8c5;
+}
+
+.themes-left .theme-box:nth-child(2) {
+  background-color: #1ba6b7;
+}
+
+.themes-left .theme-box:nth-child(3) {
+  background-color: #0995a7;
+}
+
+/* лёгкий hover для глубины */
+.theme-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+}
+
+.theme-box h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.theme-box p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #e9f8ff;
+}
+
+/* Правая колонка — список */
+.themes-right ul {
+  list-style: disc;
+  padding-left: 25px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.themes-right li {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #000000;
+}
+
+.themes-right strong {
+  color: rgb(0, 0, 0);
+  font-weight: 700;
+}
 
 
+
+
+/* Keywords-блок */
+
+
+.keywords-block {
+  background-color: #2d2d2d;
+  color: #c5c8c6;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  width: fit-content;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.keywords-label {
+  font-weight: 600;
+  color: #00b4db;
+  margin-right: 4px;
+}
+
+/* мигающий курсор */
+.blinking-cursor {
+  animation: blink 1.1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+/* адаптив */
+@media (max-width: 900px) {
+  .themes-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
