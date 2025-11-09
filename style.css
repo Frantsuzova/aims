@@ -2122,3 +2122,64 @@ main #sponsors .sponsors-list li a img {
   border-bottom-color: #00b4db;
 }
 
+
+
+/* === SPEAKERS SECTION === */
+.speakers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  justify-content: center;
+  align-items: start;
+  gap: 3rem 3rem; /* равные отступы по вертикали и горизонтали */
+  margin-top: 2.5rem;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.speaker-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+
+.speaker-photo {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.speaker-photo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 180, 219, 0.5);
+}
+
+.speaker-photo.placeholder {
+  background-color: #ccc;
+}
+
+.speaker-info {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  max-width: 220px;
+}
+
+/* адаптивность */
+@media (max-width: 900px) {
+  .speakers-grid {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    gap: 2rem 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .speakers-grid {
+    grid-template-columns: 1fr;
+  }
+}
