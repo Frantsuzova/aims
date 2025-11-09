@@ -277,33 +277,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
-    const slides = document.querySelectorAll(".citation");
-    const nextBtn = document.querySelector(".next-btn");
-    const prevBtn = document.querySelector(".prev-btn");
-    let currentSlide = 0;
-  
-    function showSlide(index) {
-      slides.forEach(slide => slide.classList.remove("active"));
-      slides[index].classList.add("active");
-    }
-  
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % slides.length;
-      showSlide(currentSlide);
-    }
-  
-    function prevSlide() {
-      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-      showSlide(currentSlide);
-    }
-  
-    nextBtn.addEventListener("click", nextSlide);
-    prevBtn.addEventListener("click", prevSlide);
-  
-    // Show initial slide
-    showSlide(currentSlide);
-  });
 
 // === AIMS GALLERY: вертикальные = 2×гор + gap (no-crop) ===
 (() => {
@@ -361,22 +334,24 @@ document.addEventListener("DOMContentLoaded", function () {
 })();
 
 // === Переключение городов на таймлайне ===
-// === AIMS city tabs ===
-document.addEventListener("DOMContentLoaded", () => {
-  const tabs = document.querySelectorAll(".important-dates .tab");
-  const belgrade = document.getElementById("belgrade-timeline");
-  const spb = document.getElementById("spb-timeline");
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('.city-tabs button');
+  const timelines = document.querySelectorAll('.dates-timeline');
 
-  if (!tabs.length || !belgrade || !spb) return;
+  if (!buttons.length || !timelines.length) return; // ничего не делаем, если не нашли элементы
 
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      tabs.forEach(t => t.classList.remove("active"));
-      tab.classList.add("active");
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      // активная кнопка
+      buttons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
 
-      const city = tab.dataset.city;
-      belgrade.classList.toggle("hidden", city !== "belgrade");
-      spb.classList.toggle("hidden", city !== "spb");
+      const city = button.dataset.city;
+      // показать нужный блок дат
+      timelines.forEach(timeline => {
+        timeline.style.display = timeline.id.includes(city) ? 'flex' : 'none';
+      });
     });
   });
 });
+
