@@ -14,6 +14,24 @@ body {
   text-align: left;
   font-family: Montserrat, sans-serif;
 }
+/* === Global link styling (accented links) === */
+
+a {
+  color: #00b4db;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+a:hover {
+  color: #00d1ff;
+  text-shadow: 0 0 8px rgba(0, 180, 219, 0.5);
+}
+
+
+
+
+
 
 .glitch.active span:not(:last-child) {
   animation-duration: 0.3s;
@@ -2181,5 +2199,124 @@ main #sponsors .sponsors-list li a img {
 @media (max-width: 600px) {
   .speakers-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* === Take Part as a Speaker === */
+
+.light-background {
+  background-color: #f2f4f8;
+  color: #111;
+}
+
+.tracks-container {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.track-card {
+  background-color: transparent;
+  border: 2px solid #00b4db;
+  border-radius: 10px;
+  padding: 1.8rem 2rem;
+  max-width: 440px;
+  text-align: center;
+  color: #222;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.track-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 180, 219, 0.2);
+}
+
+.track-card h3 {
+  color: #111;
+  margin-bottom: 0.3rem;
+}
+
+.track-subtitle {
+  color: #555;
+  font-style: italic;
+  margin-bottom: 0.8rem;
+}
+
+.deadline {
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #111;
+}
+
+.note {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #333;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* === Proceedings Section === */
+
+/* Proceedings layout */
+.proceedings-section {
+  background-color: #1e2227;
+  padding: 60px 0;
+}
+
+.proceedings-container {
+  width: 100%;
+  max-width: 1100px;          /* как и в секции выше */
+  margin: 0 auto;
+  padding: 0 60px;            /* одинаковые боковые отступы */
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.proceedings-image img {
+  width: 200px;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.proceedings-text {
+  color: #ddd;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  text-align: left;
+}
+
+
+
+.proceedings-text strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .proceedings-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .proceedings-text {
+    max-width: 90%;
+  }
+
+  .proceedings-image img {
+    width: 150px;
+    margin-bottom: 1.5rem;
   }
 }
