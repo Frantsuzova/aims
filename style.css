@@ -943,8 +943,8 @@ main .intro-section h2 {
 main .normal-section {
   display: grid;
   justify-items: center;
-  gap: 40px;
-  padding: 48px 0;
+  gap: 10px;
+  padding: 18px 0;
   color: white;
 }
 
@@ -966,7 +966,7 @@ main .normal-section:nth-child(even) {
   color: white;
 }
 main #about {
-  padding: 60px 0;
+  padding: 30px 0;
 }
 main #about .description {
   display: grid;
@@ -1719,6 +1719,10 @@ main #sponsors .sponsors-list li a img {
   gap: 60px;
   max-width: 1100px;
   margin: 0 auto;
+  /*
+  padding-left: 40px;
+  padding-right: 40px;
+  */
   padding: 40px;
   color: white;
   position: relative;
@@ -1910,7 +1914,7 @@ main #sponsors .sponsors-list li a img {
 .section-title {
   text-align: center;
   font-size: 1.8rem;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   color: rgb(0, 0, 0);
 }
 
@@ -1931,7 +1935,6 @@ main #sponsors .sponsors-list li a img {
 }
 
 .theme-box {
-  background: #02b6c8; /* базовый для совместимости */
   color: #fff;
   padding: 20px;
   border-radius: 4px;
@@ -1951,23 +1954,28 @@ main #sponsors .sponsors-list li a img {
   color: #eaf7fa;
 }
 
-/* три оттенка — ступенчато, без градиента */
+/* три оттенка ступенями */
 .themes-left .theme-box:nth-child(1) {
-  background-color: #29b8c5;
+  background-color: #00b4db; /* основной */
 }
 
 .themes-left .theme-box:nth-child(2) {
-  background-color: #1ba6b7;
+  background-color: #0098ba; /* на 1 ступень темнее */
 }
 
 .themes-left .theme-box:nth-child(3) {
-  background-color: #0995a7;
+  background-color: #007c99; /* на 2 ступени темнее */
 }
 
-/* лёгкий hover для глубины */
+/* эффект наведения */
 .theme-box:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 4px 10px rgba(0, 180, 219, 0.4);
+}
+
+.theme-box h3,
+.theme-box p {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .theme-box h3 {
