@@ -1506,3 +1506,150 @@ a:hover {
     margin-bottom: 1.5rem;
   }
 }
+
+
+/* === From Presentation to Publication timeline === */
+/* === From Presentation to Publication — full width with margins === */
+#publication-timeline {
+  padding: 80px 0 90px;
+  background: #e9ecf7;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Заголовок */
+#publication-timeline h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 60px;
+}
+
+/* Контейнер для шагов */
+.pub-timeline-wrapper {
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+  padding: 0 80px; /* вот этот отступ создаёт "воздух" слева и справа */
+  box-sizing: border-box;
+}
+
+/* Таймлайн */
+.pub-timeline {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 90px;
+  margin-bottom: 50px;
+}
+
+/* Линия — идёт по всей ширине контейнера с отступами */
+.pub-timeline::before {
+  content: "";
+  position: absolute;
+  top: 70px;
+  left: 80px;   /* точно совпадает с padding контейнера */
+  right: 80px;
+  height: 2px;
+  background: #00b4db;
+  z-index: 0;
+}
+
+/* Шаг */
+.pub-timeline-step {
+  position: relative;
+  text-align: center;
+  z-index: 1;
+  flex: 1;
+}
+
+/* Плашка с датой */
+.pub-timeline-date {
+  background: #00b4db;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 26px;
+  border-radius: 999px;
+  display: inline-block;
+  position: relative;
+  top: -35px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  z-index: 2;
+}
+
+/* Hover — стрелка вниз */
+.pub-timeline-step::before {
+  content: "";
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 10px solid #00b4db;
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.pub-timeline-step:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Hover эффект даты */
+.pub-timeline-date:hover {
+  transform: scale(1.1) translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 180, 219, 0.4);
+}
+
+/* Подписи */
+.pub-timeline-step p {
+  font-size: 0.95rem;
+  color: #000;
+  margin: 0;
+  line-height: 1.4;
+  max-width: 180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Нижний блок текста */
+.pub-timeline-info {
+  color: #222;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.pub-timeline-info strong {
+  font-weight: 700;
+}
+
+.pub-timeline-link {
+  color: #00a7e1;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.pub-timeline-link:hover {
+  text-decoration: underline;
+}
+
+/* Адаптив */
+@media (max-width: 900px) {
+  .pub-timeline {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pub-timeline::before {
+    display: none;
+  }
+
+  .pub-timeline-step {
+    margin-bottom: 50px;
+  }
+}
+
+
+
