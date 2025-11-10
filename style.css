@@ -1509,7 +1509,7 @@ a:hover {
 
 
 /* === From Presentation to Publication timeline === */
-/* === From Presentation to Publication — full width with margins === */
+/* === From Presentation to Publication — финальный стиль === */
 #publication-timeline {
   padding: 80px 0 90px;
   background: #e9ecf7;
@@ -1525,16 +1525,16 @@ a:hover {
   margin-bottom: 60px;
 }
 
-/* Контейнер для шагов */
+/* Контейнер для линии */
 .pub-timeline-wrapper {
   width: 100%;
   position: relative;
   margin: 0 auto;
-  padding: 0 80px; /* вот этот отступ создаёт "воздух" слева и справа */
+  padding: 0 80px; /* воздух по бокам — совпадает с книгой сверху */
   box-sizing: border-box;
 }
 
-/* Таймлайн */
+/* Основная линия и шаги */
 .pub-timeline {
   position: relative;
   display: flex;
@@ -1544,19 +1544,19 @@ a:hover {
   margin-bottom: 50px;
 }
 
-/* Линия — идёт по всей ширине контейнера с отступами */
+/* Линия */
 .pub-timeline::before {
   content: "";
   position: absolute;
-  top: 70px;
-  left: 80px;   /* точно совпадает с padding контейнера */
-  right: 80px;
+  top: 68px;          /* геометрически точно по центру */
+  left: 88px;         /* чтобы совпадало с началом даты */
+  right: 88px;
   height: 2px;
   background: #00b4db;
   z-index: 0;
 }
 
-/* Шаг */
+/* Каждый шаг */
 .pub-timeline-step {
   position: relative;
   text-align: center;
@@ -1578,7 +1578,7 @@ a:hover {
   z-index: 2;
 }
 
-/* Hover — стрелка вниз */
+/* Эффект при наведении — лёгкое увеличение и стрелка */
 .pub-timeline-step::before {
   content: "";
   position: absolute;
@@ -1597,13 +1597,12 @@ a:hover {
   transform: translateX(-50%) translateY(0);
 }
 
-/* Hover эффект даты */
 .pub-timeline-date:hover {
   transform: scale(1.1) translateY(-5px);
   box-shadow: 0 4px 12px rgba(0, 180, 219, 0.4);
 }
 
-/* Подписи */
+/* Подписи под датами */
 .pub-timeline-step p {
   font-size: 0.95rem;
   color: #000;
@@ -1614,7 +1613,7 @@ a:hover {
   margin-right: auto;
 }
 
-/* Нижний блок текста */
+/* Нижний блок информации */
 .pub-timeline-info {
   color: #222;
   font-size: 0.95rem;
@@ -1635,7 +1634,7 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Адаптив */
+/* Адаптив для мобильных */
 @media (max-width: 900px) {
   .pub-timeline {
     flex-direction: column;
@@ -1651,5 +1650,81 @@ a:hover {
   }
 }
 
+
+/* === Committee Section === */
+#committee {
+  background: #1e2227; /* тёмный фон как в блоке speakers/proceedings */
+  color: #fff;
+  text-align: center;
+  padding: 90px 0 100px;
+}
+
+/* Заголовок */
+#committee h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 70px;
+}
+
+/* Сетка участников */
+.committee-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 80px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Карточка */
+.committee-member {
+  text-align: center;
+  width: 200px;
+}
+
+/* Фото участника */
+.committee-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 18px;
+  border: 3px solid #00b4db;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.committee-photo:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(0, 180, 219, 0.4);
+}
+
+/* Текст */
+.committee-name {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.committee-info {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #d1d5db;
+}
+
+/* Адаптив */
+@media (max-width: 800px) {
+  .committee-grid {
+    gap: 50px;
+  }
+
+  .committee-member {
+    width: 160px;
+  }
+
+  .committee-photo {
+    width: 120px;
+    height: 120px;
+  }
+}
 
 
