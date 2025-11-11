@@ -420,44 +420,138 @@
 
 
 
+<section id="registration">
+  <h2>
+    Registration for event in
+    <span class="registration-switch">
+      <button class="active" data-city="spb">St. Petersburg</button>
+      <button data-city="belgrade">Belgrade</button>
+    </span>
+  </h2>
+
+  <div class="registration-grid" id="registration-grid">
+    <!-- St. Petersburg --> 
+    <div class="registration-card highlight" data-city="spb">
+      <h3>Listener</h3>
+      <h4>Early bird</h4>
+      <p>Registration until xx.xx is free of charge. Registration via link below.</p>
+      <button class="registration-btn">free</button>
+
+      <h4>Owl</h4>
+      <p>Late registration after xx.xx costs 100 RUB.</p>
+      <button class="registration-btn">100 rub</button>
+    </div>
+
+    <div class="registration-card" data-city="spb">
+      <h3>Participant<br>Case track</h3>
+      <h4>Early bird</h4>
+      <p>Registration between xx.xx and xx.xx is free of charge for case track</p>
+      <button class="registration-btn">free</button>
+
+      <h4>Owl</h4>
+      <p>Registration between xx.xx and xx.xx is considered an owl (late registration) and costs -- xx.xx</p>
+      <button class="registration-btn">30 eur</button>
+    </div>
+
+    <div class="registration-card" data-city="spb">
+      <h3>Participant<br>Scientific track</h3>
+      <h4>Early bird</h4>
+      <p>Registration between xx.xx and xx.xx costs -- xx.xx</p>
+      <button class="registration-btn">20 eur</button>
+
+      <h4>Owl</h4>
+      <p>Registration between xx.xx and xx.xx is considered an owl (late registration) and costs -- xx.xx</p>
+      <button class="registration-btn">50 eur</button>
+    </div>
+
+    <!-- Belgrade -->
+    <div class="registration-card hidden highlight" data-city="belgrade">
+      <h3>Listener</h3>
+      <h4>Early bird</h4>
+      <p>Registration until xx.xx is free of charge. Registration via link below.</p>
+      <button class="registration-btn">free</button>
+
+      <h4>Owl</h4>
+      <p>Late registration after xx.xx requires fee payment.</p>
+      <button class="registration-btn">fee</button>
+    </div>
+
+    <div class="registration-card hidden" data-city="belgrade">
+      <h3>Participant<br>Case track</h3>
+      <h4>Early bird</h4>
+      <p>Free of charge before xx.xx.</p>
+      <button class="registration-btn">free</button>
+
+      <h4>Owl</h4>
+      <p>Late registration costs 25 EUR.</p>
+      <button class="registration-btn">25 eur</button>
+    </div>
+
+    <div class="registration-card hidden" data-city="belgrade">
+      <h3>Participant<br>Scientific track</h3>
+      <h4>Early bird</h4>
+      <p>Registration until xx.xx costs -- xx.xx.</p>
+      <button class="registration-btn">15 eur</button>
+
+      <h4>Owl</h4>
+      <p>Late registration after xx.xx costs -- xx.xx.</p>
+      <button class="registration-btn">35 eur</button>
+    </div>
+  </div>
+
+  <button class="registration-main-btn">
+  Registration
+  </button>
+
+  <p class="registration-note">
+    <strong>NB: Students on scientific track are liberated from paying fee</strong>
+  </p>
+</section>
+
+
+
+
+
 
 
 
 
   <!-- Раздел "Контактов" -->
   <section class="normal-section dark-background" id="contacts">
-    <div class="titles">
-      <h1 class="cross-bar-glitch dark" data-slice="20">Будем на связи!</h1>
-      
-    </div>
-    <div class="contact-form">
-      <form id="contact-form" action="https://formspree.io/f/xovvplde" method="POST" onsubmit="submitForm(event)">
-        <label for="name">Ваше имя</label>
-        <input type="text" name="name" required placeholder="Введите ваше имя" />
-        
-        <label for="email">Ваша почта</label>
-        <input type="email" name="email" required placeholder="Введите вашу почту" />
-        
-        <label for="message">Сообщение</label>
-        <textarea name="message" rows="4" required placeholder="Напишите ваше сообщение"></textarea>
-        
-        <button type="submit" class="btn btn-ghost">Отправить</button>
+  <div class="titles">
+    <h2 class="section-title">Contacts</h2>
+  </div>
+  <div class="contact-intro">
+    <p>If you have any doubts — feel free to contact us!</p>
+    <p><a href="mailto:poshtaposht@yandex.ru" class="contact-mail">poshtaposht@yandex.ru</a></p>
+  </div>
+  <!-- 
+  <div class="contact-form">
+    <form id="contact-form" action="https://formspree.io/f/xovvplde" method="POST" onsubmit="submitForm(event)">
+      <label for="name">Your name</label>
+      <input type="text" name="name" required placeholder="Enter your name" />
+
+      <label for="email">Your email</label>
+      <input type="email" name="email" required placeholder="Enter your email" />
+
+      <label for="message">Message</label>
+      <textarea name="message" rows="4" required placeholder="Write your message"></textarea>
+
+      <button type="submit" class="btn btn-ghost">Send</button>
     </form>
-    
-    <!-- Попап -->
+
     
     <div class="popup hidden" id="popup-success" style="display:none;">
       <div class="popup-content">
         <span class="popup-close">&times;</span>
-        <h2>Ваше сообщение отправлено!</h2>
-        <p>Спасибо за обращение. Мы свяжемся с вами в ближайшее время.</p>
+        <h2>Your message has been sent!</h2>
+        <p>Thank you for reaching out. We’ll get back to you soon.</p>
       </div>
     </div>
-    
-
   </div>
-    
-  </section>
+  -->
+</section>
+
   
   
 </main>

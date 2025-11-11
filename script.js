@@ -355,3 +355,21 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+
+
+document.querySelectorAll(".registration-switch button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document
+        .querySelectorAll(".registration-switch button")
+        .forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const city = btn.dataset.city;
+
+      document
+        .querySelectorAll(".registration-card")
+        .forEach((card) => {
+          card.classList.toggle("hidden", card.dataset.city !== city);
+        });
+    });
+  });
