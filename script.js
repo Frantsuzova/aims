@@ -373,3 +373,5 @@ document.querySelectorAll(".registration-switch button").forEach((btn) => {
         });
     });
   });
+
+
