@@ -237,50 +237,57 @@ a:hover {
 
 
 /* === вертикальное меню === */
-/* === вертикальное меню === */
-.site-nav {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  background: transparent;
-  z-index: 10;
-  margin-right: 2%;
-}
-
 .underline-menu {
-  position: fixed;
-  top: 27%;
-  right: 2%;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  transform: translateY(0);
-  border-left: 1px solid rgba(255, 255, 255, 0.2);
-  mix-blend-mode: difference;
-  backdrop-filter: blur(4px);
-  transition: top 0.25s ease;
+    position: fixed;
+    top: 27%;
+    right: 2%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 16px;
+
+    border-left: 2px solid rgba(255,255,255,0.25); /* СЕРАЯ ЛИНИЯ */
+    z-index: 200;
+
+    mix-blend-mode: difference; /* автоматическая смена цвета */
 }
 
-/* меню на светлом фоне */
-.menu-dark {
-  mix-blend-mode: normal;
+/* Базовая типографика */
+.underline-menu li a {
+    color: white;
+    font-family: Montserrat, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.25s ease;
 }
 
-.menu-dark li a {
-  color: #000;
+/* --- Голубая линия активного пункта --- */
+.underline-menu li.active::before {
+    content: "";
+    position: absolute;
+    left: -16px;       /* поверх серой линии */
+    width: 2px;
+    height: 14px;      /* маленькая, КАК В ТВОЁМ ПРИМЕРЕ */
+    background: #00b4db;
+
+    top: 50%;
+    transform: translateY(-50%); /* строго по центру строки */
 }
 
-/* опционально: тёмная полоска-акцент на светлом */
-.menu-dark li::after {
-  background: #000;
+/* чтобы ::before работал */
+.underline-menu li {
+    position: relative;
 }
 
-
+/* hover — просто подсветка текста */
+.underline-menu li a:hover {
+    color: #00d1ff;
+}
 
 
 
