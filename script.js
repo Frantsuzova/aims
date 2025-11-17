@@ -375,3 +375,58 @@ document.querySelectorAll(".registration-switch button").forEach((btn) => {
   });
 
 
+
+(function () {
+  const menu = document.querySelector(".underline-menu");
+  const gallery = document.querySelector("#gallery");
+  if (!menu || !gallery) return;
+
+  const DEFAULT_TOP_PX = window.innerHeight * 0.27; 
+  const DEFAULT_TOP = "27%";
+
+  function onScroll() {
+    const scrollY = window.scrollY;
+    const menuHeight = menu.getBoundingClientRect().height;
+
+    // Опускаем на ~20% меню:
+    const finalOffset = menuHeight * 0.20;
+
+    // Стоп-линия (точка, перед которой меню НЕ может опуститься ниже)
+    const stopLine = gallery.offsetTop - menuHeight + finalOffset;
+
+    // Абсолютное положение нижней границы меню сейчас
+    const menuBottomAbs = scrollY + DEFAULT_TOP_PX + menuHeight;
+
+    // Вычисление top, СПЕЦИАЛЬНО смягчённое
+    let requiredTop = stopLine - scrollY - menuHeight;
+
+    // ===== МЕХАНИЗМ ПЛАВНОГО ПОДТОРМАЖИВАНИЯ =====
+
+    // Если остаётся < 120px до стопа — плавно притормаживаем
+    const distance = stopLine - menuBottomAbs; // сколько осталось до стопа
+
+    if (distance < 120) {
+      // коэффициент замедления (чем ближе — тем меньше движение)
+      const k = Math.max(0, distance / 120);
+
+      requiredTop = DEFAULT_TOP_PX * k + requiredTop * (1 - k);
+    }
+
+    // Меню НИКОГДА НЕ ПОДНИМАЕМ ВЫШЕ 27%
+    if (requiredTop > DEFAULT_TOP_PX) {
+      menu.style.top = DEFAULT_TOP;
+    } else {
+      menu.style.top = `${requiredTop}px`;
+    }
+  }
+
+  window.addEventListener("scroll", onScroll);
+  window.addEventListener("resize", onScroll);
+  onScroll();
+})();
+
+
+
+
+
+

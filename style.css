@@ -237,72 +237,50 @@ a:hover {
 
 
 /* === вертикальное меню === */
+/* === вертикальное меню === */
 .site-nav {
   position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  background: transparent;
+  z-index: 10;
+  margin-right: 2%;
 }
-
-
-  
 
 .underline-menu {
   position: fixed;
   top: 27%;
   right: 2%;
+  z-index: 10;
   display: flex;
   flex-direction: column;
+  gap: 1em;
   padding: 0;
   margin: 0;
   list-style: none;
+  transform: translateY(0);
   border-left: 1px solid rgba(255, 255, 255, 0.2);
   mix-blend-mode: difference;
-  z-index: 10;
-  transition: top 0.4s ease, opacity 0.3s ease;
+  backdrop-filter: blur(4px);
+  transition: top 0.25s ease;
 }
 
-.menu-stopped {
-  position: absolute !important;
-  top: auto !important;
-  bottom: 0;
-  transform: translateY(0);
+/* меню на светлом фоне */
+.menu-dark {
+  mix-blend-mode: normal;
+}
+
+.menu-dark li a {
+  color: #000;
+}
+
+/* опционально: тёмная полоска-акцент на светлом */
+.menu-dark li::after {
+  background: #000;
 }
 
 
-.underline-menu:hover li:not(:hover) a {
-  opacity: 0.2;
-}
-.underline-menu li {
-  position: relative;
-}
-.underline-menu li::after {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 2px;
-  height: 100%;
-  background: #3498db;
-  transform: scaleY(0);
-  transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-.underline-menu li:hover::after, .underline-menu li.active::after {
-  transform: scaleY(1);
-}
-.underline-menu li a {
-  position: relative;
-  display: flex;
-  padding: 20px 10px 20px 10px;
-  font-size: 14px;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: white;
-  transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-/* Контейнер для sticky-меню */
-.menu-container {
-  position: relative;
-  height: 180vh;
-}
 
 
 
