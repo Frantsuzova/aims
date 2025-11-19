@@ -26,33 +26,37 @@
         />
         &nbsp;с<sup style="font-size: 12px;">2</sup>&nbsp; command
       </a>
+
+
+      <!-- вертикальное меню --> 
       <nav class="site-nav">
         <div class="menu-wrapper">
           <ul class="underline-menu">
             <li class="active"><a href="#about">ABOUT</a></li>
             <li><a href="#themes">MAIN THEMES</a></li>
-            <li><a href="#speakers">OUR SPEAKERS</a></li>
-            <li><a href="#participate">PARTICIPATE</a></li>
-            <li><a href="#papers">CALL FOR PAPERS</a></li>
+            <li><a href="#speakers-section">OUR SPEAKERS</a></li>
+            <li><a href="#take-part">PARTICIPATE</a></li>
+            <li><a href="#proceedings">CALL FOR PAPERS</a></li>
             <li><a href="#committee">COMMITTEE</a></li>
             <li><a href="#registration">REGISTRATION</a></li>
             <li><a href="#contacts">CONTACTS</a></li>
-        </ul>
+            <li><a href="#program">PROGRAM</a></li>
+          </ul>
         </div>
-    </nav>
+      </nav>
      
-
-
-
-
+      <!-- языки --> 
+      <!--
       <div class="language-switcher">
         <a href="index-ru.html" class="lang " data-lang="ru">РУ</a> | 
         <a href="index-sr.html" class="lang" data-lang="sr">СР</a> | 
         <a href="index.html" class="lang" data-lang="en">EN</a> |
       </div>
+      -->
       
     </header>
     
+    <!-- бургер --> 
     <input type="checkbox" id="burger-toggle" />
     <label for="burger-toggle" class="burger-menu">
       <div class="line"></div>
@@ -63,14 +67,15 @@
     
     <nav class="burger-nav">
       <ul>
-           <li><a href="#about">ABOUT</a></li>
-            <li><a href="#themes">MAIN THEMES</a></li>
-            <li><a href="#speakers">OUR SPEAKERS</a></li>
-            <li><a href="#participate">PARTICIPATE</a></li>
-            <li><a href="#papers">CALL FOR PAPERS</a></li>
-            <li><a href="#committee">COMMITTEE</a></li>
-            <li><a href="#registration">REGISTRATION</a></li>
-            <li><a href="#contacts">CONTACTS</a></li>
+        <li class="active"><a href="#about">ABOUT</a></li>
+        <li><a href="#themes">MAIN THEMES</a></li>
+        <li><a href="#speakers-section">OUR SPEAKERS</a></li>
+        <li><a href="#take-part">PARTICIPATE</a></li>
+        <li><a href="#proceedings">CALL FOR PAPERS</a></li>
+        <li><a href="#committee">COMMITTEE</a></li>
+        <li><a href="#registration">REGISTRATION</a></li>
+        <li><a href="#contacts">CONTACTS</a></li>
+        <li><a href="#program">PROGRAM</a></li>
       </ul>
     </nav>
 
@@ -181,6 +186,8 @@
           </p>
         </div>
       </section>
+
+      <!-- Раздел тем --> 
       <section class="normal-section" id="themes">
         <h2 class="section-title dark ">Main themes</h2>
         <div class="themes-wrapper">
@@ -225,66 +232,77 @@
           </div>
         </div>
       </section>
-      <section class="speakers-section">
+
+      <!-- Раздел наши спикеры --> 
+      <section class="speakers-section" id="speakers-section">
         <div class="speakers-container">
           <h2 class="section-title centered">Who were our main speakers?</h2>
           <div class="speakers-grid">
-            <div class="speaker-card">
+            <div class="speaker-card" data-img="speaker1">
               <img src="./img/speaker1.jpeg" alt="Anna Yalova" class="speaker-photo">
               <p class="speaker-info">
-                <strong>Anna Yalova</strong><br>
-                Director of Manege museum,<br>
-                Saint Petersburg
+                <strong>Anna Yalova</strong>
+                Director of The Manege Central Exhibition Hall
               </p>
             </div>
-            <div class="speaker-card">
-              <img src="./img/speaker2.jpg" alt="Metelica" class="speaker-photo">
+
+            <div class="speaker-card" data-img="speaker2">
+              <img src="./img/speaker2.jpg" alt="Natalia Metelica" class="speaker-photo">
               <p class="speaker-info">
-                <strong>Natalia Metelica</strong><br>
-                Director of St. Petersburg State Museum of Theatrical and Musical Art,<br>
-                Saint Petersburg
+                <strong>Natalia Metelica</strong>
+                Director of St. Petersburg State Museum of Theatrical and Musical Art
               </p>
             </div>
-            <div class="speaker-card">
-              <img src="./img/speaker5.jpg" alt="Arshanskaya" class="speaker-photo">
+
+            <div class="speaker-card" data-img="speaker6">
+              <img src="./img/speaker6.jpg" alt="Andrey Punin" class="speaker-photo">
               <p class="speaker-info">
-                <strong>Olga Arshanskaya</strong><br>
-                Director of the “Night of Light in Gatchina” Festival,<br>
-                Saint Petersburg
+                <strong>Andrey Punin</strong>
+                Public Art Artist & Architect, HSE University, School of Design
               </p>
             </div>
-            <div class="speaker-card">
-              <img src="./img/speaker6.jpg" alt="Punin" class="speaker-photo">
+
+            <div class="speaker-card" data-img="speaker5">
+              <img src="./img/speaker5.jpg" alt="Olga Arshanskaya" class="speaker-photo">
               <p class="speaker-info">
-                <strong>Andrey Punin</strong><br>
-                HSE University, School of Design,<br>
-                Saint Petersburg
+                <strong>Olga Arshanskaya</strong>
+                Director of The Night of Light in Gatchina Festival
               </p>
             </div>
-            <div class="speaker-card">
-              <img src="./img/speaker3.jpg" alt="Machevskaya" class="speaker-photo">
+
+            <div class="speaker-card" data-img="speaker3">
+              <img src="./img/speaker3.jpg" alt="Julia Machevskaya" class="speaker-photo">
               <p class="speaker-info">
-                <strong>Julia Machevskaya</strong><br>
-                Curator of Anikushin’s Sculpture Studio, Museum of Urban Sculpture branch,<br>
-                Saint Petersburg
+                <strong>Julia Machevskaya</strong>
+                Curator of Anikushin’s Sculpture Studio, Museum of Urban Sculpture branch
               </p>
             </div>
-            <div class="speaker-card">
-              <img src="./img/speaker7.jpg" alt="Kaplevich" class="speaker-photo">
+
+            <div class="speaker-card" data-img="speaker7">
+              <img src="./img/speaker7.jpg" alt="Pavel Kaplevich" class="speaker-photo">
               <p class="speaker-info">
-                <strong>Pavel Kaplevich</strong><br>
-                Production Designer & Exhibition Creator,<br>
-                Moscow
+                <strong>Pavel Kaplevich</strong>
+                Production Designer & Exhibition Creator
               </p>
             </div>
-            <div class="speaker-card">
-              <img src="./img/speaker8.jpg" alt="Sokurov" class="speaker-photo">
+
+            <div class="speaker-card" data-img="speaker4">
+              <img src="./img/speaker4.jpg" alt="Dasha Zakharova" class="speaker-photo">
               <p class="speaker-info">
-                <strong>Alexander Sokurov</strong><br>
-                Film Director,<br>
-                Saint Petersburg
+                <strong>Dasha Zakharova</strong>
+                Multimedia Artist
               </p>
             </div>
+
+            <div class="speaker-card" data-img="speaker10">
+              <img src="./img/speaker10.jpg" alt="Nikolay Kislukhin" class="speaker-photo">
+              <p class="speaker-info">
+                <strong>Nikolay Kislukhin</strong>
+                Head of the Special Projects Department, Tretyakov Gallery in Samara
+              </p>
+            </div>
+
+            <!--
             <div class="speaker-card">
               <img src="./img/speaker9.jpg" alt="Yudina" class="speaker-photo">
               <p class="speaker-info">
@@ -293,6 +311,16 @@
                 Saint Petersburg
               </p>
             </div>
+            -->
+            <!--
+            <div class="speaker-card">
+              <img src="./img/speaker8.jpg" alt="Sokurov" class="speaker-photo">
+              <p class="speaker-info">
+                <strong>Alexander Sokurov</strong><br>
+                Film Director,<br>
+                Saint Petersburg
+              </p>
+            </div>            
             <div class="speaker-card">
               <img src="./img/speaker10.jpg" alt="Klimovitskaya" class="speaker-photo">
               <p class="speaker-info">
@@ -301,17 +329,13 @@
                 Saint Petersburg
               </p>
             </div>
-             <div class="speaker-card">
-              <img src="./img/speaker4.jpg" alt="Zakharova" class="speaker-photo">
-              <p class="speaker-info">
-                <strong>Dasha Zakharova</strong><br>
-                multimedia artist,<br>
-                Saint Petersburg
-              </p>
-            </div>
+            -->
+             
           </div>
         </div>
       </section>
+
+      <!-- Раздел "прими участие как спикер" --> 
       <section class="normal-section light-background" id="take-part">
         <h2 class="section-title dark">Take Part as a Speaker!</h2>
         <p class="section-subtitle">There are two ways to join the AIMS seminar as a speaker:</p>
@@ -327,7 +351,9 @@
               Short Talk: emerging ideas or early-stage concepts,<br>
               ⏱ 10 min + 2 min Q&amp;A
             </p>
-            <p>Submit title and abstract by email</p>
+            <p>Submit title and abstract (200-500 words) by <br /> <a href="mailto:poshtaposht@yandex.ru" class="contact-mail">e-mail,</a>
+            <br> 
+            the review will be done within 2 weeks</p>
             <p class="deadline">Deadline: 05 May Belgrade | 10 June SPB</p>
           </div>
           <div class="track-card">
@@ -341,241 +367,225 @@
               Early Research Paper: pilot or in-progress studies,<br>
               ⏱ 10 min + 2 min Q&amp;A
             </p>
-            <p>Submit via CMT (this track pipeline)</p>
+            <p>Submit via CMT (this track <a href="#publication-timeline">pipeline</a>)</p>
             <p class="deadline">Deadline: 30 Mar</p>
           </div>
         </div>
+        <p class="note">All contributions from both tracks will be reviewed by the committee.</p>
         <p class="note">
           The seminar is held offline. <br/> Online participation may be considered individually by sending request on seminar’s email.
         </p>
       </section>
 
+      <!-- Раздел просидингов --> 
+      <section class="normal-section dark-background" id="proceedings">
+        <h2 class="section-title">Proceedings</h2>
+        <div class="proceedings-container">
+          <div class="proceedings-image">
+            <img src="./img/book.jpeg" alt="Communications in Computer and Information Science book cover">
+          </div>
+          <div class="proceedings-text">
+            <p>
+              The scientific track of the AIMS seminar implies the publication of selected papers in the
+              <a href="https://link.springer.com/series/7899">Communications in Computer and Information Science (CCIS)</a> series published by Springer,
+              indexed in <strong>Scopus (Q3)</strong>.
+            </p>
+            <p>
+              Thus, we <strong>invite our speakers to present research papers</strong> developed on the basis of their
+              conference presentations. Submitted manuscripts should be original, unpublished, and correspond to the
+              thematic scope of the seminar and the CCIS series.
+            </p>
+            <p>
+              All submissions will undergo a double-blind peer review.<br>
+              Submissions are made through <a href="#">Microsoft CMT</a>.
+            </p>
+          </div>
+        </div>
+      </section>
 
-<section class="normal-section dark-background" id="proceedings">
-  <h2 class="section-title">Proceedings</h2>
+      <!-- Раздел от презентации к публикации  --> 
+      <section class="normal-section light-background" id="publication-timeline">
+        <h2 class="section-title dark">From Presentation to Publication</h2>
+        <div class="pub-timeline-wrapper">
+          <div class="pub-timeline">
+            <div class="pub-timeline-step">
+              <div class="pub-timeline-date">22 Jan</div>
+              <div class="pub-timeline-dot"></div>
+              <p><strong>Registration in CMT</strong><br>Title + Abstract</p>
+            </div>
+            <div class="pub-timeline-step">
+              <div class="pub-timeline-date">30 Mar</div>
+              <div class="pub-timeline-dot"></div>
+              <p><strong>Full paper submission</strong><br>PDF-format<br>(anonymized)</p>
+            </div>
+            <div class="pub-timeline-step">
+              <div class="pub-timeline-date">20 Apr</div>
+              <div class="pub-timeline-dot"></div>
+              <p><strong>Acceptance</strong><br>Notification</p>
+            </div>
+            <div class="pub-timeline-step">
+              <div class="pub-timeline-date">20 May</div>
+              <div class="pub-timeline-dot"></div>
+              <p><strong>Camera-ready submission</strong><br>DOCX-format<br>(revised per reviewers)</p>
+            </div>
+          </div>
+          <div class="pub-timeline-info">
+            <p><strong>Full papers:</strong> 11–15 pages &nbsp; | &nbsp; <strong>Short papers:</strong> 6–10 pages</p>
+            <p>Original manuscripts, similarity index &lt; 15%. No text generated by AI tools.</p>
+            <p>
+              <a href="#" class="pub-timeline-link">Springer CCIS Template ↗</a> &nbsp;|&nbsp;
+              <a href="#" class="pub-timeline-link">Paper Submission ↗</a>
+            </p>
+          </div>
+        </div>
+      </section>
 
-  <div class="proceedings-container">
-    <div class="proceedings-image">
-      <img src="./img/book.jpeg" alt="Communications in Computer and Information Science book cover">
-    </div>
+      <!-- Раздел комитета --> 
+      <section id="committee">
+        <h2>Program Committee</h2>
+        <div class="committee-grid">
+          <div class="committee-member">
+            <img src="./img/Chizhik.jpg" alt="chizhik" class="committee-photo">
+            <p class="committee-name">Anna Chizhik</p>
+            <p class="committee-info">Ph.D. in Cultural Studies, Multimedia Director,<br /> St. Petersburg State University, Russia</p>
+          </div>
 
-    <div class="proceedings-text">
-      <p>
-        The scientific track of the AIMS seminar implies the publication of selected papers in the
-        <a href="https://link.springer.com/series/7899">Communications in Computer and Information Science (CCIS)</a> series published by Springer,
-        indexed in <strong>Scopus (Q3)</strong>.
-      </p>
+          <div class="committee-member">
+            <img src="./img/Cokrlic.jpg" alt="cokrlic" class="committee-photo">
+            <p class="committee-name">Katarina Cokrlic</p>
+            <p class="committee-info">Exhibition Designer,<br /> University of Bologna, Italy</p>
+          </div>
 
-      <p>
-        Thus, we <strong>invite our speakers to present research papers</strong> developed on the basis of their
-        conference presentations. Submitted manuscripts should be original, unpublished, and correspond to the
-        thematic scope of the seminar and the CCIS series.
-      </p>
-
-      <p>
-        All submissions will undergo a double-blind peer review.<br>
-        Submissions are made through <a href="#">Microsoft CMT</a>.
-      </p>
-    </div>
-  </div>
-</section>
-
-<section class="normal-section light-background" id="publication-timeline">
-  <h2 class="section-title dark">From Presentation to Publication</h2>
-
-  <div class="pub-timeline-wrapper">
-    <div class="pub-timeline">
-      <div class="pub-timeline-step">
-        <div class="pub-timeline-date">22 Jan</div>
-        <div class="pub-timeline-dot"></div>
-        <p>Registration in CMT<br>Title + Abstract</p>
+          <div class="committee-member">
+            <img src="./img/Jevrić.jpg" alt="Tijana Jevrić" class="committee-photo">
+            <p class="committee-name">Tijana Jevrić</p>
+            <p class="committee-info">Creative Director of Visual Identity and Cultural Worker, Serbia</p>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Раздел регистрации --> 
+      <section id="registration">
+        <h2>Registration for event in <span class="registration-switch">
+          <button class="active" data-city="spb">St. Petersburg</button>
+          <button data-city="belgrade">Belgrade</button>
+        </span></h2>
+        <div class="registration-grid" id="registration-grid"> 
+          <!-- St. Petersburg --> 
+          <div class="registration-card highlight" data-city="spb"> 
+            <h3>Listener</h3>
+            <h4>Early bird</h4>
+            <p>Registration until xx.xx is free of charge. Registration via link below.</p>
+            <button class="registration-btn">free</button>
+            <h4>Owl</h4>
+            <p>Late registration after xx.xx costs 100 RUB.</p>
+            <button class="registration-btn">100 rub</button>
+          </div>
+          <div class="registration-card" data-city="spb">
+            <h3>Participant<br>Case track</h3>
+            <h4>Early bird</h4>
+            <p>Registration between xx.xx and xx.xx is free of charge for case track</p>
+            <button class="registration-btn">free</button>
+            <h4>Owl</h4>
+            <p>Registration between xx.xx and xx.xx is considered an owl (late registration) and costs -- xx.xx</p>
+            <button class="registration-btn">30 eur</button>
+          </div>
+          <div class="registration-card" data-city="spb">
+            <h3>Participant<br>Scientific track</h3>
+            <h4>Early bird</h4>
+            <p>Registration between xx.xx and xx.xx costs -- xx.xx</p>
+            <button class="registration-btn">20 eur</button>
+            <h4>Owl</h4>
+            <p>Registration between xx.xx and xx.xx is considered an owl (late registration) and costs -- xx.xx</p>
+            <button class="registration-btn">50 eur</button>
+          </div>
+          <!-- Belgrade -->
+          <div class="registration-card hidden highlight" data-city="belgrade">
+            <h3>Listener</h3>
+            <h4>Early bird</h4>
+            <p>Registration until xx.xx is free of charge. Registration via link below.</p>
+            <button class="registration-btn">free</button>
+            <h4>Owl</h4>
+            <p>Late registration after xx.xx requires fee payment.</p>
+            <button class="registration-btn">fee</button>
+          </div>
+          <div class="registration-card hidden" data-city="belgrade">
+            <h3>Participant<br>Case track</h3>
+            <h4>Early bird</h4>
+            <p>Free of charge before xx.xx.</p>
+            <button class="registration-btn">free</button>
+            <h4>Owl</h4>
+            <p>Late registration costs 25 EUR.</p>
+            <button class="registration-btn">25 eur</button>
+          </div>
+          <div class="registration-card hidden" data-city="belgrade">
+            <h3>Participant<br>Scientific track</h3>
+            <h4>Early bird</h4>
+            <p>Registration until xx.xx costs -- xx.xx.</p>
+            <button class="registration-btn">15 eur</button>
+            <h4>Owl</h4>
+            <p>Late registration after xx.xx costs -- xx.xx.</p>
+            <button class="registration-btn">35 eur</button>
+          </div>
       </div>
-      <div class="pub-timeline-step">
-        <div class="pub-timeline-date">30 Mar</div>
-        <div class="pub-timeline-dot"></div>
-        <p>Full paper submission<br><strong>PDF-format</strong><br>(anonymized)</p>
-      </div>
-      <div class="pub-timeline-step">
-        <div class="pub-timeline-date">20 Apr</div>
-        <div class="pub-timeline-dot"></div>
-        <p><strong>Acceptance</strong><br>Notification</p>
-      </div>
-      <div class="pub-timeline-step">
-        <div class="pub-timeline-date">20 May</div>
-        <div class="pub-timeline-dot"></div>
-        <p><strong>Camera-ready submission<br>DOCX-format<br>(revised per reviewers)</strong></p>
-      </div>
-    </div>
-
-    <div class="pub-timeline-info">
-      <p><strong>Full papers:</strong> 11–15 pages &nbsp; | &nbsp;
-         <strong>Short papers:</strong> 6–10 pages</p>
-      <p>Original manuscripts, similarity index &lt; 15%. No text generated by AI tools.</p>
-      <p>
-        <a href="#" class="pub-timeline-link">Springer CCIS Template ↗</a> &nbsp;|&nbsp;
-        <a href="#" class="pub-timeline-link">Paper Submission ↗</a>
+      <button class="registration-main-btn">
+      Registration
+      </button>
+      <p class="registration-note">
+        <strong>NB: Students on scientific track are liberated from paying fee</strong>
       </p>
-    </div>
-  </div>
-</section>
+    </section>
+
+    <!-- Раздел "Контактов" -->  
+    <section class="normal-section dark-background" id="contacts">
+      <div class="titles">
+        <h2 class="section-title">Contacts</h2>
+      </div>
+      <div class="contact-intro">
+        <p>If you have any doubts — feel free to contact us!</p>
+        <p><a href="mailto:poshtaposht@yandex.ru" class="contact-mail">poshtaposht@yandex.ru</a></p>
+      </div>
+    </section>
+
+    <section class="normal-section light-background" id="gallery">
+      <div class="aims-gallery">
+        <figure class="frame v"><img src="7.jpg" alt="Gallery image 1"></figure>
+        <figure class="frame h"><img src="1.jpg" alt="Gallery image 2"></figure>
+        <figure class="frame h"><img src="5.jpg" alt="Gallery image 3"></figure>
+        <figure class="frame h"><img src="2.jpg" alt="Gallery image 4"></figure>
+        <figure class="frame h"><img src="4.jpg" alt="Gallery image 5"></figure>
+        <figure class="frame v"><img src="6.jpg" alt="Gallery image 6"></figure>
+      </div>
+    </section>
 
 
-<section id="committee">
-  <h2>Program Committee</h2>
-  <div class="committee-grid">
-    <div class="committee-member">
-      <img src="./img/Chizhik.jpg" alt="ЕЖ Королева Ежандиш Ежандиш" class="committee-photo">
-      <p class="committee-name">Anna Chizhik</p>
-      <p class="committee-info">Ph.D. in Cultural Studies, Multimedia Director,<br /> St. Petersburg State University, Russia</p>
-    </div>
-
-    <div class="committee-member">
-      <img src="./img/Cokrlic.jpg" alt="Кот Королева Котряндиш" class="committee-photo">
-      <p class="committee-name">Katarina Cokrlic</p>
-      <p class="committee-info">Exhibition Designer,<br /> University of Bologna, Italy</p>
-    </div>
-
-    <div class="committee-member">
-      <img src="./img/Jevrić.jpg" alt="Tijana Jevrić" class="committee-photo">
-      <p class="committee-name">Tijana Jevrić</p>
-      <p class="committee-info">Creative Director of Visual Identity and Cultural Worker, Serbia</p>
-    </div>
-  </div>
-</section>
-
-
-
-
-<section id="registration">
-  <h2>
-    Registration for event in
-    <span class="registration-switch">
-      <button class="active" data-city="spb">St. Petersburg</button>
-      <button data-city="belgrade">Belgrade</button>
-    </span>
-  </h2>
-
-  <div class="registration-grid" id="registration-grid">
-    <!-- St. Petersburg --> 
-    <div class="registration-card highlight" data-city="spb">
-      <h3>Listener</h3>
-      <h4>Early bird</h4>
-      <p>Registration until xx.xx is free of charge. Registration via link below.</p>
-      <button class="registration-btn">free</button>
-
-      <h4>Owl</h4>
-      <p>Late registration after xx.xx costs 100 RUB.</p>
-      <button class="registration-btn">100 rub</button>
-    </div>
-
-    <div class="registration-card" data-city="spb">
-      <h3>Participant<br>Case track</h3>
-      <h4>Early bird</h4>
-      <p>Registration between xx.xx and xx.xx is free of charge for case track</p>
-      <button class="registration-btn">free</button>
-
-      <h4>Owl</h4>
-      <p>Registration between xx.xx and xx.xx is considered an owl (late registration) and costs -- xx.xx</p>
-      <button class="registration-btn">30 eur</button>
-    </div>
-
-    <div class="registration-card" data-city="spb">
-      <h3>Participant<br>Scientific track</h3>
-      <h4>Early bird</h4>
-      <p>Registration between xx.xx and xx.xx costs -- xx.xx</p>
-      <button class="registration-btn">20 eur</button>
-
-      <h4>Owl</h4>
-      <p>Registration between xx.xx and xx.xx is considered an owl (late registration) and costs -- xx.xx</p>
-      <button class="registration-btn">50 eur</button>
-    </div>
-
-    <!-- Belgrade -->
-    <div class="registration-card hidden highlight" data-city="belgrade">
-      <h3>Listener</h3>
-      <h4>Early bird</h4>
-      <p>Registration until xx.xx is free of charge. Registration via link below.</p>
-      <button class="registration-btn">free</button>
-
-      <h4>Owl</h4>
-      <p>Late registration after xx.xx requires fee payment.</p>
-      <button class="registration-btn">fee</button>
-    </div>
-
-    <div class="registration-card hidden" data-city="belgrade">
-      <h3>Participant<br>Case track</h3>
-      <h4>Early bird</h4>
-      <p>Free of charge before xx.xx.</p>
-      <button class="registration-btn">free</button>
-
-      <h4>Owl</h4>
-      <p>Late registration costs 25 EUR.</p>
-      <button class="registration-btn">25 eur</button>
-    </div>
-
-    <div class="registration-card hidden" data-city="belgrade">
-      <h3>Participant<br>Scientific track</h3>
-      <h4>Early bird</h4>
-      <p>Registration until xx.xx costs -- xx.xx.</p>
-      <button class="registration-btn">15 eur</button>
-
-      <h4>Owl</h4>
-      <p>Late registration after xx.xx costs -- xx.xx.</p>
-      <button class="registration-btn">35 eur</button>
-    </div>
-  </div>
-
-  <button class="registration-main-btn">
-  Registration
-  </button>
-
-  <p class="registration-note">
-    <strong>NB: Students on scientific track are liberated from paying fee</strong>
-  </p>
-</section>
+    <!-- Раздел "Расписание" -->
+    <section class="normal-section dark-background" id="program">
+      <div class="titles">
+        <img src="aims_logo.png" alt="AIMs 2026" class="avatar">
+        <h2 class="section-title">AIMs'26: Schedule</h2>
+        <div class="place">
+          <div class="marker">
+            <div class="pin"></div>
+            <div class="shadow"></div>
+          </div>
+          <div class="place-text">Belgrad / Saint Petersburg</div>
+        </div>
+        <p>
+          The announcement of speakers and the seminar schedule for 2026 
+          will be published later.
+        </p>
+      </div>
+    </section>
 
 
 
-
-
-
-
-
-
-  <!-- Раздел "Контактов" -->
-  <section class="normal-section dark-background" id="contacts">
-  <div class="titles">
-    <h2 class="section-title">Contacts</h2>
-  </div>
-  <div class="contact-intro">
-    <p>If you have any doubts — feel free to contact us!</p>
-    <p><a href="mailto:poshtaposht@yandex.ru" class="contact-mail">poshtaposht@yandex.ru</a></p>
-  </div>
+    
   
-</section>
-
-<section class="normal-section light-background" id="gallery">
-  <div class="titles">
-   
-  </div>
-
-  <div class="aims-gallery">
-    <figure class="frame v"><img src="7.jpg" alt="Gallery image 1"></figure>
-    <figure class="frame h"><img src="1.jpg" alt="Gallery image 2"></figure>
-    <figure class="frame h"><img src="5.jpg" alt="Gallery image 3"></figure>
-    <figure class="frame h"><img src="2.jpg" alt="Gallery image 4"></figure>
-    <figure class="frame h"><img src="4.jpg" alt="Gallery image 5"></figure>
-    <figure class="frame v"><img src="6.jpg" alt="Gallery image 6"></figure>
-  </div>
-</section>
-
-  
-  
-</main>
+  </main>
 
   
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="script.js"></script>
 </body>
-
 </html>

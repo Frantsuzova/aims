@@ -206,28 +206,28 @@ function clearForm(form) {
 
 // Функция для отслеживания активного пункта меню при прокрутке
 function setActiveMenu() {
-    const sections = document.querySelectorAll('section'); // Все секции на странице
-    const menuLinks = document.querySelectorAll('.underline-menu li'); // Все пункты меню
-    
-    let currentSection = null;
+    const menuItems = document.querySelectorAll('.underline-menu li');
+    let activeFound = false;
 
-    sections.forEach((section, index) => {
+    menuItems.forEach(li => {
+        li.classList.remove('active');
+    });
+
+    menuItems.forEach(li => {
+        const id = li.querySelector('a').getAttribute('href').slice(1);
+        const section = document.getElementById(id);
+        if (!section) return;
+
         const rect = section.getBoundingClientRect();
-        
-        // Проверяем, если секция находится в области видимости
-        if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-            currentSection = menuLinks[index]; // Определяем активный раздел
+        const mid = window.innerHeight * 0.35; // центр смещён — проверено
+
+        if (rect.top <= mid && rect.bottom >= mid) {
+            li.classList.add('active');
+            activeFound = true;
         }
     });
 
-    // Если активный пункт найден, добавляем класс .active, иначе убираем
-    menuLinks.forEach(link => {
-        link.classList.remove('active');
-    });
-
-    if (currentSection) {
-        currentSection.classList.add('active');
-    }
+    // если ни одна секция не попала — НИЧЕГО не выделяем
 }
 
 // Добавляем обработчик события для прокрутки
@@ -376,54 +376,77 @@ document.querySelectorAll(".registration-switch button").forEach((btn) => {
 
 
 
-(function () {
+// ===== ОГРАНИЧЕНИЕ ВЕРТИКАЛЬНОГО МЕНЮ ПЕРЕД ГАЛЕРЕЕЙ =====
+document.addEventListener("DOMContentLoaded", () => {
   const menu = document.querySelector(".underline-menu");
-  const gallery = document.querySelector("#gallery");
+  const gallery = document.querySelector(".aims-gallery");
+
   if (!menu || !gallery) return;
 
-  const DEFAULT_TOP_PX = window.innerHeight * 0.27; 
-  const DEFAULT_TOP = "27%";
+  const BASE_TOP_PERCENT = 27;                // как в CSS
+  const GAP_BEFORE_GALLERY = 35;             // 20px до галереи
 
-  function onScroll() {
+  function updateSideMenu() {
+    const viewportH = window.innerHeight;
     const scrollY = window.scrollY;
-    const menuHeight = menu.getBoundingClientRect().height;
 
-    // Опускаем на ~20% меню:
-    const finalOffset = menuHeight * 0.20;
+    const baseTopPx = viewportH * (BASE_TOP_PERCENT / 100);
+    const menuHeight = menu.offsetHeight;
 
-    // Стоп-линия (точка, перед которой меню НЕ может опуститься ниже)
-    const stopLine = gallery.offsetTop - menuHeight + finalOffset;
+    // где был бы низ меню, если top = 27%
+    const menuBottomIfBase = scrollY + baseTopPx + menuHeight;
 
-    // Абсолютное положение нижней границы меню сейчас
-    const menuBottomAbs = scrollY + DEFAULT_TOP_PX + menuHeight;
+    // абсолютный top галереи
+    const galleryTopAbs = gallery.getBoundingClientRect().top + scrollY;
 
-    // Вычисление top, СПЕЦИАЛЬНО смягчённое
-    let requiredTop = stopLine - scrollY - menuHeight;
+    // линия, выше которой меню НЕ должно заезжать (-20px)
+    const stopLine = galleryTopAbs - GAP_BEFORE_GALLERY;
 
-    // ===== МЕХАНИЗМ ПЛАВНОГО ПОДТОРМАЖИВАНИЯ =====
-
-    // Если остаётся < 120px до стопа — плавно притормаживаем
-    const distance = stopLine - menuBottomAbs; // сколько осталось до стопа
-
-    if (distance < 120) {
-      // коэффициент замедления (чем ближе — тем меньше движение)
-      const k = Math.max(0, distance / 120);
-
-      requiredTop = DEFAULT_TOP_PX * k + requiredTop * (1 - k);
-    }
-
-    // Меню НИКОГДА НЕ ПОДНИМАЕМ ВЫШЕ 27%
-    if (requiredTop > DEFAULT_TOP_PX) {
-      menu.style.top = DEFAULT_TOP;
+    if (menuBottomIfBase >= stopLine) {
+      // фиксируем меню ровно так, чтобы низ был на stopLine
+      const newTopPx = stopLine - scrollY - menuHeight;
+      menu.style.top = newTopPx + "px";
     } else {
-      menu.style.top = `${requiredTop}px`;
+      // обычное положение
+      menu.style.top = BASE_TOP_PERCENT + "%";
     }
   }
 
-  window.addEventListener("scroll", onScroll);
-  window.addEventListener("resize", onScroll);
-  onScroll();
-})();
+  updateSideMenu();
+  window.addEventListener("scroll", updateSideMenu);
+  window.addEventListener("resize", updateSideMenu);
+});
+
+
+
+// Цветные фото у спикеров при hover
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.speaker-photo').forEach(img => {
+    const original = img.src;
+
+    // определяем расширение
+    const extMatch = original.match(/\.(jpg|jpeg|png|webp)$/i);
+    if (!extMatch) return;
+
+    const ext = extMatch[0]; // .jpg / .jpeg
+    const base = original.replace(ext, ""); // путь без расширения
+    const color = base + "_color" + ext; // добавляем _color
+
+    img.dataset.orig = original;
+    img.dataset.color = color;
+
+    img.addEventListener('mouseenter', () => {
+      img.src = img.dataset.color;
+    });
+
+    img.addEventListener('mouseleave', () => {
+      img.src = img.dataset.orig;
+    });
+  });
+});
+
+
+
 
 
 
