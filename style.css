@@ -86,7 +86,7 @@ main .normal-section {
   display: grid;
   justify-items: center;
   gap: 10px;
-  padding: 18px 0;
+  padding: 18px 10px;
   color: white;
 }
 
@@ -154,9 +154,10 @@ a:hover {
   font-size: 1.8rem;
   font-weight: 700;
   margin: 0;
+  
   display: inline; /* важно — чтобы было в одной строке */
-  white-space: nowrap;
-  padding-bottom: 20px;
+  white-space: normal !important;
+  
 }
 
 
@@ -927,7 +928,7 @@ a:hover {
 .about-aims-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: 30px;
   max-width: 1100px;
   margin: 0 auto;
   /*
@@ -942,7 +943,7 @@ a:hover {
 .important-dates h2 {
   color: white;
   font-size: 1.6rem;
-  margin-bottom: 20px;
+  
 }
 
 .tabs {
@@ -1059,6 +1060,20 @@ a:hover {
   border-left: 2px solid #00b4db; /* разделительная линия справа */
 }
 
+@media (max-width: 1319px) {
+  .about-aims {
+    max-width: 440px;
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: 1165px) {
+  .about-aims {
+    max-width: 300px;
+    padding: 0 30px;
+  }
+}
+
 .about-aims h2 {
   color: white;
   font-size: 1.6rem;
@@ -1126,11 +1141,30 @@ a:hover {
 
 .themes-wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  max-width: 1100px;
+  grid-template-columns: 52% 48%;
+  gap: 20px;
+  max-width: 1100px;      /* ← добавляем */
+  width: 100%;            /* ← удаляем calc */
   margin: 0 auto;
-  padding: 20px 40px 80px;
+  padding: 20px 40px 20px;
+}
+
+@media (max-width: 1500px) {
+
+  .themes-wrapper {
+    grid-template-columns: 56% 44%;
+    gap: 10px; 
+    max-width: 850px;
+    padding: 20px 0px 20px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .themes-wrapper {
+    grid-template-columns: 60% 40%; 
+    max-width: 800px;
+
+  }
 }
 
 
@@ -1140,6 +1174,7 @@ a:hover {
   flex-direction: column;
   gap: 18px;
 }
+
 
 .theme-box {
   color: #fff;
@@ -1199,13 +1234,21 @@ a:hover {
 
 /* Правая колонка — список */
 .themes-right ul {
-  list-style: disc;
+  list-style: none;
   padding-left: 25px;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
 }
+
+@media (max-width: 1500px) {
+  .themes-right ul {
+     gap: 5px;
+  }
+}
+
+
 
 .themes-right li {
   font-size: 0.95rem;
@@ -1281,15 +1324,13 @@ a:hover {
 
 /* ==== INLINE TABS STYLE ==== */
 .dates-header {
+  flex-direction: column;
+  align-items: flex-start; 
+  gap: 6px;
   display: flex;
-  align-items: baseline; /* города и текст выровнены по базовой линии текста */
-  justify-content: flex-start;
-  gap: 12px;
-  margin-bottom: 25px;
+  justify-content: flex-start; 
   flex-wrap: nowrap; /* запрет переносов */
 }
-
-
 
 .city-tabs {
   display: inline-flex;
@@ -1298,14 +1339,18 @@ a:hover {
 }
 
 .city-tabs button {
+  font-size: 24px;        /* как h2 */
+  font-weight: 600;       /* как h2 */
+  line-height: 1.2;       /* как h2 */
+  font-family: inherit;
   background: none;
   border: none;
   color: #888;
-  font-size: 1rem;
+  padding: 0 14px 4px 0;
+  
+  min-width: auto;     
   cursor: pointer;
-  padding: 4px 10px;           /* было 14px — стало чуть уже */
   border-bottom: 2px solid transparent;
-  min-width: 110px;            /* было 130px — сжимает, но не ломает */
   text-align: center;
   transition: color 0.25s ease, border-bottom-color 0.25s ease;
   white-space: nowrap;         /* не переносит длинные названия */
@@ -1318,6 +1363,12 @@ a:hover {
 .city-tabs button.active {
   color: #00b4db;
   border-bottom-color: #00b4db;
+}
+
+.city-tabs.on-new-line {
+  display: flex;
+  width: 100%;           /* чтобы заняла всю строку */
+  margin-top: 6px;       /* небольшой воздух */
 }
 
 
@@ -1346,34 +1397,33 @@ a:hover {
   align-items: start;
 }
 
+@media (max-width: 1300px) {
+  .speakers-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px 10px;
+    padding-right: 10px;
+  }
+}
+
+@media (max-width: 1240px) {
+  .speakers-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media (max-width: 480px) {
+  .speakers-grid {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+  }
+}
+
 .speaker-card {
+  padding-top: 20px;
   text-align: center;
   color: #fff;
-  max-width: 220px; /* ограничиваем, чтобы не прыгали карточки разной ширины */
-}
-
-.speaker-photo {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin: 0 auto 15px;
-}
-
-.speaker-photo.placeholder {
-  background-color: #bdbdbd;
-}
-
-.speaker-info {
-  font-size: 15px;
-  line-height: 1.4;
-}
-
-/* hover-эффект для спикеров */
-.speaker-card {
-  text-align: center;
-  color: #fff;
-  max-width: 220px;
+  max-width: 220px; 
   transition: transform 0.2s ease;
 }
 
@@ -1384,6 +1434,15 @@ a:hover {
   object-fit: cover;
   margin: 0 auto 15px;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.speaker-photo.placeholder {
+  background-color: #bdbdbd;
+}
+
+.speaker-info {
+  font-size: 15px;
+  line-height: 1.4;
 }
 
 /* подсветка только по кругу */
@@ -1401,27 +1460,7 @@ a:hover {
 
 
 
-/* адаптив */
-@media (max-width: 992px) {
-  .speakers-grid {
-    grid-template-columns: repeat(3, 1fr);
-    padding: 0 40px;
-  }
-}
 
-@media (max-width: 768px) {
-  .speakers-grid {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 0 30px;
-  }
-}
-
-@media (max-width: 480px) {
-  .speakers-grid {
-    grid-template-columns: 1fr;
-    padding: 0 20px;
-  }
-}
 
 
 /* === Take Part as a Speaker === */
@@ -1575,6 +1614,8 @@ a:hover {
   box-sizing: border-box;
 }
 
+
+
 /* Основная линия и шаги */
 .pub-timeline {
   position: relative;
@@ -1583,6 +1624,12 @@ a:hover {
   align-items: flex-start;
   padding-top: 90px;
   margin-bottom: 50px;
+}
+
+@media (max-width: 900px) {
+  .pub-timeline {
+     padding-top: 40px;
+  }
 }
 
 /* Линия */
@@ -1697,7 +1744,7 @@ a:hover {
   background: #1e2227; /* тёмный фон как в блоке speakers/proceedings */
   color: #fff;
   text-align: center;
-  padding: 90px 0 100px;
+  padding: 20px 0 100px;
 }
 
 /* Заголовок */
@@ -1769,11 +1816,11 @@ a:hover {
 }
 
 
-/* === Registration Section === */
+
 /* === Registration Section === */
 #registration {
   background: #e9ecf7;
-  padding: 90px 0 40px;
+  padding: 20px 0 40px;
   text-align: center;
   color: #000;
 }
@@ -1791,26 +1838,86 @@ a:hover {
 
 .registration-switch {
   display: inline-flex;
-  background: #d5e4eb;
-  border-radius: 999px;
-  overflow: hidden;
-  padding: 3px;
+  gap: 18px;
+  margin-left: 12px;
 }
 
 .registration-switch button {
-  background: transparent;
+  background: none;
   border: none;
-  color: #000;
-  font-weight: 600;
-  padding: 6px 18px;
-  border-radius: 999px;
+  font-family: inherit;
+  font-size: inherit; /* такой же кегль как у заголовка */
+  color: #7e7e7e;
   cursor: pointer;
-  transition: all 0.25s ease;
+  padding: 0;
+  position: relative;
+  transition: color 0.25s ease;
 }
 
 .registration-switch button.active {
-  background: #00b4db;
-  color: #fff;
+
+  color: #00b7ff;
+  font-weight: 600;
+}
+
+.registration-switch button.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: #00b7ff;
+}
+
+
+@media (max-width: 900px) {
+  .registration-switch {
+    display: flex;
+    gap: 25px;
+    margin-top: 10px;
+  }
+
+  .registration-switch button {
+    font-size: 30px;     /* чуть меньше, но мощно */
+  }
+}
+
+/* Мобильный до 600px */
+@media (max-width: 600px) {
+
+  h2.section-title,
+  h2 {
+    font-size: 28px !important;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .registration-switch {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 20px;
+  }
+
+  .registration-switch button {
+    font-size: 24px;
+    line-height: 1.1;
+  }
+}
+
+/* Маленькие мобильные (iPhone SE, 375px) */
+@media (max-width: 430px) {
+
+  h2.section-title,
+  h2 {
+    font-size: 24px !important;
+  }
+
+  .registration-switch button {
+    font-size: 20px;
+  }
 }
 
 .registration-grid {
@@ -1908,9 +2015,9 @@ a:hover {
 }
 
 .registration-btn:hover {
-  background: #ffd740; /* мягкий жёлтый */
-  border-color: #ffd740;
-  color: #000;
+  background: #00b4db; /* мягкий жёлтый */
+  border-color: #00b4db;
+  color: #ffffff;
   transform: translateY(-2px);
 }
 
