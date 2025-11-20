@@ -296,6 +296,7 @@ a:hover {
 
 /* === бургер === */
 
+
 #burger-toggle {
   position: absolute;
   appearance: none;
@@ -403,21 +404,18 @@ a:hover {
   will-change: transform;
 }
 .burger-nav {
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 80px;
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
   pointer-events: none;
 }
-@media screen and (max-width: 750px) {
-  .burger-nav {
-    transform: translateY(-8%);
-  }
-}
+
 .burger-nav ul {
   position: fixed;
   z-index: 101;
@@ -428,8 +426,9 @@ a:hover {
 }
 .burger-nav ul li {
   padding: 6px 0;
-  margin: 1em 3em;
   opacity: 0;
+  margin: 0.2em 1em; 
+  
   transition: 0.6s cubic-bezier(0.365, 0.84, 0.44, 1);
 }
 .burger-nav ul li:nth-child(odd) {
