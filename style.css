@@ -172,6 +172,7 @@ a:hover {
 
 
 
+
 .glitch.active span:not(:last-child) {
   animation-duration: 0.3s;
 }
@@ -1054,11 +1055,128 @@ a:hover {
   opacity: 0.9;
 }
 
+
+
+.timeline-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    margin-left: 47px;   /* ближе к вертикальной линии */
+    margin-top: -14px;
+    margin-bottom: -29px;
+
+    font-size: 1rem;
+    color: #00b4db;
+    cursor: pointer;
+
+    padding: 0;
+    background: none;
+    border: none;
+    
+}
+
+.timeline-toggle.open {
+    margin-top: 6px;    /* больше воздуха сверху */
+    margin-bottom: 6px; /* больше воздуха снизу */
+}
+
+.timeline-collapsed.open {
+    padding-top: 4px;   /* лёгкий дыхательный зазор */
+    padding-bottom: 4px;
+}
+
+.timeline-toggle:hover {
+    opacity: 1;
+}
+
+/* заполненный кружок ◉ */
+.timeline-toggle::before {
+    content: "";
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: #00b4db;
+    box-shadow: 0 0 0 2px #1a1e23; /* чуть отделяет от фона */
+    flex-shrink: 0;
+}
+
+/* стрелка */
+.timeline-toggle::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid #00b4db;
+    border-bottom: 2px solid #00b4db;
+    transform: rotate(45deg); /* стрелка вниз */
+    margin-left: 2px;
+    opacity: 0.9;
+}
+
+/* при открытии → стрелка вверх (указатель на слово Hide) */
+.timeline-toggle.open::after {
+    transform: rotate(-135deg); /* стрелка вверх */
+}
+
+/* раскрываемый блок */
+.timeline-collapsed {
+    overflow: hidden;
+    
+    max-height: 0;
+    transition: max-height .25s ease;
+    margin-left: 0;
+}
+
+.timeline-collapsed .timeline-item {
+   
+     margin-top: 6px !important;
+    margin-bottom: 0 !important;
+}
+
+
+
+
+
+
+
+
+
+
 .about-aims {
   position: relative;
   padding-left: 40px;
   border-left: 2px solid #00b4db; /* разделительная линия справа */
 }
+
+.about-aims b {
+    color: #00b4db;
+    font-weight: 600;
+}
+
+.about-aims .goal {
+    border-left: 3px solid #00b4db;
+    padding-left: 14px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+
+    color: #d7d7d7;
+    font-weight: 400;
+    line-height: 1.5;
+    
+    transition: 
+        transform .25s ease,
+        box-shadow .25s ease,
+        text-shadow .25s ease;
+}
+
+.about-aims .goal:hover {
+    transform: translateY(-3px); /* лёгкое приподнимание */
+    
+    box-shadow: 0 0 14px rgba(0, 180, 219, 0.35);  /* лёгкое высокотехнологичное свечение */
+    text-shadow: 0 0 6px rgba(0, 180, 219, 0.35);
+}
+
 
 @media (max-width: 1319px) {
   .about-aims {
@@ -1092,6 +1210,7 @@ a:hover {
     grid-template-columns: 1fr;
   }
   .about-aims {
+    max-width: 500px;
     border-left: none;
     border-top: 2px solid #00b4db;
     margin-top: 30px;
@@ -1141,30 +1260,13 @@ a:hover {
 
 .themes-wrapper {
   display: grid;
-  grid-template-columns: 52% 48%;
-  gap: 20px;
-  max-width: 1100px;      /* ← добавляем */
-  width: 100%;            /* ← удаляем calc */
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 20px 40px 20px;
-}
+  padding: 40px;
+  position: relative;
 
-@media (max-width: 1500px) {
-
-  .themes-wrapper {
-    grid-template-columns: 56% 44%;
-    gap: 10px; 
-    max-width: 850px;
-    padding: 20px 0px 20px;
-  }
-}
-
-@media (max-width: 1200px) {
-  .themes-wrapper {
-    grid-template-columns: 60% 40%; 
-    max-width: 800px;
-
-  }
 }
 
 
@@ -1173,6 +1275,17 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 18px;
+}
+
+@media (max-width: 900px) {
+  .themes-left {
+    max-width: 500px;
+  }
+}
+@media (max-width: 811px) {
+  .themes-left {
+    max-width: 450px;
+  }
 }
 
 
@@ -1245,6 +1358,34 @@ a:hover {
 @media (max-width: 1500px) {
   .themes-right ul {
      gap: 5px;
+  }
+}
+
+@media (max-width: 1319px) {
+  .themes-right ul {
+    max-width: 440px;
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: 1165px) {
+  .themes-right ul {
+    max-width: 390px;
+
+  }
+}
+
+@media (max-width: 1055px) {
+  .themes-right ul {
+    max-width: 300px;
+ 
+  }
+}
+
+@media (max-width: 900px) {
+  .themes-right ul {
+    max-width: 500px;
+    padding: 0;
   }
 }
 
@@ -1399,25 +1540,86 @@ a:hover {
 
 @media (max-width: 1300px) {
   .speakers-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px 10px;
-    padding-right: 10px;
+    grid-template-columns: repeat(4, minmax(0, 220px));
+    justify-content: start;     /* прижимаем сетку влево */
+    gap: 30px 30px;             /* небольшой, но ровный gap */
+    padding-right: 0;
+    padding-left: 0;
   }
 }
 
-@media (max-width: 1240px) {
+@media (max-width: 1190px) {
   .speakers-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 260px)); 
+    justify-content: space-between;
+    max-width: 900px;
+    gap: 20px 24px;
+    padding-right: 0;
+  }
+
+  .speakers-grid > *:nth-child(7),
+  .speakers-grid > *:nth-child(8) {
+    position: relative;
+    left: 150px; 
   }
 }
 
 
-@media (max-width: 480px) {
+@media (max-width: 1096px) {
   .speakers-grid {
-    grid-template-columns: 1fr;
-    padding: 0 20px;
+     max-width: 850px;
   }
 }
+
+@media (max-width: 1035px) {
+  .speakers-grid {
+     max-width: 800px;
+  }
+}
+
+@media (max-width: 996px) {
+  .speakers-grid {
+     max-width: 750px;
+  }
+}
+
+@media (max-width: 948px) {
+  .speakers-grid {
+     max-width: 700px;
+  }
+}
+
+@media (max-width: 914px) {
+  .speakers-grid {
+     max-width: 650px;
+  }
+}
+
+
+@media (max-width: 865px) {
+  .speakers-grid {
+    grid-template-columns: repeat(2, minmax(0, 240px));
+    justify-content: center;
+    gap: 8px 8px;   
+    padding-right: 0;
+  }
+  .speakers-grid > *:nth-child(7),
+  .speakers-grid > *:nth-child(8) {
+    position: static;
+    left: 0;
+  }
+}
+
+@media (max-width: 567px) {
+  .speakers-grid {
+    grid-template-columns: 1fr; 
+    gap: 12px;                    
+    padding-right: 0;
+  }
+}
+
+
+
 
 .speaker-card {
   padding-top: 20px;
@@ -1478,6 +1680,9 @@ a:hover {
   margin-top: 1rem;
 }
 
+
+
+
 .track-card {
   background-color: transparent;
   border: 2px solid #00b4db;
@@ -1492,6 +1697,28 @@ a:hover {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+@media (max-width: 1238px) {
+  .tracks-container {
+    flex-direction: column;
+    align-items: center; 
+    gap: 2.5rem;
+  }
+
+  .track-card {
+    width: 100%;          
+    max-width: 1000px;    
+  }
+}
+
+@media (max-width: 837px) {
+  .track-card {
+    max-width: 450px;    
+  }
+}
+
+
+
+
 .track-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 18px rgba(0, 180, 219, 0.2);
@@ -1501,6 +1728,8 @@ a:hover {
   color: #111;
   margin-bottom: 0.3rem;
 }
+
+
 
 .track-subtitle {
   color: #555;
@@ -1519,6 +1748,27 @@ a:hover {
   text-align: center;
   font-size: 0.9rem;
   color: #333;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 970px) {
+  .note {
+    max-width: 500px;
+  }
+}
+@media (max-width: 836px) {
+  .note {
+    max-width: 400px;
+  }
+}
+
+.note-w {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #ffffff;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
@@ -1562,6 +1812,36 @@ a:hover {
   justify-content: flex-start;
 }
 
+@media (max-width: 1227px) {
+  .proceedings-text {
+    max-width: 600px; 
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 1077px) {
+  .proceedings-text {
+    max-width: 500px; 
+    
+  }
+}
+
+@media (max-width: 972px) {
+  .proceedings-text {
+    max-width: 400px; 
+    
+  }
+}
+
+@media (max-width: 955px) {
+  .proceedings-text {
+    max-width: 300px; 
+    
+  }
+}
+
+
 
 
 
@@ -1575,10 +1855,11 @@ a:hover {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 10px;
   }
 
   .proceedings-text {
-    max-width: 90%;
+    max-width: 70%;
   }
 
   .proceedings-image img {
@@ -1708,6 +1989,18 @@ a:hover {
   line-height: 1.6;
 }
 
+@media (max-width: 900px) {
+  .pub-timeline-info {
+    width: 95%;
+  }
+}
+
+@media (max-width: 863px) {
+  .pub-timeline-info {
+    width: 88%;
+  }
+}
+
 .pub-timeline-info strong {
   font-weight: 700;
 }
@@ -1762,6 +2055,20 @@ a:hover {
   gap: 80px;
   max-width: 1000px;
   margin: 0 auto;
+}
+
+@media (max-width: 1083px) {
+  .committee-grid {
+    gap: 10px;
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 925px) {
+  .committee-grid {
+    gap: 10px;
+    max-width: 600px;
+  }
 }
 
 /* Карточка */
@@ -2028,18 +2335,25 @@ a:hover {
 }
 
 /* Адаптив */
-@media (max-width: 900px) {
-  .registration-grid {
+@media (max-width: 996px) {
+   .registration-grid {
     flex-direction: column;
     align-items: center;
   }
 
+
   .registration-card {
-    width: 85%;
+    width: 65%;
   }
 
   #registration h2 {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 996px) {
+   .registration-card {
+    width: 60%;
   }
 }
 

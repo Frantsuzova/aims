@@ -447,6 +447,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".dates-timeline").forEach(tl => {
+        const items = [...tl.querySelectorAll(".timeline-item")];
+
+        // свернуть peer_review → schedule_live включительно
+        const start = items.findIndex(i => i.dataset.key === "peer_review");
+        const end   = items.findIndex(i => i.dataset.key === "schedule_live");
+
+        if (start === -1 || end === -1 || end < start) return;
+
+        const collapsed = document.createElement("div");
+        collapsed.className = "timeline-collapsed";
+
+        tl.insertBefore(collapsed, items[start]);
+
+        for (let i = start; i <= end; i++) {
+            collapsed.appendChild(items[i]);
+        }
+
+        const btn = document.createElement("button");
+        btn.className = "timeline-toggle";
+        btn.textContent = "...show more";
+        tl.insertBefore(btn, collapsed);
+
+        let open = false;
+
+        btn.addEventListener("click", () => {
+            open = !open;
+            collapsed.style.maxHeight = open ? collapsed.scrollHeight + "px" : "0";
+
+            btn.textContent = open ? "hide" : "show more";
+            btn.classList.toggle("open", open);
+        });
+    });
+});
+
+
+
+
 
 
 
