@@ -48,6 +48,8 @@ main section p {
 }
 main .intro-section {
   padding-top: 25px; 
+  padding-left: 10px;
+  padding-right: 10px;
 
   height: 100%;
   display: flex;
@@ -64,12 +66,32 @@ main .intro-section h1 {
   font-size: 42px;
   text-transform: uppercase;
 }
+
+@media screen and (max-width: 726px) {
+  main .intro-section h1 {
+    font-size: 22px !important;
+    line-height: 1.2;
+  }
+
+  main .intro-section h2 {
+    font-size: 12px !important;
+  }
+}
+
 main .intro-section h2 {
   font-size: 24px;
   font-weight: lighter;
 }
 
-
+@media screen and (max-width: 1255px) {
+  main .intro-section h1 {
+    font-size: 32px;
+  }
+  main .intro-section h2 {
+    font-size: 20px;
+  }
+ 
+}
 @media screen and (max-width: 1170px) {
   main .intro-section h1 {
     font-size: 25px;
@@ -82,6 +104,44 @@ main .intro-section h2 {
     
   }
 }
+
+@media screen and (max-width: 956px) {
+  main .intro-section h1 {
+    font-size: 20px;
+  }
+  main .intro-section h2 {
+    font-size: 12px;
+  }
+ 
+}
+
+
+@media screen and (max-width: 829px) {
+  main .intro-section h1 {
+    font-size: 18px;
+  }
+ 
+}
+@media screen and (max-width: 775px) {
+  main .intro-section h1 {
+    font-size: 16px;
+  }
+ 
+}
+
+
+.intro-break {
+  white-space: normal;
+}
+
+@media (max-width: 726px) {
+  .intro-break {
+    display: block;
+    margin-top: 4px; 
+  }
+}
+
+
 main .normal-section {
   display: grid;
   justify-items: center;
@@ -1906,6 +1966,7 @@ a:hover {
   margin-bottom: 50px;
 }
 
+
 @media (max-width: 900px) {
   .pub-timeline {
      padding-top: 40px;
@@ -1988,6 +2049,25 @@ a:hover {
   line-height: 1.6;
 }
 
+.pub-row {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.pub-left,
+.pub-right {
+  min-width: 210px;   /* подгони по вкусу: 200–230 */
+  text-align: center;
+}
+
+.pub-sep {
+  width: 24px;        /* фиксированная колонка под вертикальную черту */
+  text-align: center;
+}
+
+
 @media (max-width: 900px) {
   .pub-timeline-info {
     width: 95%;
@@ -2029,6 +2109,60 @@ a:hover {
     margin-bottom: 50px;
   }
 }
+
+
+@media (max-width: 1190px) {
+
+  .pub-timeline {
+    max-width: 850px;     /* была 1000px — уменьшаем */
+    gap: 40px;            /* было 60–80px — ужимаем */
+    margin: 0 auto;
+    padding-bottom: 30px;
+  }
+
+  .pub-timeline-step p {
+    font-size: 0.9rem;    /* компактнее */
+    line-height: 1.25;
+  }
+
+  .pub-timeline-date {
+    font-size: 0.9rem;
+    padding: 6px 14px;    /* уменьшаем пузырь дат */
+  }
+
+  .pub-timeline-dot {
+    width: 10px;          /* уменьшили точки */
+    height: 10px;
+  }
+
+  .pub-timeline-line {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1091px) {
+
+  .pub-timeline {
+    max-width: 650px;   /* было 850 → чуть уже */
+    gap: 28px;          /* было 40 — ещё больше ужимаем */
+  }
+
+  .pub-timeline-date {
+    font-size: 0.85rem;
+    padding: 5px 12px;  /* компактнее */
+  }
+
+  .pub-timeline-step p {
+    font-size: 0.85rem;
+    line-height: 1.2;
+  }
+
+  .pub-timeline-dot {
+    width: 9px;
+    height: 9px;
+  }
+}
+
 
 
 /* === Committee Section === */
@@ -2334,15 +2468,29 @@ a:hover {
 }
 
 /* Адаптив */
-@media (max-width: 996px) {
+
+
+@media (max-width: 1255px) {
+  
+  .registration-grid {
+    max-width: 900px;
+    gap: 20px;
+
+}
+  .registration-card {
+    max-width: 270px;
+  }
+}
+@media (max-width: 1175px) {
    .registration-grid {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 700px;
+    
   }
 
 
   .registration-card {
-    width: 65%;
+    max-width: 800px;
   }
 
   #registration h2 {
