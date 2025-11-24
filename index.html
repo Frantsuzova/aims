@@ -646,24 +646,39 @@
           The announcement of speakers and the seminar schedule for 2026 
           will be published later.
         </p>
-        <form action="https://formspree.io/f/xgvbkzdb" method="POST" class="subscribe-form" id="subscribe-form" >
-            <input 
-              type="email" 
-              name="email" 
-              placeholder="Enter your e-mail" 
-              required 
-              class="subscribe-input"
-            >
-            <button type="submit" class="subscribe-btn">Subscribe</button>
-          </form>
-          <div class="subscribe-success" id="subscribe-success"></div>
-          <!-- POPUP -->
-          <div id="popup-success" class="popup hidden">
-            <div class="popup-content">
-              <p>Thank you! Your message has been sent.</p>
-              <button class="popup-close">OK</button>
-            </div>
+       <form action="https://formspree.io/f/xgvbkzdb"
+            method="POST"
+            class="subscribe-form"
+            id="subscribe-form"
+            onsubmit="submitForm(event)">
+
+          <input 
+            type="text"
+            name="name"
+            placeholder="Your name"
+            required
+            class="subscribe-input"
+          >
+
+          <input 
+            type="email"
+            name="email"
+            placeholder="Your e-mail"
+            required
+            class="subscribe-input"
+          >
+
+          <button type="submit" class="subscribe-btn">
+            Subscribe
+          </button>
+        </form>
+
+        <div id="subscribe-popup" class="popup hidden">
+          <div class="popup-content">
+            <p>Thank you! Your message has been sent.</p>
+            <span class="popup-close">&times;</span>
           </div>
+        </div>
       </div>
     </section>
 

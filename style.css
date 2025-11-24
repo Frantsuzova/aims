@@ -3104,7 +3104,7 @@ a:hover {
 }
 
 /* Mobile < 600px */
-@media (max-width: 600px) {
+@media (max-width: 757px) {
     .subscribe-form {
         flex-direction: column;
         gap: 14px;
