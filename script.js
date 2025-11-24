@@ -499,6 +499,33 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+document.getElementById("subscribe-form").addEventListener("submit", async function(e) {
+  e.preventDefault(); // ❗ Останавливаем переход на Formspree
+
+  const form = e.target;
+  const data = new FormData(form);
+
+  const response = await fetch(form.action, {
+    method: "POST",
+    body: data,
+    headers: { "Accept": "application/json" }
+  });
+
+  if (response.ok) {
+    // показать попап
+    document.getElementById("subscribe-popup").classList.remove("hidden");
+
+    // очистить форму
+    form.reset();
+  }
+});
+
+// закрытие попапа
+document.querySelector("#subscribe-popup .popup-close").addEventListener("click", () => {
+  document.getElementById("subscribe-popup").classList.add("hidden");
+});
+
+
 
 
 

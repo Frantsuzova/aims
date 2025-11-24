@@ -19,11 +19,8 @@
     <div class="cursor"></div>
     <div class="cursor-border"></div>
     <header>
-      <a href="#home" class="logo"
-        ><img
-          width="250"
-          src="logo.png"
-        />
+      <a href="#about" class="logo"><img src="aims_logo.png" alt="AIMs 2026" class="avatar"></a>
+      <a href="#" class="c-command"><img src="logo.png"/>
         &nbsp;с<sup style="font-size: 12px;">2</sup>&nbsp; command
       </a>
 
@@ -373,7 +370,7 @@
               ⏱ 10 min + 2 min Q&amp;A
             </p>
             <br>
-            <p>Submit title and abstract (200-500 words)<br> by <a href="mailto:poshtaposht@yandex.ru" class="contact-mail">e-mail</a>,
+            <p>Submit title and abstract (200-500 words)<br> by <a href="mailto:aim-seminar@yandex.ru" class="contact-mail">e-mail</a>,
             <br> 
             the review will be done within 2 weeks</p>
             <p class="deadline">Deadline: 05 May Belgrade | 10 June SPB</p>
@@ -480,40 +477,49 @@
       <!-- Раздел комитета --> 
       <section id="committee">
         <h2>Program Committee</h2>
-        <div class="committee-grid">
+
+        <div class="committee-label-wrapper">
+            <div class="committee-tag">CHAIR COMMITTEE</div>
+        </div>
+
+        <div class="committee-grid committee-grid-top">
+
           <div class="committee-member">
             <img src="./img/Chizhik.jpg" alt="chizhik" class="committee-photo">
             <p class="committee-name">Anna Chizhik</p>
             <p class="committee-info">Ph.D. in Cultural Studies, Multimedia Director,<br /> St. Petersburg State University, Russia</p>
           </div>
-
           <div class="committee-member">
             <img src="./img/Cokrlic.jpg" alt="cokrlic" class="committee-photo">
             <p class="committee-name">Katarina Cokrlic</p>
             <p class="committee-info">Exhibition Designer,<br /> University of Bologna, Italy</p>
           </div>
-
           <div class="committee-member">
             <img src="./img/Jevrić.jpg" alt="Tijana Jevrić" class="committee-photo">
             <p class="committee-name">Tijana Jevrić</p>
             <p class="committee-info">Creative Director of Visual Identity and Cultural Worker, Serbia</p>
           </div>
+        </div>
+
+        <div class="committee-label-wrapper">
+            <div class="committee-tag secondary">OUR EXPERTS</div>
+        </div>
+
+        <div class="committee-grid committee-grid-bottom">
           <div class="committee-member no-photo">
-          <p class="committee-name">Alexander Sadokhin</p>
-          <p class="committee-info">
-            Doctor of Cultural Studies, Ph.D. in Philosophy, Professor,<br>
-            Editor-in-Chief of <em>Culture and Civilization</em> Journal
-          </p>
-        </div>
-
-        <div class="committee-member no-photo">
-          <p class="committee-name">Irina Mamonova</p>
-          <p class="committee-info">
-            Ph.D. in Art History,<br> exhibition curator,<br>
-            Senior Lecturer, St. Petersburg State University, Russia
-          </p>
-        </div>
-
+            <p class="committee-name">Alexander Sadokhin</p>
+            <p class="committee-info">
+              Doctor of Cultural Studies, Ph.D. in Philosophy, Professor,<br>
+              Editor-in-Chief of <em>Culture and Civilization</em> Journal
+            </p>
+          </div>
+          <div class="committee-member no-photo">
+            <p class="committee-name">Irina Mamonova</p>
+            <p class="committee-info">
+              Ph.D. in Art History,<br> exhibition curator,<br>
+              Senior Lecturer, St. Petersburg State University, Russia
+            </p>
+          </div>
         </div>
         
       </section>
@@ -521,68 +527,76 @@
       <!-- Раздел регистрации --> 
       <section id="registration">
         <h2>Registration for event in <span class="registration-switch">
-          
           <button class="active" data-city="belgrade">Belgrade</button>
           <button data-city="spb">St. Petersburg</button>
         </span></h2>
-        <div class="registration-grid" id="registration-grid"> 
-          <!-- St. Petersburg --> 
-          <div class="registration-card highlight" data-city="spb"> 
-            <h3>Listener</h3>
-            <h4>Early bird</h4>
-            <p>Registration until xx.xx is free of charge. Registration via link below.</p>
-            <button class="registration-btn">free</button>
-            <h4>Owl</h4>
-            <p>Late registration after xx.xx costs 100 RUB.</p>
-            <button class="registration-btn">100 rub</button>
-          </div>
-          <div class="registration-card" data-city="spb">
-            <h3>Participant<br>Case track</h3>
-            <h4>Early bird</h4>
-            <p>Registration between xx.xx and xx.xx is free of charge for case track</p>
-            <button class="registration-btn">free</button>
-            <h4>Owl</h4>
-            <p>Registration between xx.xx and xx.xx is considered an owl (late registration) and costs -- xx.xx</p>
-            <button class="registration-btn">30 eur</button>
-          </div>
-          <div class="registration-card" data-city="spb">
-            <h3>Participant<br>Scientific track</h3>
-            <h4>Early bird</h4>
-            <p>Registration between xx.xx and xx.xx costs -- xx.xx</p>
-            <button class="registration-btn">60 eur</button>
-            <h4>Owl</h4>
-            <p>Registration between xx.xx and xx.xx is considered an owl (late registration) and costs -- xx.xx</p>
-            <button class="registration-btn">100 eur</button>
-          </div>
-          <!-- Belgrade -->
-          <div class="registration-card hidden highlight" data-city="belgrade">
-            <h3>Listener</h3>
-            <h4>Early bird</h4>
-            <p>Registration until xx.xx is free of charge. Registration via link below.</p>
-            <button class="registration-btn">free</button>
-            <h4>Owl</h4>
-            <p>Late registration after xx.xx requires fee payment.</p>
-            <button class="registration-btn">fee</button>
-          </div>
-          <div class="registration-card hidden" data-city="belgrade">
-            <h3>Participant<br>Case track</h3>
-            <h4>Early bird</h4>
-            <p>Free of charge before xx.xx.</p>
-            <button class="registration-btn">free</button>
-            <h4>Owl</h4>
-            <p>Late registration costs 25 EUR.</p>
-            <button class="registration-btn">25 eur</button>
-          </div>
-          <div class="registration-card hidden" data-city="belgrade">
-            <h3>Participant<br>Scientific track</h3>
-            <h4>Early bird</h4>
-            <p>Registration until xx.xx costs -- xx.xx.</p>
-            <button class="registration-btn">30 eur</button>
-            <h4>Owl</h4>
-            <p>Late registration after xx.xx costs -- xx.xx.</p>
-            <button class="registration-btn">60 eur</button>
-          </div>
+        <div class="registration-grid" id="registration-grid">
+
+        <!-- Belgrade FIRST -->
+        <div class="registration-card highlight" data-city="belgrade">
+          <h3>Listener</h3> <br>
+          <h4>Early bird</h4>
+          <p>Registration until xx.xx is free of charge.</p>
+          <button class="registration-btn">free</button>
+          <h4>Owl</h4>
+          <p>Registration after xx.xx costs 400 dinars (≈ 4 eur)</p>
+          <button class="registration-btn">4 eur</button>
+        </div>
+
+        <div class="registration-card" data-city="belgrade">
+          <h3>Participant<br>Case track</h3>
+          <h4>Early bird</h4>
+          <p>Registration until xx.xx is free of charge.</p>
+          <button class="registration-btn">free</button>
+          <h4>Owl</h4>
+          <p>Registration after xx.xx costs 2000 dinars (≈ 17 eur).</p>
+          <button class="registration-btn">25 eur</button>
+        </div>
+
+        <div class="registration-card" data-city="belgrade">
+          <h3>Participant<br>Scientific track</h3>
+          <h4>Early bird</h4>
+          <p>Registration until xx.xx costs 3500 dinars (≈ 30 eur).</p>
+          <button class="registration-btn">30 eur</button>
+          <h4>Owl</h4>
+          <p>Registration after xx.xx costs 7000 dinars (≈ 60 eur).</p>
+          <button class="registration-btn">60 eur</button>
+        </div>
+
+
+        <!-- St. Petersburg SECOND -->
+        <div class="registration-card highlight hidden" data-city="spb">
+          <h3>Listener</h3><br>
+          <h4>Early bird</h4>
+          <p>Registration until xx.xx is free of charge.</p>
+          <button class="registration-btn">free</button>
+          <h4>Owl</h4>
+          <p>Registration after xx.xx costs 300 rub (≈ 4 eur)</p>
+          <button class="registration-btn">4 eur</button>
+        </div>
+
+        <div class="registration-card hidden" data-city="spb">
+          <h3>Participant<br>Case track</h3>
+          <h4>Early bird</h4>
+          <p>Registration until xx.xx is free of charge.</p>
+          <button class="registration-btn">free</button>
+          <h4>Owl</h4>
+          <p>Registration after xx.xx costs xx.xx</p>
+          <button class="registration-btn">30 eur</button>
+        </div>
+
+        <div class="registration-card hidden" data-city="spb">
+          <h3>Participant<br>Scientific track</h3>
+          <h4>Early bird</h4>
+          <p>Registration until xx.xx costs xx.xx</p>
+          <button class="registration-btn">60 eur</button>
+          <h4>Owl</h4>
+          <p>Registration after xx.xx costs xx.xx</p>
+          <button class="registration-btn">100 eur</button>
+        </div>
+
       </div>
+
       <!--
       <button class="registration-main-btn">
       Registration
@@ -600,7 +614,7 @@
       </div>
       <div class="contact-intro">
         <p>If you have any doubts — feel free to contact us!</p>
-        <p><a href="mailto:poshtaposht@yandex.ru" class="contact-mail">poshtaposht@yandex.ru</a></p>
+        <p><a href="mailto:aim-seminar@yandex.ru" class="contact-mail">aim-seminar@yandex.ru</a></p>
       </div>
     </section>
 
@@ -619,7 +633,7 @@
     <!-- Раздел "Расписание" -->
     <section class="normal-section dark-background" id="program">
       <div class="titles">
-        <img src="aims_logo.png" alt="AIMs 2026" class="avatar">
+       
         <h2 class="section-title">AIMs'26: Schedule</h2>
         <div class="place">
           <div class="marker">
@@ -632,6 +646,24 @@
           The announcement of speakers and the seminar schedule for 2026 
           will be published later.
         </p>
+        <form action="https://formspree.io/f/xgvbkzdb" method="POST" class="subscribe-form" id="subscribe-form" >
+            <input 
+              type="email" 
+              name="email" 
+              placeholder="Enter your e-mail" 
+              required 
+              class="subscribe-input"
+            >
+            <button type="submit" class="subscribe-btn">Subscribe</button>
+          </form>
+          <div class="subscribe-success" id="subscribe-success"></div>
+          <!-- POPUP -->
+          <div id="popup-success" class="popup hidden">
+            <div class="popup-content">
+              <p>Thank you! Your message has been sent.</p>
+              <button class="popup-close">OK</button>
+            </div>
+          </div>
       </div>
     </section>
 

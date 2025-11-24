@@ -15,12 +15,17 @@ body {
   font-family: Montserrat, sans-serif;
 }
 header {
+
+ 
+ 
   position: absolute;
   top: 0;
+  left: 0;
   width: 100%;
-  display: flex;
+
   justify-content: space-between;
   align-items: center;
+  display: block !important;
   padding: 15px 60px;
 }
 @media screen and (max-width: 750px) {
@@ -313,6 +318,57 @@ a:hover {
   width: 50px;
   height: 50px;
   margin-right: 4px;
+}
+
+.avatar {
+  width: 110px;
+  height: 110px;
+ 
+  margin-bottom: 15px;
+
+  opacity: 0;
+  transform: scale(0.6);
+  animation: bump-in 0.5s 0.3s forwards;
+}
+
+.logo .avatar {
+  width: 90px;
+  height: 90px;
+}
+
+.c-command {
+  position: absolute;
+    top: 30px;              /* поднимаем/опускаем, чтобы совпало по вертикали с меню */
+    right: 30px;            /* двигаем прямо к vertical-menu */
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 500;
+ 
+}
+
+.c-command img {
+  width: 50px;
+  height: 50px;
+  margin-right: 4px;
+}
+
+@media (max-width: 768px) {
+  .c-command {
+        position: static !important;   /* убираем absolute */
+        margin: 10px auto 0 auto;      /* ставим по центру, под первым лого */
+        display: flex;
+        justify-content:flex-start;
+        align-items: center;
+        flex-direction: row;
+        gap: 6px;
+    }
+
+    .c-command img {
+  width: 40px;
+  height: 40px;
+}
+
 }
 
 
@@ -1667,7 +1723,7 @@ a:hover {
   .speakers-grid > *:nth-child(7),
   .speakers-grid > *:nth-child(8) {
     position: relative;
-    left: 150px; 
+    left: 143px; 
   }
 }
 
@@ -1886,7 +1942,7 @@ a:hover {
 .note-w {
   margin-top: 2rem;
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 1.3rem;
   color: #ffffff;
   max-width: 700px;
   margin-left: auto;
@@ -2358,128 +2414,208 @@ a:hover {
 
 
 
+/* === COMMITTEE SECTION — НОВАЯ СТРУКТУРА НА ДВУХ ГРИДАХ === */
 
-
-
-
-
-
-
-
-
-/* === Committee Section === */
 #committee {
-  background: #1e2227;
-  color: #fff;
-  text-align: center;
-  padding: 20px 0 100px;
+    background: #1e2227;
+    color: #fff;
+    text-align: center;
+    padding: 40px 0 120px;
+    position: relative;
 }
 
 /* Заголовок */
 #committee h2 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 70px;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 40px;
 }
 
-/* --- НОВОЕ: сетка через GRID, но с твоими расстояниями --- */
+/* ===== ЛИНИЯ СЛЕВА ===== */
+#committee::before {
+    content: "";
+    position: absolute;
+    left: 80px;
+    top: 120px;
+    bottom: 0;
+    width: 2px;
+    background: rgba(0,180,219,0.35);
+}
+
+/* ===================== ПЛАШКИ (TAGS) ===================== */
+
+.committee-tag {
+    justify-self: start;
+    margin-left: 40px;
+    background: #00b4db;
+    color: #fff;
+    padding: 6px 24px;
+    border-radius: 20px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    border: 2px solid rgba(255,255,255,0.35);
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 3;
+}
+
+.committee-tag.secondary {
+    background: #1e2227;         /* тёмный фон — чтобы линия под не мешала */
+    border-color: #00b4db;
+    color: #00b4db;
+}
+
+/* Смещаем плашки чуть вверх относительно грид-карточек */
+.committee-label-wrapper {
+    margin-bottom: -20px;
+}
+
+
+/* ===================== ГРИДЫ ===================== */
+
 .committee-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
-  gap: 80px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-/* адаптивы сохранены — просто переведены на grid */
-@media (max-width: 1083px) {
-  .committee-grid {
-    gap: 10px;
-    max-width: 700px;
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
-  }
+    max-width: 1050px;
+    margin: 0 auto 60px;
+    column-gap: 10px;
+    row-gap: 40px;
+    justify-items: center;
 }
 
-@media (max-width: 925px) {
-  .committee-grid {
-    gap: 10px;
-    max-width: 600px;
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* Верхний грид – 3 человека */
+.committee-grid-top {
+    margin-left: 40px;
+    margin-top: 10px;
 }
 
-@media (max-width: 600px) {
-  .committee-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
+/* Нижний – 2+ людей */
+.committee-grid-bottom {
+    margin-left: 40px;
+    margin-top: 20px;
 }
 
-/* Карточка */
+
+/* ===================== КАРТОЧКИ ===================== */
+
 .committee-member {
-  text-align: center;
-  width: 200px;
-}
-
-/* Без фото */
-.committee-member.no-photo {
-  width: 220px;
-  text-align: center;
-  padding-top: 20px;
-  margin-top: 20px;
-}
-
-.committee-member.no-photo .committee-name {
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-
-.committee-member.no-photo .committee-info {
-  font-size: 14px;
-  color: #ccc;
-  line-height: 1.4;
+    width: 240px;
+    text-align: center;
 }
 
 /* Фото */
 .committee-photo {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 18px;
-  border: 3px solid #00b4db;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #00b4db;
+    box-shadow: 0 0 0 rgba(0,0,0,0);
+    transition: transform .25s, box-shadow .25s;
 }
 
 .committee-photo:hover {
-  transform: scale(1.08);
-  box-shadow: 0 6px 20px rgba(0, 180, 219, 0.4);
+    transform: scale(1.08);
+    box-shadow: 0 8px 22px rgba(0,180,219,0.35);
 }
 
-/* Текст */
+/* Имена + текст */
 .committee-name {
-  font-weight: 600;
-  font-size: 1rem;
-  margin-bottom: 4px;
+    margin-top: 16px;
+    font-weight: 700;
+    font-size: 1.05rem;
 }
 
 .committee-info {
-  font-size: 0.9rem;
-  line-height: 1.4;
-  color: #d1d5db;
+    margin-top: 6px;
+    font-size: 0.92rem;
+    color: #d0d4db;
+    line-height: 1.36;
 }
 
-/* Адаптив (оставлен как был, только grid-friendly) */
-@media (max-width: 800px) {
-  .committee-member {
-    width: 160px;
-  }
-  .committee-photo {
-    width: 120px;
-    height: 120px;
-  }
+
+/* ===================== MOBILE / TABLET ===================== */
+
+
+@media (max-width: 1190px) {
+    /* линия уходит ближе */
+    #committee::before {
+        left: 50px;
+    }
+    .committee-tag {
+        margin-left: 15px;
+    }
+    .committee-grid {
+      max-width: 1000px;
+    }
 }
+
+@media (max-width: 1190px) {
+  .committee-grid {
+      max-width: 900px;
+    }
+}
+
+@media (max-width: 1067px) {
+  .committee-grid {
+      max-width: 800px;
+      
+    }
+    .committee-grid-top {
+      margin-left: 60px;
+    }
+}
+
+@media (max-width: 986px) {
+  .committee-grid {
+      max-width: 750px;
+    }
+}
+
+
+
+@media (max-width: 980px) {
+    /* чтобы плашки НЕ НАЕЗЖАЛИ */
+    .committee-label-wrapper {
+        margin-bottom: 0;
+        margin-top: 20px;
+    }
+
+    #committee::before {
+        top: 160px;
+    }
+}
+
+@media (max-width: 942px) {
+    .committee-grid {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 20px;
+        max-width: 600px;
+    }
+    .committee-grid-top .committee-member:nth-child(3) {
+        grid-column: 1 / -1; /* занимает обе колонки */
+        justify-self: center;
+    }
+}
+
+@media (max-width: 600px) {
+    #committee::before {
+        display: none;
+    }
+
+    .committee-tag,
+    .committee-tag.secondary {
+        margin: 0 auto;
+        justify-self: center;
+    }
+
+    .committee-grid {
+        grid-template-columns: 1fr;
+        row-gap: 50px;
+    }
+}
+
+
 
 
 
@@ -2604,14 +2740,22 @@ a:hover {
   border-radius: 12px;
   padding: 30px 25px 40px;
   width: 320px;
-  
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* равномерно распределяем */
   min-height: 480px; /* добавлено для выравнивания */
+}
 
+.registration-card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 8px 0 6px;
+}
+
+.registration-card h4:nth-of-type(2) {
+  margin-top: 30px;  /* подбери 18–22px по вкусу */
 }
 
 .registration-card p {
@@ -2635,12 +2779,6 @@ a:hover {
   font-size: 1.1rem;
   font-weight: 700;
   margin-bottom: 14px;
-}
-
-.registration-card h4 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin: 12px 0 6px;
 }
 
 
@@ -2672,7 +2810,6 @@ a:hover {
 /* Кнопки — белые везде */
 .registration-btn {
   display: inline-block;
-  margin-top: auto;
   background: #fff;
   color: #00b4db;
   border: 2px solid #00b4db;
@@ -2819,16 +2956,7 @@ a:hover {
 
 
 /* расписание */
-.avatar {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  margin-bottom: 15px;
 
-  opacity: 0;
-  transform: scale(0.6);
-  animation: bump-in 0.5s 0.3s forwards;
-}
 
 @keyframes bump-in {
   0%   { opacity: 0; transform: scale(0.6); }
@@ -2918,3 +3046,132 @@ a:hover {
     opacity: 0;
   }
 }
+
+
+
+/* ============================================================
+   SUBSCRIBE FORM (AIMS style)
+   ============================================================ */
+
+.subscribe-form {
+    display: flex;
+    gap: 12px;
+    margin: 40px auto 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.subscribe-input {
+    padding: 12px 18px;
+    border-radius: 30px;
+    border: 2px solid rgba(0,180,219,0.35);
+    background: #fff;
+    width: 280px;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.25s ease, box-shadow 0.25s ease;
+}
+
+.subscribe-input:focus {
+    border-color: #00b4db;
+    box-shadow: 0 0 8px rgba(0,180,219,0.35);
+}
+
+.subscribe-btn {
+    background: #00b4db;
+    color: #fff;
+    border: none;
+    padding: 12px 26px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.subscribe-btn:hover {
+    background: #009cc2;
+    transform: translateY(-1px);
+}
+
+.subscribe-success {
+    margin-top: 12px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: #00b4db;
+    min-height: 20px;
+}
+
+/* Mobile < 600px */
+@media (max-width: 600px) {
+    .subscribe-form {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .subscribe-input {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .subscribe-btn {
+        width: 100%;
+        max-width: 240px;
+    }
+}
+
+
+/* ============================================================
+   POPUP
+   ============================================================ */
+/* POPUP FOR SUBSCRIBE */
+#subscribe-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+#subscribe-popup.hidden {
+  display: none;
+}
+
+#subscribe-popup .popup-content {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  max-width: 320px;
+}
+
+#subscribe-popup .popup-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.subscribe-btn {
+  padding: 10px 24px;
+  border-radius: 30px;
+  background: #00b4db;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.subscribe-btn:hover {
+  background: #0094b5;
+}
+
