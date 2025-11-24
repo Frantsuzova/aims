@@ -239,6 +239,7 @@ document.addEventListener('DOMContentLoaded', setActiveMenu);
 
 
 // определяем язык
+/*
 document.addEventListener("DOMContentLoaded", () => {
   const userLang = (navigator.language || navigator.userLanguage || "").slice(0, 2).toLowerCase();
   const supportedLangs = ["ru", "en", "fr"];
@@ -247,7 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
 
-  // Обновление выделения активного языка
+  
   const langSwitcher = document.querySelector(".language-switcher");
   const langLinks = langSwitcher.querySelectorAll("a");
 
@@ -273,7 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
+*/
 
 
 
@@ -524,13 +525,3 @@ document.getElementById("subscribe-form").addEventListener("submit", async funct
 document.querySelector("#subscribe-popup .popup-close").addEventListener("click", () => {
   document.getElementById("subscribe-popup").classList.add("hidden");
 });
-
-
-
-
-
-
-
-
-
-
