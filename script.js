@@ -99,6 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Логика для переключателя языков
+/*
 document.addEventListener("DOMContentLoaded", () => {
     const langSwitcher = document.querySelector(".language-switcher");
     const langLinks = langSwitcher.querySelectorAll("a");
@@ -121,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
   });
-  
+  */
  // Логика для открытия попапов
 document.querySelectorAll("[data-popup]").forEach(button => {
     button.addEventListener("click", event => {
@@ -451,7 +452,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".dates-timeline").forEach(tl => {
         const items = [...tl.querySelectorAll(".timeline-item")];
 
-        // свернуть peer_review → schedule_live включительно
         const start = items.findIndex(i => i.dataset.key === "peer_review");
         const end   = items.findIndex(i => i.dataset.key === "schedule_live");
 
@@ -475,11 +475,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
         btn.addEventListener("click", () => {
             open = !open;
-            collapsed.style.maxHeight = open ? collapsed.scrollHeight + "px" : "0";
 
-            btn.textContent = open ? "hide" : "show more";
-            btn.classList.toggle("open", open);
+            if (open) {
+        collapsed.classList.add("open");
+
+        // позволяем браузеру применить класс
+        requestAnimationFrame(() => {
+            const fullHeight = collapsed.scrollHeight;
+            collapsed.style.maxHeight = fullHeight + "px";
         });
+
+        btn.textContent = "hide";
+        btn.classList.add("open");
+
+    } else {
+        collapsed.style.maxHeight = "0px";
+        collapsed.classList.remove("open");
+        btn.textContent = "show more";
+        btn.classList.remove("open");
+    }
+});
     });
 });
 

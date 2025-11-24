@@ -134,6 +134,12 @@ main .intro-section h2 {
   white-space: normal;
 }
 
+.intro-break-publication {
+  display: inline-block;
+  width: 100%;
+  white-space: normal !important;
+}
+
 @media (max-width: 726px) {
   .intro-break {
     display: block;
@@ -143,12 +149,15 @@ main .intro-section h2 {
 
 
 main .normal-section {
+  width: 100%;
   display: grid;
   justify-items: center;
   gap: 10px;
   padding: 18px 10px;
   color: white;
 }
+
+
 
 main .normal-section .titles {
   display: flex;
@@ -214,19 +223,29 @@ a:hover {
   font-size: 1.8rem;
   font-weight: 700;
   margin: 0;
-  
-  display: inline; /* важно — чтобы было в одной строке */
-  white-space: normal !important;
+  white-space: normal !important;  
+  overflow-wrap: break-word; 
   
 }
 
+.publication-title {
+  white-space: normal !important;
+}
+
+.section-title .intro-break {
+  display: block;
+}
+
+.section-title .intro-break-publication {
+  display: block;
+}
 
 .section-title.dark {
-  color: #000; /* чёрный текст */
+  color: #000; 
 }
 
 .section-title.light {
-  color: #fff; /* белый текст — если нужно явно задать */
+  color: #fff; 
 }
 
 
@@ -582,6 +601,10 @@ a:hover {
   user-select: none;
   white-space: nowrap;
   transition: 0.3s;
+}
+
+.intro-section .btn.btn-ghost.btn-gradient {
+  font-size: 14px;   /* сейчас у тебя ~20px, это ~в 1.4 раза меньше */
 }
 @media screen and (max-width: 750px) {
   .btn {
@@ -983,29 +1006,30 @@ a:hover {
 
 
 
-/*------------about aims--------------------*/
+/*------------ IMPORTANT DATES ---------------*/
 
 .about-aims-wrapper {
+  overflow: visible;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
   max-width: 1100px;
   margin: 0 auto;
-  /*
-  padding-left: 40px;
-  padding-right: 40px;
-  */
   padding: 40px;
   color: white;
   position: relative;
 }
 
+.important-dates {
+    overflow: visible !important;
+}
+
 .important-dates h2 {
   color: white;
   font-size: 1.6rem;
-  
 }
 
+/* Tabs */
 .tabs {
   display: inline-flex;
   background: #2d2d2d;
@@ -1027,171 +1051,188 @@ a:hover {
   font-weight: 600;
 }
 
+/* Timeline container */
 .dates-timeline {
   position: relative;
-
+  overflow: visible !important;
   padding-left: 0;
   display: flex;
   flex-direction: column;
   gap: 35px;
+  height: auto !important;
+    min-height: auto !important;
 }
 
+/* Vertical dashed line */
 .dates-timeline::before {
   content: "";
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 55px; /* позиция точно по центру кружков */
+  left: 55px;
   width: 2px;
-  border-left: 2px dashed white; /* белая пунктирная линия */
+  border-left: 2px dashed white;
   z-index: 0;
 }
 
+/* Timeline item */
 .timeline-item {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 20px;
-  position: relative;
-  z-index: 1;
+  z-index: 10;
+  overflow: visible !important;
 }
 
+/* Arrow */
 .timeline-item::before {
   content: "";
   position: absolute;
   top: 50%;
-  left: calc(110px + 18px);
+  left: calc(90px + 22px); /* bubble width + spacing */
   width: 0;
   height: 0;
+
   border-top: 7px solid transparent;
   border-bottom: 7px solid transparent;
   border-left: 11px solid #00b4db;
+
   opacity: 0;
-  transform: translateY(-50%) translateX(-10px);
-  transition: transform 0.4s ease, opacity 0.4s ease;
+  transform: translateY(-50%) translateX(-8px);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+
+  z-index: 30; /* always above bubble */
 }
 
+/* Arrow hover */
 .timeline-item:hover::before {
   opacity: 1;
   transform: translateY(-50%) translateX(0);
 }
 
-
-
-
+/* Bubble with date */
 .date-bubble {
+  width: 90px;
+  height: 42px;
   background: #00b4db;
   color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  white-space: nowrap;
+  line-height: 1; /* важно */
+  padding: 0;
+
+  border-radius: 30px;
   font-weight: 700;
-  border-radius: 20px;
-  padding: 6px 16px;
-  font-size: 0.9rem;
-  position: relative;
-  text-align: center;
-  width: 110px;
-  box-sizing: border-box;
-  z-index: 2;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 
+/* Date bubble hover */
+.timeline-item:hover .date-bubble {
+  box-shadow: 0 0 12px #00b4db;
+  transform-origin: center center;
+  transform: scale(1.12);
+}
 
+/* Text */
 .timeline-text {
+  
   max-width: 300px;
   color: #ffffff;
   font-size: 0.95rem;
   line-height: 1.4;
-  transition: transform 0.3s ease, opacity 0.3s ease; 
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* при наведении на дату — увеличивается и дата, и текст */
-.timeline-item:hover .date-bubble {
-  transform: scale(1.15);
-  box-shadow: 0 0 10px #00b4db;
+@media (max-width: 768px) {
+    .timeline-text {
+        max-width: 100% !important;
+        width: calc(100vw - 160px);   /* минус пумпочка + отступы */
+        white-space: normal !important;
+    }
+
+    .about-aims-wrapper {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
 }
 
+/* Text hover */
 .timeline-item:hover .timeline-text {
-  transform: scale(1.05) translateX(30px);
+  transform: translateX(20px);
+  opacity: 0.95;
+}
+
+
+
+/* Toggle button */
+.timeline-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  margin-left: 47px;
+  margin-top: -10px;
+  margin-bottom: -20px;
+
+  font-size: 1rem;
+  color: #00b4db;
+  cursor: pointer;
+
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.timeline-toggle::before {
+  content: "";
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #00b4db;
+  box-shadow: 0 0 0 2px #1a1e23;
+}
+
+.timeline-toggle::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #00b4db;
+  border-bottom: 2px solid #00b4db;
+  transform: rotate(45deg);
   opacity: 0.9;
 }
 
-
-
-.timeline-toggle {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-
-    margin-left: 47px;   /* ближе к вертикальной линии */
-    margin-top: -14px;
-    margin-bottom: -29px;
-
-    font-size: 1rem;
-    color: #00b4db;
-    cursor: pointer;
-
-    padding: 0;
-    background: none;
-    border: none;
-    
-}
-
-.timeline-toggle.open {
-    margin-top: 6px;    /* больше воздуха сверху */
-    margin-bottom: 6px; /* больше воздуха снизу */
-}
-
-.timeline-collapsed.open {
-    padding-top: 4px;   /* лёгкий дыхательный зазор */
-    padding-bottom: 4px;
-}
-
-.timeline-toggle:hover {
-    opacity: 1;
-}
-
-/* заполненный кружок ◉ */
-.timeline-toggle::before {
-    content: "";
-    width: 17px;
-    height: 17px;
-    border-radius: 50%;
-    background: #00b4db;
-    box-shadow: 0 0 0 2px #1a1e23; /* чуть отделяет от фона */
-    flex-shrink: 0;
-}
-
-/* стрелка */
-.timeline-toggle::after {
-    content: "";
-    width: 8px;
-    height: 8px;
-    border-right: 2px solid #00b4db;
-    border-bottom: 2px solid #00b4db;
-    transform: rotate(45deg); /* стрелка вниз */
-    margin-left: 2px;
-    opacity: 0.9;
-}
-
-/* при открытии → стрелка вверх (указатель на слово Hide) */
 .timeline-toggle.open::after {
-    transform: rotate(-135deg); /* стрелка вверх */
+  transform: rotate(-135deg);
 }
 
-/* раскрываемый блок */
+/* Collapsed items container */
 .timeline-collapsed {
-    overflow: hidden;
-    
-    max-height: 0;
-    transition: max-height .25s ease;
-    margin-left: 0;
+  
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease;
 }
 
-.timeline-collapsed .timeline-item {
-   
-     margin-top: 6px !important;
-    margin-bottom: 0 !important;
+/* Expanded state */
+.timeline-collapsed.open {
+  overflow: visible !important;
+  max-height: none !important;
+  padding-top: 6px;
+  padding-bottom: 30px;
 }
+
+/* Fix inside spacing */
+.timeline-collapsed .timeline-item {
+  margin-top: 10px !important;
+  margin-bottom: 0 !important;
+}
+
 
 
 
@@ -1503,6 +1544,7 @@ a:hover {
   .themes-wrapper {
     grid-template-columns: 1fr;
     gap: 40px;
+    padding-left: 5px;
   }
 }
 
@@ -1585,6 +1627,12 @@ a:hover {
   margin: 0 auto;
   padding: 0 60px;
 }
+@media (max-width: 545px) {
+    .speakers-container {
+        padding: 0 10px;
+    }
+}
+
 
 
 
@@ -1769,9 +1817,21 @@ a:hover {
   }
 }
 
+@media (max-width: 1045px) {
+  .track-card {
+    max-width: 600px;    
+  }
+}
+
+@media (max-width: 927px) {
+  .track-card {
+    max-width: 500px;    
+  }
+}
+
 @media (max-width: 837px) {
   .track-card {
-    max-width: 450px;    
+    max-width: 440px;    
   }
 }
 
@@ -1888,16 +1948,25 @@ a:hover {
 
 @media (max-width: 972px) {
   .proceedings-text {
-    max-width: 400px; 
-    
+    max-width: 350px; 
+    margin: 0;
   }
 }
 
-@media (max-width: 955px) {
+@media (max-width: 800px) {
   .proceedings-text {
-    max-width: 300px; 
-    
+    max-width: 320px; 
   }
+}
+
+@media (max-width: 745px) {
+  .proceedings-text {
+    max-width: 500px; 
+  }
+  .proceedings-container {
+    padding: 0;
+  }
+  
 }
 
 
@@ -1927,127 +1996,278 @@ a:hover {
   }
 }
 
+/* ============================================================
+   CALL FOR PAPERS — TIMELINE (DESKTOP + MOBILE)
+   полностью копирует Important Dates
+   ============================================================ */
 
-/* === From Presentation to Publication timeline === */
 
-#publication-timeline {
-  padding: 20px 0 90px;
-  background: #e9ecf7;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Заголовок */
-#publication-timeline h2 {
-  font-size: 1.8rem;
-  font-weight: 700;
- 
-}
-
-/* Контейнер для линии */
-.pub-timeline-wrapper {
-  width: 100%;
-  position: relative;
-  margin: 0 auto;
-  padding: 0 80px; /* воздух по бокам — совпадает с книгой сверху */
-  box-sizing: border-box;
+#publication-timeline h3 {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2; /* чтобы красиво прилегал к h2 */
 }
 
 
+#publication-timeline h2,
+#publication-timeline h3 {
+    text-align: center;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-/* Основная линия и шаги */
-.pub-timeline {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding-top: 90px;
-  margin-bottom: 50px;
+   .pub-timeline-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+/* ============================================================
+   DESKTOP  (>=1168px)
+   ============================================================ */
+@media (min-width: 1168px) {
+
+    .pub-timeline {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        position: relative;
+        gap: 40px;
+        margin-bottom: 50px;
+    }
+
+    /* Горизонтальная линия */
+    .pub-timeline::before {
+        content: "";
+        position: absolute;
+        top: 43px;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: #00b4db;
+        opacity: 0.3;
+    }
+
+    .pub-timeline-step {
+        position: relative;
+        width: 25%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* ===== Bubble ===== */
+    .pub-timeline-date {
+        background: #00b4db;
+        color: #fff;
+        padding: 10px 26px;
+        border-radius: 26px;
+        font-weight: 700;
+        white-space: nowrap;
+        transform: translateY(-8px);
+        transition: all .25s ease;
+        z-index: 3;
+    }
+
+    /* ===== Dot (на уровне линии, НЕ поднимаем) ===== */
+    .pub-timeline-dot {
+        width: 16px;
+        height: 16px;
+        background: #fff;
+        border: 4px solid #00b4db;
+        border-radius: 50%;
+        margin-bottom: 10px;
+        z-index: 3;
+    }
+
+    /* Палочка dot → line */
+    .pub-timeline-step::before {
+        content: "";
+        position: absolute;
+        top: 42px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 3px;
+        height: 30px;
+        background: #00b4db;
+        opacity: 0.3;
+        z-index: 1;
+    }
+
+    /* ===== Arrow под dot, но выше текста ===== */
+    .pub-timeline-step::after {
+        content: "";
+        position: absolute;
+        top: 76px; /* место под стрелку */
+        left: 50%;
+        transform: translateX(-50%) translateY(-8px);
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 14px solid #00b4db;
+        opacity: 0;
+        transition: all .25s ease;
+        z-index: 2;
+    }
+
+    /* Hover эффекты (как в Important Dates) */
+    .pub-timeline-step:hover .pub-timeline-date {
+        transform: scale(1.08) translateY(-8px);
+        box-shadow: 0 0 12px rgba(0,180,219,0.45);
+    }
+
+    .pub-timeline-step:hover::after {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    /* ===== Текст опускаем на 22px ===== */
+    .pub-timeline-step p,
+    .pub-timeline-step strong {
+        margin-top: 22px;
+    }
 }
 
 
-@media (max-width: 900px) {
-  .pub-timeline {
-     padding-top: 40px;
-  }
+
+/* ============================================================
+   MOBILE / TABLET  (<1168px)
+   ============================================================ */
+
+@media (max-width: 1168px) {
+
+    /* Правка: отключаем grid в секции (иначе таймлайн вылезает вправо) */
+    #publication-timeline {
+        display: block;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    /* Контейнер всего таймлайна */
+    .pub-timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        position: relative;
+        padding-left: 54px;      /* место под линию + плашку */
+        margin-bottom: 50px;
+        max-width: 100%;         /* правка — не даём разъезжаться */
+    }
+
+    /* Вертикальная линия */
+    .pub-timeline::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 26px;
+        width: 3px;
+        background: #00b4db;
+        opacity: 0.35;
+    }
+
+    /* Каждый пункт */
+    .pub-timeline-step {
+        position: relative;
+        min-height: 42px;
+        overflow: visible;
+    }
+
+    /* Плашка даты (центрируется по вертикали и сидит на линии) */
+    .pub-timeline-date {
+        position: absolute;
+        left: -26px;                  /* ставим на линию */
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: #00b4db;
+        color: #fff;
+        padding: 8px 20px;
+        border-radius: 22px;
+        font-weight: 700;
+        white-space: nowrap;
+        z-index: 3;
+
+        transition: transform .32s cubic-bezier(.25,.46,.45,.94),
+                    box-shadow .32s cubic-bezier(.25,.46,.45,.94);
+    }
+
+    /* Увеличение при hover */
+    .pub-timeline-step:hover .pub-timeline-date {
+        transform: translate(-50%, -50%) scale(1.08);
+        box-shadow: 0 0 12px rgba(0,180,219,0.38);
+    }
+
+    /* Точки отключены (концептуально лишние) */
+    .pub-timeline-dot {
+        display: none !important;
+    }
+
+    /* Стрелка справа от плашки */
+    .pub-timeline-step::after {
+        content: "";
+        position: absolute;
+
+        left: 30px;              /* чуть дальше от плашки */
+        top: 50%;
+        transform: translateY(-50%) translateX(-6px);
+
+        width: 0;
+        height: 0;
+        border-top: 7px solid transparent;
+        border-bottom: 7px solid transparent;
+        border-left: 11px solid #00b4db;
+
+        opacity: 0;
+        z-index: 4;
+        transition: transform .32s cubic-bezier(.25,.46,.45,.94),
+                    opacity .32s cubic-bezier(.25,.46,.45,.94);
+    }
+
+    /* Показываем стрелку + лёгкое выдвижение */
+    .pub-timeline-step:hover::after {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+    }
+
+    /* ===== Текст ===== */
+
+    .pub-timeline-step p {
+        margin: 0;
+        margin-left: calc(26px + 10px);     /* базовая позиция */
+        line-height: 1.32;
+        padding-top: 2px;
+        padding-bottom: 2px;
+
+        transition: transform .32s cubic-bezier(.25,.46,.45,.94),
+                    margin-left .32s cubic-bezier(.25,.46,.45,.94);
+    }
+
+    /* При hover текст отъезжает вправо (а не притягивается) */
+    .pub-timeline-step:hover p {
+        margin-left: calc(26px + 20px);
+        transform: translateX(4px);
+    }
+
+    /* strong НЕ должен иметь дополнительных отступов */
+    .pub-timeline-step p strong {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        line-height: 1.32;
+    }
+
+    /* Мини-адаптация очень узких экранов (<480px) */
+    @media (max-width: 480px) {
+        .pub-timeline-date {
+            padding: 6px 14px;
+            font-size: 14px;
+        }
+    }
 }
 
-/* Линия */
-.pub-timeline::before {
-  content: "";
-  position: absolute;
-  top: 68px;          /* геометрически точно по центру */
-  left: 88px;         /* чтобы совпадало с началом даты */
-  right: 88px;
-  height: 2px;
-  background: #00b4db;
-  z-index: 0;
-}
-
-/* Каждый шаг */
-.pub-timeline-step {
-  position: relative;
-  text-align: center;
-  z-index: 1;
-  flex: 1;
-}
-
-/* Плашка с датой */
-.pub-timeline-date {
-  background: #00b4db;
-  color: #fff;
-  font-weight: 700;
-  padding: 10px 26px;
-  border-radius: 999px;
-  display: inline-block;
-  position: relative;
-  top: -35px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  z-index: 2;
-}
-
-/* Эффект при наведении — лёгкое увеличение и стрелка */
-.pub-timeline-step::before {
-  content: "";
-  position: absolute;
-  top: 25px;
-  left: 50%;
-  transform: translateX(-50%) translateY(-10px);
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
-  border-top: 10px solid #00b4db;
-  opacity: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.pub-timeline-step:hover::before {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
-.pub-timeline-date:hover {
-  transform: scale(1.1) translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0, 180, 219, 0.4);
-}
-
-/* Подписи под датами */
-.pub-timeline-step p {
-  font-size: 0.95rem;
-  color: #000;
-  margin: 0;
-  line-height: 1.4;
-  max-width: 180px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Нижний блок информации */
-.pub-timeline-info {
-  color: #222;
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
 
 .pub-row {
   display: flex;
@@ -2067,107 +2287,89 @@ a:hover {
   text-align: center;
 }
 
+@media (max-width: 1167px) {
 
-@media (max-width: 900px) {
+  /* Весь блок выравниваем по левому краю */
   .pub-timeline-info {
-    width: 95%;
+    display: block;
+    text-align: left;
+    max-width: 700px;
+  }
+
+  /* Строки возвращаются к обычному поведению */
+  .pub-timeline-info .pub-row {
+    display: block;        /* ← главное! больше не таблица */
+    text-align: left;
+    margin-bottom: 6px;
+  }
+
+  /* Левая и правая части перестают быть колонками */
+  .pub-left,
+  .pub-right {
+    display: inline;       /* они снова обычный текст */
+    min-width: auto;       /* сбрасываем фикс ширину */
+    text-align: left;
+  }
+
+  /* Разделительная палочка работает как обычный текст */
+  .pub-sep {
+    display: inline;
+    width: auto;
+    margin: 0 4px;
+  }
+
+  /* Ссылки — обычная строка текста */
+  .pub-row a {
+    white-space: normal;
   }
 }
 
-@media (max-width: 863px) {
-  .pub-timeline-info {
-    width: 88%;
+@media (max-width: 440px) {
+
+  /* Перенос "Short papers" */
+  .pub-left,
+  .pub-right {
+    display: block;          /* переносим вторую часть вниз */
+    line-height: 1.32;
+  }
+
+  /* Делаем палочку на отдельной строке, если нужно */
+  .pub-sep {
+    display: inline-block;
+    margin: 6px 0;
+  }
+
+  /* Ссылки — каждая на новой строке */
+  .pub-row a {
+    display: block;           /* переносим Paper Submission ↗ */
+    margin-top: 6px;
   }
 }
 
-.pub-timeline-info strong {
-  font-weight: 700;
-}
-
-.pub-timeline-link {
-  color: #00a7e1;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.pub-timeline-link:hover {
-  text-decoration: underline;
-}
-
-/* Адаптив для мобильных */
-@media (max-width: 900px) {
-  .pub-timeline {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .pub-timeline::before {
-    display: none;
-  }
-
-  .pub-timeline-step {
-    margin-bottom: 50px;
-  }
+@media (max-width: 907px) {
+    .pub-timeline-info .pub-text {
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;  /* если хочешь — иначе убери */
+    }
 }
 
 
-@media (max-width: 1190px) {
 
-  .pub-timeline {
-    max-width: 850px;     /* была 1000px — уменьшаем */
-    gap: 40px;            /* было 60–80px — ужимаем */
-    margin: 0 auto;
-    padding-bottom: 30px;
-  }
 
-  .pub-timeline-step p {
-    font-size: 0.9rem;    /* компактнее */
-    line-height: 1.25;
-  }
 
-  .pub-timeline-date {
-    font-size: 0.9rem;
-    padding: 6px 14px;    /* уменьшаем пузырь дат */
-  }
 
-  .pub-timeline-dot {
-    width: 10px;          /* уменьшили точки */
-    height: 10px;
-  }
 
-  .pub-timeline-line {
-    width: 100%;
-  }
-}
 
-@media (max-width: 1091px) {
 
-  .pub-timeline {
-    max-width: 650px;   /* было 850 → чуть уже */
-    gap: 28px;          /* было 40 — ещё больше ужимаем */
-  }
 
-  .pub-timeline-date {
-    font-size: 0.85rem;
-    padding: 5px 12px;  /* компактнее */
-  }
-
-  .pub-timeline-step p {
-    font-size: 0.85rem;
-    line-height: 1.2;
-  }
-
-  .pub-timeline-dot {
-    width: 9px;
-    height: 9px;
-  }
-}
 
 
 
 /* === Committee Section === */
 #committee {
-  background: #1e2227; /* тёмный фон как в блоке speakers/proceedings */
+  background: #1e2227;
   color: #fff;
   text-align: center;
   padding: 20px 0 100px;
@@ -2180,20 +2382,22 @@ a:hover {
   margin-bottom: 70px;
 }
 
-/* Сетка участников */
+/* --- НОВОЕ: сетка через GRID, но с твоими расстояниями --- */
 .committee-grid {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
   gap: 80px;
   max-width: 1000px;
   margin: 0 auto;
 }
 
+/* адаптивы сохранены — просто переведены на grid */
 @media (max-width: 1083px) {
   .committee-grid {
     gap: 10px;
     max-width: 700px;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -2201,6 +2405,14 @@ a:hover {
   .committee-grid {
     gap: 10px;
     max-width: 600px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .committee-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 }
 
@@ -2210,7 +2422,26 @@ a:hover {
   width: 200px;
 }
 
-/* Фото участника */
+/* Без фото */
+.committee-member.no-photo {
+  width: 220px;
+  text-align: center;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.committee-member.no-photo .committee-name {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.committee-member.no-photo .committee-info {
+  font-size: 14px;
+  color: #ccc;
+  line-height: 1.4;
+}
+
+/* Фото */
 .committee-photo {
   width: 140px;
   height: 140px;
@@ -2239,21 +2470,19 @@ a:hover {
   color: #d1d5db;
 }
 
-/* Адаптив */
+/* Адаптив (оставлен как был, только grid-friendly) */
 @media (max-width: 800px) {
-  .committee-grid {
-    gap: 50px;
-  }
-
   .committee-member {
     width: 160px;
   }
-
   .committee-photo {
     width: 120px;
     height: 120px;
   }
 }
+
+
+
 
 
 
@@ -2462,6 +2691,8 @@ a:hover {
 }
 
 .registration-note {
+  padding-left: 10px;
+  padding-right: 10px;
   margin-top: 40px;
   font-size: 0.9rem;
   color: #333;
