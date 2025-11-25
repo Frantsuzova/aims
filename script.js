@@ -500,28 +500,41 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-document.getElementById("subscribe-form").addEventListener("submit", async function(e) {
-  e.preventDefault(); // ❗ Останавливаем переход на Formspree
 
-  const form = e.target;
-  const data = new FormData(form);
+// === SUBSCRIBE FORM ===
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("subscribe-form");
+  const popup = document.getElementById("subscribe-popup");
+  const closeBtn = popup.querySelector(".popup-close");
 
-  const response = await fetch(form.action, {
-    method: "POST",
-    body: data,
-    headers: { "Accept": "application/json" }
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const data = new FormData(form);
+
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: data,
+      headers: { "Accept": "application/json" }
+    });
+
+    if (response.ok) {
+      popup.classList.remove("hidden");
+      popup.style.display = "flex";
+      form.reset();
+    }
   });
 
-  if (response.ok) {
-    // показать попап
-    document.getElementById("subscribe-popup").classList.remove("hidden");
+  closeBtn.addEventListener("click", () => {
+    popup.style.display = "none";
+    popup.classList.add("hidden");
+  });
 
-    // очистить форму
-    form.reset();
-  }
+  popup.addEventListener("click", (e) => {
+    if (e.target === popup) {
+      popup.style.display = "none";
+      popup.classList.add("hidden");
+    }
+  });
 });
 
-// закрытие попапа
-document.querySelector("#subscribe-popup .popup-close").addEventListener("click", () => {
-  document.getElementById("subscribe-popup").classList.add("hidden");
-});

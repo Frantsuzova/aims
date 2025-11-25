@@ -646,44 +646,29 @@
           The announcement of speakers and the seminar schedule for 2026 
           will be published later.
         </p>
-       <form action="https://formspree.io/f/xgvbkzdb"
-            method="POST"
-            class="subscribe-form"
-            id="subscribe-form"
-            onsubmit="submitForm(event)">
- 
-          <input 
-            type="text"
-            name="name"
-            placeholder="Your name"
-            required
-            class="subscribe-input"
-          >
+       <p class="subscribe-text">
+          Subscribe to our updates — we will email you as soon as the speakers and the 2026 schedule are announced.
+        </p>
 
-          <input 
-            type="email"
-            name="email"
-            placeholder="Your e-mail"
-            required
-            class="subscribe-input"
-          >
-
-          <button type="submit" class="subscribe-btn">
-            Subscribe
-          </button>
+        <form 
+          id="subscribe-form"
+          action="https://formspree.io/f/xgvbkzdb"
+          method="POST"
+          class="subscribe-row"
+        >
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Your e-mail" required>
+          <button type="submit">Send</button>
         </form>
 
+        <!-- POPUP -->
         <div id="subscribe-popup" class="popup hidden">
           <div class="popup-content">
             <p>Thank you! Your message has been sent.</p>
             <span class="popup-close">&times;</span>
           </div>
         </div>
-      </div>
     </section>
-
-
-
     
   
   </main>
