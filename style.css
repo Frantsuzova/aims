@@ -615,7 +615,7 @@ a:hover {
   position: relative;
   display: block;
   padding: 5px;
-  font-size: 2em;
+  font-size: 1.5em;
   text-decoration: none;
   text-transform: uppercase;
   color: white;
@@ -648,6 +648,8 @@ a:hover {
     transform: scaleX(0);
   }
 }
+
+
 @media screen and (max-width: 750px) {
   .underline-menu {
     display: none;
@@ -1867,6 +1869,13 @@ a:hover {
 
 /*начало блока про прими участие*/
 
+.takepart-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
 .takepart-intro {
   text-align: center;
   max-width: 950px;
@@ -1874,7 +1883,7 @@ a:hover {
 
 .takepart-highlight {
  
-  width: 920px;
+  max-width: 920px;
   margin: 0 auto 25px auto;
   border: 2px solid #00bde3;
   border-radius: 14px;
@@ -2000,6 +2009,7 @@ a:hover {
    
   }
 }
+
 
 
 
