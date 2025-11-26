@@ -1209,6 +1209,18 @@ a:hover {
   font-weight: 700;
 }
 
+#spb-timeline {
+  display: none;
+}
+
+#spb-timeline .date-bubble {
+  background: rgb(1, 77, 94);
+}
+
+#spb-timeline .timeline-item:hover .date-bubble {
+  box-shadow: 0 0 12px rgb(211, 247, 255);
+}
+
 
 /* Date bubble hover */
 .timeline-item:hover .date-bubble {
@@ -1301,8 +1313,7 @@ a:hover {
 
 /* Expanded state */
 .timeline-collapsed.open {
-  overflow: visible !important;
-  max-height: none !important;
+  max-height: 1000px; /* большое значение, но контролируемое */
   padding-top: 6px;
   padding-bottom: 30px;
 }
@@ -2509,14 +2520,15 @@ a:hover {
 
 /* Верхний грид – 3 человека */
 .committee-grid-top {
-    margin-left: 40px;
-    margin-top: 10px;
+    padding-top: 10px;
+    margin-left: 60px;
+    margin-top: 50px;
 }
 
 /* Нижний – 2+ людей */
 .committee-grid-bottom {
-    margin-left: 40px;
-    margin-top: 20px;
+    margin-left: 60px;
+    margin-top: 50px;
 }
 
 
