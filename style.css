@@ -1315,6 +1315,8 @@ a:hover {
 
 /* Expanded state */
 .timeline-collapsed.open {
+   overflow: visible !important;
+  max-height: none !important;
   max-height: 1000px; /* большое значение, но контролируемое */
   padding-top: 6px;
   padding-bottom: 30px;
