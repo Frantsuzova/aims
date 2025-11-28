@@ -363,7 +363,7 @@ a:hover {
 .c-command {
   position: absolute;
     top: 40px;              /* поднимаем/опускаем, чтобы совпало по вертикали с меню */
-    right: -70px;            /* двигаем прямо к vertical-menu */
+    right: 10px;            /* двигаем прямо к vertical-menu */
     display: flex;
     align-items: center;
     gap: 6px;
