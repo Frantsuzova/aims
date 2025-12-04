@@ -75,7 +75,25 @@
       </ul>
     </nav>
 
+    <div id="registration-info" class="popup hidden">
+        <div class="popup-content">
+          <span class="popup-close">&times;</span>
+          <p>
+            The seminar in Novi Sad will take place on <strong>18–19 May 2026</strong>.<br><br>
+
+            Early registration for participants and listeners will open on
+            <strong>20 April 2026</strong>.<br><br>
+
+            Regular registration opens on <strong>3 May 2026</strong>.<br><br>
+
+            Stay tuned for updates.
+          </p>
+        </div>
+      </div>
+
     <main>
+
+      
       
       <!-- Интро -->
       <section class="intro-section" id="home">
@@ -122,34 +140,28 @@
               <div class="date-bubble">20 Apr</div>
               <div class="timeline-text">Early registration for participants<br /> and listeners</div>
             </div>
-            <!--
-            <div class="timeline-item" data-key="regular_reg">
-              <div class="date-bubble">1 May</div>
-              <div class="timeline-text">Regular registration opens</div>
-            </div>
-            -->
             <div class="timeline-item" data-key="close_case">
-              <div class="date-bubble">10 May</div>
+              <div class="date-bubble">1 May</div>
               <div class="timeline-text">Case Track submission closes</div>
             </div>
             <div class="timeline-item" data-key="schedule_draft">
-              <div class="date-bubble">13 May</div>
+              <div class="date-bubble">2 May</div>
               <div class="timeline-text">Draft seminar programme</div>
             </div>
             <div class="timeline-item" data-key="regular_reg">
-              <div class="date-bubble">15 May</div>
+              <div class="date-bubble">3 May</div>
               <div class="timeline-text">Regular registration opens</div>
             </div>
             <div class="timeline-item" data-key="schedule_live">
-              <div class="date-bubble">20 May</div>
+              <div class="date-bubble">12 May</div>
               <div class="timeline-text">Seminar programme</div>
             </div>
             <div class="timeline-item" data-key="close_listener">
-              <div class="date-bubble">22 May</div>
+              <div class="date-bubble">16 May</div>
               <div class="timeline-text">Listener registration closes</div>
             </div>
             <div class="timeline-item" data-key="seminar">
-              <div class="date-bubble">25 May</div>
+              <div class="date-bubble">18-19 May</div>
               <div class="timeline-text">Seminar</div>
             </div>
           </div>
@@ -534,7 +546,7 @@
             <p class="committee-name">Alexander Sadokhin</p>
             <p class="committee-info">
               Doctor of Cultural Studies, Ph.D. in Philosophy, Professor,<br>
-              Editor-in-Chief of <em>Culture and Civilization</em> Journal
+              Editor-in-Chief of Culture and Civilization Journal, Russia
             </p>
           </div>
           <div class="committee-member no-photo">
@@ -542,6 +554,20 @@
             <p class="committee-info">
               Ph.D. in Art History,<br> exhibition curator,<br>
               Senior Lecturer, St. Petersburg State University, Russia
+            </p>
+          </div>
+          <div class="committee-member no-photo">
+            <p class="committee-name">Borko Kovačević</p>
+            <p class="committee-info">
+              Doctor of Linguistics, Professor,<br>
+              Faculty of Philology, University of Belgrade, Serbia
+            </p>
+          </div>
+          <div class="committee-member no-photo">
+            <p class="committee-name">Bojan Đorđević</p>
+            <p class="committee-info">
+              Professor, Library Science,<br>
+              Faculty of Philology, University of Belgrade, Serbia
             </p>
           </div>
         </div>
@@ -561,30 +587,30 @@
           <h3>Listener</h3> <br>
           <h4>Early bird</h4>
           <p>Registration until 13 May is free of charge.</p>
-          <button class="registration-btn">free</button>
+          <button class="registration-btn" data-popup="registration-info">free</button>
           <h4>Owl</h4>
           <p>Registration after 15 May costs 400 dinars (≈ 4 eur)</p>
-          <button class="registration-btn">4 eur</button>
+          <button class="registration-btn" data-popup="registration-info">4 eur</button>
         </div>
 
         <div class="registration-card" data-city="belgrade">
           <h3>Participant<br>Case track</h3>
           <h4>Early bird</h4>
           <p>Registration until 13 May is free of charge.</p>
-          <button class="registration-btn">free</button>
+          <button class="registration-btn" data-popup="registration-info">free</button>
           <h4>Owl</h4>
           <p>Registration after 15 May costs 2000 dinars (≈ 17 eur).</p>
-          <button class="registration-btn">25 eur</button>
+          <button class="registration-btn" data-popup="registration-info">25 eur</button>
         </div>
 
         <div class="registration-card" data-city="belgrade">
           <h3>Participant<br>Scientific track</h3>
           <h4>Early bird</h4>
           <p>Registration until 13 May costs 3500 dinars (≈ 30 eur).</p>
-          <button class="registration-btn">30 eur</button>
+          <button class="registration-btn" data-popup="registration-info">30 eur</button>
           <h4>Owl</h4>
           <p>Registration after 15 May costs 7000 dinars (≈ 60 eur).</p>
-          <button class="registration-btn">60 eur</button>
+          <button class="registration-btn" data-popup="registration-info">60 eur</button>
         </div>
 
 
@@ -701,9 +727,14 @@
           </div>
         </div>
     </section>
+
+    
     
   
   </main>
+
+  
+
 
   
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

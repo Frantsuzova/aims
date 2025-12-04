@@ -131,7 +131,7 @@ document.querySelectorAll("[data-popup]").forEach(button => {
       const popup = document.getElementById(popupId);
       if (popup) {
         popup.classList.remove("hidden");
-        popup.style.display = "block"; // Показываем попап
+        popup.style.display = "flex"; // Показываем попап
       }
     });
   });
@@ -537,4 +537,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+
 
