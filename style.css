@@ -569,10 +569,11 @@ a:hover {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 80vw;
+  height: 80vh;
   display: flex;
   pointer-events: none;
+  margin-bottom: 10px;
 }
 
 .burger-nav ul {
@@ -1516,6 +1517,9 @@ a:hover {
 .themes-left .theme-box:nth-child(3) {
   background-color: #007c99; /* на 2 ступени темнее */
 }
+.themes-left .theme-box:nth-child(4) {
+  background-color: #006078; /* на 3 ступени темнее */
+}
 
 /* эффект наведения */
 .theme-box:hover {
@@ -1552,12 +1556,13 @@ a:hover {
 
 @media (max-width: 1500px) {
   .themes-right ul {
-     gap: 5px;
+     gap: 20px;
   }
 }
 
 @media (max-width: 1319px) {
   .themes-right ul {
+    
     max-width: 440px;
     padding: 0 30px;
   }
@@ -1565,7 +1570,15 @@ a:hover {
 
 @media (max-width: 1165px) {
   .themes-right ul {
+    gap: 5px;
     max-width: 390px;
+
+  }
+}
+
+@media (max-width: 1135px) {
+  .themes-right ul {
+    gap: 10px;
 
   }
 }
@@ -1581,6 +1594,13 @@ a:hover {
   .themes-right ul {
     max-width: 500px;
     padding: 0;
+  }
+}
+
+@media (max-width: 784px) {
+  .themes-right ul {
+    max-width: 480px;
+
   }
 }
 
@@ -1616,6 +1636,22 @@ a:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: relative;
 }
+
+@media (max-width: 1050px) {
+  .keywords-block {
+    max-width: 240px;
+    
+  }
+}
+
+@media (max-width: 933px) {
+  .keywords-block {
+    max-width: 281px;
+    
+  }
+}
+
+
 
 .keywords-label {
   font-weight: 600;
@@ -2693,8 +2729,18 @@ a:hover {
   .committee-grid {
       max-width: 750px;
     }
+
+    
 }
 
+@media (max-width: 600px) {
+  .committee-grid-top {
+      margin-left: 0px;
+    }
+  .committee-grid-bottom {
+     margin-left: 0px;
+  }
+}
 
 
 @media (max-width: 980px) {
@@ -3040,7 +3086,15 @@ a:hover {
 
 @media (max-width: 996px) {
    .registration-card {
+    
     width: 60%;
+  }
+}
+
+@media (max-width: 600px) {
+   .registration-card {
+    
+    width: 85%;
   }
 }
 
