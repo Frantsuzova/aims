@@ -157,6 +157,18 @@ document.querySelectorAll("[data-popup]").forEach(button => {
       }
     });
   });
+
+  //попап-ссылка - закрытие
+  document.querySelectorAll('.popup a[href^="#"]').forEach(link => {
+  link.addEventListener('click', () => {
+    const popup = link.closest('.popup');
+    if (!popup) return;
+
+    popup.classList.add('hidden');
+    popup.style.display = 'none';
+  });
+});
+
   
 
 //letters
