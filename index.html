@@ -60,14 +60,7 @@
         </div>
       </nav>
      
-      <!-- языки --> 
-      <!--
-      <div class="language-switcher">
-        <a href="index-ru.html" class="lang " data-lang="ru">РУ</a> | 
-        <a href="index-sr.html" class="lang" data-lang="sr">СР</a> | 
-        <a href="index.html" class="lang" data-lang="en">EN</a> |
-      </div>
-      -->
+  
       
     </header>
     
@@ -98,7 +91,7 @@
         <div class="popup-content">
           <span class="popup-close">&times;</span>
           <p>
-            The seminar in Novi Sad will take place on <strong>18–19 May 2026</strong>.<br><br>
+            The seminar in Novi Sad will take place on <strong>18-19 May 2026</strong>.<br><br>
 
             Early registration for participants and listeners will open on
             <strong>20 April 2026</strong>.<br><br>
@@ -108,7 +101,26 @@
             <a href="#subscribe-form">Stay tuned for updates.</a>
           </p>
         </div>
+    </div>
+    <div id="registration-info-spb" class="popup hidden">
+        <div class="popup-content">
+          <span class="popup-close">&times;</span>
+          <p>
+            The seminar in Saint Petersburg will take place on <strong>24 June 2026</strong>.<br><br>
+
+            Early registration for participants and listeners will open on
+            <strong>29 April 2026</strong>.<br><br>
+
+            Regular registration for participants opens on
+            <strong>30 May 2026</strong>.<br><br>
+
+            Listener registration details will be announced later.<br><br>
+
+            <a href="#subscribe-form">Stay tuned for updates.</a>
+          </p>
+        </div>
       </div>
+
 
     <main>
 
@@ -200,17 +212,19 @@
               <div class="timeline-text">Peer-review results (Scientific Track)</div>
             </div>
             <div class="timeline-item" data-key="early_reg">
-              <div class="date-bubble">29 May</div>
+              <div class="date-bubble">29 Apr</div>
               <div class="timeline-text">Early registration for participants<br /> and listeners</div>
-            </div>
-            <div class="timeline-item" data-key="regular_reg">
-              <div class="date-bubble">5 Jun</div>
-              <div class="timeline-text">Regular registration opens for participants</div>
             </div>
             <div class="timeline-item" data-key="close_case">
               <div class="date-bubble">10 Jun</div>
               <div class="timeline-text">Case Track submission closes</div>
             </div>
+            <!--
+            <div class="timeline-item" data-key="regular_reg">
+              <div class="date-bubble">5 Jun</div>
+              <div class="timeline-text">Regular registration opens for participants</div>
+            </div>
+            -->
             <div class="timeline-item" data-key="schedule_live">
               <div class="date-bubble">15 Jun</div>
               <div class="timeline-text">Seminar schedule goes live; Regular registration opens for listeners</div>
@@ -638,6 +652,15 @@
           <button class="active" data-city="belgrade">Novi Sad</button>
           <button data-city="spb">St. Petersburg</button>
         </span></h2>
+        
+        <p class="registration-intro">
+          Choose the category that best fits your participation.
+          You will be redirected to the registration form.
+          <br><br>
+          Please note that <strong>registration is mandatory for all categories, including free participation</strong>.
+        </p>
+
+        
         <div class="registration-grid" id="registration-grid">
 
         <!-- Belgrade FIRST -->
@@ -673,43 +696,46 @@
 
 
         <!-- St. Petersburg SECOND -->
-        <!--
         <div class="registration-card highlight hidden" data-city="spb">
           <h3>Listener</h3><br>
-          <h4>Early bird</h4>
-          <p>Registration until xx.xx is free of charge.</p>
-          <button class="registration-btn">free</button>
-          <h4>Owl</h4>
-          <p>Registration after xx.xx costs 300 rub (≈ 4 eur)</p>
-          <button class="registration-btn">4 eur</button>
+
+          <p><em>Registration details will be announced on 1 March.</em></p>
+          <button class="registration-btn" data-popup="registration-info-spb">Coming soon</button>
         </div>
+
 
         <div class="registration-card hidden" data-city="spb">
           <h3>Participant<br>Case track</h3>
+
           <h4>Early bird</h4>
-          <p>Registration until xx.xx is free of charge.</p>
-          <button class="registration-btn">free</button>
+          <p>Registration until 13 June is free of charge.</p>
+          <button class="registration-btn" data-popup="registration-info-spb">free</button>
+
           <h4>Owl</h4>
-          <p>Registration after xx.xx costs xx.xx</p>
-          <button class="registration-btn">30 eur</button>
+          <p>Registration after 15 June costs 5,000 RUB (≈ 50 EUR)</p>
+          <button class="registration-btn" data-popup="registration-info-spb">5,000 RUB</button>
         </div>
 
         <div class="registration-card hidden" data-city="spb">
           <h3>Participant<br>Scientific track</h3>
+
           <h4>Early bird</h4>
-          <p>Registration until xx.xx costs xx.xx</p>
-          <button class="registration-btn">60 eur</button>
+          <p>Registration until 31 May costs 5,000 RUB (≈ 50 EUR)</p>
+          <button class="registration-btn" data-popup="registration-info-spb">5,000 RUB</button>
+
           <h4>Owl</h4>
-          <p>Registration after xx.xx costs xx.xx</p>
-          <button class="registration-btn">100 eur</button>
+          <p>Registration after 31 May costs 7,000 RUB (≈ 70 EUR)</p>
+          <button class="registration-btn" data-popup="registration-info-spb">7,000 RUB</button>
         </div>
-      -->
+
         <!-- Placeholder block for SPB -->
+         <!--
         <div class="registration-card spb-placeholder hidden" data-city="spb">
           <h3>St. Petersburg</h3><br>
           <p>The registration fees will be announced closer to the dates.</p>
           <button class="registration-btn disabled" disabled>coming soon</button>
         </div>
+      -->
 
       </div>
 
