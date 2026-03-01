@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="sr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+  <meta name="keywords" content="museum, technology" />
+  <meta name="author" content="Анна Чижик" />
+  <link rel="icon" href="aims.ico" type="image/svg+xml">
+  <title>AIMs seminar: umetnost i inovacije u muzejima</title>
+</head>
+
+<body class="page">
+  
+
+    
+    <div class="cursor"></div>
+    <div class="cursor-border"></div>
+    <header>
+      <div class="logo-group">
+        <a href="#" class="c-command"><img src="logo.png"/>
+        </a>
+        <a href="#about" class="logo">
+          <img src="aims_logo.png" alt="AIMs" class="avatar">
+        </a>
+        <a href="https://ims.itmo.ru/eng/">
+          <img src="ims-logo.png" alt="IMS" class="partner-logo">
+        </a>
+        <a href="https://spbsh.ru">
+          <img src="sh.png" alt="SH" class="partner-logo">
+        </a>
+        <a href="https://dpls-alas.rs/en/index.html">
+          <img src="DPLS1.png" alt="DPLS" class="partner-logo">
+        </a>
+      </div>
+      
+
+
+      <!-- вертикальное меню --> 
+      <nav class="site-nav">
+        <div class="menu-wrapper">
+          <ul class="underline-menu">
+            <li class="active"><a href="#about">O NAMA</a></li>
+            <li><a href="#themes">GLAVNE TEME</a></li>
+            <li><a href="#speakers-section">NAŠI SPIKERI</a></li>
+            <li><a href="#take-part">KAKO UČESTVOVATI</a></li>
+            <li><a href="#proceedings">POZIV ZA RADOVE</a></li>
+            <li><a href="#committee">Organizatori</a></li>
+            <li><a href="#registration">PRIJAVA</a></li>
+            <li><a href="#contacts">KONTAKTI</a></li>
+            <li><a href="#program">PROGRAM</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="language-switcher">
+        <a href="index.html" class="lang " data-lang="ru">РУ</a> | 
+        <a href="index-sr.html" class="lang" data-lang="sr">SR</a> | 
+        <a href="index-en.html" class="lang" data-lang="en">EN</a> 
+      </div>
+      
+     
+  
+      
+    </header>
+    
+    <!-- бургер --> 
+    <input type="checkbox" id="burger-toggle" />
+    <label for="burger-toggle" class="burger-menu">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </label>
+    <div class="overlay"></div>
+    
+    <nav class="burger-nav">
+      <ul>
+        
+        <li class="active"><a href="#about">O NAMA</a></li>
+            <li><a href="#themes">GLAVNE TEME</a></li>
+            <li><a href="#speakers-section">NAŠI SPIKERI</a></li>
+            <li><a href="#take-part">KAKO UČESTVOVATI</a></li>
+            <li><a href="#proceedings">POZIV ZA RADOVE</a></li>
+            <li><a href="#committee">Organizatori</a></li>
+            <li><a href="#registration">PRIJAVA</a></li>
+            <li><a href="#contacts">KONTAKTI</a></li>
+            <li><a href="#program">PROGRAM</a></li>
+      </ul>
+    </nav>
+    <!-- Интро -->
+      <section class="intro-section" id="home">
+        <h1>
+          Istržujte. Pričajte. <span class="intro-break">Pronalazite istomišljenike.</span>
+        </h1>
+        <h2>
+          АIMs - seminar gde se muzeji i savremene tehnologije susreću
+        </h2>
+        <a
+          class="btn btn-ghost btn-gradient"
+          href="#take-part"
+        >
+          PRIDRUŽI SE
+        </a>
+      </section>
+
+      <!-- Раздел "О семинаре" -->
+      <section class="normal-section " id="about">
+        <div class="about-aims-wrapper">
+          <div class="important-dates">
+          <div class="dates-header">
+            <h2 class="section-title light">Važni datumi</h2>
+            <div class="city-tabs on-new-line">
+              <button class="city-tab active" data-city="belgrade">Novi Sad</button>
+              <button class="city-tab" data-city="spb">Sankt Peterburg</button>
+            </div>
+          </div>
+
+
+          <!-- Belgrade timeline -->
+          <div class="dates-timeline" id="belgrade-timeline" 
+          data-more-label="…prikaži više"
+          data-hide-label="prikaži manje">
+            <div class="timeline-item" data-key="open_submission">
+              <div class="date-bubble">02.02</div>
+              <div class="timeline-text">Otvorene su prijave za naučni i primenjeni segment</div>
+            </div>
+            <div class="timeline-item" data-key="close_science">
+              <div class="date-bubble">15.03</div>
+              <div class="timeline-text">Rok za prijavu za naučni segment</div>
+            </div>
+            <div class="timeline-item" data-key="peer_review">
+              <div class="date-bubble">20.04</div>
+              <div class="timeline-text">Rezultati recenzije (naučni segment)</div>
+            </div>
+            <div class="timeline-item" data-key="early_reg">
+              <div class="date-bubble">21.04</div>
+              <div class="timeline-text">Rana registracija za učesnike i slušaoce</div>
+            </div>
+            <div class="timeline-item" data-key="close_case">
+              <div class="date-bubble">01.05</div>
+              <div class="timeline-text">Rok za prijavu na primenjeni segment ističe</div>
+            </div>
+            <div class="timeline-item" data-key="schedule_draft">
+              <div class="date-bubble">02.05</div>
+              <div class="timeline-text">Preliminarni program seminara</div>
+            </div>
+            <div class="timeline-item" data-key="regular_reg">
+              <div class="date-bubble">03.05</div>
+              <div class="timeline-text">Otvara se redovna registracija</div>
+            </div>
+            <div class="timeline-item" data-key="schedule_live">
+              <div class="date-bubble">12.05</div>
+              <div class="timeline-text">Program seminara</div>
+            </div>
+            <div class="timeline-item" data-key="close_listener">
+              <div class="date-bubble">16.05</div>
+              <div class="timeline-text">Rok za prijavu slušalaca ističe</div>
+            </div>
+            <div class="timeline-item" data-key="seminar">
+              <div class="date-bubble">18-19.05</div>
+              <div class="timeline-text">Seminar</div>
+            </div>
+          </div>
+
+          <!-- Saint Petersburg timeline -->
+          <div class="dates-timeline" id="spb-timeline"
+                data-more-label="…prikaži više"
+                data-hide-label="prikaži manje">
+            <div class="timeline-item" data-key="open_submission">
+              <div class="date-bubble">02.02</div>
+              <div class="timeline-text">Otvorene su prijave za naučni i primenjeni segment</div>
+            </div>
+            <div class="timeline-item" data-key="close_science">
+              <div class="date-bubble">15.03</div>
+              <div class="timeline-text">Rok za prijavu za naučni segment</div>
+            </div>
+            <div class="timeline-item" data-key="early_reg">
+              <div class="date-bubble">01.04</div>
+              <div class="timeline-text">Rana registracija za učesnike i slušaoce</div>
+            </div>
+            <div class="timeline-item" data-key="peer_review">
+              <div class="date-bubble">21.04</div>
+              <div class="timeline-text">Rezultati recenzije (naučni segment)</div>
+            </div>
+            
+            <div class="timeline-item" data-key="regular_reg">
+              <div class="date-bubble">05.06</div>
+              <div class="timeline-text">Otvara se redovna registracija</div>
+            </div>
+            <div class="timeline-item" data-key="close_case">
+              <div class="date-bubble">10.06</div>
+              <div class="timeline-text">Rok za prijavu na primenjeni segment ističe</div>
+            </div>
+            <div class="timeline-item" data-key="schedule_live">
+              <div class="date-bubble">15.06</div>
+              <div class="timeline-text">Program seminara</div>
+            </div>
+            <div class="timeline-item" data-key="close_listener">
+              <div class="date-bubble">20.06</div>
+              <div class="timeline-text">Rok za prijavu slušalaca ističe</div>
+            </div>
+            <div class="timeline-item" data-key="seminar">
+              <div class="date-bubble">24.06</div>
+              <div class="timeline-text">Seminar</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-aims"> </div>
+
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+          
