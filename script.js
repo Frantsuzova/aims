@@ -462,55 +462,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".dates-timeline").forEach(tl => {
-        const items = [...tl.querySelectorAll(".timeline-item")];
+  document.querySelectorAll(".dates-timeline").forEach((tl) => {
+    const items = [...tl.querySelectorAll(".timeline-item")];
 
-        const start = items.findIndex(i => i.dataset.key === "peer_review");
-        const end   = items.findIndex(i => i.dataset.key === "schedule_live");
+    const start = items.findIndex((i) => i.dataset.key === "peer_review");
+    const end = items.findIndex((i) => i.dataset.key === "schedule_live");
 
-        if (start === -1 || end === -1 || end < start) return;
+    if (start === -1 || end === -1 || end < start) return;
 
-        const collapsed = document.createElement("div");
-        collapsed.className = "timeline-collapsed";
+    const collapsed = document.createElement("div");
+    collapsed.className = "timeline-collapsed";
+    tl.insertBefore(collapsed, items[start]);
 
-        tl.insertBefore(collapsed, items[start]);
+    for (let i = start; i <= end; i++) {
+      collapsed.appendChild(items[i]);
+    }
 
-        for (let i = start; i <= end; i++) {
-            collapsed.appendChild(items[i]);
-        }
+    // ✅ labels come from HTML (per-language page)
+    const labelMore = tl.dataset.moreLabel || "…show more";
+    const labelHide = tl.dataset.hideLabel || "hide";
 
-        const btn = document.createElement("button");
-        btn.className = "timeline-toggle";
-        btn.textContent = "...show more";
-        tl.insertBefore(btn, collapsed);
+    const btn = document.createElement("button");
+    btn.className = "timeline-toggle";
+    btn.type = "button";
+    btn.textContent = labelMore;
+    tl.insertBefore(btn, collapsed);
 
-        let open = false;
+    let open = false;
 
-        btn.addEventListener("click", () => {
-            open = !open;
+    btn.addEventListener("click", () => {
+      open = !open;
 
-            if (open) {
+      if (open) {
         collapsed.classList.add("open");
 
-        // позволяем браузеру применить класс
         requestAnimationFrame(() => {
-            const fullHeight = collapsed.scrollHeight;
-            collapsed.style.maxHeight = fullHeight + "px";
+          collapsed.style.maxHeight = collapsed.scrollHeight + "px";
         });
 
-        btn.textContent = "hide";
+        btn.textContent = labelHide;
         btn.classList.add("open");
-
-    } else {
+      } else {
         collapsed.style.maxHeight = "0px";
         collapsed.classList.remove("open");
-        btn.textContent = "show more";
+        btn.textContent = labelMore;
         btn.classList.remove("open");
-    }
-});
+      }
     });
+  });
 });
-
 
 
 // === SUBSCRIBE FORM ===
