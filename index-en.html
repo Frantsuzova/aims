@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+  <meta name="keywords" content="museum, technology" />
+  <meta name="author" content="Анна Чижик" />
+  <link rel="icon" href="aims.ico" type="image/svg+xml">
+  <title>AIMs seminar: art and innovations in museums</title>
+</head>
+
+<body class="page">
+  
+ 
+    
+    <div class="cursor"></div>
+    <div class="cursor-border"></div>
+    <header>
+      <!--
+      <a href="#about" class="logo"><img src="aims_logo.png" alt="AIMs 2026" class="avatar"></a>
+      <a href="#" class="c-command"><img src="logo.png"/>
+      </a>
+    -->
+      <div class="logo-group">
+        <a href="#" class="c-command"><img src="logo.png"/>
+        </a>
+        <a href="#about" class="logo">
+          <img src="aims_logo.png" alt="AIMs" class="avatar">
+        </a>
+        <a href="https://ims.itmo.ru/eng/">
+          <img src="ims-logo.png" alt="IMS" class="partner-logo">
+        </a>
+        <a href="https://spbsh.ru">
+          <img src="sh.png" alt="SH" class="partner-logo">
+        </a>
+        <a href="https://dpls-alas.rs/en/index.html">
+          <img src="DPLS1.png" alt="DPLS" class="partner-logo">
+        </a>
+      </div>
+      
+
+
+      <!-- вертикальное меню --> 
+      <nav class="site-nav">
+        <div class="menu-wrapper">
+          <ul class="underline-menu">
+            <li class="active"><a href="#about">ABOUT</a></li>
+            <li><a href="#themes">MAIN THEMES</a></li>
+            <li><a href="#speakers-section">OUR SPEAKERS</a></li>
+            <li><a href="#take-part">PARTICIPATE</a></li>
+            <li><a href="#proceedings">CALL FOR PAPERS</a></li>
+            <li><a href="#committee">COMMITTEE</a></li>
+            <li><a href="#registration">REGISTRATION</a></li>
+            <li><a href="#contacts">CONTACTS</a></li>
+            <li><a href="#program">PROGRAMME</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="language-switcher">
+        <a href="index.html" class="lang " data-lang="ru">РУ</a> | 
+        <a href="index-sr.html" class="lang" data-lang="sr">СР</a> | 
+        <a href="index-en.html" class="lang" data-lang="en">EN</a> |
+      </div>
+      
+     
+  
+      
+    </header>
+    
+    <!-- бургер --> 
+    <input type="checkbox" id="burger-toggle" />
+    <label for="burger-toggle" class="burger-menu">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </label>
+    <div class="overlay"></div>
+    
+    <nav class="burger-nav">
+      <ul>
+        <li class="active"><a href="#about">ABOUT</a></li>
+        <li><a href="#themes">MAIN THEMES</a></li>
+        <li><a href="#speakers-section">OUR SPEAKERS</a></li>
+        <li><a href="#take-part">PARTICIPATE</a></li>
+        <li><a href="#proceedings">CALL FOR PAPERS</a></li>
+        <li><a href="#committee">COMMITTEE</a></li>
+        <li><a href="#registration">REGISTRATION</a></li>
+        <li><a href="#contacts">CONTACTS</a></li>
+        <li><a href="#program">PROGRAMME</a></li>
+      </ul>
+    </nav>
+
+    <div id="registration-info" class="popup hidden">
+        <div class="popup-content">
+          <span class="popup-close">&times;</span>
+          <p>
+            The seminar in Novi Sad will take place on <strong>18-19 May 2026</strong>.<br><br>
+
+            Early registration for participants and listeners will open on
+            <strong>21 April 2026</strong>.<br><br>
+
+            Regular registration opens on <strong>3 May 2026</strong>.<br><br>
+
+            <a href="#subscribe-form">Stay tuned for updates.</a>
+          </p>
+        </div>
+    </div>
+    <div id="registration-info-spb" class="popup hidden">
+        <div class="popup-content">
+          <span class="popup-close">&times;</span>
+          <p>
+            The seminar in Saint Petersburg will take place on <strong>24 June 2026</strong>.<br><br>
+
+            Early registration for participants and listeners will open on
+            <strong>01 April 2026</strong>.<br><br>
+
+            Regular registration for participants opens on
+            <strong>05 June 2026</strong>.<br><br>
+
+            Listener registration details will be announced later.<br><br>
+
+            <a href="#subscribe-form">Stay tuned for updates.</a>
+          </p>
+        </div>
+      </div>
+
+
+    <main>
+
+      
+      
+      <!-- Интро -->
+      <section class="intro-section" id="home">
+        <h1>
+          Discover. Discuss. <span class="intro-break">Find like-minded people.</span>
+        </h1>
+        <h2>AIMs - seminar where museums and technology meet</h2>
+        <a
+          class="btn btn-ghost btn-gradient"
+          href="#take-part"
+        >
+          JOIN
+        </a>
+      </section>
+
+      <!-- Раздел "О семинаре" -->
+      <section class="normal-section " id="about">
+        <div class="about-aims-wrapper">
+          <div class="important-dates">
+          <div class="dates-header">
+            <h2 class="section-title light">Important dates for</h2>
+            <div class="city-tabs on-new-line">
+              <button class="city-tab active" data-city="belgrade">Novi Sad</button>
+              <button class="city-tab" data-city="spb">St. Petersburg</button>
+            </div>
+          </div>
+
+
+          <!-- Belgrade timeline -->
+          <div class="dates-timeline" id="belgrade-timeline"
+                  data-more-label="…show more"
+                  data-hide-label="hide">
+            <div class="timeline-item" data-key="open_submission">
+              <div class="date-bubble">02 Feb</div>
+              <div class="timeline-text">Scientific Track and Case Track submission opens</div>
+            </div>
+            <div class="timeline-item" data-key="close_science">
+              <div class="date-bubble">15 Mar</div>
+              <div class="timeline-text">Scientific Track submission closes</div>
+            </div>
+            <div class="timeline-item" data-key="peer_review">
+              <div class="date-bubble">20 Apr</div>
+              <div class="timeline-text">Peer-review results (Scientific Track)</div>
+            </div>
+            <div class="timeline-item" data-key="early_reg">
+              <div class="date-bubble">21 Apr</div>
+              <div class="timeline-text">Early registration for participants<br /> and listeners</div>
+            </div>
+            <div class="timeline-item" data-key="close_case">
+              <div class="date-bubble">1 May</div>
+              <div class="timeline-text">Case Track submission closes</div>
+            </div>
+            <div class="timeline-item" data-key="schedule_draft">
+              <div class="date-bubble">2 May</div>
+              <div class="timeline-text">Preliminary seminar programme</div>
+            </div>
+            <div class="timeline-item" data-key="regular_reg">
+              <div class="date-bubble">3 May</div>
+              <div class="timeline-text">Regular registration opens</div>
+            </div>
+            <div class="timeline-item" data-key="schedule_live">
+              <div class="date-bubble">12 May</div>
+              <div class="timeline-text">Seminar programme</div>
+            </div>
+            <div class="timeline-item" data-key="close_listener">
+              <div class="date-bubble">16 May</div>
+              <div class="timeline-text">Listener registration closes</div>
+            </div>
+            <div class="timeline-item" data-key="seminar">
+              <div class="date-bubble">18-19 May</div>
+              <div class="timeline-text">Seminar</div>
+            </div>
+          </div>
+
+          <!-- Saint Petersburg timeline -->
+          <div class="dates-timeline" id="spb-timeline"
+                  data-more-label="…show more"
+                  data-hide-label="hide">
+            <div class="timeline-item" data-key="open_submission">
+              <div class="date-bubble">02 Feb</div>
+              <div class="timeline-text">Scientific Track and Case Track submission opens</div>
+            </div>
+            <div class="timeline-item" data-key="close_science">
+              <div class="date-bubble">15 Mar</div>
+              <div class="timeline-text">Scientific Track submission closes</div>
+            </div>
+            <div class="timeline-item" data-key="early_reg">
+              <div class="date-bubble">01 Apr</div>
+              <div class="timeline-text">Early registration for participants<br /> and listeners</div>
+            </div>
+            <div class="timeline-item" data-key="peer_review">
+              <div class="date-bubble">21 Apr</div>
+              <div class="timeline-text">Peer-review results (Scientific Track)</div>
+            </div>
+            
+            <div class="timeline-item" data-key="regular_reg">
+              <div class="date-bubble">5 Jun</div>
+              <div class="timeline-text">Regular registration opens for participants</div>
+            </div>
+            <div class="timeline-item" data-key="close_case">
+              <div class="date-bubble">10 Jun</div>
+              <div class="timeline-text">Case Track submission closes</div>
+            </div>
+            <div class="timeline-item" data-key="schedule_live">
+              <div class="date-bubble">15 Jun</div>
+              <div class="timeline-text">Seminar programme; Regular registration opens for listeners</div>
+            </div>
+            <div class="timeline-item" data-key="close_listener">
+              <div class="date-bubble">20 Jun</div>
+              <div class="timeline-text">Listener registration closes</div>
+            </div>
+            <div class="timeline-item" data-key="seminar">
+              <div class="date-bubble">24 Jun</div>
+              <div class="timeline-text">Seminar</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-aims">
+          <h2>About AIMS</h2>
+          <p>
+            Explore the prospects of integrating digital technologies into the 
+            museum space at our International Art and Innovation in Museums Seminar (AIMs-2026).
+          </p>
+          <p>
+            While focused on innovation and digital transformation in museums,
+            the seminar is dedicated to scenography, storytelling, and visitor
+            experience. <p class="goal">Our goal is to explore how new tools reshape exhibitions
+            and perception.</p>
+          </p>
+          <p>
+            The seminar is held in two locations: <b>Novi Sad</b> (Serbia) and <b>Saint
+            Petersburg</b> (Russia).
+          </p>
+          <p>
+            The working languages of the seminar are <b>English, Serbian, and Russian</b>.
+          </p>
+        </div>
+      </section>
+
+      <!-- Раздел тем --> 
+      <section class="normal-section" id="themes">
+        <h2 class="section-title dark ">Main themes</h2>
+        <div class="themes-wrapper">
+          <div class="themes-left">
+            <div class="theme-box">
+              <h3>Scenography</h3>
+              <p>issues and methods for developing exhibition visual representation concepts; working with lighting and spatial composition; color theory within exhibition design tasks.
+              </p>
+            </div>
+            <div class="theme-box">
+              <h3>Storytelling</h3>
+              <p>selecting narrative language; working with exhibits; curator and designer communication; challenges of effective information transfer.
+              </p>
+            </div>
+            <div class="theme-box">
+              <h3>Interactive Journey</h3>
+              <p>integration of interactive elements into exhibitions (AR, VR); creating routes and scenarios to engage visitors; developing interactive installations; creating visual and sound effects.
+              </p>
+            </div>
+            <div class="theme-box">
+              <h3>Linguistic Technologies in Museums</h3>
+              <p>
+                advancing multilingual access and inclusive communication; integrating AI-based translation and interactive language tools into exhibitions; supporting the preservation and presentation of heritage.
+              </p>
+            </div>
+            <div class="keywords-block"> 
+              <span class="keywords-label">Keywords:</span> 
+              museum scenography, interfaces, augmented reality, virtual reality, machine learning, video projections, 
+              installations, audio design, interactivity, personalization of the visitor experience, 
+              multilingual interfaces, nlp, conversational agents, digital language archives, linguistic data visualization, narrative analysis<span class="blinking-cursor" style="color: #c5c8c6;">|</span>
+            </div>
+          </div>
+          <div class="themes-right">
+            <ul>
+              <li><strong>Video</strong><br> 
+                use of video as a narrative and spatial tool; designing projections that connect curatorial concepts with visitors’ sensory experience.
+              </li>
+              <li><strong>Audio Design</strong><br>
+                creation of audio guides, sound installations, and interactive audio elements.
+              </li>
+              <li><strong>Interactive Interfaces</strong><br>
+                development and implementation of applications and interactive panels that provide new ways for visitors to interact with museum content.
+              </li>
+              <li><strong>Data Analysis, Machine Learning and Visitor Experience</strong><br>
+                applying data and artificial intelligence to personalize visits; analyzing the perception and impact of scenography's visual elements on visitors, as well as the effectiveness
+                of routes and scenarios.
+              </li>
+              <li>
+                <strong>Multilingual Access & AI Translation</strong><br>
+                strategies for multilingual access powered by real-time language technologies.
+              </li>
+
+              <li>
+                <strong>Narrative Mediation</strong><br>
+                using linguistic analysis to refine exhibition storytelling and cross-cultural semantics in labels and descriptions.
+              </li>
+
+              <li>
+                <strong>Interactive Language Tools</strong><br>
+                integrating NLP, chatbots, and voice assistants to personalize visitor communication.
+              </li>
+
+              <li>
+                <strong>Digital Linguistic Heritage</strong><br>
+                preserving languages through digital archives and visualizing linguistic diversity.
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Раздел наши спикеры --> 
+      <section class="speakers-section" id="speakers-section">
+        <div class="speakers-container">
+          <h2 class="section-title">Who were our main speakers?</h2>
+          <div class="speakers-grid">
+            <div class="speaker-card" data-img="speaker1">
+              <img src="./img/speaker1.jpeg" alt="Anna Yalova" class="speaker-photo">
+              <p class="speaker-info">
+                <strong>Anna Yalova</strong><br>
+                Director of The Manege Central Exhibition Hall
+              </p>
+            </div>
+
+            <div class="speaker-card" data-img="speaker2">
+              <img src="./img/speaker2.jpg" alt="Natalia Metelica" class="speaker-photo">
+              <p class="speaker-info">
+                <strong>Natalia Metelica</strong><br>
+                Director of St. Petersburg State Museum of Theatrical and Musical Art
+              </p>
+            </div>
+
+            <div class="speaker-card" data-img="speaker6">
+              <img src="./img/speaker6.jpg" alt="Andrey Punin" class="speaker-photo">
+              <p class="speaker-info">
+                <strong>Andrey Punin</strong><br>
+                Public Artist & Architect, HSE University, School of Design
+              </p>
+            </div>
+
+            <div class="speaker-card" data-img="speaker5">
+              <img src="./img/speaker5.jpg" alt="Olga Arshanskaya" class="speaker-photo">
+              <p class="speaker-info">
+                <strong>Olga Arshanskaya</strong><br>
+                Director of The Night of Light in Gatchina Festival
+              </p>
+            </div>
+
+            <div class="speaker-card" data-img="speaker3">
+              <img src="./img/speaker3.jpg" alt="Julia Machevskaya" class="speaker-photo">
+              <p class="speaker-info">
+                <strong>Julia Machevskaya</strong><br>
+                Curator of Anikushin’s Sculpture Studio, Museum of Urban Sculpture branch
+              </p>
+            </div>
+
+            <div class="speaker-card" data-img="speaker7">
+              <img src="./img/speaker7.jpg" alt="Pavel Kaplevich" class="speaker-photo">
+              <p class="speaker-info">
+                <strong>Pavel Kaplevich</strong><br>
+                Production Designer & Exhibition Creator
+              </p>
+            </div>
+
+            <div class="speaker-card" data-img="speaker4">
+              <img src="./img/speaker4.jpg" alt="Dasha Zakharova" class="speaker-photo">
+              <p class="speaker-info">
+                <strong>Dasha Zakharova</strong><br>
+                Multimedia Artist
+              </p>
+            </div>
+
+            <div class="speaker-card" data-img="speaker10">
+              <img src="./img/speaker10.jpg" alt="Nikolay Kislukhin" class="speaker-photo">
+              <p class="speaker-info">
+                <strong>Nikolay Kislukhin</strong><br>
+                Head of the Special Projects Department, Tretyakov Gallery in Samara
+              </p>
+            </div>
+             
+          </div>
+        </div>
+      </section>
+
+    
+
+      <!-- Раздел "прими участие как спикер" --> 
+      <section class="normal-section light-background" id="take-part">
+        <h2 class="section-title dark">How to Join AIMs</h2>
+        <div class="takepart-intro">
+          <p>Our target audience includes digital media developers, curators, and cultural researchers. <br> 
+            <a href="#registration">Join the seminar via the registration form</a></p>
+          <div class="takepart-wrapper">
+            <div class="takepart-highlight">
+              <p><strong>Listeners</strong> are an essential part of AIMs.</p>
+              <a href="#program">Stay tuned</a>: the programme will be announced closer to the dates.
+            </div>
+          </div>
+        </div>
+
+
+        <h2 class="section-title dark">Take Part as a Speaker!</h2>
+        <p class="section-subtitle">There are two ways to join the AIMS seminar as a speaker:</p>
+        <div class="tracks-container">
+          <div class="track-card">
+            <h3>Case Track</h3>
+            <p class="track-subtitle">(without paper)</p>
+            <p>Presentations of a project or exhibition, including exploratory or applied creative work</p>
+            <br>
+            <p><strong>Formats</strong></p>
+            <p>
+              Large Talk: completed or mature projects,<br>
+              ⏱ 20 min + 5 min Q&amp;A<br>
+              Short Talk: emerging ideas or early-stage concepts,<br>
+              ⏱ 10 min + 2 min Q&amp;A
+            </p>
+            <br>
+            <p>Submit title and abstract (200-500 words)<br> by <a href="mailto:contact@aims-seminar.space" class="contact-mail">e-mail</a>,
+            <br> 
+            the review will be done within 2 weeks</p>
+            <p class="deadline">Deadline: 05 May Novi Sad | 10 June SPB</p>
+          </div>
+          <div class="track-card">
+            <h3>Scientific Track</h3>
+            <p class="track-subtitle">(with paper)</p>
+            <p>Presentations on topics aligned with the Springer CCIS themes</p>
+            <br>
+            <p><strong>Formats</strong></p>
+            <p>
+              Full Research: completed or advanced studies,<br>
+              ⏱ 20 min + 5 min Q&amp;A<br>
+              Early Research Paper: pilot or in-progress studies,<br>
+              ⏱ 10 min + 2 min Q&amp;A
+            </p>
+            <br>
+            <p>Submit via CMT<br> (see this track <a href="#proceedings">pipeline</a>), 
+            <br />the review results will be announced on 20 April
+            </p>
+            <p class="deadline">Deadline: 15 Mar</p>
+          </div>
+        </div>
+        <p class="note">All contributions from both tracks will be reviewed by the committee.</p>
+        <p class="note">
+          The seminar is held offline. <br/> Online participation may be considered individually by sending request on seminar’s email.
+        </p>
+      </section>
+
+      <!-- Раздел просидингов --> 
+      <section class="normal-section dark-background" id="proceedings">
+        <h2 class="section-title">Proceedings</h2>
+        <div class="proceedings-container">
+          <div class="proceedings-image">
+            <img src="./img/book.jpeg" alt="Communications in Computer and Information Science book cover">
+          </div>
+          <div class="proceedings-text">
+            <!--
+            <p>
+              The scientific track of the AIMS seminar implies the publication of selected papers in the
+              <a href="https://link.springer.com/series/7899">Communications in Computer and Information Science (CCIS)</a> series published by Springer,
+              indexed in <strong>Scopus (Q3)</strong>.
+            </p>
+          -->
+            <p>
+              The scientific track of the AIMS seminar is part of the Internet and Modern Society (IMS 2026) conference. 
+              Therefore, research papers accepted for presentation in this track will be 
+              published in the IMS proceedings indexed in <strong>Scopus</strong>. Proceedings of IMS 2025 are available <a href="https://link.springer.com/book/10.1007/978-3-032-05144-8">here</a>.
+            </p>
+            <br>
+            
+            <p>
+              We <strong>invite our speakers to present research papers</strong> developed on the basis of their
+              conference presentations. Submitted manuscripts should be original, unpublished, and correspond to the
+              thematic scope of the seminar and the <b>CCIS series</b>.
+            </p>
+            <p>
+              All submissions will undergo a double-blind peer review.<br>
+              <br>
+              Papers must be submitted and published in English. 
+              This is due to the international scope of the seminar and the requirements of the Springer publication series.
+              <br>
+              Submissions are made through <a href="https://cmt3.research.microsoft.com/ITMOIMS2026">Microsoft CMT</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Раздел от презентации к публикации  --> 
+      <section class="normal-section light-background" id="publication-timeline">
+        <h2 class="section-title dark publication-title">Call for Papers</h2> <h3> From Submission to Publication pipeline</h3>
+        <div class="pub-timeline-wrapper">
+          <div class="pub-timeline">
+            <div class="pub-timeline-step">
+              <div class="pub-timeline-date">02 Feb</div>
+              <div class="pub-timeline-dot"></div>
+              <p><strong>Registration in CMT</strong><br>Title + Abstract</p>
+            </div>
+            <div class="pub-timeline-step">
+              <div class="pub-timeline-date">15 Mar</div>
+              <div class="pub-timeline-dot"></div>
+              <p><strong>Full paper submission</strong><br>PDF-format<br>(anonymized)</p>
+            </div>
+            <div class="pub-timeline-step">
+              <div class="pub-timeline-date">20 Apr</div>
+              <div class="pub-timeline-dot"></div>
+              <p><strong>Acceptance</strong><br>Notification</p>
+            </div>
+            <div class="pub-timeline-step">
+              <div class="pub-timeline-date">20 June</div>
+              <div class="pub-timeline-dot"></div>
+              <p><strong>Camera-ready submission</strong><br>DOCX-format<br>(revised <br>per reviewers)</p>
+            </div>
+          </div>
+          <div class="pub-timeline-info">
+  <p class="pub-row">
+    <span class="pub-left"><strong>Full papers:</strong> 11-15 pages</span>
+    <span class="pub-sep">|</span>
+    <span class="pub-right"><strong>Short papers:</strong> 6-10 pages</span>
+  </p>
+
+  <p  class="pub-text">Original manuscripts, similarity index &lt; 15%. No text generated by AI tools.</p>
+
+  <p class="pub-row">
+    <span class="pub-left">
+      <a href="/springer_ template.docm" class="pub-timeline-link">Springer CCIS Template ↗</a>
+    </span>
+    <span class="pub-sep">|</span>
+    <span class="pub-right">
+      <a href="https://cmt3.research.microsoft.com/ITMOIMS2026/" class="pub-timeline-link">Paper Submission ↗</a>
+    </span>
+    <a href="/AIMs-2026_CMT_manual.pdf" class="pub-timeline-link">
+      Microsoft CMT submission guide (PDF) ↗
+    </a>
+
+  </p>
+</div>
+        </div>
+      </section>
+
+      <!-- Раздел комитета --> 
+      <section id="committee">
+        <h2>Program Committee</h2>
+
+        <div class="committee-label-wrapper">
+            <div class="committee-tag">CHAIR COMMITTEE</div>
+        </div>
+
+        <div class="committee-grid committee-grid-top">
+
+          <div class="committee-member">
+            <img src="./img/Chizhik.jpg" alt="chizhik" class="committee-photo">
+            <p class="committee-name">Anna Chizhik</p>
+            <p class="committee-info">Ph.D. in Cultural Studies, Multimedia Director,<br /> St. Petersburg State University, Russia</p>
+          </div>
+          <div class="committee-member">
+            <img src="./img/Cokrlic.jpg" alt="cokrlic" class="committee-photo">
+            <p class="committee-name">Katarina Cokrlic</p>
+            <p class="committee-info">Exhibition Designer,<br /> University of Bologna, Italy</p>
+          </div>
+          <div class="committee-member">
+            <img src="./img/Jevrić.jpg" alt="Tijana Jevrić" class="committee-photo">
+            <p class="committee-name">Tijana Jevrić</p>
+            <p class="committee-info">Creative Director of Visual Identity and Cultural Worker, Serbia</p>
+          </div>
+        </div>
+
+        <div class="committee-label-wrapper">
+            <div class="committee-tag secondary">OUR EXPERTS</div>
+        </div>
+
+        <div class="committee-grid committee-grid-bottom">
+          <div class="committee-member no-photo">
+            <p class="committee-name">Alexander Sadokhin</p>
+            <p class="committee-info">
+              Doctor of Cultural Studies, Ph.D. in Philosophy, Professor,<br>
+              Editor-in-Chief of Culture and Civilization Journal, Russia
+            </p>
+          </div>
+          <div class="committee-member no-photo">
+            <p class="committee-name">Irina Mamonova</p>
+            <p class="committee-info">
+              Ph.D. in Art History,<br> exhibition curator,<br>
+              Senior Lecturer, St. Petersburg State University, Russia
+            </p>
+          </div>
+          <div class="committee-member no-photo">
+            <p class="committee-name">Borko Kovačević</p>
+            <p class="committee-info">
+              Doctor of Linguistics, Professor,<br>
+              Faculty of Philology, University of Belgrade, Serbia
+            </p>
+          </div>
+          <div class="committee-member no-photo">
+            <p class="committee-name">Bojan Đorđević</p>
+            <p class="committee-info">
+              Professor, Library Science,<br>
+              Faculty of Philology, University of Belgrade, Serbia
+            </p>
+          </div>
+        </div>
+        
+      </section>
+      
+      <!-- Раздел регистрации --> 
+      <section id="registration">
+        <h2>Registration for event in <span class="registration-switch">
+          <button class="active" data-city="belgrade">Novi Sad</button>
+          <button data-city="spb">St. Petersburg</button>
+        </span></h2>
+        
+        <p class="registration-intro">
+          Choose the category that best fits your participation.
+          You will be redirected to the registration form.
+          <br><br>
+          Please note that <strong>registration is mandatory for all categories, including free participation</strong>.
+        </p>
+
+        
+        <div class="registration-grid" id="registration-grid">
+
+        <!-- Belgrade FIRST -->
+        <div class="registration-card highlight" data-city="belgrade">
+          <h3>Listener</h3> <br>
+          <h4>Early bird</h4>
+          <p>Registration until 13 May is free of charge.</p>
+          <button class="registration-btn" data-popup="registration-info">free</button>
+          <h4>Owl</h4>
+          <p>Registration after 15 May costs 400 dinars (≈ 4 eur)</p>
+          <button class="registration-btn" data-popup="registration-info">4 eur</button>
+        </div>
+
+        <div class="registration-card" data-city="belgrade">
+          <h3>Participant<br>Case track</h3>
+          <h4>Early bird</h4>
+          <p>Registration until 13 May is free of charge.</p>
+          <button class="registration-btn" data-popup="registration-info">free</button>
+          <h4>Owl</h4>
+          <p>Registration after 15 May costs 2000 dinars (≈ 17 eur).</p>
+          <button class="registration-btn" data-popup="registration-info">17 eur</button>
+        </div>
+
+        <div class="registration-card" data-city="belgrade">
+          <h3>Participant<br>Scientific track</h3>
+          <h4>Early bird</h4>
+          <p>Registration until 13 May costs 3500 dinars (≈ 30 eur).</p>
+          <button class="registration-btn" data-popup="registration-info">30 eur</button>
+          <h4>Owl</h4>
+          <p>Registration after 15 May costs 7000 dinars (≈ 60 eur).</p>
+          <button class="registration-btn" data-popup="registration-info">60 eur</button>
+        </div>
+
+
+        <!-- St. Petersburg SECOND -->
+        <div class="registration-card highlight hidden" data-city="spb">
+          <h3>Listener</h3><br>
+
+          <p>Registration will open on April 1 and remain open until June 23. Please note that although attendance is free of charge, registration is required for all participants.</p>
+          <button class="registration-btn" data-popup="registration-info-spb">free</button>
+        </div>
+
+
+        <div class="registration-card hidden" data-city="spb">
+          <h3>Participant<br>Case track</h3>
+
+          <h4>Early bird</h4>
+          <p>Registration until 13 June is free of charge.</p>
+          <button class="registration-btn" data-popup="registration-info-spb">free</button>
+
+          <h4>Owl</h4>
+          <p>Registration after 15 June costs 5,000 RUB (≈ 50 EUR)</p>
+          <button class="registration-btn" data-popup="registration-info-spb">5,000 RUB</button>
+        </div>
+
+        <div class="registration-card hidden" data-city="spb">
+          <h3>Participant<br>Scientific track</h3>
+
+          <h4>Early bird</h4>
+          <p>Registration until 31 May costs 5,000 RUB (≈ 50 EUR)</p>
+          <button class="registration-btn" data-popup="registration-info-spb">5,000 RUB</button>
+
+          <h4>Owl</h4>
+          <p>Registration after 31 May costs 7,000 RUB (≈ 70 EUR)</p>
+          <button class="registration-btn" data-popup="registration-info-spb">7,000 RUB</button>
+        </div>
+
+        <!-- Placeholder block for SPB -->
+         <!--
+        <div class="registration-card spb-placeholder hidden" data-city="spb">
+          <h3>St. Petersburg</h3><br>
+          <p>The registration fees will be announced closer to the dates.</p>
+          <button class="registration-btn disabled" disabled>coming soon</button>
+        </div>
+      -->
+
+      </div>
+
+      <!--
+      <button class="registration-main-btn">
+      Registration
+      </button>
+      -->
+      <p class="registration-note">
+        <strong>NB: Students on scientific track are liberated from paying fee</strong>
+      </p>
+    </section>
+
+    <!-- Раздел "Контактов" -->  
+    <section class="normal-section dark-background" id="contacts">
+      <div class="titles">
+        <h2 class="section-title">Contacts</h2>
+      </div>
+      <div class="contact-intro">
+        <p>If you have any doubts — feel free to contact us!</p>
+        <p><a href="mailto:contact@aims-seminar.space" class="contact-mail">contact@aims-seminar.space</a>
+        &nbsp;|&nbsp;
+        <a href="https://www.instagram.com/aims.seminar/" target="_blank" rel="noopener">
+          <i class="fab fa-instagram"></i> Instagram
+        </a>
+              
+        </p>
+      
+
+      </div>
+    </section>
+
+    <section class="normal-section light-background" id="gallery">
+      <div class="aims-gallery">
+        <figure class="frame v"><img src="7.jpg" alt="Gallery image 1"></figure>
+        <figure class="frame h"><img src="1.jpg" alt="Gallery image 2"></figure>
+        <figure class="frame h"><img src="5.jpg" alt="Gallery image 3"></figure>
+        <figure class="frame h"><img src="2.jpg" alt="Gallery image 4"></figure>
+        <figure class="frame h"><img src="4.jpg" alt="Gallery image 5"></figure>
+        <figure class="frame v"><img src="6.jpg" alt="Gallery image 6"></figure>
+      </div>
+    </section>
+
+
+    <!-- Раздел "Расписание" -->
+    <section class="normal-section dark-background" id="program">
+      <div class="titles">
+       
+        <h2 class="section-title">AIMs'26: Schedule</h2>
+        <div class="place">
+          <div class="marker">
+            <div class="pin"></div>
+            <div class="shadow"></div>
+          </div>
+          <div class="place-text">Novi Sad / Saint Petersburg</div>
+        </div>
+        <p class="subscribe-text">
+          The 2026 speakers and seminar schedule will be announced later.
+        </p>
+       <p class="note-w">
+          <!--Subscribe to our updates — we will email you as soon as the speakers and the 2026 schedule are announced.-->
+          Subscribe to our updates — we’ll notify you when registration opens and the 2026 seminar schedule is published.
+    
+        </p>
+
+        <form 
+          id="subscribe-form"
+          action="https://formspree.io/f/xgvbkzdb"
+          method="POST"
+          class="subscribe-row"
+        >
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Your e-mail" required>
+          <button type="submit">Send</button>
+        </form>
+
+        <!-- POPUP -->
+        <div id="subscribe-popup" class="popup hidden">
+          <div class="popup-content">
+            <p>Congratulations! You are successfully subscribed to newsletter.</p>
+            <span class="popup-close">&times;</span>
+          </div>
+        </div>
+    </section>
+
+    
+    
+  
+  </main>
+
+  
+
+
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
