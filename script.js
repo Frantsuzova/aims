@@ -252,38 +252,56 @@ document.addEventListener('DOMContentLoaded', setActiveMenu);
 
 // определяем язык
 
+
 document.addEventListener("DOMContentLoaded", () => {
-  const userLang = (navigator.language || navigator.userLanguage || "").slice(0, 2).toLowerCase();
-  const supportedLangs = ["ru", "en", "fr"];
-  const isRoot = location.pathname === "/" || location.pathname.endsWith("index.html");
+  const supportedLangs = ["ru", "sr", "en"];
 
-  
+  const browserLang = (navigator.language || "")
+    .slice(0, 2)
+    .toLowerCase();
 
+  const manualSwitch = sessionStorage.getItem("manualLangSwitch");
+  const currentPath = window.location.pathname;
 
-  
-  const langSwitcher = document.querySelector(".language-switcher");
-  const langLinks = langSwitcher.querySelectorAll("a");
+  const isRu = currentPath.endsWith("index.html") || currentPath === "/" || currentPath === "";
+  const isSr = currentPath.includes("index-sr");
+  const isEn = currentPath.includes("index-en");
 
-  function updateActiveLang() {
-    const currentLang = localStorage.getItem('activeLang') || document.documentElement.lang;
-    langLinks.forEach(link => {
-      link.classList.toggle("active", link.dataset.lang === currentLang);
-    });
+  // Если пользователь вручную не переключал язык
+  if (!manualSwitch && supportedLangs.includes(browserLang)) {
+
+    if (browserLang === "sr" && !isSr) {
+      window.location.replace("index-sr.html");
+      return;
+    }
+
+    if (browserLang === "en" && !isEn) {
+      window.location.replace("index-en.html");
+      return;
+    }
+
+    if (browserLang === "ru" && !isRu) {
+      window.location.replace("index.html");
+      return;
+    }
   }
 
-  updateActiveLang();
+  // Подсветка активного языка
+  const langLinks = document.querySelectorAll(".language-switcher a");
+  const currentLang = isSr ? "sr" : isEn ? "en" : "ru";
 
   langLinks.forEach(link => {
-  link.addEventListener("click", event => {
-    event.preventDefault();
-    const lang = link.dataset.lang;
-    localStorage.setItem('activeLang', lang);
-    sessionStorage.setItem('manualLangSwitch', 'true');
-    document.documentElement.lang = lang;
-    window.location.href = lang === "ru" ? "index.html" : `index-${lang}.html`;
-  });
-});
+    link.classList.toggle("active", link.dataset.lang === currentLang);
 
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      sessionStorage.setItem("manualLangSwitch", "true");
+      const lang = link.dataset.lang;
+
+      window.location.href =
+        lang === "ru" ? "index.html" : `index-${lang}.html`;
+    });
+  });
 });
 
 
@@ -460,27 +478,31 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
 document.addEventListener("DOMContentLoaded", () => {
+  const rawLang = (document.documentElement.lang || "en").toLowerCase();
+  const lang = rawLang.split("-")[0]; // "sr-Latn" -> "sr"
+
+  const labels = {
+    en: { more: "…show more", hide: "hide" },
+    ru: { more: "…показать больше", hide: "скрыть" },
+    sr: { more: "…prikaži više", hide: "prikaži manje" },
+  };
+
   document.querySelectorAll(".dates-timeline").forEach((tl) => {
     const items = [...tl.querySelectorAll(".timeline-item")];
 
     const start = items.findIndex((i) => i.dataset.key === "peer_review");
     const end = items.findIndex((i) => i.dataset.key === "schedule_live");
-
     if (start === -1 || end === -1 || end < start) return;
 
     const collapsed = document.createElement("div");
     collapsed.className = "timeline-collapsed";
     tl.insertBefore(collapsed, items[start]);
 
-    for (let i = start; i <= end; i++) {
-      collapsed.appendChild(items[i]);
-    }
+    for (let i = start; i <= end; i++) collapsed.appendChild(items[i]);
 
-    // ✅ labels come from HTML (per-language page)
-    const labelMore = tl.dataset.moreLabel || "…show more";
-    const labelHide = tl.dataset.hideLabel || "hide";
+    const labelMore = tl.dataset.moreLabel || labels[lang]?.more || labels.en.more;
+    const labelHide = tl.dataset.hideLabel || labels[lang]?.hide || labels.en.hide;
 
     const btn = document.createElement("button");
     btn.className = "timeline-toggle";
@@ -489,17 +511,12 @@ document.addEventListener("DOMContentLoaded", () => {
     tl.insertBefore(btn, collapsed);
 
     let open = false;
-
     btn.addEventListener("click", () => {
       open = !open;
 
       if (open) {
         collapsed.classList.add("open");
-
-        requestAnimationFrame(() => {
-          collapsed.style.maxHeight = collapsed.scrollHeight + "px";
-        });
-
+        requestAnimationFrame(() => (collapsed.style.maxHeight = collapsed.scrollHeight + "px"));
         btn.textContent = labelHide;
         btn.classList.add("open");
       } else {
@@ -511,7 +528,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
 
 // === SUBSCRIBE FORM ===
 document.addEventListener("DOMContentLoaded", () => {
@@ -551,4 +567,53 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+  
 
+
+// === Deadline slide-tab (final) ===
+document.addEventListener("DOMContentLoaded", () => {
+  const tab = document.getElementById("deadlineTab");
+  const toggle = document.getElementById("deadlineTabToggle");
+  if (!tab || !toggle) return;
+
+  const KEY = "aims_deadline_tab_state";        // "open" | "collapsed"
+  const FIRST_KEY = "aims_deadline_tab_seen";   // "1" если уже показывали авто-выезд
+
+  function setState(state) {
+    const open = state === "open";
+    tab.classList.toggle("is-open", open);
+    tab.classList.toggle("is-collapsed", !open);
+    toggle.setAttribute("aria-expanded", String(open));
+    localStorage.setItem(KEY, state);
+  }
+
+  // toggle (одна кнопка и для свернуть, и для развернуть)
+  toggle.addEventListener("click", () => {
+    const isOpen = tab.classList.contains("is-open");
+    setState(isOpen ? "collapsed" : "open");
+  });
+
+  // 1) если пользователь уже выбирал состояние — уважаем
+  const saved = localStorage.getItem(KEY);
+  if (saved === "open" || saved === "collapsed") {
+    setState(saved);
+    return;
+  }
+
+  // 2) первый заход: показать авто-выезд ОДИН раз
+  // стартуем свернутыми без анимации, потом плавно открываем и оставляем открытым,
+  // пока пользователь сам не свернет.
+  tab.style.transition = "none";
+  setState("collapsed");
+  void tab.offsetHeight; // reflow
+  tab.style.transition = "";
+
+  const alreadySeen = localStorage.getItem(FIRST_KEY) === "1";
+  if (!alreadySeen) {
+    localStorage.setItem(FIRST_KEY, "1");
+    setTimeout(() => setState("open"), 450);
+  } else {
+    // если уже видели авто-выезд, оставим свернутым по умолчанию
+    setState("collapsed");
+  }
+});

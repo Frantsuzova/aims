@@ -416,9 +416,14 @@ a:hover {
 
 /* Hidden checkbox toggle */
 #burger-toggle {
-  position: absolute;
+  position: fixed;
+  top: -100px;
+  left: -100px;
+  width: 1px;
+  height: 1px;
   appearance: none;
   opacity: 0;
+  pointer-events: none;
 }
 
 /* Overlay bubble that expands to cover screen */
@@ -616,10 +621,7 @@ a:hover {
   transform: translateX(0);
 }
 
-#burger-toggle:checked ~ main {
-  opacity: 0;
-  pointer-events: none;
-}
+
 
 /* Burger icon morph */
 #burger-toggle:checked ~ .burger-menu .line:nth-child(1) {
@@ -2036,7 +2038,7 @@ a:hover {
 }
 
 .note {
-  margin-top: 2rem;
+  margin-top: 1rem;
   text-align: center;
   font-size: 0.9rem;
   color: #333;
@@ -3321,6 +3323,7 @@ a:hover {
   color: #eee;
 }
 
+
 /* Desktop: in one row */
 .subscribe-row {
   display: flex;
@@ -3479,3 +3482,138 @@ a:hover {
 }
 
 
+
+
+/* ===============================
+   Deadline slide-tab (final)
+   =============================== */
+
+.deadline-tab{
+  --y: 85vh;          /* позиция по вертикали */
+  --w: 340px;         /* ширина открытой плашки */
+  --peek: calc(var(--toggle) + 18px);       /* сколько видно в свернутом виде */
+  --toggle: 44px;     /* размер кнопки */
+
+  position: fixed;
+  right: 0;
+  top: var(--y);
+  transform: translateY(-50%) translateX(0);
+  width: var(--w);
+
+  z-index: 1001;      /* выше контента и правого меню */
+  pointer-events: auto;
+
+  /* 1) “в разы плавнее” */
+  transition: transform 2600ms cubic-bezier(.22,1,.36,1);
+}
+
+/* collapsed: почти всё уезжает вправо, остаётся только левый "язычок" */
+.deadline-tab.is-collapsed{
+  transform: translateY(-50%) translateX(calc(var(--w) - var(--peek)));
+}
+
+/* open: полностью видно */
+.deadline-tab.is-open{
+  transform: translateY(-50%) translateX(0);
+}
+
+/* панель */
+.deadline-tab-panel{
+  position: relative;
+  width: 100%;
+  padding: 14px 14px 12px 14px;
+
+  background: linear-gradient(90deg, rgba(0,180,219,0.95), rgba(0,131,176,0.95));
+  color: #fff;
+
+  border: 1px solid rgba(255,255,255,0.20);
+  border-right: none;
+  border-radius: 16px 0 0 16px;
+  box-shadow: 0 18px 55px rgba(0,0,0,0.35);
+}
+
+/* 2) ОДНА кнопка-стрелка.
+   Важно: она ВСЕГДА слева внутри плашки,
+   чтобы быть кликабельной и в свернутом виде (видим именно левый край). */
+.deadline-tab-toggle{
+  position: absolute;
+  left: 8px;                  /* <- ключ к кликабельности после сворачивания */
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: var(--toggle);
+  height: var(--toggle);
+
+  border: 0;
+  cursor: pointer;
+
+  display: grid;
+  place-items: center;
+
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 999px;
+}
+
+/* стрелка */
+.deadline-tab-chevron{
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid rgba(255,255,255,0.95);
+  border-bottom: 2px solid rgba(255,255,255,0.95);
+  transform: rotate(135deg);          /* свернуто: "развернуть" (влево) */
+  transition: transform 250ms ease;
+}
+
+/* открыто: стрелка “свернуть” (вправо) */
+.deadline-tab.is-open .deadline-tab-chevron{
+  transform: rotate(-45deg);
+}
+
+/* текст */
+.deadline-tab-title{
+  font-family: Montserrat, sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 1.25;
+  margin-bottom: 6px;
+
+  padding-left: 56px; /* место под кнопку слева */
+}
+
+.deadline-tab-text{
+  font-family: Montserrat, sans-serif;
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: rgba(255,255,255,0.92);
+  margin-bottom: 10px;
+
+  padding-left: 56px;
+}
+
+.deadline-tab-btn{
+  display: inline-block;
+  margin-left: 56px;
+
+  padding: 9px 12px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 13px;
+}
+.deadline-tab-btn:hover{
+  background: rgba(255,255,255,0.26);
+}
+
+/* mobile */
+@media (max-width: 768px){
+  .deadline-tab{
+    --w: 300px;
+    --y: 85vh;
+  }
+  
+   
+}
