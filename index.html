@@ -133,15 +133,17 @@
       <p>
         Семинар в Санкт-Петербурге состоится <strong>24 июня 2026 года</strong>.<br><br>
 
+        <!--
         Ранняя регистрация для докладчиков и слушателей откроется
         <strong>1 апреля 2026 года</strong>.<br><br>
-
+    
         Стандартная регистрация для докладчиков откроется
-        <strong>5 июня 2026 года</strong>.<br><br>
-
-        Информация о регистрации слушателей будет объявлена позднее.<br><br>
-
-        <a href="#subscribe-form">Подпишитесь на обновления.</a>
+        <strong>5 июня 2026 года</strong>.-->
+        
+        
+        В настоящее время открыта ранняя регистрация для докладчиков. Стандартная откроется после её завершения.<br><br>
+        
+        <a href="#subscribe-form">Вы можете подписаться на обновления.</a>
       </p>
       </div>
     </div>
@@ -244,10 +246,13 @@
               <div class="date-bubble">21.04</div>
               <div class="timeline-text">Результаты рецензирования (научная секция)</div>
             </div>
-            
+            <div class="timeline-item" data-key="regular_reg">
+              <div class="date-bubble">31.05</div>
+              <div class="timeline-text">Начало общей регистрации (науч.секция)</div>
+            </div>
             <div class="timeline-item" data-key="regular_reg">
               <div class="date-bubble">05.06</div>
-              <div class="timeline-text">Начало общей регистрации</div>
+              <div class="timeline-text">Начало общей регистрации (прикл.секция)</div>
             </div>
             <div class="timeline-item" data-key="close_case">
               <div class="date-bubble">10.06</div>
@@ -258,7 +263,7 @@
               <div class="timeline-text">Программа семинара</div>
             </div>
             <div class="timeline-item" data-key="close_listener">
-              <div class="date-bubble">20.06</div>
+              <div class="date-bubble">23.06</div>
               <div class="timeline-text">Окончание регистрации слушателей</div>
             </div>
             <div class="timeline-item" data-key="seminar">
@@ -646,6 +651,7 @@
              главный редактор журнала "Культура и цивилизация", Россия
             </p>
           </div>
+         
           <div class="committee-member no-photo">
             <p class="committee-name">Ирина Мамонова</p>
             <p class="committee-info">
@@ -725,7 +731,16 @@
 
           <p>Регистрация откроется 1 апреля и продлится до 23 июня. 
             Обращаем внимание, что участие является бесплатным, однако регистрация обязательна.</p>
+          <button 
+            class="registration-btn" 
+            type="button"
+            onclick="window.open('https://aim-seminar.timepad.ru/event/3881547/#register', '_blank')"
+          >
+            Бесплатно
+          </button>
+          <!--
           <button class="registration-btn" data-popup="registration-info-spb">Бесплатно</button>
+          -->
         </div>
 
 
@@ -733,11 +748,20 @@
           <h3>Докладчик<br>Прикладная секция</h3>
 
           <h4>Ранняя регистрация</h4>
-          <p>Регистрация до 13 июня бесплатна.</p>
+          <p>Регистрация до 5 июня бесплатна.</p>
+          <button 
+            class="registration-btn" 
+            type="button"
+            onclick="window.open('https://forms.gle/tdHF4rs7KKJ9XLDr8', '_blank')"
+          >
+            Бесплатно
+          </button>
+          <!--
           <button class="registration-btn" data-popup="registration-info-spb">Бесплатно</button>
+           -->
 
           <h4>Стандартная регистрация</h4>
-          <p>Регистрация после 15 июня стоит 5000 рублей (≈ 50 евро).</p>
+          <p>Регистрация после 5 июня стоит 5000 рублей (≈ 50 евро).</p>
           <button class="registration-btn" data-popup="registration-info-spb">5,000 рублей</button>
         </div>
 
@@ -746,7 +770,16 @@
 
           <h4>Ранняя регистрация</h4>
           <p>Регистрация до 31 мая стоит 5000 рублей (≈ 50 евро).</p>
+          <button 
+            class="registration-btn" 
+            type="button"
+            onclick="window.open('https://forms.gle/5jQF1zycusL3sZuo8', '_blank')"
+          >
+            5,000 рублей
+          </button>
+          <!--
           <button class="registration-btn" data-popup="registration-info-spb">5,000 рублей</button>
+          -->
 
           <h4>Стандартная регистрация</h4>
           <p>Регистрация после 31 мая стоит 7000 рублей (≈ 70 евро).</p>

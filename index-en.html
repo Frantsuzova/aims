@@ -132,7 +132,7 @@
           <span class="popup-close">&times;</span>
           <p>
             The seminar in Saint Petersburg will take place on <strong>24 June 2026</strong>.<br><br>
-
+            <!--
             Early registration for participants and listeners will open on
             <strong>01 April 2026</strong>.<br><br>
 
@@ -140,6 +140,9 @@
             <strong>05 June 2026</strong>.<br><br>
 
             Listener registration details will be announced later.<br><br>
+            -->
+            Early registration for speakers is currently open.
+            Regular registration will open after it closes. <br><br>
 
             <a href="#subscribe-form">Stay tuned for updates.</a>
           </p>
@@ -244,11 +247,15 @@
               <div class="date-bubble">21 Apr</div>
               <div class="timeline-text">Peer-review results (Scientific Track)</div>
             </div>
-            
             <div class="timeline-item" data-key="regular_reg">
-              <div class="date-bubble">5 Jun</div>
-              <div class="timeline-text">Regular registration opens for participants</div>
+              <div class="date-bubble">31 May</div>
+              <div class="timeline-text">Regular registration opens Scientific Track</div>
             </div>
+            <div class="timeline-item" data-key="regular_reg">
+              <div class="date-bubble">05 Jun</div>
+              <div class="timeline-text">Regular registration opens Case Track</div>
+            </div>
+          
             <div class="timeline-item" data-key="close_case">
               <div class="date-bubble">10 Jun</div>
               <div class="timeline-text">Case Track submission closes</div>
@@ -258,7 +265,7 @@
               <div class="timeline-text">Seminar programme; Regular registration opens for listeners</div>
             </div>
             <div class="timeline-item" data-key="close_listener">
-              <div class="date-bubble">20 Jun</div>
+              <div class="date-bubble">23 Jun</div>
               <div class="timeline-text">Listener registration closes</div>
             </div>
             <div class="timeline-item" data-key="seminar">
@@ -713,7 +720,13 @@
           <h3>Listener</h3><br>
 
           <p>Registration will open on April 1 and remain open until June 23. Please note that although attendance is free of charge, registration is required for all participants.</p>
-          <button class="registration-btn" data-popup="registration-info-spb">free</button>
+          <button 
+            class="registration-btn" 
+            type="button"
+            onclick="window.open('https://aim-seminar.timepad.ru/event/3881547/#register', '_blank')"
+          >
+          free
+          </button>
         </div>
 
 
@@ -721,11 +734,15 @@
           <h3>Participant<br>Case track</h3>
 
           <h4>Early bird</h4>
-          <p>Registration until 13 June is free of charge.</p>
-          <button class="registration-btn" data-popup="registration-info-spb">free</button>
+          <p>Registration until 5 June is free of charge.</p>
+          <button 
+            class="registration-btn" 
+            type="button"
+            onclick="window.open('https://forms.gle/tdHF4rs7KKJ9XLDr8', '_blank')"
+          >free</button>
 
           <h4>Owl</h4>
-          <p>Registration after 15 June costs 5,000 RUB (≈ 50 EUR)</p>
+          <p>Registration after 5 June costs 5,000 RUB (≈ 50 EUR)</p>
           <button class="registration-btn" data-popup="registration-info-spb">5,000 RUB</button>
         </div>
 
@@ -734,7 +751,11 @@
 
           <h4>Early bird</h4>
           <p>Registration until 31 May costs 5,000 RUB (≈ 50 EUR)</p>
-          <button class="registration-btn" data-popup="registration-info-spb">5,000 RUB</button>
+          <button 
+            class="registration-btn" 
+            type="button"
+            onclick="window.open('https://forms.gle/5jQF1zycusL3sZuo8', '_blank')"
+          >5,000 RUB</button>
 
           <h4>Owl</h4>
           <p>Registration after 31 May costs 7,000 RUB (≈ 70 EUR)</p>

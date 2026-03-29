@@ -129,7 +129,7 @@
         <span class="popup-close">&times;</span>
         <p>
           Seminar u Sankt Peterburgu održaće se <strong>24. juna 2026. godine</strong>.<br><br>
-
+          <!--
           Ranoranilac (rana registracija) za govornike i slušaoce otvara se
           <strong>1. aprila 2026. godine</strong>.<br><br>
 
@@ -137,6 +137,12 @@
           <strong>5. juna 2026. godine</strong>.<br><br>
 
           Informacije o registraciji slušalaca biće objavljene naknadno.<br><br>
+          -->
+
+          Rana registracija za govornike je trenutno otvorena.
+          Standardna registracija će biti otvorena nakon njenog završetka.
+
+          <br><br>
 
           <a href="#subscribe-form">Prijavite se za novosti.</a>
         </p>
@@ -243,10 +249,14 @@
               <div class="date-bubble">21.04</div>
               <div class="timeline-text">Rezultati recenzije (naučni segment)</div>
             </div>
+            <div class="timeline-item" data-key="regular_reg">
+              <div class="date-bubble">31.05</div>
+              <div class="timeline-text">Otvara se redovna registracija (Naučni segment)</div>
+            </div>
             
             <div class="timeline-item" data-key="regular_reg">
               <div class="date-bubble">05.06</div>
-              <div class="timeline-text">Otvara se redovna registracija</div>
+              <div class="timeline-text">Otvara se redovna registracija (Primenjeni segment)</div>
             </div>
             <div class="timeline-item" data-key="close_case">
               <div class="date-bubble">10.06</div>
@@ -257,7 +267,7 @@
               <div class="timeline-text">Program seminara</div>
             </div>
             <div class="timeline-item" data-key="close_listener">
-              <div class="date-bubble">20.06</div>
+              <div class="date-bubble">23.06</div>
               <div class="timeline-text">Rok za prijavu slušalaca</div>
             </div>
             <div class="timeline-item" data-key="seminar">
@@ -762,18 +772,26 @@
 
           <p>Registracija se otvara 1. aprila i traje do 23. juna.
             Imajte u vidu da je učešće besplatno, ali je registracija obavezna.</p>
-          <button class="registration-btn" data-popup="registration-info-spb">Besplatno</button>
+          <button 
+            class="registration-btn" 
+            type="button"
+            onclick="window.open('https://aim-seminar.timepad.ru/event/3881547/#register', '_blank')"
+          >Besplatno</button>
         </div>
 
         <div class="registration-card hidden" data-city="spb">
           <h3>Govornik<br>Primenjeni segment</h3>
 
           <h4>Rana registracija</h4>
-          <p>Registracija do 13. juna je besplatna.</p>
-          <button class="registration-btn" data-popup="registration-info-spb">Besplatno</button>
+          <p>Registracija do 5. juna je besplatna.</p>
+         <button 
+            class="registration-btn" 
+            type="button"
+            onclick="window.open('https://forms.gle/tdHF4rs7KKJ9XLDr8', '_blank')"
+          >Besplatno</button>
 
           <h4>Standardna registracija</h4>
-          <p>Registracija nakon 15. juna iznosi 5.000 rubalja (≈ 50 eur).</p>
+          <p>Registracija nakon 5. juna iznosi 5.000 rubalja (≈ 50 eur).</p>
           <button class="registration-btn" data-popup="registration-info-spb">5.000 rubalja</button>
         </div>
 
@@ -782,7 +800,11 @@
 
           <h4>Rana registracija</h4>
           <p>Registracija do 31. maja iznosi 5.000 rubalja (≈ 50 eur).</p>
-          <button class="registration-btn" data-popup="registration-info-spb">5.000 rubalja</button>
+          <button 
+            class="registration-btn" 
+            type="button"
+            onclick="window.open('https://forms.gle/5jQF1zycusL3sZuo8', '_blank')"
+          >5.000 rubalja</button>
 
           <h4>Standardna registracija</h4>
           <p>Registracija nakon 31. maja iznosi 7.000 rubalja (≈ 70 eur).</p>
