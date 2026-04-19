@@ -18,7 +18,8 @@
 <body class="page">
 
   <!--всплывающая инфа-->
- 
+ <!--попап про продление-->
+  <!--
   <aside class="deadline-tab is-collapsed" id="deadlineTab" aria-label="Обновление дедлайна">
     <div class="deadline-tab-panel" role="dialog" aria-modal="false">
       <button
@@ -36,7 +37,7 @@
       <a class="deadline-tab-btn" href="#proceedings">Подробнее о треке</a>
     </div>
   </aside>
- 
+-->
   
 
     
@@ -118,12 +119,17 @@
         <p>
           Семинар в Нови-Саде состоится <strong>18–19 мая 2026 года</strong>.<br><br>
 
+          <!--
+
           Ранняя регистрация для докладчиков и слушателей откроется
           <strong>21 апреля 2026 года</strong>.<br><br>
 
           Стандартная регистрация откроется <strong>3 мая 2026 года</strong>.<br><br>
 
           <a href="#subscribe-form">Подпишитесь на обновления.</a>
+        -->
+          В настоящее время открыта ранняя регистрация. Стандартная откроется после её завершения.<br><br>
+          <a href="#subscribe-form">Вы можете подписаться на обновления.</a>
         </p>
       </div>
     </div>
@@ -698,7 +704,16 @@
           <h3>Слушатель<br><br></h3>
           <h4>Ранняя регистрация</h4>
           <p>Регистрация до 13 мая бесплатна.<br><br></p>
+          <button 
+            class="registration-btn" 
+            type="button"
+            onclick="window.open('https://forms.gle/AY5eg2kJLToXXEvf8', '_blank')"
+          >
+            Бесплатно
+          </button>
+          <!--
           <button class="registration-btn" data-popup="registration-info">Бесплатно</button>
+          -->
           <h4>Стандартная регистрация</h4>
           <p>Регистрация после 15 мая стоит 400 динар (≈ 4 евро).</p>
           <button class="registration-btn" data-popup="registration-info">4 евро</button>
@@ -708,7 +723,17 @@
           <h3>Докладчик<br>Прикладная секция</h3>
           <h4>Ранняя регистрация</h4>
           <p>Регистрация до 13 мая бесплатна.<br><br></p>
+          
+          <button 
+            class="registration-btn" 
+            type="button"
+            onclick="window.open('https://forms.gle/nqBe5z6sBnShzqgWA', '_blank')"
+          >
+            Бесплатно
+          </button>
+          <!--
           <button class="registration-btn" data-popup="registration-info">Бесплатно</button>
+          -->
           <h4>Стандартная регистрация</h4>
           <p>Регистрация после 15 мая стоит 2000 динар (≈ 17 евро).</p>
           <button class="registration-btn" data-popup="registration-info">17 евро</button>
@@ -718,7 +743,16 @@
           <h3>Докладчик<br>Научная секция</h3>
           <h4>Ранняя регистрация</h4>
           <p>Регистрация до 13 мая стоит 3500 динар (≈ 30 евро).</p>
+          <button 
+            class="registration-btn" 
+            type="button"
+            onclick="window.open('https://forms.gle/UHD2jm7XwJi9JCZj9', '_blank')"
+          >
+            30 евро
+          </button>
+          <!--
           <button class="registration-btn" data-popup="registration-info">30 евро</button>
+          -->
           <h4>Стандартная регистрация</h4>
           <p>Регистрация после 15 мая стоит 7000 динар (≈ 60 евро).</p>
           <button class="registration-btn" data-popup="registration-info">60 евро</button>
