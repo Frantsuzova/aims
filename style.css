@@ -3617,3 +3617,16 @@ a:hover {
   
    
 }
+
+.deadline-tab.exhibition-tab .deadline-tab-panel {
+  background: linear-gradient(
+    90deg,
+    rgba(58, 50, 97, 0.96),
+    rgba(1, 77, 94, 0.96)
+  );
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.42);
+}
+
+.deadline-tab.exhibition-tab .deadline-tab-btn:hover {
+  background: rgba(0, 180, 219, 0.32);
+}
