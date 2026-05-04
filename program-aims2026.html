@@ -1,0 +1,2328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AIMs 2026 | Interactive Digital Booklet</title>
+<style>
+:root {
+  --red:#d71920;
+  --ink:#070707;
+  --paper:#f4f2ea;
+  --paper2:#fbfaf5;
+  --muted:#716f68;
+  --fold:rgba(0,0,0,.13);
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:#cfcfca;color:var(--ink)}
+body{overflow:hidden}
+button{font:inherit;color:inherit}
+.stage{
+  width:100vw;height:100vh;padding:clamp(10px,2vw,26px);
+  display:grid;place-items:center;
+  background:radial-gradient(circle at 50% 25%,#f1f1ed 0,#c6c5bf 78%);
+}
+.booklet{
+  position:relative;
+  width:min(1600px,calc(100vw - clamp(20px,4vw,52px)));
+  height:min(880px,calc(100vh - clamp(20px,4vw,52px)));
+  min-height:660px;
+  background:var(--paper);
+  display:grid;
+  grid-template-columns:.92fr 1.02fr 1.08fr 1.08fr;
+  grid-template-rows:1fr 1fr;
+  overflow:hidden;
+  box-shadow:0 26px 70px rgba(0,0,0,.28);
+  border:1px solid #b8b5ad;
+}
+.booklet::before{
+  content:"";position:absolute;inset:0;z-index:4;pointer-events:none;
+  background-image:radial-gradient(rgba(0,0,0,.28) .8px,transparent 1px);
+  background-size:7px 7px;opacity:.105;mix-blend-mode:multiply;
+}
+.booklet::after{
+  content:"";position:absolute;inset:0;z-index:5;pointer-events:none;
+  background:
+    linear-gradient(90deg, transparent 24.75%,var(--fold) 25%,transparent 25.45%,
+      transparent 49.75%,rgba(0,0,0,.16) 50%,transparent 50.45%,
+      transparent 74.75%,var(--fold) 75%,transparent 75.45%);
+}
+.panel{
+  position:relative;overflow:hidden;padding:clamp(22px,2.3vw,38px);
+  border-right:1px solid rgba(0,0,0,.17);
+  border-bottom:1px solid rgba(0,0,0,.15);
+  background:var(--paper2);
+}
+.panel>*{position:relative;z-index:2}
+.dark{background:#050505;color:#f7f5ee}
+.canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
+.kicker{
+  font-weight:950;font-size:clamp(10px,.82vw,13px);
+  letter-spacing:.28em;text-transform:uppercase;color:var(--red);
+  margin-bottom:clamp(10px,1.4vw,20px);
+}
+.rule{display:inline-block;width:48px;height:5px;background:var(--red);vertical-align:middle;margin-left:10px}
+.title{
+  margin:0;
+  font-family:"Arial Black",Arial,sans-serif;font-weight:950;
+  font-size:clamp(40px,3.25vw,64px);
+  line-height:.9;letter-spacing:-.065em;text-transform:uppercase;
+}
+.title.sm{font-size:clamp(31px,2.75vw,52px)}
+.title.xs{font-size:clamp(23px,2.1vw,40px);line-height:.92}
+.meta{font-weight:950;text-transform:uppercase;font-size:clamp(11px,.9vw,14px);line-height:1.1}
+.red{color:var(--red)}
+p{margin:0 0 9px;font-weight:800;font-size:clamp(11px,.9vw,14px);line-height:1.24}
+.tiny{font-weight:950;font-size:10px;line-height:1.15;text-transform:uppercase;letter-spacing:.06em}
+.cover{grid-row:1/3;background:#fff}
+.cover .title{font-size:clamp(32px,2.72vw,50px);max-width:96%;letter-spacing:-.072em}
+.cover .date{
+  margin:clamp(14px,2vw,24px) 0 8px;
+  color:var(--red);
+  font-family:"Arial Black",Arial,sans-serif;font-size:clamp(38px,3.45vw,64px);
+  line-height:.78;letter-spacing:-.075em;
+}
+.cover .tagline{margin-top:8px;max-width:220px}
+.squareBox{
+  position:absolute;left:clamp(26px,2.4vw,40px);right:clamp(26px,2.4vw,40px);bottom:clamp(50px,5.3vh,78px);
+  height:31%;min-height:165px;border:1px solid #ddd;background:#f5f5f2;overflow:hidden;
+}
+.coverMiniLogos{
+  position:absolute;left:clamp(28px,2.5vw,42px);bottom:clamp(18px,2.2vh,30px);
+  display:flex;align-items:flex-end;gap:22px;color:#111;
+}
+.coverMiniLogos .aims{font-family:Georgia,serif;font-size:30px;line-height:.8}
+.coverMiniLogos .c2{font-weight:950;font-size:11px;line-height:.9;text-transform:lowercase}
+.program{grid-column:2;grid-row:1/3;background:#f8f7f2}
+.day{display:grid;grid-template-columns:74px 1fr;gap:8px 14px;margin:12px 0 17px;padding-top:12px;border-top:3px solid #111}
+.day h3{grid-column:1/-1;margin:0 0 2px;font-family:"Arial Black",Arial,sans-serif;font-size:clamp(17px,1.28vw,22px);line-height:.9;text-transform:uppercase;display:flex;justify-content:space-between;gap:12px}
+.time,.item{font-weight:950;font-size:clamp(10px,.78vw,12px);text-transform:uppercase}
+.item{border-bottom:1px solid #c9c4bb;padding-bottom:3px}
+.programNote{position:absolute;left:clamp(22px,2.3vw,38px);right:clamp(22px,2.3vw,38px);bottom:clamp(22px,2.3vw,38px)}
+
+.expect{grid-column:3;grid-row:1;background:#fff}
+.expectList{display:grid;gap:clamp(10px,1.7vh,18px);margin-top:clamp(14px,2.6vh,28px)}
+.expectItem{display:grid;grid-template-columns:48px 1fr;align-items:start;gap:12px}
+.expectItem::before{content:"";width:48px;height:5px;background:var(--red);margin-top:.6em}
+.expectItem span{font-family:"Arial Black",Arial,sans-serif;font-size:clamp(16px,1.42vw,27px);line-height:.96;letter-spacing:-.04em;text-transform:uppercase}
+
+.installation{grid-column:4;grid-row:1;cursor:pointer}
+.installation .title{margin-top:clamp(26px,5.8vh,58px);text-shadow:none;color:#050505}
+.installation .releaseText{position:absolute;left:clamp(24px,2.3vw,38px);right:clamp(22px,2.3vw,38px);bottom:clamp(14px,1.6vw,24px);background:linear-gradient(90deg,rgba(191,200,196,.95),rgba(191,200,196,.68),transparent);padding:8px 8px 0 0;text-shadow:none;color:#050505}
+.installation::after{content:none}
+
+.exhibition{grid-column:3;grid-row:2;cursor:pointer}
+.exhibition .title{margin-top:clamp(42px,9vh,92px);text-shadow:0 0 14px rgba(0,0,0,.95)}
+.exhibition .releaseText{position:absolute;left:clamp(24px,2.3vw,38px);right:clamp(24px,2.3vw,38px);bottom:clamp(20px,2.3vw,38px);background:linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.38),transparent);padding:8px 8px 0 0;text-shadow:0 0 10px rgba(0,0,0,.98)}
+.exhibition::after{content:none}
+.photoFrame{display:none}.photoFrame.f2{right:10%;top:26%;width:18%;height:21%}
+
+.venue{grid-column:4;grid-row:2;background:#fff}
+.venue .placeTop{position:absolute;left:clamp(26px,2.4vw,40px);right:clamp(26px,2.4vw,40px);top:clamp(24px,2.4vw,38px)}
+.venue .city{font-family:"Arial Black",Arial,sans-serif;font-size:clamp(40px,3.4vw,62px);line-height:.9;letter-spacing:-.06em;text-transform:uppercase;margin:18px 0 18px}
+.venue .loc{font-family:"Arial Black",Arial,sans-serif;font-size:clamp(20px,1.8vw,34px);line-height:.9;letter-spacing:-.045em;text-transform:uppercase;margin-bottom:6px}
+.logoStrip{
+  position:absolute;left:clamp(20px,1.9vw,32px);right:clamp(20px,1.9vw,32px);bottom:clamp(22px,2.5vh,34px);
+  height:clamp(44px,5.8vh,62px);background:#0b0b0b;overflow:hidden;border:1px solid #222;
+  display:flex;align-items:center;justify-content:center;padding:6px 20px;
+}
+.logoRow{display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.25vw,18px);width:100%;height:100%}
+.logoRow img{max-height:100%;max-width:23%;object-fit:contain;filter:grayscale(1) contrast(1.15) brightness(1.12)}
+.logoFallback{color:#fff;font-family:Georgia,serif;font-size:22px;letter-spacing:.12em;opacity:.9}
+.footer{position:absolute;left:clamp(26px,2.4vw,40px);right:clamp(26px,2.4vw,40px);bottom:clamp(18px,2.3vh,30px)}
+
+.tab{position:absolute;top:0;bottom:0;width:20px;background:var(--red);z-index:6;opacity:.96;mix-blend-mode:multiply}
+.tab.t1{left:24.15%} .tab.t2{left:74.9%}
+
+.releaseModal{
+  position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:100;
+  display:none;align-items:center;justify-content:center;padding:24px;
+}
+.releaseModal.open{display:flex}
+.modalCard{
+  width:min(760px,calc(100vw - 40px));max-height:min(760px,calc(100vh - 40px));
+  overflow:auto;background:#f8f6ee;color:#080808;border:2px solid #111;
+  box-shadow:18px 18px 0 rgba(215,25,32,.85);padding:34px 38px;
+}
+.modalCard h2{font-family:"Arial Black",Arial,sans-serif;font-size:44px;line-height:.9;letter-spacing:-.06em;text-transform:uppercase;margin:0 0 18px}
+.modalCard p{font-size:15px;line-height:1.45;font-weight:650;text-transform:none;white-space:pre-line}
+.closeBtn{
+  position:sticky;top:0;float:right;margin:-16px -16px 12px 16px;
+  border:0;background:#050505;color:#fff;padding:10px 13px;cursor:pointer;
+  font-weight:950;text-transform:uppercase;letter-spacing:.1em;
+}
+.clickHint{font-weight:950;letter-spacing:.16em;text-transform:uppercase;color:#bbb;font-size:11px;margin-top:8px}
+.projectMeta{font-weight:950;text-transform:uppercase;color:var(--red);font-size:clamp(11px,.9vw,14px);line-height:1.08;margin-top:8px}
+
+.mobilePager{display:none}
+
+@media(max-width:1100px){
+  body{overflow:auto}
+  .stage{height:auto;min-height:100vh;padding:0;background:#d3d2cc;display:block}
+  .booklet{
+    width:100%;height:auto;min-height:0;display:block;border:0;box-shadow:none;background:#d3d2cc;overflow:visible;
+  }
+  .booklet::before,.booklet::after,.tab{display:none}
+  .panel{
+    min-height:100svh;border:0;border-bottom:1px solid #bcb7ad;padding:32px 24px;
+    display:block;
+  }
+  .expect{min-height:auto;padding-bottom:46px}
+  .expectList{margin-top:24px;gap:18px}
+  .venue{min-height:auto;padding-bottom:36px}
+  .cover .title{font-size:clamp(38px,12vw,70px)}
+  .cover .date{font-size:clamp(48px,14vw,86px)}
+  .squareBox{left:24px;right:24px;bottom:76px;height:30%;min-height:190px}
+  .programNote{position:relative;left:auto;right:auto;bottom:auto;margin-top:22px}
+  .day{grid-template-columns:62px 1fr}
+  .time,.item{font-size:12px}
+  .expectList{gap:26px;margin-top:36px}
+  .expectItem span{font-size:clamp(24px,7.4vw,42px)}
+  .installation .title,.exhibition .title{margin-top:16vh;font-size:clamp(44px,14vw,78px)}
+  .installation .releaseText,.exhibition .releaseText{position:absolute;left:clamp(24px,2.3vw,38px);right:clamp(24px,2.3vw,38px);bottom:clamp(20px,2.3vw,38px);background:linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.38),transparent);padding:8px 8px 0 0;text-shadow:0 0 10px rgba(0,0,0,.98)}
+  .venue .placeTop,.footer{position:relative;left:auto;right:auto;top:auto;bottom:auto}
+  .venue .city{font-size:clamp(48px,15vw,88px)}
+  .venue .loc{font-size:clamp(24px,8vw,44px)}
+  .logoStrip{position:relative;left:auto;right:auto;bottom:auto;margin:26px 0 0;height:58px}
+  .mobilePager{display:none!important}
+}
+
+.mobileHint{display:none}
+@media(max-width:1100px){
+  .mobileHint{
+    display:block;position:fixed;right:12px;bottom:12px;z-index:90;
+    background:#050505;color:#fff;padding:8px 10px;
+    font-weight:950;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  }
+}
+
+.mobileHint{display:none}
+@media(max-width:1100px){
+  .mobileHint{
+    display:block;position:fixed;right:12px;bottom:12px;z-index:90;
+    background:#050505;color:#fff;padding:8px 10px;
+    font-weight:950;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  }
+  .expect{min-height:auto;padding-bottom:46px}
+  .expectList{margin-top:24px;gap:18px}
+}
+
+/* v15 overrides */
+.booklet{grid-template-columns:.92fr 1.02fr 1.08fr 1.08fr!important}
+.tab.t1,.tab.t2{display:none!important}
+.program{border-left:18px solid var(--red);padding-left:clamp(22px,2.3vw,38px)!important}
+.exhibition{grid-column:3!important;grid-row:1/3!important;min-height:100%!important;padding-right:clamp(22px,2.3vw,38px)!important}
+.installation{grid-column:4!important;grid-row:1!important;min-height:0!important}
+.venue{grid-column:4!important;grid-row:2!important}
+.exhibition .title{margin-top:clamp(86px,18vh,160px)!important}
+.exhibition .releaseText{bottom:clamp(26px,3vh,44px)!important}
+.installation .title{margin-top:clamp(32px,6.5vh,68px)!important}
+.installation .releaseText{bottom:clamp(18px,2.2vh,30px)!important}
+@media(max-width:1100px){
+  .booklet{display:flex!important;flex-direction:column!important}
+  .program{border-left:0!important;padding-left:24px!important}
+  .cover{order:1}.program{order:2}.installation{order:3}.exhibition{order:4}.venue{order:5}
+  .exhibition{grid-column:auto!important;grid-row:auto!important;min-height:100svh!important}
+  .installation{grid-column:auto!important;grid-row:auto!important;min-height:100svh!important}
+}
+
+
+/* v17 layout: two long exhibition panels + shared bottom location strip */
+.booklet{
+  grid-template-columns:.92fr 1.02fr 1.08fr 1.08fr!important;
+  grid-template-rows:3fr 1fr!important;
+}
+.exhibition{
+  grid-column:3!important;
+  grid-row:1!important;
+  min-height:0!important;
+  padding-right:clamp(22px,2.3vw,38px)!important;
+}
+.installation{
+  grid-column:4!important;
+  grid-row:1!important;
+  min-height:0!important;
+}
+.venue{
+  grid-column:3/5!important;
+  grid-row:2!important;
+  z-index:2!important;
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:clamp(18px,2vw,34px)!important;
+  align-items:center!important;
+  padding:clamp(18px,2vw,30px)!important;
+}
+.venue .placeTop{
+  position:relative!important;
+  left:auto!important;right:auto!important;top:auto!important;
+}
+.venue .city{
+  font-size:clamp(28px,2.35vw,44px)!important;
+  margin:0 0 8px!important;
+}
+.venue .loc{
+  font-size:clamp(15px,1.18vw,22px)!important;
+  margin:0 0 4px!important;
+}
+.logoStrip{
+  position:relative!important;
+  left:auto!important;right:auto!important;bottom:auto!important;
+  height:clamp(44px,6vh,64px)!important;
+  margin:0!important;
+}
+.footer{display:none!important}
+.exhibition .title{
+  margin-top:clamp(46px,8vh,90px)!important;
+}
+.installation .title{
+  margin-top:clamp(42px,7vh,82px)!important;
+}
+.exhibition .releaseText,
+.installation .releaseText{
+  bottom:clamp(18px,2.2vh,32px)!important;
+}
+@media(max-width:1100px){
+  .booklet{
+    grid-template-rows:none!important;
+    display:flex!important;
+    flex-direction:column!important;
+  }
+  .cover{order:1}
+  .program{order:2}
+  .installation{order:3}
+  .exhibition{order:4}
+  .venue{
+    order:5;
+    grid-column:auto!important;
+    grid-row:auto!important;
+    display:block!important;
+    min-height:auto!important;
+    padding:32px 24px 38px!important;
+  }
+  .logoStrip{
+    height:58px!important;
+    margin-top:24px!important;
+  }
+}
+
+
+/* v18 fixes */
+.booklet{
+  grid-template-columns:.88fr 1fr 1fr 1fr!important;
+  grid-template-rows:3fr 1fr!important;
+}
+.program,.exhibition,.installation{width:auto!important}
+.tab,.tab.t1,.tab.t2{display:none!important}
+.program{
+  border-left:0!important;
+  padding-left:clamp(22px,2.3vw,38px)!important;
+}
+.exhibition{
+  grid-column:3!important;
+  grid-row:1!important;
+  min-height:0!important;
+}
+.installation{
+  grid-column:4!important;
+  grid-row:1!important;
+  min-height:0!important;
+}
+.venue{
+  grid-column:3/5!important;
+  grid-row:2!important;
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:clamp(18px,2vw,34px)!important;
+  align-items:center!important;
+  padding:clamp(18px,2vw,30px)!important;
+  box-shadow:none!important;
+}
+.booklet:after{
+  background:
+    linear-gradient(90deg,
+      transparent 21.75%,rgba(0,0,0,.11) 22%,transparent 22.35%,
+      transparent 46.5%,rgba(0,0,0,.13) 46.75%,transparent 47.1%,
+      transparent 71.5%,rgba(0,0,0,.11) 71.75%,transparent 72.1%)!important;
+}
+.exhibition::after{
+  content:""!important;
+  position:absolute!important;
+  right:-10%!important;
+  top:22%!important;
+  width:min(23vw,260px)!important;
+  height:min(23vw,260px)!important;
+  border-radius:50%!important;
+  background:rgba(215,25,32,.38)!important;
+  z-index:1!important;
+  mix-blend-mode:screen!important;
+  pointer-events:none!important;
+}
+.exhibition .title{margin-top:clamp(48px,8vh,92px)!important}
+.installation .title{margin-top:clamp(42px,7vh,82px)!important}
+.venue .placeTop{
+  position:relative!important;
+  left:auto!important;right:auto!important;top:auto!important;
+}
+.venue .city{font-size:clamp(28px,2.35vw,44px)!important;margin:0 0 8px!important}
+.venue .loc{font-size:clamp(15px,1.18vw,22px)!important;margin:0 0 4px!important}
+.logoStrip{
+  position:relative!important;
+  left:auto!important;right:auto!important;bottom:auto!important;
+  height:clamp(44px,6vh,64px)!important;
+  margin:0!important;
+}
+.footer{display:none!important}
+@media(max-width:1100px){
+  .booklet{display:flex!important;flex-direction:column!important}
+  .cover{order:1}.program{order:2}.installation{order:3}.exhibition{order:4}.venue{order:5}
+  .installation,.exhibition{min-height:100svh!important;grid-column:auto!important;grid-row:auto!important}
+  .venue{
+    grid-column:auto!important;grid-row:auto!important;
+    display:block!important;min-height:auto!important;
+    padding:32px 24px 38px!important;
+  }
+  .logoStrip{height:58px!important;margin-top:24px!important}
+  .booklet:after{display:none!important}
+}
+
+
+/* v19 fixes */
+.booklet{
+  grid-template-columns:.88fr 1fr 1fr 1fr!important;
+  grid-template-rows:3fr 1fr!important;
+}
+.booklet:after{display:none!important}
+.tab,.tab.t1,.tab.t2{display:none!important}
+
+/* keep both exhibition panels black on all sizes and keep titles visible */
+.installation,
+.installation.dark{
+  background:#050505!important;
+  color:#f7f5ee!important;
+}
+.installation .title{
+  color:#f7f5ee!important;
+  margin-top:clamp(34px,6.2vh,70px)!important;
+  text-shadow:0 0 14px rgba(0,0,0,.95)!important;
+}
+.installation .releaseText{
+  background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.36),transparent)!important;
+  color:#f7f5ee!important;
+  text-shadow:0 0 10px rgba(0,0,0,.98)!important;
+  bottom:clamp(16px,2vh,30px)!important;
+}
+.exhibition .title{
+  margin-top:clamp(44px,7vh,82px)!important;
+}
+.exhibition .releaseText{
+  bottom:clamp(16px,2vh,30px)!important;
+}
+
+/* flat, compact location/partners strip */
+.venue{
+  grid-column:3/5!important;
+  grid-row:2!important;
+  display:grid!important;
+  grid-template-columns:auto 1fr!important;
+  gap:clamp(16px,2vw,28px)!important;
+  align-items:center!important;
+  min-height:0!important;
+  padding:clamp(12px,1.45vw,20px) clamp(18px,2vw,28px)!important;
+  box-shadow:none!important;
+}
+.venue .placeTop{
+  position:relative!important;
+  left:auto!important;right:auto!important;top:auto!important;
+}
+.venue .city{display:none!important}
+.venue .kicker{margin-bottom:8px!important}
+.venue .loc{
+  font-size:clamp(18px,1.45vw,26px)!important;
+  margin:0 0 4px!important;
+  line-height:.92!important;
+}
+.venue .meta{
+  font-size:clamp(10px,.72vw,12px)!important;
+}
+.logoStrip{
+  position:relative!important;
+  left:auto!important;right:auto!important;bottom:auto!important;
+  height:clamp(38px,5vh,54px)!important;
+  margin:0!important;
+  padding:5px 10px!important;
+}
+.logoRow{
+  justify-content:flex-end!important;
+  gap:clamp(12px,1.6vw,24px)!important;
+}
+.logoRow img{
+  max-height:100%!important;
+  max-width:22%!important;
+}
+.footer{display:none!important}
+
+@media(max-width:1100px){
+  .booklet{
+    display:flex!important;
+    flex-direction:column!important;
+    grid-template-rows:none!important;
+  }
+  .booklet:after{display:none!important}
+  .cover{order:1}
+  .program{order:2}
+  .installation{order:3}
+  .exhibition{order:4}
+  .venue{order:5}
+  .installation,.exhibition{
+    min-height:100svh!important;
+    grid-column:auto!important;
+    grid-row:auto!important;
+  }
+  .installation .title,.exhibition .title{
+    margin-top:clamp(52px,12vh,96px)!important;
+  }
+  .venue{
+    display:block!important;
+    min-height:auto!important;
+    padding:24px 24px 28px!important;
+  }
+  .logoStrip{
+    height:54px!important;
+    margin-top:20px!important;
+  }
+  .logoRow{justify-content:center!important}
+}
+
+
+/* v20 requested fixes */
+html,body{overflow-x:hidden!important}
+.stage{overflow-x:hidden!important}
+.booklet{grid-template-columns:.98fr 1fr 1fr 1fr!important}
+.cover .title{font-size:clamp(30px,2.55vw,48px)!important;max-width:92%!important}
+.cover .date{font-size:clamp(36px,3.28vw,60px)!important}
+.logoStrip{background:#fff!important;border:1px solid rgba(0,0,0,.12)!important}
+.logoRow img{filter:grayscale(1) invert(1) contrast(1.2)!important;mix-blend-mode:multiply!important}
+.mobileHint{
+  min-width:34px!important;height:34px!important;display:none;align-items:center!important;justify-content:center!important;
+  padding:0!important;font-size:22px!important;line-height:1!important;letter-spacing:0!important;
+}
+.cardBack{position:absolute;inset:0;z-index:8;display:none;padding:clamp(24px,2.3vw,38px);overflow:auto}
+.installation .cardBack,.exhibition .cardBack{background:#050505;color:#f7f5ee}
+.flipped > canvas,.flipped > .kicker,.flipped > .title,.flipped > .releaseText{visibility:hidden}
+.flipped .cardBack{display:block}
+.cardBack .title{margin-top:clamp(16px,3vh,34px)!important}
+.cardBack p{max-width:92%;font-size:clamp(11px,.82vw,14px);line-height:1.28}
+.cardBack .clickHint{position:absolute;left:clamp(24px,2.3vw,38px);bottom:clamp(18px,2.2vh,30px)}
+@media(max-width:1100px){
+  html,body{width:100%!important;max-width:100%!important;overflow-x:hidden!important}
+  .stage{width:100%!important;overflow-x:hidden!important}
+  .booklet{width:100%!important;max-width:100%!important;overflow-x:hidden!important}
+  .panel{width:100%!important;max-width:100%!important;overflow:hidden!important}
+  .cover .title{font-size:clamp(36px,11vw,64px)!important;max-width:100%!important}
+  .cover .date{font-size:clamp(46px,13vw,82px)!important;max-width:100%!important}
+  .squareBox{position:relative!important;left:auto!important;right:auto!important;bottom:auto!important;width:100%!important;height:32vh!important;min-height:190px!important;margin-top:26px!important}
+  .cover{min-height:auto!important;padding-bottom:38px!important}
+  .mobileHint{display:flex!important}
+  .mobilePager{display:none!important}
+  .logoStrip{background:#fff!important}
+  .exhibition .releaseText{right:80px!important}
+  .cardBack{padding:32px 24px}
+  .cardBack p{font-size:14px;line-height:1.34;max-width:100%}
+}
+
+
+/* v21 final refinements */
+@media(max-width:1100px){
+  .program{
+    min-height:auto!important;
+    padding-bottom:34px!important;
+  }
+  .program .day:last-of-type{margin-bottom:0!important}
+}
+
+/* align short descriptions in installation/exhibition */
+.installation .releaseText,
+.exhibition .releaseText{
+  top:auto!important;
+  bottom:clamp(18px,2.2vh,30px)!important;
+  min-height:122px!important;
+}
+.installation .releaseText{
+  background:rgba(255,255,255,.05)!important;
+  backdrop-filter:blur(7px)!important;
+  -webkit-backdrop-filter:blur(7px)!important;
+  padding:10px 10px 4px!important;
+  border:1px solid rgba(255,255,255,.08)!important;
+}
+.exhibition .releaseText{
+  padding:10px 10px 4px!important;
+}
+
+/* location and partners: flatter, less air, no frame around partners */
+.booklet{
+  grid-template-rows:3.35fr .65fr!important;
+}
+.venue{
+  padding:clamp(8px,.9vw,14px) clamp(16px,1.5vw,22px)!important;
+  gap:clamp(12px,1.4vw,22px)!important;
+}
+.venue .kicker{margin-bottom:4px!important}
+.venue .loc{
+  font-size:clamp(14px,1.05vw,20px)!important;
+  line-height:.95!important;
+}
+.venue .meta{font-size:clamp(9px,.64vw,11px)!important}
+.logoStrip{
+  border:0!important;
+  background:transparent!important;
+  height:clamp(34px,4.5vh,48px)!important;
+  padding:0!important;
+}
+.logoRow img{
+  filter:grayscale(1) invert(1) contrast(1.2)!important;
+  mix-blend-mode:multiply!important;
+}
+.logoRow{gap:clamp(10px,1.2vw,18px)!important}
+
+/* flip-card releases: keep much more text in a controlled scroll */
+.releaseFull{
+  padding:clamp(20px,2vw,32px)!important;
+}
+.releaseFull .title{
+  margin-top:clamp(10px,1.8vh,24px)!important;
+  font-size:clamp(28px,2.35vw,46px)!important;
+}
+.releaseScroll{
+  max-height:calc(100% - 155px);
+  overflow:auto;
+  padding-right:8px;
+  margin-top:12px;
+}
+.releaseScroll p{
+  font-size:clamp(10px,.72vw,13px)!important;
+  line-height:1.26!important;
+  font-weight:650!important;
+  max-width:96%!important;
+  margin-bottom:8px!important;
+}
+.releaseFull .projectMeta{
+  position:absolute;
+  left:clamp(20px,2vw,32px);
+  right:clamp(20px,2vw,32px);
+  bottom:36px;
+}
+.releaseFull .clickHint{
+  bottom:14px!important;
+}
+@media(max-width:1100px){
+  .booklet{grid-template-rows:none!important}
+  .venue{padding:18px 24px 24px!important}
+  .logoStrip{height:44px!important;margin-top:14px!important}
+  .installation .releaseText,
+  .exhibition .releaseText{
+    min-height:118px!important;
+  }
+  .releaseScroll{
+    max-height:calc(100% - 180px);
+  }
+  .releaseScroll p{
+    font-size:13px!important;
+    line-height:1.3!important;
+  }
+}
+
+
+/* v24 stable rollback/final fixes */
+html,body{overflow-x:hidden!important}
+.stage{overflow-x:hidden!important}
+
+/* desktop composition */
+.booklet{
+  grid-template-columns:.88fr 1fr 1fr 1fr!important;
+  grid-template-rows:3.35fr .65fr!important;
+}
+.booklet:after{display:none!important}
+.tab,.tab.t1,.tab.t2{display:none!important}
+
+.cover .title{
+  font-size:clamp(30px,2.55vw,48px)!important;
+  max-width:92%!important;
+}
+.cover .date{
+  font-size:clamp(36px,3.28vw,60px)!important;
+}
+
+/* Program */
+.program{
+  grid-column:2!important;
+  grid-row:1/3!important;
+  border-left:0!important;
+  padding-left:clamp(22px,2.3vw,38px)!important;
+}
+.programNote{display:none!important}
+
+/* exhibitions */
+#voices{
+  grid-column:4!important;
+  grid-row:1!important;
+}
+#line{
+  grid-column:3!important;
+  grid-row:1!important;
+}
+#voices,#line{
+  min-height:0!important;
+  overflow:hidden!important;
+}
+
+/* location strip */
+.venue{
+  grid-column:3/5!important;
+  grid-row:2!important;
+  display:grid!important;
+  grid-template-columns:auto 1fr!important;
+  gap:clamp(12px,1.5vw,22px)!important;
+  align-items:center!important;
+  min-height:0!important;
+  padding:clamp(8px,.9vw,14px) clamp(16px,1.5vw,22px)!important;
+  box-shadow:none!important;
+}
+.venue .placeTop{
+  position:relative!important;
+  left:auto!important;right:auto!important;top:auto!important;
+}
+.venue .city{display:none!important}
+.venue .kicker{margin-bottom:4px!important}
+.venue .loc{
+  font-size:clamp(14px,1.05vw,20px)!important;
+  line-height:.95!important;
+  margin:0 0 3px!important;
+}
+.venue .meta{font-size:clamp(9px,.64vw,11px)!important}
+.logoStrip{
+  position:relative!important;
+  left:auto!important;right:auto!important;bottom:auto!important;
+  height:clamp(34px,4.5vh,48px)!important;
+  margin:0!important;
+  padding:0!important;
+  background:transparent!important;
+  border:0!important;
+}
+.logoRow{
+  justify-content:flex-end!important;
+  gap:clamp(10px,1.2vw,18px)!important;
+}
+.logoRow img{
+  max-height:100%!important;
+  max-width:22%!important;
+  object-fit:contain!important;
+  filter:grayscale(1) invert(1) contrast(1.2)!important;
+  mix-blend-mode:multiply!important;
+}
+.footer{display:none!important}
+
+/* Voices front: grey river panel on every size */
+#voices:not(.flipped),
+#voices:not(.flipped).dark{
+  background:#bfc8c4!important;
+  color:#050505!important;
+}
+#voices:not(.flipped) .kicker,
+#voices:not(.flipped) .title,
+#voices:not(.flipped) .releaseText,
+#voices:not(.flipped) .projectMeta,
+#voices:not(.flipped) .clickHint{
+  color:#050505!important;
+  text-shadow:none!important;
+  visibility:visible!important;
+}
+#voices:not(.flipped) .title{
+  margin-top:clamp(42px,7vh,82px)!important;
+}
+#voices:not(.flipped) .releaseText{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+#voices:not(.flipped) canvas{
+  visibility:visible!important;
+  opacity:1!important;
+}
+
+/* On the Line front */
+#line:not(.flipped){
+  background:#050505!important;
+  color:#f7f5ee!important;
+  position:relative!important;
+}
+#line:not(.flipped)::after{
+  content:""!important;
+  position:absolute!important;
+  right:clamp(-70px,-4.5vw,-34px)!important;
+  top:clamp(96px,20%,180px)!important;
+  width:clamp(150px,16vw,230px)!important;
+  height:clamp(150px,16vw,230px)!important;
+  border-radius:50%!important;
+  background:rgba(215,25,32,.42)!important;
+  z-index:1!important;
+  mix-blend-mode:screen!important;
+  pointer-events:none!important;
+}
+#line:not(.flipped) .kicker,
+#line:not(.flipped) .title,
+#line:not(.flipped) .releaseText{
+  position:relative!important;
+  z-index:3!important;
+}
+#line:not(.flipped) .title{
+  margin-top:clamp(44px,7vh,82px)!important;
+}
+#line:not(.flipped) .releaseText{
+  background:linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.34),transparent)!important;
+  bottom:clamp(18px,2.2vh,30px)!important;
+}
+
+/* align card-front descriptions */
+#voices:not(.flipped) .releaseText,
+#line:not(.flipped) .releaseText{
+  height:132px!important;
+  min-height:132px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-start!important;
+  padding:10px 10px 4px!important;
+}
+#voices:not(.flipped) .releaseText > p:first-child,
+#line:not(.flipped) .releaseText > p:first-child{
+  min-height:42px!important;
+  margin-bottom:8px!important;
+}
+#voices:not(.flipped) .cardBack,
+#line:not(.flipped) .cardBack{display:none!important}
+
+/* Flip side */
+#voices.flipped,
+#line.flipped{
+  background:#050505!important;
+  color:#f7f5ee!important;
+  overflow:hidden!important;
+}
+.flipped > canvas,
+.flipped > .kicker,
+.flipped > .title,
+.flipped > .releaseText{
+  visibility:hidden!important;
+}
+.flipped .cardBack{
+  display:flex!important;
+  flex-direction:column!important;
+  position:absolute!important;
+  inset:0!important;
+  background:#050505!important;
+  color:#f7f5ee!important;
+  padding:clamp(20px,2vw,32px)!important;
+  overflow:hidden!important;
+  z-index:10!important;
+}
+.cardBack .title{
+  color:#f7f5ee!important;
+  visibility:visible!important;
+  margin-top:clamp(10px,1.8vh,24px)!important;
+  font-size:clamp(28px,2.35vw,46px)!important;
+}
+.releaseScroll{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  padding-right:10px!important;
+  margin-top:12px!important;
+  scrollbar-width:thin!important;
+  scrollbar-color:rgba(215,25,32,.8) rgba(255,255,255,.08)!important;
+}
+.releaseScroll::-webkit-scrollbar{width:7px!important}
+.releaseScroll::-webkit-scrollbar-track{
+  background:rgba(255,255,255,.08)!important;
+  border-radius:999px!important;
+}
+.releaseScroll::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,rgba(215,25,32,.25),rgba(215,25,32,.95),rgba(215,25,32,.25))!important;
+  border-radius:999px!important;
+}
+.releaseScroll p{
+  font-size:clamp(10px,.72vw,13px)!important;
+  line-height:1.26!important;
+  font-weight:650!important;
+  max-width:96%!important;
+  margin-bottom:8px!important;
+}
+.releaseFull .projectMeta{
+  position:relative!important;
+  bottom:auto!important;
+  left:auto!important;
+  right:auto!important;
+  background:#050505!important;
+  padding-top:6px!important;
+  margin-top:8px!important;
+}
+.releaseFull .clickHint{
+  position:relative!important;
+  bottom:auto!important;
+  left:auto!important;
+  background:#050505!important;
+  padding-top:4px!important;
+  margin-top:4px!important;
+}
+
+/* Mobile */
+@media(max-width:1100px){
+  .stage,.booklet,.panel{
+    max-width:100%!important;
+    overflow-x:hidden!important;
+  }
+  .booklet{
+    display:flex!important;
+    flex-direction:column!important;
+    grid-template-rows:none!important;
+    width:100%!important;
+  }
+  .cover{order:1}
+  .program{order:2}
+  #voices{order:3}
+  #line{order:4}
+  .venue{order:5}
+
+  .program{
+    min-height:auto!important;
+    grid-column:auto!important;
+    grid-row:auto!important;
+    padding-bottom:34px!important;
+    border-left:0!important;
+    padding-left:24px!important;
+  }
+  #voices,#line{
+    grid-column:auto!important;
+    grid-row:auto!important;
+    min-height:100svh!important;
+    width:100%!important;
+    max-width:100%!important;
+    padding:32px 24px!important;
+  }
+  #voices:not(.flipped){
+    background:#bfc8c4!important;
+    color:#050505!important;
+  }
+  #voices:not(.flipped) .title,
+  #line:not(.flipped) .title{
+    margin-top:clamp(52px,12vh,96px)!important;
+    font-size:clamp(44px,14vw,78px)!important;
+    line-height:.88!important;
+  }
+  #voices:not(.flipped) .releaseText,
+  #line:not(.flipped) .releaseText{
+    height:150px!important;
+    min-height:150px!important;
+    bottom:34px!important;
+    left:24px!important;
+    right:24px!important;
+  }
+  #line:not(.flipped) .releaseText{
+    right:92px!important;
+  }
+  #line:not(.flipped)::after{
+    right:clamp(-58px,-14vw,-28px)!important;
+    top:clamp(155px,23%,245px)!important;
+    width:clamp(136px,36vw,190px)!important;
+    height:clamp(136px,36vw,190px)!important;
+  }
+  .venue{
+    grid-column:auto!important;
+    grid-row:auto!important;
+    display:block!important;
+    min-height:auto!important;
+    padding:18px 24px 24px!important;
+  }
+  .logoStrip{
+    height:44px!important;
+    margin-top:14px!important;
+  }
+  .logoRow{justify-content:center!important}
+
+  .releaseScroll p{
+    font-size:13px!important;
+    line-height:1.3!important;
+  }
+  .flipped .cardBack{
+    padding:32px 24px!important;
+  }
+}
+
+/* Light arrow with context-aware color */
+.mobileHint{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  text-shadow:none!important;
+  opacity:.82!important;
+  font-size:19px!important;
+  font-weight:400!important;
+  color:#fff!important;
+}
+.mobileHint.darkArrow{color:#050505!important}
+.mobileHint.lightArrow{color:#fff!important}
+.mobileHint::before{content:"⌄";font-weight:400}
+.mobileHint.atBottom::before{content:"⌃"}
+
+
+/* v25 composition fix */
+#line:not(.flipped)::after{
+  right:clamp(-105px,-7vw,-58px)!important;
+  top:clamp(112px,22%,190px)!important;
+  width:clamp(135px,13.5vw,205px)!important;
+  height:clamp(135px,13.5vw,205px)!important;
+  opacity:.9!important;
+}
+#line:not(.flipped) .releaseText,
+#voices:not(.flipped) .releaseText{
+  bottom:clamp(54px,7.8vh,86px)!important;
+  height:132px!important;
+  min-height:132px!important;
+}
+#line:not(.flipped) .releaseText{
+  max-width:72%!important;
+  right:auto!important;
+  left:clamp(24px,2.3vw,38px)!important;
+  background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.42),transparent)!important;
+}
+#voices:not(.flipped) .releaseText{
+  left:clamp(24px,2.3vw,38px)!important;
+  right:clamp(24px,2.3vw,38px)!important;
+}
+#voices:not(.flipped) .projectMeta{
+  color:var(--red)!important;
+}
+@media(max-width:1100px){
+  #line:not(.flipped) .releaseText,
+  #voices:not(.flipped) .releaseText{
+    bottom:34px!important;
+    height:150px!important;
+    min-height:150px!important;
+  }
+  #line:not(.flipped) .releaseText{
+    max-width:calc(100% - 116px)!important;
+    right:auto!important;
+  }
+  #line:not(.flipped)::after{
+    right:clamp(-76px,-18vw,-42px)!important;
+    top:clamp(165px,24%,250px)!important;
+    width:clamp(120px,32vw,168px)!important;
+    height:clamp(120px,32vw,168px)!important;
+  }
+}
+
+
+/* v26: final placement correction */
+
+/* Put On the Line front text to the same lower level as Voices */
+#line:not(.flipped) .releaseText{
+  position:absolute!important;
+  left:clamp(24px,2.3vw,38px)!important;
+  right:auto!important;
+  top:auto!important;
+  bottom:clamp(54px,7.8vh,86px)!important;
+  max-width:68%!important;
+  height:132px!important;
+  min-height:132px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-start!important;
+  background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.38),transparent)!important;
+  padding:10px 10px 4px!important;
+  z-index:4!important;
+}
+
+/* Keep the title clear and separate from the description */
+#line:not(.flipped) .title{
+  margin-top:clamp(44px,7vh,82px)!important;
+  max-width:72%!important;
+  z-index:4!important;
+}
+
+/* Move the red circle and rectangle to the right so they do not invade text */
+#line:not(.flipped)::after{
+  right:clamp(-105px,-7vw,-58px)!important;
+  top:clamp(112px,22%,190px)!important;
+  width:clamp(135px,13.5vw,205px)!important;
+  height:clamp(135px,13.5vw,205px)!important;
+  opacity:.86!important;
+}
+
+/* Keep Voices and On the Line card-front descriptions aligned */
+#voices:not(.flipped) .releaseText{
+  position:absolute!important;
+  top:auto!important;
+  bottom:clamp(54px,7.8vh,86px)!important;
+  height:132px!important;
+  min-height:132px!important;
+}
+
+/* Mobile: preserve the same internal composition as desktop, only scaled */
+@media(max-width:1100px){
+  #voices:not(.flipped),
+  #line:not(.flipped){
+    min-height:100svh!important;
+    padding:32px 24px!important;
+  }
+
+  #voices:not(.flipped) .title,
+  #line:not(.flipped) .title{
+    margin-top:clamp(52px,12vh,96px)!important;
+    font-size:clamp(44px,14vw,78px)!important;
+    line-height:.88!important;
+    max-width:76%!important;
+  }
+
+  #voices:not(.flipped) .releaseText,
+  #line:not(.flipped) .releaseText{
+    position:absolute!important;
+    top:auto!important;
+    bottom:34px!important;
+    left:24px!important;
+    height:150px!important;
+    min-height:150px!important;
+    max-width:none!important;
+    width:auto!important;
+  }
+
+  #voices:not(.flipped) .releaseText{
+    right:24px!important;
+  }
+
+  #line:not(.flipped) .releaseText{
+    right:96px!important;
+    background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.38),transparent)!important;
+  }
+
+  #line:not(.flipped)::after{
+    right:clamp(-76px,-18vw,-42px)!important;
+    top:clamp(155px,23%,245px)!important;
+    width:clamp(120px,32vw,168px)!important;
+    height:clamp(120px,32vw,168px)!important;
+  }
+}
+
+
+/* v27: align card front typography and tighten bottom venue strip */
+
+/* give more vertical height to exhibition/installation, less to venue */
+.booklet{
+  grid-template-rows:3.7fr .3fr!important;
+}
+
+/* make venue flatter and remove excessive bottom air */
+.venue{
+  padding:clamp(6px,.72vw,10px) clamp(16px,1.4vw,22px)!important;
+  gap:clamp(10px,1.2vw,18px)!important;
+}
+.venue .kicker{
+  margin-bottom:2px!important;
+  font-size:clamp(9px,.68vw,11px)!important;
+}
+.venue .loc{
+  font-size:clamp(13px,.95vw,18px)!important;
+  line-height:.92!important;
+  margin:0 0 2px!important;
+}
+.venue .meta{
+  font-size:clamp(8px,.58vw,10px)!important;
+}
+.logoStrip{
+  height:clamp(30px,3.8vh,42px)!important;
+}
+
+/* front descriptions: same vertical rhythm for both cards */
+#line:not(.flipped) .releaseText,
+#voices:not(.flipped) .releaseText{
+  bottom:clamp(34px,5.2vh,58px)!important;
+  height:148px!important;
+  min-height:148px!important;
+  display:grid!important;
+  grid-template-rows:auto auto auto!important;
+  align-content:start!important;
+  row-gap:12px!important;
+  padding:10px 10px 4px!important;
+}
+
+#line:not(.flipped) .releaseText > p:first-child,
+#voices:not(.flipped) .releaseText > p:first-child{
+  min-height:54px!important;
+  margin:0!important;
+}
+
+#line:not(.flipped) .projectMeta,
+#voices:not(.flipped) .projectMeta{
+  margin:0!important;
+  padding:0!important;
+  line-height:1.08!important;
+  align-self:start!important;
+}
+
+#line:not(.flipped) .clickHint,
+#voices:not(.flipped) .clickHint{
+  margin:0!important;
+  padding:0!important;
+  align-self:start!important;
+  line-height:1.1!important;
+}
+
+/* On the Line: keep red project text below white description, no overlap */
+#line:not(.flipped) .releaseText{
+  max-width:72%!important;
+  background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.36),transparent)!important;
+}
+
+/* Mobile: keep the same card composition logic, just scaled */
+@media(max-width:1100px){
+  .booklet{
+    grid-template-rows:none!important;
+  }
+  #voices:not(.flipped),
+  #line:not(.flipped){
+    min-height:100svh!important;
+    padding:32px 24px!important;
+  }
+
+  #voices:not(.flipped) .title,
+  #line:not(.flipped) .title{
+    margin-top:clamp(52px,12vh,96px)!important;
+    font-size:clamp(44px,14vw,78px)!important;
+    line-height:.88!important;
+    max-width:76%!important;
+  }
+
+  #voices:not(.flipped) .releaseText,
+  #line:not(.flipped) .releaseText{
+    bottom:34px!important;
+    height:170px!important;
+    min-height:170px!important;
+    display:grid!important;
+    grid-template-rows:auto auto auto!important;
+    row-gap:12px!important;
+    align-content:start!important;
+  }
+
+  #voices:not(.flipped) .releaseText{
+    left:24px!important;
+    right:24px!important;
+  }
+
+  #line:not(.flipped) .releaseText{
+    left:24px!important;
+    right:96px!important;
+    max-width:none!important;
+  }
+
+  #voices:not(.flipped) .releaseText > p:first-child,
+  #line:not(.flipped) .releaseText > p:first-child{
+    min-height:66px!important;
+    margin:0!important;
+  }
+
+  #voices:not(.flipped) .projectMeta,
+  #line:not(.flipped) .projectMeta,
+  #voices:not(.flipped) .clickHint,
+  #line:not(.flipped) .clickHint{
+    margin:0!important;
+  }
+
+  .venue{
+    padding:14px 24px 18px!important;
+  }
+  .logoStrip{
+    height:38px!important;
+    margin-top:10px!important;
+  }
+}
+
+
+/* v28: mobile card fronts must match desktop composition */
+@media(max-width:1100px){
+  #voices:not(.flipped){
+    background:#bfc8c4!important;
+    color:#050505!important;
+    min-height:100svh!important;
+    position:relative!important;
+    overflow:hidden!important;
+    padding:32px 24px!important;
+  }
+
+  #voices:not(.flipped) canvas{
+    visibility:visible!important;
+    opacity:1!important;
+    z-index:0!important;
+  }
+
+  #voices:not(.flipped) .kicker{
+    display:block!important;
+    visibility:visible!important;
+    position:relative!important;
+    z-index:3!important;
+    color:#050505!important;
+    text-shadow:none!important;
+    margin-bottom:0!important;
+  }
+
+  #voices:not(.flipped) .title{
+    display:block!important;
+    visibility:visible!important;
+    position:relative!important;
+    z-index:3!important;
+    color:#050505!important;
+    text-shadow:none!important;
+    margin-top:clamp(52px,12vh,96px)!important;
+    font-size:clamp(44px,14vw,78px)!important;
+    line-height:.88!important;
+    max-width:86%!important;
+  }
+
+  #voices:not(.flipped) .releaseText{
+    display:grid!important;
+    visibility:visible!important;
+    position:absolute!important;
+    z-index:3!important;
+    left:24px!important;
+    right:24px!important;
+    bottom:34px!important;
+    height:170px!important;
+    min-height:170px!important;
+    grid-template-rows:auto auto auto!important;
+    row-gap:12px!important;
+    align-content:start!important;
+    background:transparent!important;
+    border:0!important;
+    box-shadow:none!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+    color:#050505!important;
+    text-shadow:none!important;
+    padding:10px 10px 4px!important;
+  }
+
+  #voices:not(.flipped) .releaseText p,
+  #voices:not(.flipped) .projectMeta,
+  #voices:not(.flipped) .clickHint{
+    color:#050505!important;
+    text-shadow:none!important;
+    visibility:visible!important;
+    margin:0!important;
+  }
+
+  #voices:not(.flipped) .projectMeta{
+    color:var(--red)!important;
+  }
+
+  #voices:not(.flipped) .releaseText > p:first-child{
+    min-height:66px!important;
+  }
+
+  #line:not(.flipped){
+    min-height:100svh!important;
+    position:relative!important;
+    overflow:hidden!important;
+    padding:32px 24px!important;
+  }
+
+  #line:not(.flipped) .kicker,
+  #line:not(.flipped) .title,
+  #line:not(.flipped) .releaseText{
+    visibility:visible!important;
+    display:block!important;
+    z-index:3!important;
+  }
+
+  #line:not(.flipped) .title{
+    margin-top:clamp(52px,12vh,96px)!important;
+    font-size:clamp(44px,14vw,78px)!important;
+    line-height:.88!important;
+    max-width:76%!important;
+  }
+
+  #line:not(.flipped) .releaseText{
+    position:absolute!important;
+    left:24px!important;
+    right:96px!important;
+    bottom:34px!important;
+    height:170px!important;
+    min-height:170px!important;
+    display:grid!important;
+    grid-template-rows:auto auto auto!important;
+    row-gap:12px!important;
+    align-content:start!important;
+    padding:10px 10px 4px!important;
+  }
+}
+
+/* desktop: keep descriptions aligned and visible */
+#voices:not(.flipped) .projectMeta{
+  color:var(--red)!important;
+}
+
+#voices:not(.flipped) .releaseText,
+#line:not(.flipped) .releaseText{
+  bottom:clamp(34px,5.2vh,58px)!important;
+}
+
+/* smaller bottom strip, more room for cards */
+.booklet{
+  grid-template-rows:3.7fr .3fr!important;
+}
+.venue{
+  padding:clamp(6px,.72vw,10px) clamp(16px,1.4vw,22px)!important;
+}
+.logoStrip{
+  height:clamp(30px,3.8vh,42px)!important;
+}
+
+
+/* v29 hard mobile/front fix */
+#voices:not(.flipped){
+  background:#bfc8c4!important;
+  color:#050505!important;
+}
+#voices:not(.flipped) canvas#river{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+#voices:not(.flipped) > .kicker,
+#voices:not(.flipped) > .title,
+#voices:not(.flipped) > .releaseText{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  color:#050505!important;
+  text-shadow:none!important;
+}
+#voices:not(.flipped) > .title{
+  position:relative!important;
+  z-index:4!important;
+}
+#voices:not(.flipped) > .releaseText{
+  position:absolute!important;
+  z-index:4!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+#voices:not(.flipped) .projectMeta{
+  color:var(--red)!important;
+}
+#line:not(.flipped) canvas#lineCanvas{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+@media(max-width:1100px){
+  .booklet{display:flex!important;flex-direction:column!important}
+  #voices{order:3!important}
+  #line{order:4!important}
+  #voices:not(.flipped){
+    min-height:100svh!important;
+    background:#bfc8c4!important;
+    padding:32px 24px!important;
+  }
+  #voices:not(.flipped) > .kicker{
+    margin-bottom:0!important;
+  }
+  #voices:not(.flipped) > .title{
+    margin-top:clamp(52px,12vh,96px)!important;
+    font-size:clamp(44px,14vw,78px)!important;
+    line-height:.88!important;
+    max-width:86%!important;
+  }
+  #voices:not(.flipped) > .releaseText{
+    left:24px!important;
+    right:24px!important;
+    bottom:34px!important;
+    height:170px!important;
+    min-height:170px!important;
+    display:grid!important;
+    grid-template-rows:auto auto auto!important;
+    row-gap:12px!important;
+    align-content:start!important;
+  }
+  #line:not(.flipped){
+    min-height:100svh!important;
+    padding:32px 24px!important;
+  }
+}
+
+
+/* v30 final alignment and mobile composition */
+
+/* Voices title red on front */
+#voices:not(.flipped) > .title{
+  color:var(--red)!important;
+}
+
+/* Both front cards: one common text grid, lifted slightly */
+#line:not(.flipped) .releaseText,
+#voices:not(.flipped) .releaseText{
+  bottom:clamp(46px,6.5vh,74px)!important;
+  height:142px!important;
+  min-height:142px!important;
+  display:grid!important;
+  grid-template-rows:minmax(54px,auto) 26px 22px!important;
+  row-gap:10px!important;
+  align-content:start!important;
+  padding:10px 10px 4px!important;
+}
+#line:not(.flipped) .releaseText > p:first-child,
+#voices:not(.flipped) .releaseText > p:first-child{
+  min-height:54px!important;
+  margin:0!important;
+}
+#line:not(.flipped) .projectMeta,
+#voices:not(.flipped) .projectMeta{
+  color:var(--red)!important;
+  margin:0!important;
+  padding:0!important;
+  line-height:1.08!important;
+  align-self:start!important;
+}
+#line:not(.flipped) .clickHint,
+#voices:not(.flipped) .clickHint{
+  margin:0!important;
+  padding:0!important;
+  line-height:1.1!important;
+  align-self:start!important;
+}
+
+/* keep On the Line text away from circle/rectangle */
+#line:not(.flipped) .releaseText{
+  max-width:70%!important;
+  right:auto!important;
+}
+
+/* Venue strip: add bottom padding so logos/address are not cut */
+.venue{
+  padding-top:clamp(7px,.75vw,12px)!important;
+  padding-bottom:clamp(12px,1.2vw,20px)!important;
+}
+.logoStrip{
+  padding-bottom:2px!important;
+}
+
+/* Voices flip back uses the same river-colour system, not black */
+#voices.flipped{
+  background:#bfc8c4!important;
+  color:#050505!important;
+}
+#voices.flipped .cardBack{
+  background:#bfc8c4!important;
+  color:#050505!important;
+}
+#voices.flipped .cardBack .title{
+  color:var(--red)!important;
+}
+#voices.flipped .releaseScroll,
+#voices.flipped .releaseScroll p,
+#voices.flipped .projectMeta,
+#voices.flipped .clickHint{
+  color:#050505!important;
+}
+#voices.flipped .releaseFull .projectMeta,
+#voices.flipped .releaseFull .clickHint{
+  background:#bfc8c4!important;
+}
+#voices.flipped .releaseScroll{
+  scrollbar-color:rgba(215,25,32,.8) rgba(0,0,0,.10)!important;
+}
+#voices.flipped .releaseScroll::-webkit-scrollbar-track{
+  background:rgba(0,0,0,.10)!important;
+}
+
+/* Mobile: preserve desktop card composition, only scaled */
+@media(max-width:1100px){
+  #voices:not(.flipped),
+  #line:not(.flipped){
+    min-height:100svh!important;
+    padding:32px 24px!important;
+    position:relative!important;
+    overflow:hidden!important;
+  }
+
+  #voices:not(.flipped){
+    background:#bfc8c4!important;
+    color:#050505!important;
+  }
+
+  #voices:not(.flipped) > .kicker,
+  #line:not(.flipped) > .kicker{
+    position:relative!important;
+    z-index:4!important;
+    display:block!important;
+    visibility:visible!important;
+  }
+
+  #voices:not(.flipped) > .title,
+  #line:not(.flipped) > .title{
+    position:relative!important;
+    z-index:4!important;
+    display:block!important;
+    visibility:visible!important;
+    margin-top:clamp(52px,12vh,96px)!important;
+    font-size:clamp(44px,14vw,78px)!important;
+    line-height:.88!important;
+    max-width:78%!important;
+  }
+
+  #voices:not(.flipped) > .title{
+    color:var(--red)!important;
+    text-shadow:none!important;
+  }
+
+  #voices:not(.flipped) > .releaseText,
+  #line:not(.flipped) > .releaseText{
+    position:absolute!important;
+    z-index:4!important;
+    left:24px!important;
+    bottom:40px!important;
+    height:170px!important;
+    min-height:170px!important;
+    display:grid!important;
+    grid-template-rows:minmax(66px,auto) 28px 24px!important;
+    row-gap:12px!important;
+    align-content:start!important;
+    padding:10px 10px 4px!important;
+  }
+
+  #voices:not(.flipped) > .releaseText{
+    right:24px!important;
+    background:transparent!important;
+    color:#050505!important;
+  }
+
+  #line:not(.flipped) > .releaseText{
+    right:96px!important;
+    max-width:none!important;
+    background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.38),transparent)!important;
+  }
+
+  #voices:not(.flipped) .releaseText > p:first-child,
+  #line:not(.flipped) .releaseText > p:first-child{
+    min-height:66px!important;
+    margin:0!important;
+  }
+
+  #voices:not(.flipped) .projectMeta,
+  #line:not(.flipped) .projectMeta{
+    color:var(--red)!important;
+    margin:0!important;
+  }
+
+  #voices:not(.flipped) .clickHint,
+  #line:not(.flipped) .clickHint{
+    margin:0!important;
+  }
+
+  #line:not(.flipped)::after{
+    right:clamp(-76px,-18vw,-42px)!important;
+    top:clamp(155px,23%,245px)!important;
+    width:clamp(120px,32vw,168px)!important;
+    height:clamp(120px,32vw,168px)!important;
+  }
+
+  .venue{
+    padding-bottom:24px!important;
+  }
+
+  /* flip back on mobile */
+  #voices.flipped .cardBack{
+    background:#bfc8c4!important;
+    color:#050505!important;
+  }
+}
+
+
+/* v31: circle motion, mobile rectangle, voices flip shadows, venue padding */
+
+/* subtle motion for red circle on On the Line */
+#line:not(.flipped)::after{
+  animation: lineCircleDrift 7.5s ease-in-out infinite alternate!important;
+  will-change:transform!important;
+}
+@keyframes lineCircleDrift{
+  0%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(-10px,6px,0) scale(1.025)}
+  100%{transform:translate3d(8px,-4px,0) scale(.985)}
+}
+
+/* Voices release back: no shadows, no glow, no black remnants */
+#voices.flipped,
+#voices.flipped .cardBack,
+#voices.flipped .cardBack *,
+#voices.flipped .releaseScroll,
+#voices.flipped .releaseScroll p,
+#voices.flipped .projectMeta,
+#voices.flipped .clickHint{
+  text-shadow:none!important;
+  box-shadow:none!important;
+  filter:none!important;
+}
+#voices.flipped .releaseFull .projectMeta,
+#voices.flipped .releaseFull .clickHint{
+  background:#bfc8c4!important;
+}
+
+/* Venue strip: more bottom breathing room */
+.venue{
+  padding-bottom:clamp(18px,1.7vw,28px)!important;
+}
+.logoStrip{
+  margin-bottom:4px!important;
+}
+
+/* Mobile: keep rectangle farther right and away from text */
+@media(max-width:1100px){
+  #line:not(.flipped)::after{
+    right:clamp(-88px,-22vw,-52px)!important;
+    top:clamp(160px,23%,245px)!important;
+  }
+  .venue{
+    padding-bottom:30px!important;
+  }
+  .logoStrip{
+    margin-bottom:6px!important;
+  }
+}
+
+
+/* v32: mobile On the Line geometry + front text baseline + bottom strip */
+
+/* Make front meta rows visually comparable after the <br> on Voices */
+#voices:not(.flipped) .releaseText,
+#line:not(.flipped) .releaseText{
+  grid-template-rows:minmax(54px,auto) 38px 22px!important;
+  row-gap:8px!important;
+}
+#voices:not(.flipped) .projectMeta,
+#line:not(.flipped) .projectMeta{
+  line-height:1.05!important;
+}
+
+/* Bottom venue strip: more safe padding at the bottom */
+.booklet{
+  grid-template-rows:3.62fr .38fr!important;
+}
+.venue{
+  padding-top:clamp(8px,.8vw,12px)!important;
+  padding-bottom:clamp(22px,2vw,34px)!important;
+}
+.logoStrip{
+  margin-bottom:8px!important;
+  height:clamp(32px,4.2vh,46px)!important;
+}
+
+/* Mobile: bigger circle and rectangle visually attached to the main line */
+@media(max-width:1100px){
+  #line:not(.flipped)::after{
+    right:clamp(-96px,-23vw,-62px)!important;
+    top:clamp(148px,22%,238px)!important;
+    width:clamp(170px,48vw,240px)!important;
+    height:clamp(170px,48vw,240px)!important;
+  }
+
+  #voices:not(.flipped) .releaseText,
+  #line:not(.flipped) .releaseText{
+    grid-template-rows:minmax(66px,auto) 40px 24px!important;
+    row-gap:10px!important;
+  }
+
+  .venue{
+    padding-bottom:34px!important;
+  }
+  .logoStrip{
+    margin-bottom:10px!important;
+  }
+}
+
+
+/* v33: program day slider */
+.programSlider{
+  position:relative;
+  overflow:hidden;
+  min-height:clamp(280px,47vh,470px);
+}
+.dayTabs{
+  display:flex;
+  gap:clamp(8px,1vw,14px);
+  margin:clamp(12px,1.5vh,18px) 0 clamp(12px,1.7vh,22px);
+  position:relative;
+  z-index:8;
+}
+.dayTab{
+  appearance:none;
+  border:2px solid #111;
+  background:#050505;
+  color:#fff;
+  padding:clamp(8px,.8vw,12px) clamp(10px,1.15vw,18px);
+  font-weight:950;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font-size:clamp(9px,.72vw,12px);
+  line-height:1;
+  cursor:pointer;
+  transition:background .18s ease,color .18s ease,border-color .18s ease,transform .18s ease;
+  white-space:nowrap;
+}
+.dayTab.active{
+  background:var(--red);
+  border-color:var(--red);
+  color:#fff;
+}
+.dayTab:focus-visible{
+  outline:3px solid rgba(215,25,32,.45);
+  outline-offset:3px;
+}
+.slideDay{
+  position:absolute!important;
+  inset:0 0 auto 0!important;
+  opacity:0;
+  transform:translateX(22px);
+  pointer-events:none;
+  transition:opacity .28s ease,transform .28s ease;
+  margin:0!important;
+}
+.slideDay.active{
+  position:relative!important;
+  opacity:1;
+  transform:translateX(0);
+  pointer-events:auto;
+}
+.program .day{
+  padding-top:clamp(12px,1.6vh,18px)!important;
+}
+.program .day h3{
+  font-size:clamp(22px,1.75vw,31px)!important;
+  margin-bottom:clamp(8px,1.2vh,14px)!important;
+}
+.program .time,
+.program .item{
+  font-size:clamp(11px,.86vw,14px)!important;
+}
+@media(max-width:1100px){
+  .dayTabs{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:10px;
+    margin:22px 0 20px;
+  }
+  .dayTab{
+    width:100%;
+    text-align:left;
+    padding:13px 15px;
+    font-size:13px;
+  }
+  .programSlider{
+    min-height:auto;
+  }
+  .slideDay{
+    min-height:0;
+  }
+}
+
+
+/* v34: make desktop day tabs fit in one row */
+.dayTabs{
+  display:grid!important;
+  grid-template-columns:repeat(3,1fr)!important;
+  gap:clamp(7px,.75vw,12px)!important;
+}
+.dayTab{
+  width:100%!important;
+  text-align:center!important;
+  padding:clamp(8px,.75vw,11px) clamp(6px,.8vw,12px)!important;
+  font-size:clamp(10px,.74vw,12px)!important;
+  letter-spacing:.09em!important;
+}
+@media(max-width:1100px){
+  .dayTabs{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+  }
+  .dayTab{
+    text-align:left!important;
+    font-size:13px!important;
+    padding:13px 15px!important;
+  }
+}
+
+
+/* v35 subtle kinetic details */
+@media (prefers-reduced-motion: reduce){
+  #line:not(.flipped)::after{
+    animation:none!important;
+  }
+}
+
+</style>
+</head>
+<body>
+<div class="stage">
+  <main class="booklet" id="booklet">
+    <section class="panel cover page" id="cover">
+      <div class="kicker">International seminar</div>
+      <h1 class="title">Art &<br>Innovations<br>in Museums</h1>
+      <div class="meta red" style="margin-top:18px">Novi Sad, Serbia</div>
+      <div class="date">18–<br>20.05.2026</div>
+      <div class="meta tagline">Discover. Discuss.<br>Find like-minded people.</div>
+      <div class="squareBox"><canvas class="canvas" id="square"></canvas></div>
+      
+    </section>
+
+    <section class="panel program page" id="program">
+      <div class="kicker">Program <span class="rule"></span></div>
+      <div class="dayTabs" role="tablist" aria-label="Program days">
+        <button class="dayTab active" type="button" data-day="0" aria-label="Day 1, May 18">May 18</button>
+        <button class="dayTab" type="button" data-day="1" aria-label="Day 2, May 19">May 19</button>
+        <button class="dayTab" type="button" data-day="2" aria-label="Day 3, May 20">May 20</button>
+      </div>
+      <div class="programSlider">
+      <div class="day slideDay active" data-day-panel="0">
+        <h3><span>Day 1</span><span class="red">May 18</span></h3>
+        <div class="time">15:00</div><div class="item">Opening & welcome</div>
+        <div class="time">15:25</div><div class="item">Keynote lecture</div>
+        <div class="time">16:00</div><div class="item">Presentation by [Full Name]: “Title”</div>
+        <div class="time">16:20</div><div class="item">Presentation by [Full Name]: “Title”</div>
+        <div class="time">16:40</div><div class="item">Presentation by [Full Name]: “Title”</div>
+        <div class="time">17:10</div><div class="item">Presentation by [Full Name]: “Title”</div>
+        <div class="time">17:30</div><div class="item">Presentation by [Full Name]: “Title”</div>
+        <div class="time">17:50</div><div class="item">Presentation by [Full Name]: “Title”</div>
+      </div>
+      <div class="day slideDay" data-day-panel="1"><h3><span>Day 2</span><span class="red">May 19</span></h3>
+        <div class="time">12:00</div><div class="item">Opening & welcome</div>
+        <div class="time">12:15</div><div class="item">Keynote lecture</div>
+        <div class="time">12:45</div><div class="item">Online Session</div>
+        <div class="time">14:40</div><div class="item">Workshop session</div>
+        <div class="time">15:30</div><div class="item">Panel discussion (theatre)</div>
+      </div>
+      <div class="day slideDay" data-day-panel="2"><h3><span>Day 3</span><span class="red">May 20</span></h3><div class="time">TBA</div><div class="item">Exhibition day</div><div class="time">TBA</div><div class="item">Voices of Rivers vernissage</div><div class="time">TBA</div><div class="item">On the Line exhibition release</div><div class="time">TBA</div><div class="item">Closing remarks</div></div>
+    </div>
+    </section>
+
+    <section class="panel dark installation page" id="voices" data-release="voices" tabindex="0" role="button" aria-label="Open Voices of Rivers release">
+      <canvas class="canvas" id="river"></canvas>
+      <div class="kicker">Installation</div>
+      <h2 class="title sm">Voices<br>of Rivers</h2>
+      <div class="releaseText">
+        <p>A multimedia installation about how rivers shape identity, memory and cultural connection.</p><br>
+        <p class="projectMeta">Produced by<br>c² Command</p>
+        <div class="clickHint">click to read release</div>
+      </div>
+    
+      
+      <div class="cardBack releaseFull">
+        <div class="kicker">Release</div>
+        <h2 class="title sm">Voices<br>of Rivers</h2>
+        <div class="releaseScroll">
+          <p>Exhibition
+May 18–20, 2026
+Novi Sad, Serbia, BIRO, Kreativni Distrikt</p><p>Vernissage
+May 20, opening time to be announced</p><p>The project started from a personal encounter of photographer Anna Frantsuzova, one of the authors of the installation. More precisely, in a conversation that she had with a ninety-year-old man from Serbia, who said that if you get into a boat in his town, you can reach Saint Petersburg, the city where she is from. This simple phrase made her think that continuous water path is not just geographic. It was a way to think about how places, histories, and lives are connected.</p><p>This remark led to the main question of the project: how does a river shape the way people think and feel in different cultural contexts. Reflecting on her own long connection with the Neva, Anna came to a simple idea. A river can become a kind of anchor through which a person builds both personal and collective identity, through memory, everyday life, and culture.</p><p>The project is designed as research. For the author, who works in academia, it is important to use a method that is almost impossible in science. This method is a lived experience. The relation to the river is not analyzed from a distance. It is seen through sound, image, memory, personal stories, and physical objects. And the viewer becomes part of this research, instead of observing a finished result, they enter it themselves.</p><p>The co-authors of the project are Katarina Čokrlić and Tijana Jevrić. This collaboration of three authors brings together different methods, perspectives, and ways of experiencing the river. It also connects different locations and cultural backgrounds.</p><p>The installation is not offering any conclusions, it is rather an environment, which viewer enters as a participant. The space invites associations, memories, and personal reflections.</p><p>The project consists of three main layers: photography, sound, and video.</p><p>Analog photography fixes a moment as something unique and unrepeatable. It keeps the viewer in the present, in a specific moment of experience. It shows how fragile memory is and how closely it is tied to personal perception. These images of rivers and cities form a subjective map of a city by the river.</p><p>Sound and video are doing quite the opposite. Recorded sound of the rivers, made in everyday surroundings, same as video are shifting perception towards the flow of time. They move the viewer beyond a single moment into duration, into a space where past and future can coexist. The river is felt not as a point, but as a process.</p><p>Another layer includes personal stories and small physical objects. Short texts connected to specific places by the water, along with items such as stones, grains, or pieces of fabric, they bring traces of human presence into the space. These elements act as markers of memory and show how individual experience becomes part of a larger context.</p><p>The final form of the project is not fixed in advance. It comes together during installation. So we invite you to be part of it and experience Danube and Neva with us.</p><p>Produced by C² Command in collaboration with Tijana Jevrić, presented as part of the AIMs 2026 program.</p>
+        </div>
+        <p class="projectMeta">Produced by c² Command</p>
+        <div class="clickHint">click to return</div>
+      </div>
+    </section>
+
+    <section class="panel dark exhibition page" id="line" data-release="line" tabindex="0" role="button" aria-label="Open On the Line release">
+      <canvas class="canvas" id="lineCanvas"></canvas>
+      <div class="kicker">Exhibition</div>
+      <h2 class="title sm">On<br>the Line</h2>
+      <div class="releaseText">
+        <p>Theatre photography returns to a temporary stage. Images are suspended between holding and disappearance.</p><br>
+        <p class="meta red">AIMs-2026 & Theatre Exposed project</p>
+        <div class="clickHint">click to read release</div>
+      </div>
+    
+      
+      <div class="cardBack releaseFull">
+        <div class="kicker">Release</div>
+        <h2 class="title sm">On<br>the Line</h2>
+        <div class="releaseScroll">
+          <p>Exhibition
+May 18–20, 2026
+Novi Sad, Serbia, BIRO, Kreativni Distrikt</p><p>Vernissage
+May 20, opening time to be announced</p><p>Theatre is an art that exists in the moment. It emerges and disappears like drawings in the sand, inevitably washed away by the wave of time.</p><p>Theatrical photography is an attempt to resist this. A theatre photographer captures a moment, extends its life, and brings into the image their own perspective, point of view, and relationship to what unfolds on stage. What emerges is an image that is no longer identical to the performance, yet retains its tension, gesture, and atmosphere.</p><p>The exhibition space is constructed as a set of symbolic theatrical boards: a wooden structure defines the boundary of the stage. The images captured by photographers return to the space of theatrical ritual. Within this exhibition, photography once again enters a state of temporality. The photographs are not fixed, but held only for a time, like a pause, like a suspended gesture. The viewer moves through this space as through a performance: sequentially, in time, assembling individual frames into a single experience.</p><p>Thus, photography returns to the logic of theatre from which it emerges. What matters is not the image as an object, but the moment of encountering it.</p><p>However, in the end, this logic is deliberately disrupted. The photographs can be taken away by visitors and with this, the exhibition itself disappears. The stage dissolves, and the moments leave its boundaries, continuing to exist in another context, in memory, in personal experience, outside the shared space.</p><p>The title On the Line captures this condition: the image exists on the line between holding and disappearance, between the stage and what lies beyond it.</p><p>The project is realized in collaboration between the International Art and Innovation in Museums Seminar (AIMs-2026) and the International Theatre Photography Competition THEATRE EXPOSED.</p>
+        </div>
+        <p class="projectMeta">AIMs-2026 & Theatre Exposed project</p>
+        <div class="clickHint">click to return</div>
+      </div>
+    </section>
+
+    <section class="panel venue page" id="venue">
+      <div class="placeTop">
+        <div class="kicker">AIMs 2026</div>
+        <div class="loc">BIRO,<br>Kreativni Distrikt</div>
+        
+      </div>
+      <div class="logoStrip">
+        <div class="logoRow">
+          <img
+              src="./logo.png"
+              alt="c2-command"
+              class="partner-logo"
+            />
+          <img src="./aims_logo.png" alt="AIMs" class="partner-logo" />  
+          <img src="./DPLS1.png" alt="Association for Applied Linguistics of Serbia" class="partner-logo" />
+          <img src="./sh.png" alt="SH" class="partner-logo" />
+          </div>
+      </div>
+   
+      </section>
+
+    <div class="tab t1"></div>
+  </main>
+</div>
+
+<nav class="mobilePager" aria-label="Booklet sections">
+  <a href="#cover" class="active"></a><a href="#program"></a><a href="#voices"></a><a href="#line"></a><a href="#venue"></a>
+</nav><div class="mobileHint" id="mobileHint" aria-hidden="true"></div><div class="mobileHint" id="mobileHint" aria-hidden="true"></div>
+
+<div class="releaseModal" id="modal" aria-hidden="true">
+  <article class="modalCard">
+    <button class="closeBtn" id="closeModal">close</button>
+    <h2 id="modalTitle"></h2>
+    <p id="modalText"></p>
+  </article>
+</div>
+
+<script>
+const releases = {
+  voices: { title: "Voices of Rivers", text: "VOICES OF RIVERS\n\nExhibition\nMay 18\u201320, 2026\nNovi Sad, Serbia, BIRO, Kreativni Distrikt\n\nVernissage\nMay 20, opening time to be announced\n\nThe project started from a personal encounter of photographer Anna Frantsuzova, one of the authors of the installation. In a conversation with a ninety-year-old man from Serbia, he said that if you get into a boat in his town, you can reach Saint Petersburg, the city where she is from. This simple phrase made her think that a continuous water path is not only geographic. It became a way to think about how places, histories and lives are connected.\n\nThis remark led to the main question of the project: how does a river shape the way people think and feel in different cultural contexts. Reflecting on her own long connection with the Neva, Anna came to a simple idea. A river can become an anchor through which a person builds both personal and collective identity, through memory, everyday life and culture.\n\nThe project is designed as research. The relation to the river is not analyzed from a distance. It is seen through sound, image, memory, personal stories and physical objects. The viewer becomes part of this research, instead of observing a finished result.\n\nThe co-authors of the project are Katarina \u010cokrli\u0107 and Tijana Jevri\u0107. The installation brings together photography, sound, video, personal stories and small physical objects. It invites associations, memories and personal reflections.\n\nProduced by C\u00b2 Command in collaboration with Tijana Jevri\u0107, presented as part of the AIMs 2026 program." },
+  line: { title: "On the Line", text: "ON THE LINE\n\nExhibition\nMay 18\u201320, 2026\nNovi Sad, Serbia, BIRO, Kreativni Distrikt\n\nVernissage\nMay 20, opening time to be announced\n\nTheatre is an art that exists in the moment. It emerges and disappears like drawings in the sand, washed away by the wave of time.\n\nTheatrical photography is an attempt to resist this. A theatre photographer captures a moment, extends its life, and brings into the image their own perspective, point of view and relationship to what unfolds on stage. The image is no longer identical to the performance, yet it retains its tension, gesture and atmosphere.\n\nThe exhibition space is constructed as a set of symbolic theatrical boards. A wooden structure defines the boundary of the stage. The images captured by photographers return to the space of theatrical ritual. Within this exhibition, photography once again enters a state of temporality. The photographs are not fixed, but held only for a time, like a pause, like a suspended gesture.\n\nThe viewer moves through this space as through a performance: sequentially, in time, assembling individual frames into a single experience. In the end, this logic is deliberately disrupted. The photographs can be taken away by visitors and the exhibition itself disappears.\n\nThe title On the Line captures this condition: the image exists on the line between holding and disappearance, between the stage and what lies beyond it.\n\nThe project is realized in collaboration between AIMs-2026 and the International Theatre Photography Competition THEATRE EXPOSED." }
+};
+
+const DPR = Math.min(window.devicePixelRatio || 1, 2);
+function fit(c) {
+  const r = c.getBoundingClientRect();
+  c.width = Math.max(1, r.width * DPR);
+  c.height = Math.max(1, r.height * DPR);
+  const ctx = c.getContext("2d");
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  return [ctx, r.width, r.height];
+}
+
+function square() {
+  const c = document.getElementById("square");
+  let t = 0;
+
+  function drawPartialRect(ctx,x,y,w,h,p){
+    const len=2*(w+h), target=p*len;
+    ctx.beginPath(); ctx.moveTo(x,y);
+    let d=target;
+    if(d<=w){ ctx.lineTo(x+d,y); }
+    else{
+      ctx.lineTo(x+w,y); d-=w;
+      if(d<=h){ ctx.lineTo(x+w,y+d); }
+      else{
+        ctx.lineTo(x+w,y+h); d-=h;
+        if(d<=w){ ctx.lineTo(x+w-d,y+h); }
+        else{ ctx.lineTo(x,y+h); d-=w; ctx.lineTo(x,y+h-d); }
+      }
+    }
+    ctx.stroke();
+  }
+
+  function draw() {
+    const [ctx,w,h] = fit(c);
+    t += 0.012;
+    ctx.clearRect(0,0,w,h);
+    ctx.fillStyle = "#ecebe7";
+    ctx.fillRect(0,0,w,h);
+
+    const bg = ctx.createRadialGradient(w*.5,h*.66,8,w*.5,h*.66,Math.max(w,h)*.72);
+    bg.addColorStop(0,"rgba(100,100,100,.24)");
+    bg.addColorStop(.42,"rgba(165,165,165,.15)");
+    bg.addColorStop(1,"rgba(255,255,255,.56)");
+    ctx.fillStyle = bg;
+    ctx.fillRect(0,0,w,h);
+
+    for(let i=0;i<25;i++){
+      const p=i/24;
+      const ww=w*(.14+p*.84);
+      const hh=h*(.10+p*.86);
+      const x0=w/2-ww/2;
+      const y0=h*.52-hh/2;
+      const progress=(t*.52+i*.045)%1;
+      ctx.strokeStyle=`rgba(85,85,85,${0.09+p*.12})`;
+      ctx.lineWidth=1;
+      drawPartialRect(ctx,x0,y0,ww,hh,progress);
+    }
+
+    const fg = ctx.createLinearGradient(0,h*.70,0,h);
+    fg.addColorStop(0,"rgba(255,255,255,0)");
+    fg.addColorStop(1,"rgba(130,130,130,.07)");
+    ctx.fillStyle=fg;
+    ctx.fillRect(0,h*.70,w,h*.30);
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+function river() {
+  const c = document.getElementById("river");
+  let t = 0;
+
+  function drawBoat(ctx, w, h, cx, cy, s, col, rot=0) {
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(rot);
+    ctx.translate(-cx, -cy);
+    ctx.strokeStyle = col;
+    ctx.lineWidth = 1.45;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+
+    // Continuous wave line: left river line folds into a paper boat and exits right.
+    ctx.beginPath();
+    ctx.moveTo(-40, cy + s*.25);
+    ctx.bezierCurveTo(cx-s*1.60, cy+s*.42, cx-s*1.08, cy+s*.30, cx-s*.72, cy+s*.12);
+
+    // left wall, bottom hull, sail, right wing, and outgoing waterline
+    ctx.lineTo(cx-s*.47, cy+s*.08);
+    ctx.lineTo(cx-s*.62, cy-s*.31);
+    ctx.lineTo(cx-s*.03, cy-s*.04);
+    ctx.lineTo(cx+s*.20, cy-s*.62);
+    ctx.lineTo(cx+s*.35, cy-s*.16);
+    ctx.lineTo(cx+s*.72, cy-s*.38);
+    ctx.lineTo(cx+s*.50, cy+s*.12);
+    ctx.lineTo(cx-s*.36, cy+s*.19);
+    ctx.lineTo(cx+s*.74, cy+s*.03);
+    ctx.bezierCurveTo(cx+s*1.05, cy+s*.00, w+5, cy+s*.17, w+42, cy+s*.22);
+    ctx.stroke();
+
+    // restrained internal folds
+    ctx.globalAlpha = .72;
+    ctx.beginPath();
+    ctx.moveTo(cx-s*.62, cy-s*.31);
+    ctx.lineTo(cx-s*.36, cy+s*.19);
+    ctx.moveTo(cx-s*.03, cy-s*.04);
+    ctx.lineTo(cx+s*.50, cy+s*.12);
+    ctx.moveTo(cx-s*.03, cy-s*.04);
+    ctx.lineTo(cx+s*.72, cy-s*.38);
+    ctx.moveTo(cx+s*.20, cy-s*.62);
+    ctx.lineTo(cx+s*.04, cy-s*.05);
+    ctx.moveTo(cx-s*.47, cy+s*.08);
+    ctx.lineTo(cx+s*.50, cy+s*.12);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function draw() {
+    const [ctx,w,h] = fit(c);
+    t += 0.01;
+    ctx.clearRect(0,0,w,h);
+
+    ctx.fillStyle = "#bfc8c4";
+    ctx.fillRect(0,0,w,h);
+
+    const waveCol = "rgba(0,0,0,.15)";
+    const boatCol = "rgba(0,0,0,.46)";
+
+    for(let j=0;j<22;j++){
+      ctx.beginPath();
+      const yBase = h*(.18 + j*.034);
+      for(let x=-20;x<=w+20;x+=7){
+        const y = yBase
+          + Math.sin(x*.010 + t*1.35 + j*.38)*8
+          + Math.sin(x*.004 + t*.50)*16;
+        if(x===-20) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      }
+      ctx.strokeStyle = waveCol;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    drawBoat(ctx, w, h, w*.69, h*.49 + Math.sin(t*1.7)*2.8, Math.min(92, w*.25), boatCol, Math.sin(t*1.15)*0.018);
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+function lineCanvas() {
+  const c = document.getElementById("lineCanvas");
+  let t=0;
+  function draw() {
+    const [ctx,w,h]=fit(c);
+    t += 0.006;
+    ctx.clearRect(0,0,w,h);
+    ctx.fillStyle="#050505";
+    ctx.fillRect(0,0,w,h);
+
+    ctx.globalCompositeOperation="screen";
+
+    for(let i=0;i<34;i++) {
+      const y1 = h*(.16+i*.023) + Math.sin(t*1.2+i*.45)*4;
+      const y2 = h*(.11+i*.025) + Math.cos(t+i*.35)*10;
+      ctx.beginPath();
+      ctx.moveTo(-20, y1);
+      ctx.lineTo(w+20, y2);
+      ctx.strokeStyle = i%5===0 ? "rgba(255,255,255,.20)" : "rgba(255,255,255,.10)";
+      ctx.lineWidth = i%6===0 ? 1.2 : .75;
+      ctx.stroke();
+    }
+
+    for(let i=0;i<8;i++) {
+      const y1 = h*(.36+i*.04) + Math.sin(t+i)*3;
+      const y2 = h*(.31+i*.041) + Math.cos(t*.8+i)*7;
+      ctx.beginPath();
+      ctx.moveTo(w*.18, y1);
+      ctx.lineTo(w+30, y2);
+      ctx.strokeStyle = "rgba(215,25,32,.12)";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    const mainY = h*.45 + Math.sin(t)*2.5;
+    ctx.beginPath();
+    ctx.moveTo(0, mainY);
+    ctx.lineTo(w, mainY - 7 + Math.cos(t)*2.5);
+    ctx.strokeStyle="rgba(255,255,255,.58)";
+    ctx.lineWidth=1.55;
+    ctx.stroke();
+
+    const rectW = Math.min(innerWidth < 1101 ? 54 : 58, w*.16);
+    const rectH = Math.min(innerWidth < 1101 ? 106 : 116, h*.20);
+    const rectX = (innerWidth < 1101 ? w*.79 : w*.73) + Math.sin(t*1.15)*3.5;
+    const rectY = mainY - rectH*.54 + Math.cos(t*1.05)*2.4;
+    ctx.strokeStyle = "rgba(255,255,255,.55)";
+    ctx.lineWidth = 1;
+    ctx.strokeRect(rectX, rectY, rectW, rectH);
+
+    ctx.beginPath();
+    ctx.moveTo(rectX, mainY);
+    ctx.lineTo(rectX, rectY);
+    ctx.moveTo(rectX + rectW, mainY - 2);
+    ctx.lineTo(rectX + rectW, rectY);
+    ctx.strokeStyle = "rgba(255,255,255,.25)";
+    ctx.stroke();
+
+    ctx.globalCompositeOperation="source-over";
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+function setupModal() {
+  document.querySelectorAll("[data-release]").forEach(el=>{
+    const toggle = (e) => {
+      e.preventDefault();
+      el.classList.toggle("flipped");
+    };
+    el.addEventListener("click", toggle);
+    el.addEventListener("keydown", e=>{
+      if(e.key==="Enter"||e.key===" "){
+        e.preventDefault();
+        el.classList.toggle("flipped");
+      }
+    });
+  });
+}
+
+function setupMobilePager(){
+  const links=[...document.querySelectorAll(".mobilePager a")];
+  if(!links.length) return;
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        links.forEach(a=>a.classList.toggle("active", a.getAttribute("href")==="#"+en.target.id));
+      }
+    });
+  },{threshold:.55});
+  document.querySelectorAll(".page").forEach(p=>obs.observe(p));
+}
+
+function setupScrollArrow(){
+  const hint = document.getElementById("mobileHint");
+  if(!hint) return;
+
+  const sections = [...document.querySelectorAll(".page")];
+
+  const update = () => {
+    const nearBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80;
+    hint.classList.toggle("atBottom", nearBottom);
+
+    let active = null;
+    let best = Infinity;
+    for(const section of sections){
+      const r = section.getBoundingClientRect();
+      const visible = r.bottom > 0 && r.top < window.innerHeight;
+      const dist = Math.abs(r.top);
+      if(visible && dist < best){
+        best = dist;
+        active = section;
+      }
+    }
+
+    const lightBackground =
+      active &&
+      (active.id === "cover" || active.id === "program" || active.id === "venue" ||
+       (active.id === "voices" && !active.classList.contains("flipped")));
+
+    hint.classList.toggle("darkArrow", !!lightBackground);
+    hint.classList.toggle("lightArrow", !lightBackground);
+  };
+
+  window.addEventListener("scroll", update, {passive:true});
+  window.addEventListener("resize", update);
+  update();
+}
+
+
+function setupProgramSlider(){
+  const program = document.getElementById("program");
+  if(!program) return;
+  const tabs = [...program.querySelectorAll(".dayTab")];
+  const panels = [...program.querySelectorAll(".slideDay")];
+  if(!tabs.length || !panels.length) return;
+
+  const setDay = (index) => {
+    tabs.forEach((tab, i) => {
+      tab.classList.toggle("active", i === index);
+      tab.setAttribute("aria-selected", i === index ? "true" : "false");
+    });
+    panels.forEach((panel, i) => {
+      panel.classList.toggle("active", i === index);
+      panel.toggleAttribute("hidden", i !== index);
+    });
+  };
+
+  tabs.forEach((tab, index) => {
+    tab.setAttribute("role", "tab");
+    tab.setAttribute("aria-selected", index === 0 ? "true" : "false");
+    tab.addEventListener("click", (e) => {
+      e.stopPropagation();
+      setDay(index);
+    });
+  });
+
+  panels.forEach((panel, index) => {
+    panel.setAttribute("role", "tabpanel");
+    if(index !== 0) panel.setAttribute("hidden", "");
+  });
+
+  setDay(0);
+}
+
+window.addEventListener("load", ()=>{ setupProgramSlider();  setupScrollArrow();  square(); river(); lineCanvas(); setupModal(); setupMobilePager(); });
+</script>
+</body>
+</html>
