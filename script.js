@@ -617,3 +617,25 @@ document.addEventListener("DOMContentLoaded", () => {
     setState("collapsed");
   }
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const heroLocations = document.querySelector(".hero-locations");
+  const introSection = document.querySelector(".intro-section");
+
+  if (!heroLocations || !introSection) return;
+
+  function toggleHeroLocations() {
+    const introBottom = introSection.getBoundingClientRect().bottom;
+
+    heroLocations.classList.toggle(
+      "is-hidden",
+      window.scrollY > 25
+    );
+  }
+
+  toggleHeroLocations();
+
+  window.addEventListener("scroll", toggleHeroLocations);
+  window.addEventListener("resize", toggleHeroLocations);
+});
