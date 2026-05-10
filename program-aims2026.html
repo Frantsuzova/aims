@@ -1871,6 +1871,514 @@ html,body{overflow-x:hidden!important}
   }
 }
 
+
+
+/* v36: detailed AIMs programme, mobile-safe */
+.programSlider{
+  min-height:clamp(460px,66vh,720px)!important;
+}
+.program .day{
+  grid-template-columns:clamp(48px,4.2vw,68px) 1fr!important;
+  gap:clamp(6px,.7vw,10px) clamp(8px,.9vw,13px)!important;
+  border-top:3px solid #111!important;
+}
+.program .time{
+  font-size:clamp(9px,.66vw,11px)!important;
+  line-height:1.08!important;
+  white-space:nowrap!important;
+  padding-top:2px!important;
+}
+.program .item{
+  text-transform:none!important;
+  font-size:clamp(9.5px,.69vw,12px)!important;
+  line-height:1.16!important;
+  padding-bottom:clamp(5px,.65vh,8px)!important;
+  border-bottom:1px solid rgba(0,0,0,.18)!important;
+}
+.program .talkTitle,
+.program .talkSpeaker,
+.program .talkMeta,
+.program .talkCat{
+  display:block!important;
+}
+.program .talkTitle{
+  font-weight:950!important;
+  letter-spacing:-.015em!important;
+}
+.program .talkSpeaker{
+  margin-top:2px!important;
+  font-weight:950!important;
+  color:var(--red)!important;
+}
+.program .talkMeta{
+  margin-top:1px!important;
+  font-weight:750!important;
+  color:#38362f!important;
+}
+.program .talkCat{
+  margin-top:3px!important;
+  font-size:clamp(8px,.58vw,10px)!important;
+  font-weight:950!important;
+  letter-spacing:.08em!important;
+  text-transform:uppercase!important;
+  color:#050505!important;
+}
+.program .pause{
+  font-weight:950!important;
+  text-transform:uppercase!important;
+  letter-spacing:.08em!important;
+  color:var(--red)!important;
+}
+.program .freeDay{
+  background:rgba(215,25,32,.055)!important;
+  padding:8px 9px!important;
+  border-left:4px solid var(--red)!important;
+}
+@media(max-width:1100px){
+  .programSlider{
+    min-height:auto!important;
+  }
+  .program .day{
+    grid-template-columns:58px 1fr!important;
+    gap:8px 10px!important;
+  }
+  .program .time{
+    font-size:11px!important;
+  }
+  .program .item{
+    font-size:12px!important;
+    line-height:1.22!important;
+    overflow-wrap:anywhere!important;
+  }
+  .program .talkTitle{
+    font-size:13px!important;
+  }
+  .program .talkMeta{
+    font-size:11.5px!important;
+  }
+  .program .talkCat{
+    font-size:9px!important;
+  }
+}
+
+
+
+/* v37 requested programme refinements */
+.program .time .mode{
+  display:block!important;
+  margin-top:3px!important;
+  font-size:clamp(7.5px,.52vw,9px)!important;
+  line-height:1!important;
+  letter-spacing:.08em!important;
+  text-transform:uppercase!important;
+  color:var(--red)!important;
+}
+.program .talkKeywords{
+  display:block!important;
+  margin-top:3px!important;
+  font-size:clamp(8px,.56vw,9.5px)!important;
+  line-height:1.12!important;
+  font-weight:850!important;
+  color:#6a675f!important;
+}
+.program .talkCat{
+  color:#050505!important;
+}
+.programBottomTabs{display:none}
+@media(min-width:1101px){
+  .programSlider{
+    max-height:calc(100% - 112px)!important;
+    min-height:0!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    padding-right:7px!important;
+    scrollbar-width:thin!important;
+    scrollbar-color:rgba(215,25,32,.8) rgba(0,0,0,.08)!important;
+  }
+  .programSlider::-webkit-scrollbar{width:7px!important}
+  .programSlider::-webkit-scrollbar-track{background:rgba(0,0,0,.08)!important;border-radius:999px!important}
+  .programSlider::-webkit-scrollbar-thumb{background:rgba(215,25,32,.85)!important;border-radius:999px!important}
+  .program .day{padding-bottom:18px!important}
+}
+@media(max-width:1100px){
+  .programBottomTabs{
+    display:grid!important;
+    grid-template-columns:repeat(3,1fr)!important;
+    gap:7px!important;
+    margin-top:18px!important;
+  }
+  .programBottomTabs .dayTab{
+    padding:9px 8px!important;
+    font-size:10px!important;
+    text-align:center!important;
+    letter-spacing:.06em!important;
+  }
+  .program .time .mode{font-size:9px!important}
+  .program .talkKeywords{font-size:10px!important;line-height:1.18!important}
+}
+
+
+
+
+/* v39: programme paging instead of desktop scroll, mobile fixes */
+.programSlider{
+  overflow:hidden!important;
+  max-height:none!important;
+  min-height:clamp(440px,62vh,690px)!important;
+  padding-right:0!important;
+}
+.programDayPage.active{display:contents!important}
+.programDayPage:not(.active){display:none!important}
+.programPageNav{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:10px;
+  margin-top:8px;
+  position:relative;
+  z-index:9;
+}
+.programArrow{
+  appearance:none;
+  width:34px;
+  height:34px;
+  border:2px solid #111;
+  background:#050505;
+  color:#fff;
+  font-weight:950;
+  font-size:24px;
+  line-height:1;
+  cursor:pointer;
+}
+.programArrow:disabled{
+  opacity:.35;
+  cursor:default;
+}
+.programPageIndicator{
+  min-width:38px;
+  text-align:center;
+  font-weight:950;
+  font-size:10px;
+  letter-spacing:.12em;
+  color:#050505;
+}
+.sessionHeader{
+  grid-column:1/-1;
+  margin:3px 0 7px;
+  padding:7px 8px;
+  background:#050505;
+  color:#fff;
+  font-weight:950;
+  font-size:clamp(9px,.68vw,12px);
+  line-height:1.12;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.program .time .mode{
+  white-space:normal!important;
+}
+@media(min-width:1101px){
+  .programSlider{
+    overflow:hidden!important;
+    max-height:none!important;
+    scrollbar-width:none!important;
+  }
+  .programSlider::-webkit-scrollbar{display:none!important}
+}
+@media(max-width:1100px){
+  .programSlider{min-height:auto!important;overflow:visible!important}
+  .programDayPage,
+  .programDayPage.active,
+  .programDayPage:not(.active){display:contents!important}
+  .programPageNav{display:none!important}
+  .program .freeDay{
+    padding:12px 12px!important;
+    border-left-width:3px!important;
+    overflow-wrap:normal!important;
+    word-break:normal!important;
+  }
+  .program .freeDay .talkTitle{font-size:14px!important;line-height:1.08!important}
+  .program .freeDay .talkMeta{font-size:11px!important;line-height:1.18!important}
+  .program .freeDay .talkCat{font-size:9px!important;line-height:1.05!important}
+  .sessionHeader{font-size:11px!important;line-height:1.15!important;margin:4px 0 8px!important}
+}
+
+
+/* v40: compact programme pages and clearer page navigation */
+.program .item{padding-bottom:4px!important}
+.program .talkTitle{font-size:clamp(10.5px,.72vw,13px)!important;line-height:1.08!important}
+.program .talkSpeaker{font-size:clamp(10px,.66vw,12px)!important;line-height:1.08!important}
+.program .talkMeta{font-size:clamp(9px,.60vw,11px)!important;line-height:1.08!important}
+.program .talkKeywords{font-size:clamp(7.8px,.52vw,9px)!important;line-height:1.08!important;margin-top:2px!important}
+.program .day{gap:6px 12px!important}
+.program .time{font-size:clamp(9px,.62vw,11px)!important;line-height:1.05!important}
+.program .time .mode{font-size:clamp(7px,.48vw,8.4px)!important;line-height:1.02!important}
+.programPageNav{justify-content:flex-end!important;gap:8px!important;margin-top:10px!important}
+.programArrow{width:auto!important;min-width:34px!important;height:34px!important;padding:0 10px!important;font-size:11px!important;letter-spacing:.08em!important;text-transform:uppercase!important}
+.programPageIndicator{min-width:0!important;font-size:10px!important;text-transform:uppercase!important;letter-spacing:.08em!important;color:var(--red)!important}
+.programPageNav:has(.programPrev:not(:disabled)) .programPageIndicator{color:#050505!important}
+.programArrow:disabled{display:none!important}
+@media(max-width:1100px){
+  .program .talkTitle{font-size:13px!important;line-height:1.12!important}
+  .program .talkSpeaker{font-size:12px!important}
+  .program .talkMeta{font-size:11px!important}
+  .program .talkKeywords{font-size:10px!important}
+  .programPageNav{display:none!important}
+}
+
+
+
+/* v41: day 20 fits in one page; minimal pause pager */
+.program .slideDay[data-day-panel="2"] .day{gap:5px 10px!important}
+.program .slideDay[data-day-panel="2"] .sessionHeader{margin:2px 0 5px!important;padding:6px 8px!important;font-size:clamp(8.4px,.58vw,10.4px)!important;line-height:1.05!important}
+.program .slideDay[data-day-panel="2"] .item{padding-bottom:3px!important}
+.program .slideDay[data-day-panel="2"] .talkSpeaker{font-size:clamp(9px,.58vw,10.5px)!important}
+.program .slideDay[data-day-panel="2"] .talkMeta{font-size:clamp(8px,.52vw,9.5px)!important}
+.program .slideDay[data-day-panel="2"] .talkCat{font-size:clamp(7.5px,.48vw,8.4px)!important;color:#6a675f!important}
+.program .slideDay[data-day-panel="2"] .time{font-size:clamp(8.8px,.58vw,10px)!important}
+.program .slideDay[data-day-panel="2"] .freeDay{border-left-width:3px!important;padding:6px 8px!important}
+.programPageIndicator{display:none!important}
+.programArrow{min-width:34px!important;width:34px!important;padding:0!important;font-size:0!important;letter-spacing:0!important}
+.programPrev::before{content:"‹";font-size:24px!important;line-height:1!important}
+.programNext::before{content:"›";font-size:24px!important;line-height:1!important}
+@media(max-width:1100px){
+  .program .slideDay[data-day-panel="2"] .sessionHeader{font-size:10px!important}
+  .program .slideDay[data-day-panel="2"] .talkSpeaker{font-size:12px!important}
+  .program .slideDay[data-day-panel="2"] .talkMeta{font-size:11px!important}
+}
+
+
+
+/* v42: readable desktop programme, explicit pause navigation, online label commented */
+@media(min-width:1101px){
+  .program .talkTitle{font-size:clamp(11.8px,.82vw,14.5px)!important;line-height:1.1!important}
+  .program .talkSpeaker{font-size:clamp(11.2px,.74vw,13px)!important;line-height:1.08!important}
+  .program .talkMeta{font-size:clamp(10px,.66vw,12px)!important;line-height:1.08!important}
+  .program .talkKeywords{font-size:clamp(8.6px,.56vw,10px)!important;line-height:1.1!important}
+  .program .time{font-size:clamp(9.8px,.66vw,11.6px)!important;line-height:1.05!important}
+  .program .day{gap:7px 12px!important}
+}
+.programArrow{
+  width:auto!important;
+  min-width:0!important;
+  height:34px!important;
+  padding:0 12px!important;
+  font-size:10px!important;
+  line-height:1!important;
+  letter-spacing:.08em!important;
+  text-transform:uppercase!important;
+  white-space:nowrap!important;
+}
+.programPrev::before,.programNext::before{content:none!important}
+.programPageNav{justify-content:flex-end!important;gap:8px!important}
+
+
+/* v43: fit May 19 page navigation and enlarge May 20 speakers */
+@media(min-width:1101px){
+  /* May 19 needs to fit the pause navigation below the first half */
+  .program .slideDay[data-day-panel="1"] .talkTitle{
+    font-size:clamp(10.6px,.72vw,12.8px)!important;
+    line-height:1.06!important;
+  }
+  .program .slideDay[data-day-panel="1"] .talkSpeaker{
+    font-size:clamp(10.2px,.66vw,11.8px)!important;
+    line-height:1.05!important;
+  }
+  .program .slideDay[data-day-panel="1"] .talkMeta{
+    font-size:clamp(9px,.58vw,10.4px)!important;
+    line-height:1.05!important;
+  }
+  .program .slideDay[data-day-panel="1"] .talkKeywords{
+    font-size:clamp(7.6px,.49vw,8.6px)!important;
+    line-height:1.05!important;
+    margin-top:1px!important;
+  }
+  .program .slideDay[data-day-panel="1"] .day,
+  .program .slideDay[data-day-panel="1"]{
+    gap:5px 10px!important;
+  }
+  .program .slideDay[data-day-panel="1"] .item{
+    padding-bottom:2px!important;
+  }
+  .program .slideDay[data-day-panel="1"] .time{
+    font-size:clamp(9px,.58vw,10.4px)!important;
+    line-height:1!important;
+  }
+  .programPageNav{
+    margin-top:6px!important;
+  }
+
+  /* May 20 has fewer details, so speakers can be larger */
+  .program .slideDay[data-day-panel="2"] .sessionHeader{
+    font-size:clamp(10px,.7vw,12.4px)!important;
+    line-height:1.08!important;
+    padding:7px 9px!important;
+  }
+  .program .slideDay[data-day-panel="2"] .talkSpeaker{
+    font-size:clamp(12px,.82vw,14.4px)!important;
+    line-height:1.12!important;
+  }
+  .program .slideDay[data-day-panel="2"] .talkMeta{
+    font-size:clamp(10.2px,.68vw,12.2px)!important;
+    line-height:1.12!important;
+  }
+  .program .slideDay[data-day-panel="2"] .time{
+    font-size:clamp(10px,.68vw,11.8px)!important;
+  }
+}
+
+@media(max-width:1100px){
+  .program .slideDay[data-day-panel="2"] .talkSpeaker{font-size:14px!important;line-height:1.15!important}
+  .program .slideDay[data-day-panel="2"] .talkMeta{font-size:12px!important;line-height:1.15!important}
+}
+
+
+/* v44: mobile jump alignment, stronger desktop programme, compact partner logos */
+@media(min-width:1101px){
+  .program .slideDay[data-day-panel="1"] .talkTitle{
+    font-size:clamp(11.4px,.78vw,13.6px)!important;
+    line-height:1.075!important;
+  }
+  .program .slideDay[data-day-panel="1"] .talkSpeaker{
+    font-size:clamp(10.8px,.70vw,12.4px)!important;
+    line-height:1.06!important;
+  }
+  .program .slideDay[data-day-panel="1"] .talkMeta{
+    font-size:clamp(9.6px,.62vw,11.1px)!important;
+    line-height:1.055!important;
+  }
+  .program .slideDay[data-day-panel="1"] .talkKeywords{
+    font-size:clamp(8px,.52vw,9.2px)!important;
+    line-height:1.055!important;
+    margin-top:1px!important;
+  }
+  .program .slideDay[data-day-panel="1"] .item{padding-bottom:2px!important}
+
+  .program .slideDay[data-day-panel="2"] .sessionHeader{
+    font-size:clamp(11.5px,.82vw,14.2px)!important;
+    line-height:1.08!important;
+    padding:8px 10px!important;
+  }
+  .program .slideDay[data-day-panel="2"] .talkSpeaker{
+    font-size:clamp(13.4px,.92vw,16px)!important;
+    line-height:1.12!important;
+  }
+  .program .slideDay[data-day-panel="2"] .talkMeta{
+    font-size:clamp(11.4px,.76vw,13.2px)!important;
+    line-height:1.12!important;
+  }
+  .program .slideDay[data-day-panel="2"] .time{
+    font-size:clamp(10.8px,.72vw,12.4px)!important;
+  }
+}
+
+/* partner logos: restored from first version, adapted only for the added OPENS logo */
+.logoStrip{
+  position:relative!important;
+  left:auto!important;
+  right:auto!important;
+  bottom:auto!important;
+  height:clamp(32px,4.2vh,46px)!important;
+  margin:0 0 8px 0!important;
+  padding:0!important;
+  background:transparent!important;
+  border:0!important;
+  overflow:hidden!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+.logoRow{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  gap:clamp(8px,1vw,16px)!important;
+  width:100%!important;
+  height:100%!important;
+  margin:0!important;
+  flex-wrap:nowrap!important;
+}
+.logoRow img.partner-logo{
+  display:block!important;
+  flex:0 1 18%!important;
+  max-width:18%!important;
+  max-height:100%!important;
+  width:auto!important;
+  height:auto!important;
+  object-fit:contain!important;
+  filter:grayscale(1) invert(1) contrast(1.2)!important;
+  mix-blend-mode:multiply!important;
+  opacity:1!important;
+  transform:none!important;
+}
+@media(max-width:1100px){
+  .logoStrip{
+    height:38px!important;
+    margin-top:10px!important;
+    margin-bottom:10px!important;
+    overflow:visible!important;
+  }
+  .logoRow{
+    justify-content:center!important;
+    gap:clamp(8px,2.2vw,13px)!important;
+    width:100%!important;
+    flex-wrap:nowrap!important;
+  }
+  .logoRow img.partner-logo{
+    flex:0 1 18%!important;
+    max-width:18%!important;
+    max-height:100%!important;
+  }
+}
+
+
+/* logo section compact alignment fix: keep first-version style, but group logos to the right */
+.venue{
+  grid-template-columns:auto minmax(0,1fr)!important;
+  column-gap:clamp(44px,5.4vw,86px)!important;
+}
+.logoStrip{
+  justify-content:flex-end!important;
+  overflow:visible!important;
+}
+.logoRow{
+  width:auto!important;
+  max-width:min(650px,100%)!important;
+  margin-left:auto!important;
+  justify-content:flex-end!important;
+  gap:clamp(18px,1.9vw,32px)!important;
+  flex-wrap:nowrap!important;
+}
+.logoRow img.partner-logo{
+  flex:0 0 auto!important;
+  max-width:clamp(58px,6.2vw,112px)!important;
+  max-height:clamp(28px,4.2vh,44px)!important;
+  width:auto!important;
+  height:auto!important;
+  object-fit:contain!important;
+}
+@media(max-width:1100px){
+  .venue{
+    display:block!important;
+  }
+  .logoStrip{
+    justify-content:center!important;
+    overflow:visible!important;
+  }
+  .logoRow{
+    width:100%!important;
+    max-width:100%!important;
+    margin-left:0!important;
+    justify-content:center!important;
+    gap:clamp(8px,2.3vw,14px)!important;
+  }
+  .logoRow img.partner-logo{
+    flex:0 1 auto!important;
+    max-width:16.5vw!important;
+    max-height:38px!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1889,31 +2397,134 @@ html,body{overflow-x:hidden!important}
     <section class="panel program page" id="program">
       <div class="kicker">Program <span class="rule"></span></div>
       <div class="dayTabs" role="tablist" aria-label="Program days">
-        <button class="dayTab active" type="button" data-day="0" aria-label="Day 1, May 18">May 18</button>
-        <button class="dayTab" type="button" data-day="1" aria-label="Day 2, May 19">May 19</button>
+        <button class="dayTab" type="button" data-day="0" aria-label="Day 1, May 18">May 18</button>
+        <button class="dayTab active" type="button" data-day="1" aria-label="Day 2, May 19">May 19</button>
         <button class="dayTab" type="button" data-day="2" aria-label="Day 3, May 20">May 20</button>
       </div>
       <div class="programSlider">
-      <div class="day slideDay active" data-day-panel="0">
-        <h3><span>Day 1</span><span class="red">May 18</span></h3>
-        <div class="time">15:00</div><div class="item">Opening & welcome</div>
-        <div class="time">15:25</div><div class="item">Keynote lecture</div>
-        <div class="time">16:00</div><div class="item">Presentation by [Full Name]: “Title”</div>
-        <div class="time">16:20</div><div class="item">Presentation by [Full Name]: “Title”</div>
-        <div class="time">16:40</div><div class="item">Presentation by [Full Name]: “Title”</div>
-        <div class="time">17:10</div><div class="item">Presentation by [Full Name]: “Title”</div>
-        <div class="time">17:30</div><div class="item">Presentation by [Full Name]: “Title”</div>
-        <div class="time">17:50</div><div class="item">Presentation by [Full Name]: “Title”</div>
+        <div class="day slideDay" data-day-panel="0">
+          <h3><span>Day 1</span><span class="red">May 18</span></h3>
+          <div class="programDayPage active" data-page="0">
+            <div class="time">from 17:00</div>
+            <div class="item freeDay">
+              <span class="talkTitle">Find us at BIRO</span>
+              <span class="talkMeta">Pick up the programme, meet the AIMs team, visit the exhibition space and get oriented before the working days.</span>
+              <span class="talkCat">Informal programme</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="day slideDay active" data-day-panel="1">
+          <h3><span>Day 2</span><span class="red">May 19</span></h3>
+          <div class="programDayPage active" data-page="0">
+            <div class="time">16:30<!-- <span class="mode">live online participation</span> --></div>
+            <div class="item talk online">
+              <span class="talkTitle">AI in Contemporary Cultural Practices: Beyond the Genius and the Authorship</span>
+              <span class="talkSpeaker">Maurilio Pirone</span>
+              <span class="talkMeta">Department of Arts, University of Bologna</span>
+              <span class="talkKeywords">AI culture · authorship · contemporary practice</span>
+            </div>
+            <div class="time">16:50<!-- <span class="mode">live online participation</span> --></div>
+            <div class="item talk online">
+              <span class="talkTitle">Virtual reality in museum`s environment: a practice-oriented study</span>
+              <span class="talkSpeaker">Victoria Blokhina; Daria Kasyanova</span>
+              <span class="talkMeta">HSE University; founder of the phygital citizen-science platform “Convenient City”</span>
+              <span class="talkKeywords">VR · museum environment · visitor experience</span>
+            </div>
+            <div class="time">17:10</div>
+            <div class="item talk offline">
+              <span class="talkTitle">How Technology Can Bring Us Closer to Conceptual Art</span>
+              <span class="talkSpeaker">Petra T. Babić</span>
+              <span class="talkMeta">Academy of Arts in Novi Sad</span>
+              <span class="talkKeywords">conceptual art · mediation · technology</span>
+            </div>
+            <div class="time">17:30<!-- <span class="mode">live online participation</span> --></div>
+            <div class="item talk online">
+              <span class="talkTitle">Physical Interfaces, Digital Workarounds: The Photo-Taking Impairment Effect Through an HCI Lens</span>
+              <span class="talkSpeaker">Veronika Kalgushkina</span>
+              <span class="talkMeta">Polytechnic University of Milan</span>
+              <span class="talkKeywords">HCI · photography · visitor behaviour</span>
+            </div>
+            <div class="time">17:50</div>
+            <div class="item talk offline">
+              <span class="talkTitle">Clustering of Paintings Using Visual Semantics: Revealing Latent Relationships in a Museum Map</span>
+              <span class="talkSpeaker">Anna Chizhik; Katarina Čokrlić</span>
+              <span class="talkMeta">Saint Petersburg State University; University of Bologna</span>
+              <span class="talkKeywords">visual semantics · clustering · museum map</span>
+            </div>
+            <div class="time">18:10</div><div class="item pause">Pause</div>
+          </div>
+          <div class="programDayPage" data-page="1">
+            <div class="time">18:30<!-- <span class="mode">live online participation</span> --></div>
+            <div class="item talk online">
+              <span class="talkTitle">From Object to Dataset: Museums, AI, and the Crisis of Material Authenticity</span>
+              <span class="talkSpeaker">Ksenia Psarev</span>
+              <span class="talkMeta">University of Vienna</span>
+              <span class="talkKeywords">datasets · authenticity · AI mediation</span>
+            </div>
+            <div class="time">18:50<!-- <span class="mode">live online participation</span> --></div>
+            <div class="item talk online">
+              <span class="talkTitle">Presentation title to be announced</span>
+              <span class="talkSpeaker">Jovana Jankov</span>
+              <span class="talkMeta">The Center for the Promotion of Science</span>
+              <span class="talkKeywords">science communication · public engagement · technology</span>
+            </div>
+            <div class="time">19:10</div>
+            <div class="item talk offline">
+              <span class="talkTitle">QR priče: storytelling kao jezik turizma. Primer Karlovačke bogoslovije</span>
+              <span class="talkSpeaker">Slobodan Roksandić</span>
+              <span class="talkMeta">Institute Main Point Education for Public Speaking</span>
+              <span class="talkKeywords">QR storytelling · tourism · heritage narrative</span>
+            </div>
+            <div class="time">19:30</div>
+            <div class="item talk offline">
+              <span class="talkTitle">Is a picture worth a thousand words? Developing students’ narrative strategies through a photo-based EFL task</span>
+              <span class="talkSpeaker">Jana Živanović</span>
+              <span class="talkMeta">Faculty of Media and Communications, Singidunum University</span>
+              <span class="talkKeywords">visual literacy · EFL · narrative strategies</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="day slideDay" data-day-panel="2">
+          <h3><span>Day 3</span><span class="red">May 20</span></h3>
+          <div class="programDayPage active singlePage" data-page="0">
+            <div class="sessionHeader">Speaker session: contemporary practices · exhibition practice</div>
+            <div class="time">16:00</div>
+            <div class="item talk offline"><span class="talkSpeaker">Goran Despotovski</span><span class="talkMeta">SULUV, The Union of Associations of Fine Artists of Vojvodina</span></div>
+            <div class="time">16:20</div>
+            <div class="item talk offline"><span class="talkSpeaker">Mina Aleksić</span><span class="talkMeta">European Capital of Culture Novi Sad</span></div>
+            <div class="time">16:40</div>
+            <div class="item talk offline"><span class="talkSpeaker">Danica Bićanić</span><span class="talkMeta">SKCNS Fabrika</span></div>
+            <div class="time">17:00</div>
+            <div class="item talk offline"><span class="talkSpeaker">Tijana Jevrić</span><span class="talkMeta">AIMs exhibition programme</span></div>
+            <div class="time">17:20</div><div class="item pause">Pause</div>
+            <div class="sessionHeader compactHeader">Speaker session: Stage, Image, Viewer. Theatre Practices in Dialogue with the AIMs Seminar.</div>
+            <div class="time">17:50</div>
+            <div class="item talk offline compactTalk">
+              <span class="talkSpeaker">Ivana Janošev; Miljena Vučković; guest speakers to be confirmed</span>
+              <span class="talkMeta">Theatre practitioners and scenographers</span>
+            </div>
+            <div class="time">19:00</div><div class="item pause">Pause before vernissage</div>
+            <div class="time">19:30</div>
+            <div class="item freeDay compactTalk">
+              <span class="talkTitle">Exhibition vernissage</span>
+              <span class="talkMeta">Opening of “Voices of Rivers” and “On the Line”, with informal gathering.</span>
+              <span class="talkCat">Exhibition opening</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="day slideDay" data-day-panel="1"><h3><span>Day 2</span><span class="red">May 19</span></h3>
-        <div class="time">12:00</div><div class="item">Opening & welcome</div>
-        <div class="time">12:15</div><div class="item">Keynote lecture</div>
-        <div class="time">12:45</div><div class="item">Online Session</div>
-        <div class="time">14:40</div><div class="item">Workshop session</div>
-        <div class="time">15:30</div><div class="item">Panel discussion (theatre)</div>
+      <div class="programPageNav" aria-label="Program page navigation">
+        <button class="programArrow programPrev" type="button" data-page-dir="prev" aria-label="Previous programme page">‹ before pause</button>
+        <span class="programPageIndicator">1 / 1</span>
+        <button class="programArrow programNext" type="button" data-page-dir="next" aria-label="Next programme page">after pause ›</button>
       </div>
-      <div class="day slideDay" data-day-panel="2"><h3><span>Day 3</span><span class="red">May 20</span></h3><div class="time">TBA</div><div class="item">Exhibition day</div><div class="time">TBA</div><div class="item">Voices of Rivers vernissage</div><div class="time">TBA</div><div class="item">On the Line exhibition release</div><div class="time">TBA</div><div class="item">Closing remarks</div></div>
-    </div>
+      <div class="programBottomTabs" role="tablist" aria-label="Program days duplicate navigation">
+        <button class="dayTab" type="button" data-day="0" aria-label="Day 1, May 18">May 18</button>
+        <button class="dayTab active" type="button" data-day="1" aria-label="Day 2, May 19">May 19</button>
+        <button class="dayTab" type="button" data-day="2" aria-label="Day 3, May 20">May 20</button>
+      </div>
     </section>
 
     <section class="panel dark installation page" id="voices" data-release="voices" tabindex="0" role="button" aria-label="Open Voices of Rivers release">
@@ -1982,6 +2593,7 @@ May 20, opening time to be announced</p><p>Theatre is an art that exists in the 
           <img src="./aims_logo.png" alt="AIMs" class="partner-logo" />  
           <img src="./DPLS1.png" alt="Association for Applied Linguistics of Serbia" class="partner-logo" />
           <img src="./sh.png" alt="SH" class="partner-logo" />
+          <img src="./OPENS-logo.png" alt="OPENS" class="partner-logo" />
           </div>
       </div>
    
@@ -2292,34 +2904,95 @@ function setupProgramSlider(){
   if(!program) return;
   const tabs = [...program.querySelectorAll(".dayTab")];
   const panels = [...program.querySelectorAll(".slideDay")];
-  if(!tabs.length || !panels.length) return;
+  const slider = program.querySelector(".programSlider");
+  const pageNav = program.querySelector(".programPageNav");
+  const pageIndicator = program.querySelector(".programPageIndicator");
+  const pageButtons = [...program.querySelectorAll(".programArrow")];
+  let currentDay = "1";
+  const pageState = {"0":0,"1":0,"2":0};
 
-  const setDay = (index) => {
-    tabs.forEach((tab, i) => {
-      tab.classList.toggle("active", i === index);
-      tab.setAttribute("aria-selected", i === index ? "true" : "false");
-    });
-    panels.forEach((panel, i) => {
-      panel.classList.toggle("active", i === index);
-      panel.toggleAttribute("hidden", i !== index);
-    });
+  const scrollProgramTop = () => {
+    if(!window.matchMedia("(max-width: 1100px)").matches) return;
+    const activePanel = program.querySelector('.slideDay.active');
+    const dayTitle = activePanel ? (activePanel.querySelector('h3') || activePanel) : program;
+    const y = dayTitle.getBoundingClientRect().top + window.scrollY - 8;
+    window.scrollTo({top:y, behavior:"smooth"});
   };
 
-  tabs.forEach((tab, index) => {
+  const getPages = (day) => {
+    const panel = panels.find((p) => p.dataset.dayPanel === String(day));
+    return panel ? [...panel.querySelectorAll(".programDayPage")] : [];
+  };
+
+  const setPage = (day, page) => {
+    const pages = getPages(day);
+    if(!pages.length) return;
+    const next = Math.max(0, Math.min(page, pages.length - 1));
+    pageState[day] = next;
+    pages.forEach((p, index) => p.classList.toggle("active", index === next));
+    if(pageIndicator){
+      if(pages.length <= 1){
+        pageIndicator.textContent = "";
+      } else if(currentDay === "2"){
+        pageIndicator.textContent = "";
+      } else if(currentDay === "1"){
+        pageIndicator.textContent = "";
+      } else {
+        pageIndicator.textContent = "";
+      }
+    }
+    if(pageNav) pageNav.style.visibility = pages.length > 1 ? "visible" : "hidden";
+    pageButtons.forEach((button) => {
+      const dir = button.dataset.pageDir;
+      button.disabled = (dir === "prev" && next === 0) || (dir === "next" && next === pages.length - 1);
+      button.textContent = dir === "prev" ? "‹ before pause" : "after pause ›";
+    });
+    if(slider) slider.scrollTop = 0;
+  };
+
+  const setDay = (day, shouldScroll=false) => {
+    const key = String(day);
+    currentDay = key;
+    tabs.forEach((tab) => {
+      const active = tab.dataset.day === key;
+      tab.classList.toggle("active", active);
+      tab.setAttribute("aria-selected", active ? "true" : "false");
+    });
+    panels.forEach((panel) => {
+      const active = panel.dataset.dayPanel === key;
+      panel.classList.toggle("active", active);
+      panel.toggleAttribute("hidden", !active);
+    });
+    if(slider) slider.scrollTop = 0;
+    setPage(key, pageState[key] || 0);
+    if(shouldScroll) window.requestAnimationFrame(scrollProgramTop);
+  };
+
+  tabs.forEach((tab) => {
     tab.setAttribute("role", "tab");
-    tab.setAttribute("aria-selected", index === 0 ? "true" : "false");
+    tab.setAttribute("aria-selected", tab.dataset.day === "1" ? "true" : "false");
     tab.addEventListener("click", (e) => {
       e.stopPropagation();
-      setDay(index);
+      setDay(tab.dataset.day || "1", true);
     });
   });
 
-  panels.forEach((panel, index) => {
-    panel.setAttribute("role", "tabpanel");
-    if(index !== 0) panel.setAttribute("hidden", "");
+  pageButtons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const pages = getPages(currentDay);
+      const delta = button.dataset.pageDir === "next" ? 1 : -1;
+      setPage(currentDay, (pageState[currentDay] || 0) + delta);
+      window.requestAnimationFrame(scrollProgramTop);
+    });
   });
 
-  setDay(0);
+  panels.forEach((panel) => {
+    panel.setAttribute("role", "tabpanel");
+    if(panel.dataset.dayPanel !== "1") panel.setAttribute("hidden", "");
+  });
+
+  setDay(1, false);
 }
 
 window.addEventListener("load", ()=>{ setupProgramSlider();  setupScrollArrow();  square(); river(); lineCanvas(); setupModal(); setupMobilePager(); });
