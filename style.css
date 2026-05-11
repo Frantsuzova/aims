@@ -3703,3 +3703,76 @@ a:hover {
     margin-bottom: 3px;
   }
 }
+
+.hero-location-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding-top: 8px;
+
+  color: #00b4db;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  border-top: 1px solid rgba(0, 180, 219, 0.55);
+}
+
+.hero-location-link:hover {
+  color: #00d1ff;
+  text-shadow: 0 0 8px rgba(0, 180, 219, 0.55);
+}
+
+#program .registration-main-btn {
+  background: rgba(0, 180, 219, 0.4) !important;
+  border: 2px solid #00b4db !important;
+  color: #fff !important;
+}
+
+#program .registration-main-btn:hover {
+  background: linear-gradient(90deg, #00b4db 0%, #0083b0 100%) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+}
+
+.hero-location-ns {
+  padding-right: 28px;
+  border-right: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.hero-location-spb {
+  padding-left: 28px;
+}
+
+.hero-location-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding-top: 8px;
+
+  color: #00b4db;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  border-top: 1px solid rgba(0, 180, 219, 0.55);
+}
+
+.hero-location-link:hover {
+  color: #00d1ff;
+  text-shadow: 0 0 8px rgba(0, 180, 219, 0.55);
+}
+
+@media (max-width: 750px) {
+  .hero-location-ns {
+    padding-right: 0;
+    padding-bottom: 14px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  }
+
+  .hero-location-spb {
+    padding-left: 0;
+    padding-top: 14px;
+  }
+}
