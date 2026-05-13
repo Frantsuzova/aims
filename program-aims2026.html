@@ -2379,6 +2379,292 @@ html,body{overflow-x:hidden!important}
   }
 }
 
+
+
+/* v45: May 19 headers + safe pause navigation position */
+@media(min-width:1101px){
+  .programSlider{
+    min-height:clamp(420px,58vh,650px)!important;
+  }
+
+  .programPageNav{
+    margin-top:-8px!important;
+    padding-bottom:10px!important;
+    transform:translateY(-4px)!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .sessionHeader{
+    margin:0 0 5px!important;
+    padding:6px 8px!important;
+    font-size:clamp(8.8px,.58vw,10.8px)!important;
+    line-height:1.05!important;
+    letter-spacing:.035em!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkTitle{
+    font-size:clamp(10.2px,.70vw,12.5px)!important;
+    line-height:1.045!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkSpeaker{
+    font-size:clamp(9.9px,.64vw,11.6px)!important;
+    line-height:1.04!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkMeta{
+    font-size:clamp(8.8px,.56vw,10.2px)!important;
+    line-height:1.04!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkKeywords{
+    font-size:clamp(7.4px,.47vw,8.4px)!important;
+    line-height:1.04!important;
+    margin-top:1px!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .item{
+    padding-bottom:1px!important;
+  }
+
+  .program .slideDay[data-day-panel="1"]{
+    gap:4px 10px!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .time{
+    font-size:clamp(8.8px,.56vw,10.2px)!important;
+    line-height:1!important;
+  }
+}
+
+@media(max-width:1100px){
+  .program .slideDay[data-day-panel="1"] .sessionHeader{
+    font-size:11px!important;
+    line-height:1.15!important;
+    margin:4px 0 8px!important;
+  }
+}
+
+
+
+/* v46: normalize programme typography for May 19 and May 20 */
+@media(min-width:1101px){
+  /* one shared desktop scale for both dense programme days */
+  .program .slideDay[data-day-panel="1"] .sessionHeader,
+  .program .slideDay[data-day-panel="2"] .sessionHeader{
+    margin:0 0 5px!important;
+    padding:6px 8px!important;
+    font-size:clamp(8.9px,.59vw,10.9px)!important;
+    line-height:1.05!important;
+    letter-spacing:.035em!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkTitle,
+  .program .slideDay[data-day-panel="2"] .talkTitle{
+    font-size:clamp(10.4px,.71vw,12.7px)!important;
+    line-height:1.05!important;
+    letter-spacing:-.015em!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkSpeaker,
+  .program .slideDay[data-day-panel="2"] .talkSpeaker{
+    font-size:clamp(10px,.65vw,11.7px)!important;
+    line-height:1.045!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkMeta,
+  .program .slideDay[data-day-panel="2"] .talkMeta{
+    font-size:clamp(8.9px,.57vw,10.3px)!important;
+    line-height:1.045!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkKeywords,
+  .program .slideDay[data-day-panel="2"] .talkKeywords,
+  .program .slideDay[data-day-panel="2"] .talkCat{
+    font-size:clamp(7.5px,.48vw,8.5px)!important;
+    line-height:1.045!important;
+    margin-top:1px!important;
+    color:#6a675f!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .time,
+  .program .slideDay[data-day-panel="2"] .time{
+    font-size:clamp(8.9px,.57vw,10.3px)!important;
+    line-height:1!important;
+  }
+
+  .program .slideDay[data-day-panel="1"],
+  .program .slideDay[data-day-panel="2"] .day{
+    gap:4px 10px!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .item,
+  .program .slideDay[data-day-panel="2"] .item{
+    padding-bottom:1px!important;
+  }
+
+  .program .slideDay[data-day-panel="2"] .freeDay{
+    padding:6px 8px!important;
+  }
+
+  /* keep the pause navigation visible and a little higher, but not clipped */
+  .programPageNav{
+    margin-top:-4px!important;
+    padding-bottom:16px!important;
+    transform:none!important;
+  }
+}
+
+@media(max-width:1100px){
+  .program .slideDay[data-day-panel="1"] .sessionHeader,
+  .program .slideDay[data-day-panel="2"] .sessionHeader{
+    font-size:11px!important;
+    line-height:1.15!important;
+    margin:4px 0 8px!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkTitle,
+  .program .slideDay[data-day-panel="2"] .talkTitle{
+    font-size:13px!important;
+    line-height:1.12!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkSpeaker,
+  .program .slideDay[data-day-panel="2"] .talkSpeaker{
+    font-size:12px!important;
+    line-height:1.15!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkMeta,
+  .program .slideDay[data-day-panel="2"] .talkMeta{
+    font-size:11px!important;
+    line-height:1.15!important;
+  }
+}
+
+
+/* v47: lower and enlarge programme pause navigation button */
+@media(min-width:1101px){
+  .programPageNav{
+    margin-top:8px!important;
+    padding-bottom:20px!important;
+    transform:none!important;
+  }
+
+  .programArrow{
+    min-width:38px!important;
+    height:38px!important;
+    padding:0 14px!important;
+    font-size:12.5px!important;
+    line-height:1!important;
+    letter-spacing:.09em!important;
+  }
+}
+
+
+/* v48: smaller pause navigation button, slightly larger schedule typography */
+@media(min-width:1101px){
+  /* keep the button lower, but make the rectangle and label more compact */
+  .programPageNav{
+    margin-top:10px!important;
+    padding-bottom:24px!important;
+    transform:none!important;
+  }
+
+  .programArrow{
+    min-width:auto!important;
+    height:27px!important;
+    padding:0 8px!important;
+    font-size:9.4px!important;
+    line-height:1!important;
+    letter-spacing:.075em!important;
+  }
+
+  /* May 19 + May 20: shared larger programme scale */
+  .program .slideDay[data-day-panel="1"] .sessionHeader,
+  .program .slideDay[data-day-panel="2"] .sessionHeader{
+    font-size:clamp(9.4px,.62vw,11.4px)!important;
+    line-height:1.045!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkTitle,
+  .program .slideDay[data-day-panel="2"] .talkTitle{
+    font-size:clamp(11.1px,.75vw,13.5px)!important;
+    line-height:1.035!important;
+    letter-spacing:-.018em!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkSpeaker,
+  .program .slideDay[data-day-panel="2"] .talkSpeaker{
+    font-size:clamp(10.6px,.69vw,12.3px)!important;
+    line-height:1.035!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkMeta,
+  .program .slideDay[data-day-panel="2"] .talkMeta{
+    font-size:clamp(9.3px,.6vw,10.8px)!important;
+    line-height:1.035!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkKeywords,
+  .program .slideDay[data-day-panel="2"] .talkKeywords,
+  .program .slideDay[data-day-panel="2"] .talkCat{
+    font-size:clamp(7.8px,.5vw,8.9px)!important;
+    line-height:1.035!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .time,
+  .program .slideDay[data-day-panel="2"] .time{
+    font-size:clamp(9.3px,.6vw,10.8px)!important;
+    line-height:1!important;
+  }
+}
+
+
+
+/* v49: May 20 as one full page, no internal pause slider */
+@media(min-width:1101px){
+  .program .slideDay[data-day-panel="2"].noPaging{
+    gap:4px 10px!important;
+  }
+
+  .program .slideDay[data-day-panel="2"].noPaging .sessionHeader{
+    font-size:clamp(8.4px,.56vw,10px)!important;
+    line-height:1.02!important;
+    padding:5px 7px!important;
+    margin:2px 0 3px!important;
+  }
+
+  .program .slideDay[data-day-panel="2"].noPaging .talkTitle{
+    font-size:clamp(9.4px,.62vw,10.9px)!important;
+    line-height:1.01!important;
+  }
+
+  .program .slideDay[data-day-panel="2"].noPaging .talkSpeaker{
+    font-size:clamp(9.2px,.6vw,10.6px)!important;
+    line-height:1.01!important;
+  }
+
+  .program .slideDay[data-day-panel="2"].noPaging .talkMeta,
+  .program .slideDay[data-day-panel="2"].noPaging .talkCat{
+    font-size:clamp(7.6px,.5vw,9px)!important;
+    line-height:1.02!important;
+  }
+
+  .program .slideDay[data-day-panel="2"].noPaging .time{
+    font-size:clamp(8.6px,.55vw,9.8px)!important;
+    line-height:1!important;
+  }
+
+  .program .slideDay[data-day-panel="2"].noPaging .item{
+    padding-bottom:2px!important;
+  }
+
+  .program .slideDay[data-day-panel="2"].noPaging .pause{
+    padding-top:2px!important;
+    padding-bottom:2px!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2417,6 +2703,7 @@ html,body{overflow-x:hidden!important}
         <div class="day slideDay active" data-day-panel="1">
           <h3><span>Day 2</span><span class="red">May 19</span></h3>
           <div class="programDayPage active" data-page="0">
+            <div class="sessionHeader compactHeader">Speaker session: Contemporary Cultural Practices and Digital Interfaces</div>
             <div class="time">16:30<!-- <span class="mode">live online participation</span> --></div>
             <div class="item talk online">
               <span class="talkTitle">AI in Contemporary Cultural Practices: Beyond the Genius and the Authorship</span>
@@ -2455,6 +2742,10 @@ html,body{overflow-x:hidden!important}
             <div class="time">18:10</div><div class="item pause">Pause</div>
           </div>
           <div class="programDayPage" data-page="1">
+            <div class="sessionHeader compactHeader">
+              Speaker session: Cultural Mediation, Storytelling and Visual Literacy<br>
+              / Session Chair: Katarina Čokrlić
+            </div>
             <div class="time">18:30<!-- <span class="mode">live online participation</span> --></div>
             <div class="item talk online">
               <span class="talkTitle">From Object to Dataset: Museums, AI, and the Crisis of Material Authenticity</span>
@@ -2486,62 +2777,79 @@ html,body{overflow-x:hidden!important}
           </div>
         </div>
 
-        <div class="day slideDay" data-day-panel="2">
+        <div class="day slideDay noPaging" data-day-panel="2">
           <h3><span>Day 3</span><span class="red">May 20</span></h3>
-          <div class="programDayPage active" data-page="0">
-            <div class="sessionHeader">Speaker session: contemporary practices · exhibition practice</div>
-            <div class="time">16:00</div>
-            <div class="item talk offline">
-              <span class="talkTitle">Konstelacije: Dokument kao medij</span>
-              <span class="talkSpeaker">Danica Bićanić</span>
-              <span class="talkMeta">PhD in Art, Visual artist and editor of the visual arts programme, SKC Novi Sad</span>
-            </div>
-            <div class="time">16:20</div>
-            <div class="item talk offline">
-              <span class="talkTitle">Izložba “Upotreba čoveka” – studija slučaja</span>
-              <span class="talkSpeaker">Mina Aleksić</span>
-              <span class="talkMeta">Artistic Director, Novi Sad European Capital of Culture Foundation</span>
-            </div>
-            <div class="time">16:40</div>
-            <div class="item talk offline">
-              <span class="talkTitle">Nova produkcija i istraživačko-umetničke prakse</span>
-              <span class="talkSpeaker">Goran Despotovski</span>
-              <span class="talkMeta">PhD in Art, Multimedia artist and full professor, Academy of Arts in Novi Sad</span>
-            </div>
-            <div class="time">17:00</div>
-            <div class="item talk offline">
-              <span class="talkTitle">Virtuelni prostor kao emotivni prostor</span>
-              <span class="talkSpeaker">Tijana Jevrić</span>
-              <span class="talkMeta">Visual artist, creative coordinator</span>
-            </div>
-            <div class="time">17:20</div><div class="item pause">Pause</div>
+
+          <div class="sessionHeader compactHeader">
+            Speaker session: Contemporary Practices · Exhibition Practice<br>
+            / Session Chair: Tijana Jevrić
           </div>
-          <div class="programDayPage" data-page="1">
-            <div class="sessionHeader compactHeader">Speaker session: Stage, Image, Viewer. Theatre Practices in Dialogue with the AIMs Seminar.</div>
-            <div class="time">17:50</div>
-            <div class="item talk offline compactTalk">
-              <span class="talkTitle">Tehnologija kao partner i prepreka u pozorišnoj scenografiji</span>
-              <span class="talkSpeaker">Ivana Janošev</span>
-              <span class="talkMeta">Theatre director</span>
-            </div>
-            <div class="time">18:20</div>
-            <div class="item talk offline compactTalk">
-              <span class="talkTitle">Space as an experience</span>
-              <span class="talkSpeaker">Miljena Vučković</span>
-              <span class="talkMeta">Founder, Agora Agency</span>
-            </div>
-            <div class="time">18:40</div>
-            <div class="item talk offline compactTalk">
-              <span class="talkSpeaker">Konstantinos Petrović</span>
-              <span class="talkMeta">Speaker details to be announced</span>
-            </div>
-            <div class="time">19:00</div><div class="item pause">Pause before vernissage</div>
-            <div class="time">19:30</div>
-            <div class="item freeDay compactTalk">
-              <span class="talkTitle">Exhibition vernissage</span>
-              <span class="talkMeta">Opening of “Voices of Rivers” and “On the Line”, with informal gathering.</span>
-              <span class="talkCat">Exhibition opening</span>
-            </div>
+
+          <div class="time">16:00</div>
+          <div class="item talk offline compactTalk">
+            <span class="talkTitle">Konstelacije: Dokument kao medij</span>
+            <span class="talkSpeaker">Danica Bićanić</span>
+            <span class="talkMeta">PhD in Art, Visual artist and editor of the visual arts programme, SKC Novi Sad</span>
+          </div>
+
+          <div class="time">16:20</div>
+          <div class="item talk offline compactTalk">
+            <span class="talkTitle">Izložba “Upotreba čoveka” – studija slučaja</span>
+            <span class="talkSpeaker">Mina Aleksić</span>
+            <span class="talkMeta">Artistic Director, Novi Sad European Capital of Culture Foundation</span>
+          </div>
+
+          <div class="time">16:40</div>
+          <div class="item talk offline compactTalk">
+            <span class="talkTitle">Nova produkcija i istraživačko-umetničke prakse</span>
+            <span class="talkSpeaker">Goran Despotovski</span>
+            <span class="talkMeta">PhD in Art, Multimedia artist and full professor, Academy of Arts in Novi Sad</span>
+          </div>
+
+          <div class="time">17:00</div>
+          <div class="item talk offline compactTalk">
+            <span class="talkTitle">Virtuelni prostor kao emotivni prostor</span>
+            <span class="talkSpeaker">Tijana Jevrić</span>
+            <span class="talkMeta">Visual artist, creative coordinator</span>
+          </div>
+
+          <div class="time">17:20</div>
+          <div class="item pause">Pause</div>
+
+          <div class="sessionHeader compactHeader">
+            Speaker session: Stage, Image, Viewer. Theatre Practices in Dialogue with the AIMs Seminar<br>
+            / Session Chair: Ivana Janošev
+          </div>
+
+          <div class="time">17:50</div>
+          <div class="item talk offline compactTalk">
+            <span class="talkTitle">Tehnologija kao partner i prepreka u pozorišnoj scenografiji</span>
+            <span class="talkSpeaker">Ivana Janošev</span>
+            <span class="talkMeta">Theatre director</span>
+          </div>
+
+          <div class="time">18:20</div>
+          <div class="item talk offline compactTalk">
+            <span class="talkTitle">Space as an experience</span>
+            <span class="talkSpeaker">Miljena Vučković</span>
+            <span class="talkMeta">Founder, Agora Agency</span>
+          </div>
+
+          <div class="time">18:40</div>
+          <div class="item talk offline compactTalk">
+            <span class="talkTitle">Tehnonostalgija</span>
+            <span class="talkSpeaker">Konstantinos Petrović</span>
+            <span class="talkMeta">Association "Graphic Network"</span>
+          </div>
+
+          <div class="time">19:00</div>
+          <div class="item pause">Pause before vernissage</div>
+
+          <div class="time">19:30</div>
+          <div class="item freeDay compactTalk">
+            <span class="talkTitle">Exhibition vernissage</span>
+            <span class="talkMeta">Opening of “Voices of Rivers” and “On the Line”, with informal gathering.</span>
+            <span class="talkCat">Exhibition opening</span>
           </div>
         </div>
       </div>
@@ -2956,7 +3264,11 @@ function setupProgramSlider(){
 
   const setPage = (day, page) => {
     const pages = getPages(day);
-    if(!pages.length) return;
+    if(!pages.length){
+      if(pageNav) pageNav.style.visibility = "hidden";
+      if(pageIndicator) pageIndicator.textContent = "";
+      return;
+    }
     const next = Math.max(0, Math.min(page, pages.length - 1));
     pageState[day] = next;
     pages.forEach((p, index) => p.classList.toggle("active", index === next));
