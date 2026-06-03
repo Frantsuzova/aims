@@ -37,7 +37,8 @@
     </aside>
   -->
 
-  <aside class="deadline-tab exhibition-tab is-collapsed" id="deadlineTab" aria-label="Third day of AIMs">
+    <!--
+<aside class="deadline-tab exhibition-tab is-collapsed" id="deadlineTab" aria-label="Third day of AIMs">
       <div class="deadline-tab-panel" role="dialog" aria-modal="false">
         <button
           class="deadline-tab-toggle"
@@ -57,12 +58,9 @@
           and <strong>Voices of Rivers</strong> (a joint project by c<sup>2</sup> command and Tijana Jevrić).<br>
           The vernissage time will be announced later, please follow our updates.
         </div>
-
-        <!--
-        <a class="deadline-tab-btn" href="#program">Learn more</a>
-        -->
-      </div>
+</div>
     </aside>
+  -->
 
     
     <div class="cursor"></div>
@@ -721,11 +719,8 @@
       
       <!-- Раздел регистрации --> 
       <section id="registration">
-        <h2>Registration for event in <span class="registration-switch">
-          <button class="active" data-city="belgrade">Novi Sad</button>
-          <button data-city="spb">St. Petersburg</button>
-        </span></h2>
-        
+        <h2>Registration for event in <span class="registration-city">St. Petersburg</span></h2>
+
         <p class="registration-intro">
           Choose the category that best fits your participation.
           You will be redirected to the registration form.
@@ -733,64 +728,12 @@
           Please note that <strong>registration is mandatory for all categories, including free participation</strong>.
         </p>
 
-        
+
         <div class="registration-grid" id="registration-grid">
 
-        <!-- Belgrade FIRST -->
-        <div class="registration-card highlight" data-city="belgrade">
-          <h3>Listener</h3> <br>
-          <h4>Early bird</h4>
-          <p>Registration until 13 May is free of charge.</p>
-          <button 
-            class="registration-btn" 
-            type="button"
-            onclick="window.open('https://forms.gle/AY5eg2kJLToXXEvf8', '_blank')"
-          >free</button>
-          <!--
-          <button class="registration-btn" data-popup="registration-info">free</button>
-        -->
-          <h4>Owl</h4>
-          <p>Registration after 15 May costs 400 dinars (≈ 4 eur)</p>
-          <button class="registration-btn" data-popup="registration-info">4 eur</button>
-        </div>
+        <!-- St. Petersburg only -->
 
-        <div class="registration-card" data-city="belgrade">
-          <h3>Participant<br>Case track</h3>
-          <h4>Early bird</h4>
-          <p>Registration until 13 May is free of charge.</p>
-          <button 
-            class="registration-btn" 
-            type="button"
-            onclick="window.open('https://forms.gle/nqBe5z6sBnShzqgWA', '_blank')"
-          >free</button>
-          <!--
-          <button class="registration-btn" data-popup="registration-info">free</button>
-          -->
-          <h4>Owl</h4>
-          <p>Registration after 15 May costs 2000 dinars (≈ 17 eur).</p>
-          <button class="registration-btn" data-popup="registration-info">17 eur</button>
-        </div>
-
-        <div class="registration-card" data-city="belgrade">
-          <h3>Participant<br>Scientific track</h3>
-          <h4>Early bird</h4>
-          <p>Registration until 13 May costs 3500 dinars (≈ 30 eur).</p>
-          <button 
-            class="registration-btn" 
-            type="button"
-            onclick="window.open('https://forms.gle/UHD2jm7XwJi9JCZj9', '_blank')"
-          >30 eur</button>
-          <!--
-          <button class="registration-btn" data-popup="registration-info">30 eur</button>
-          -->
-          <h4>Owl</h4>
-          <p>Registration after 15 May costs 7000 dinars (≈ 60 eur).</p>
-          <button class="registration-btn" data-popup="registration-info">60 eur</button>
-        </div>
-
-
-        <!-- St. Petersburg SECOND -->
-        <div class="registration-card highlight hidden" data-city="spb">
+        <div class="registration-card highlight" data-city="spb">
           <h3>Listener</h3><br>
 
           <p>Registration will open on April 1 and remain open until June 23. Please note that although attendance is free of charge, registration is required for all participants.</p>
@@ -799,61 +742,53 @@
             type="button"
             onclick="window.open('https://aim-seminar.timepad.ru/event/3881547/#register', '_blank')"
           >
-          free
+            free
           </button>
         </div>
 
 
-        <div class="registration-card hidden" data-city="spb">
+        <div class="registration-card" data-city="spb">
           <h3>Participant<br>Case track</h3>
 
           <h4>Early bird</h4>
           <p>Registration until 5 June is free of charge.</p>
+          <span class="registration-fee registration-fee-disabled">free</span>
+
+          <h4>Owl</h4>
+          <p>Registration after 5 June costs 5,000 RUB (≈ 50 EUR)</p>
           <button 
             class="registration-btn" 
             type="button"
             onclick="window.open('https://forms.gle/tdHF4rs7KKJ9XLDr8', '_blank')"
-          >free</button>
-
-          <h4>Owl</h4>
-          <p>Registration after 5 June costs 5,000 RUB (≈ 50 EUR)</p>
-          <button class="registration-btn" data-popup="registration-info-spb">5,000 RUB</button>
+          >
+            5,000 RUB
+          </button>
         </div>
 
-        <div class="registration-card hidden" data-city="spb">
+        <div class="registration-card" data-city="spb">
           <h3>Participant<br>Scientific track</h3>
 
           <h4>Early bird</h4>
           <p>Registration until 31 May costs 5,000 RUB (≈ 50 EUR)</p>
+          <span class="registration-fee registration-fee-disabled">5,000 RUB</span>
+
+          <h4>Owl</h4>
+          <p>Registration after 31 May costs 7,000 RUB (≈ 70 EUR)</p>
           <button 
             class="registration-btn" 
             type="button"
             onclick="window.open('https://forms.gle/5jQF1zycusL3sZuo8', '_blank')"
-          >5,000 RUB</button>
-
-          <h4>Owl</h4>
-          <p>Registration after 31 May costs 7,000 RUB (≈ 70 EUR)</p>
-          <button class="registration-btn" data-popup="registration-info-spb">7,000 RUB</button>
+          >
+            7,000 RUB
+          </button>
         </div>
-
-        <!-- Placeholder block for SPB -->
-         <!--
-        <div class="registration-card spb-placeholder hidden" data-city="spb">
-          <h3>St. Petersburg</h3><br>
-          <p>The registration fees will be announced closer to the dates.</p>
-          <button class="registration-btn disabled" disabled>coming soon</button>
-        </div>
-      -->
 
       </div>
 
-      <!--
-      <button class="registration-main-btn">
-      Registration
-      </button>
-      -->
+
       <p class="registration-note">
-        <strong>NB: Students on scientific track are liberated from paying fee</strong>
+        <span class="note">The registration fee is indicated for individuals and budget-funded organizations.</span><br>
+        <strong>NB: Students on the scientific track are exempt from paying the registration fee.</strong>
       </p>
     </section>
 

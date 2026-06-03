@@ -37,7 +37,8 @@
 
   -->
 
-  <aside class="deadline-tab exhibition-tab is-collapsed" id="deadlineTab" aria-label="Treći dan AIMs-a">
+    <!--
+<aside class="deadline-tab exhibition-tab is-collapsed" id="deadlineTab" aria-label="Treći dan AIMs-a">
   <div class="deadline-tab-panel" role="dialog" aria-modal="false">
     <button
       class="deadline-tab-toggle"
@@ -57,12 +58,9 @@
       i <strong>Voices of Rivers</strong> (zajednički projekat c<sup>2</sup> command i Tijane Jevrić).<br>
       Vreme vernisaža će biti objavljeno naknadno, pratite naše novosti.
     </div>
-
-    <!--
-    <a class="deadline-tab-btn" href="#program">Saznaj više</a>
-    -->
-  </div>
+</div>
 </aside>
+  -->
   
 
     
@@ -768,12 +766,7 @@
       
       <!-- Раздел регистрации --> 
       <section id="registration">
-        <h2>Registracija za događaj u 
-          <span class="registration-switch">
-            <button class="active" data-city="belgrade">Novom Sadu</button>
-            <button data-city="spb">Sankt Peterburgu</button>
-          </span>
-        </h2>
+        <h2>Registracija za događaj u <span class="registration-city">Sankt Peterburgu</span></h2>
 
         <p class="registration-intro">
           Molimo vas da odaberete tip učešća,<br>
@@ -782,69 +775,12 @@
           Imajte u vidu da je <strong>registracija obavezna za sve učesnike</strong>.
         </p>
 
-        
+
         <div class="registration-grid" id="registration-grid">
 
-        <!-- Belgrade FIRST -->
-        <div class="registration-card highlight" data-city="belgrade">
-          <h3>Slušalac<br><br></h3>
+        <!-- St. Petersburg only -->
 
-          <h4>Rana registracija</h4>
-          <p>Registracija do 13. maja je besplatna.<br><br></p>
-           <button 
-            class="registration-btn" 
-            type="button"
-            onclick="window.open('https://forms.gle/AY5eg2kJLToXXEvf8', '_blank')"
-          >Besplatno</button>
-          <!--
-          <button class="registration-btn" data-popup="registration-info">Besplatno</button>
-          -->
-
-          <h4>Standardna registracija</h4>
-          <p>Registracija nakon 15. maja iznosi 400 dinara (≈ 4 eur).</p>
-          <button class="registration-btn" data-popup="registration-info">4 eur</button>
-        </div>
-
-        <div class="registration-card" data-city="belgrade">
-          <h3>Govornik<br>Primenjeni segment</h3>
-
-          <h4>Rana registracija</h4>
-          <p>Registracija do 13. maja je besplatna.<br><br></p>
-          <button 
-            class="registration-btn" 
-            type="button"
-            onclick="window.open('https://forms.gle/nqBe5z6sBnShzqgWA', '_blank')"
-          >Besplatno</button>
-          <!--
-          <button class="registration-btn" data-popup="registration-info">Besplatno</button>
-          -->
-
-          <h4>Standardna registracija</h4>
-          <p>Registracija nakon 15. maja iznosi 2.000 dinara (≈ 17 eur).</p>
-          <button class="registration-btn" data-popup="registration-info">17 eur</button>
-        </div>
-
-        <div class="registration-card" data-city="belgrade">
-          <h3>Govornik<br>Naučni segment</h3>
-
-          <h4>Rana registracija</h4>
-          <p>Registracija do 13. maja iznosi 3.500 dinara (≈ 30 eur).</p>
-          <button 
-            class="registration-btn" 
-            type="button"
-            onclick="window.open('https://forms.gle/UHD2jm7XwJi9JCZj9', '_blank')"
-          >30 eur</button>
-          <!--
-          <button class="registration-btn" data-popup="registration-info">30 eur</button>
-          -->
-
-          <h4>Standardna registracija</h4>
-          <p>Registracija nakon 15. maja iznosi 7.000 dinara (≈ 60 eur).</p>
-          <button class="registration-btn" data-popup="registration-info">60 eur</button>
-        </div>
-
-        <!-- St. Petersburg SECOND -->
-        <div class="registration-card highlight hidden" data-city="spb">
+        <div class="registration-card highlight" data-city="spb">
           <h3>Slušalac</h3><br>
 
           <p>Registracija se otvara 1. aprila i traje do 23. juna.
@@ -853,45 +789,52 @@
             class="registration-btn" 
             type="button"
             onclick="window.open('https://aim-seminar.timepad.ru/event/3881547/#register', '_blank')"
-          >Besplatno</button>
+          >
+            Besplatno
+          </button>
         </div>
 
-        <div class="registration-card hidden" data-city="spb">
+        <div class="registration-card" data-city="spb">
           <h3>Govornik<br>Primenjeni segment</h3>
 
           <h4>Rana registracija</h4>
           <p>Registracija do 5. juna je besplatna.</p>
-         <button 
-            class="registration-btn" 
-            type="button"
-            onclick="window.open('https://forms.gle/tdHF4rs7KKJ9XLDr8', '_blank')"
-          >Besplatno</button>
+          <span class="registration-fee registration-fee-disabled">Besplatno</span>
 
           <h4>Standardna registracija</h4>
           <p>Registracija nakon 5. juna iznosi 5.000 rubalja (≈ 50 eur).</p>
-          <button class="registration-btn" data-popup="registration-info-spb">5.000 rubalja</button>
+          <button 
+            class="registration-btn" 
+            type="button"
+            onclick="window.open('https://forms.gle/tdHF4rs7KKJ9XLDr8', '_blank')"
+          >
+            5.000 rubalja
+          </button>
         </div>
 
-        <div class="registration-card hidden" data-city="spb">
+        <div class="registration-card" data-city="spb">
           <h3>Govornik<br>Naučni segment</h3>
 
           <h4>Rana registracija</h4>
           <p>Registracija do 31. maja iznosi 5.000 rubalja (≈ 50 eur).</p>
+          <span class="registration-fee registration-fee-disabled">5.000 rubalja</span>
+
+          <h4>Standardna registracija</h4>
+          <p>Registracija nakon 31. maja iznosi 7.000 rubalja (≈ 70 eur).</p>
           <button 
             class="registration-btn" 
             type="button"
             onclick="window.open('https://forms.gle/5jQF1zycusL3sZuo8', '_blank')"
-          >5.000 rubalja</button>
-
-          <h4>Standardna registracija</h4>
-          <p>Registracija nakon 31. maja iznosi 7.000 rubalja (≈ 70 eur).</p>
-          <button class="registration-btn" data-popup="registration-info-spb">7.000 rubalja</button>
+          >
+            7.000 rubalja
+          </button>
         </div>
 
       </div>
 
-      
+
       <p class="registration-note">
+        <span class="note">Visina kotizacije navedena je za fizička lica i budžetske organizacije.</span><br>
         <strong>Napomena: Studenti učesnici naučnog smera su oslobođeni plaćanja kotizacije.</strong>
       </p>
     </section>
