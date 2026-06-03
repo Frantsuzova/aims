@@ -38,6 +38,7 @@
     </div>
   </aside>
 -->
+  <!--
   <aside class="deadline-tab exhibition-tab is-collapsed" id="deadlineTab" aria-label="Третий день AIMs">
       <div class="deadline-tab-panel" role="dialog" aria-modal="false">
         <button
@@ -59,11 +60,10 @@
           Время вернисажа будет объявлено позже, следите за новостями.
         </div>
 
-        <!--
-        <a class="deadline-tab-btn" href="#program">Подробнее</a>
-        -->
+      
       </div>
     </aside>
+    -->
   
 
     
@@ -732,10 +732,7 @@
       
       <!-- Раздел регистрации --> 
       <section id="registration">
-        <h2>Регистрация на мероприятие в  <span class="registration-switch">
-          <button class="active" data-city="belgrade">Нови-Саде</button>
-          <button data-city="spb">Санкт-Петербурге</button>
-        </span></h2>
+        <h2>Регистрация на мероприятие в <span class="registration-city">Санкт-Петербурге</span></h2>
         
         <p class="registration-intro">
           Пожалуйста, выберите желаемый формат участия,<br>после чего вы сможете заполнить регистрационную форму.
@@ -746,68 +743,9 @@
         
         <div class="registration-grid" id="registration-grid">
 
-        <!-- Belgrade FIRST -->
-        <div class="registration-card highlight" data-city="belgrade">
-          <h3>Слушатель<br><br></h3>
-          <h4>Ранняя регистрация</h4>
-          <p>Регистрация до 13 мая бесплатна.<br><br></p>
-          <button 
-            class="registration-btn" 
-            type="button"
-            onclick="window.open('https://forms.gle/AY5eg2kJLToXXEvf8', '_blank')"
-          >
-            Бесплатно
-          </button>
-          <!--
-          <button class="registration-btn" data-popup="registration-info">Бесплатно</button>
-          -->
-          <h4>Стандартная регистрация</h4>
-          <p>Регистрация после 15 мая стоит 400 динар (≈ 4 евро).</p>
-          <button class="registration-btn" data-popup="registration-info">4 евро</button>
-        </div>
+        <!-- St. Petersburg only -->
 
-        <div class="registration-card" data-city="belgrade">
-          <h3>Докладчик<br>Прикладная секция</h3>
-          <h4>Ранняя регистрация</h4>
-          <p>Регистрация до 13 мая бесплатна.<br><br></p>
-          
-          <button 
-            class="registration-btn" 
-            type="button"
-            onclick="window.open('https://forms.gle/nqBe5z6sBnShzqgWA', '_blank')"
-          >
-            Бесплатно
-          </button>
-          <!--
-          <button class="registration-btn" data-popup="registration-info">Бесплатно</button>
-          -->
-          <h4>Стандартная регистрация</h4>
-          <p>Регистрация после 15 мая стоит 2000 динар (≈ 17 евро).</p>
-          <button class="registration-btn" data-popup="registration-info">17 евро</button>
-        </div>
-
-        <div class="registration-card" data-city="belgrade">
-          <h3>Докладчик<br>Научная секция</h3>
-          <h4>Ранняя регистрация</h4>
-          <p>Регистрация до 13 мая стоит 3500 динар (≈ 30 евро).</p>
-          <button 
-            class="registration-btn" 
-            type="button"
-            onclick="window.open('https://forms.gle/UHD2jm7XwJi9JCZj9', '_blank')"
-          >
-            30 евро
-          </button>
-          <!--
-          <button class="registration-btn" data-popup="registration-info">30 евро</button>
-          -->
-          <h4>Стандартная регистрация</h4>
-          <p>Регистрация после 15 мая стоит 7000 динар (≈ 60 евро).</p>
-          <button class="registration-btn" data-popup="registration-info">60 евро</button>
-        </div>
-
-
-        <!-- St. Petersburg SECOND -->
-        <div class="registration-card highlight hidden" data-city="spb">
+        <div class="registration-card highlight" data-city="spb">
           <h3>Слушатель</h3><br>
 
           <p>Регистрация откроется 1 апреля и продлится до 23 июня. 
@@ -825,46 +763,46 @@
         </div>
 
 
-        <div class="registration-card hidden" data-city="spb">
+        <div class="registration-card" data-city="spb">
           <h3>Докладчик<br>Прикладная секция</h3>
 
           <h4>Ранняя регистрация</h4>
           <p>Регистрация до 5 июня бесплатна.</p>
-          <button 
-            class="registration-btn" 
-            type="button"
-            onclick="window.open('https://forms.gle/tdHF4rs7KKJ9XLDr8', '_blank')"
-          >
-            Бесплатно
-          </button>
+          
           <!--
           <button class="registration-btn" data-popup="registration-info-spb">Бесплатно</button>
            -->
 
           <h4>Стандартная регистрация</h4>
           <p>Регистрация после 5 июня стоит 5000 рублей (≈ 50 евро).</p>
-          <button class="registration-btn" data-popup="registration-info-spb">5,000 рублей</button>
+          <button 
+            class="registration-btn" 
+            type="button"
+            onclick="window.open('https://forms.gle/tdHF4rs7KKJ9XLDr8', '_blank')"
+          >
+            5,000 рублей
+          </button>
         </div>
 
-        <div class="registration-card hidden" data-city="spb">
+        <div class="registration-card" data-city="spb">
           <h3>Докладчик<br>Научная секция</h3>
 
           <h4>Ранняя регистрация</h4>
           <p>Регистрация до 31 мая стоит 5000 рублей (≈ 50 евро).</p>
-          <button 
-            class="registration-btn" 
-            type="button"
-            onclick="window.open('https://forms.gle/5jQF1zycusL3sZuo8', '_blank')"
-          >
-            5,000 рублей
-          </button>
+          
           <!--
           <button class="registration-btn" data-popup="registration-info-spb">5,000 рублей</button>
           -->
 
           <h4>Стандартная регистрация</h4>
           <p>Регистрация после 31 мая стоит 7000 рублей (≈ 70 евро).</p>
-          <button class="registration-btn" data-popup="registration-info-spb">7,000 рублей</button>
+          <button 
+            class="registration-btn" 
+            type="button"
+            onclick="window.open('https://forms.gle/5jQF1zycusL3sZuo8', '_blank')"
+          >
+            7,000 рублей
+          </button>
         </div>
 
       </div>
