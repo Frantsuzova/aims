@@ -1,0 +1,5773 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AIMs 2026 | Programme</title>
+<style>
+
+:root {
+  --red:#d71920;
+  --ink:#070707;
+  --paper:#f4f2ea;
+  --paper2:#fbfaf5;
+  --muted:#716f68;
+  --fold:rgba(0,0,0,.13);
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:#cfcfca;color:var(--ink)}
+body{overflow:hidden}
+button{font:inherit;color:inherit}
+.stage{
+  width:100vw;height:100vh;padding:clamp(10px,2vw,26px);
+  display:grid;place-items:center;
+  background:radial-gradient(circle at 50% 25%,#f1f1ed 0,#c6c5bf 78%);
+}
+.booklet{
+  position:relative;
+  width:min(1600px,calc(100vw - clamp(20px,4vw,52px)));
+  height:min(880px,calc(100vh - clamp(20px,4vw,52px)));
+  min-height:660px;
+  background:var(--paper);
+  display:grid;
+  grid-template-columns:.92fr 1.02fr 1.08fr 1.08fr;
+  grid-template-rows:1fr 1fr;
+  overflow:hidden;
+  box-shadow:0 26px 70px rgba(0,0,0,.28);
+  border:1px solid #b8b5ad;
+}
+.booklet::before{
+  content:"";position:absolute;inset:0;z-index:4;pointer-events:none;
+  background-image:radial-gradient(rgba(0,0,0,.28) .8px,transparent 1px);
+  background-size:7px 7px;opacity:.105;mix-blend-mode:multiply;
+}
+.booklet::after{
+  content:"";position:absolute;inset:0;z-index:5;pointer-events:none;
+  background:
+    linear-gradient(90deg, transparent 24.75%,var(--fold) 25%,transparent 25.45%,
+      transparent 49.75%,rgba(0,0,0,.16) 50%,transparent 50.45%,
+      transparent 74.75%,var(--fold) 75%,transparent 75.45%);
+}
+.panel{
+  position:relative;overflow:hidden;padding:clamp(22px,2.3vw,38px);
+  border-right:1px solid rgba(0,0,0,.17);
+  border-bottom:1px solid rgba(0,0,0,.15);
+  background:var(--paper2);
+}
+.panel>*{position:relative;z-index:2}
+.dark{background:#050505;color:#f7f5ee}
+.canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
+.kicker{
+  font-weight:950;font-size:clamp(10px,.82vw,13px);
+  letter-spacing:.28em;text-transform:uppercase;color:var(--red);
+  margin-bottom:clamp(10px,1.4vw,20px);
+}
+.rule{display:inline-block;width:48px;height:5px;background:var(--red);vertical-align:middle;margin-left:10px}
+.title{
+  margin:0;
+  font-family:"Arial Black",Arial,sans-serif;font-weight:950;
+  font-size:clamp(40px,3.25vw,64px);
+  line-height:.9;letter-spacing:-.065em;text-transform:uppercase;
+}
+.title.sm{font-size:clamp(31px,2.75vw,52px)}
+.title.xs{font-size:clamp(23px,2.1vw,40px);line-height:.92}
+.meta{font-weight:950;text-transform:uppercase;font-size:clamp(11px,.9vw,14px);line-height:1.1}
+.red{color:var(--red)}
+p{margin:0 0 9px;font-weight:800;font-size:clamp(11px,.9vw,14px);line-height:1.24}
+.tiny{font-weight:950;font-size:10px;line-height:1.15;text-transform:uppercase;letter-spacing:.06em}
+.cover{grid-row:1/3;background:#fff}
+.cover .title{font-size:clamp(32px,2.72vw,50px);max-width:96%;letter-spacing:-.072em}
+.cover .date{
+  margin:clamp(14px,2vw,24px) 0 8px;
+  color:var(--red);
+  font-family:"Arial Black",Arial,sans-serif;font-size:clamp(38px,3.45vw,64px);
+  line-height:.78;letter-spacing:-.075em;
+}
+.cover .tagline{margin-top:8px;max-width:220px}
+.squareBox{
+  position:absolute;left:clamp(26px,2.4vw,40px);right:clamp(26px,2.4vw,40px);bottom:clamp(50px,5.3vh,78px);
+  height:31%;min-height:165px;border:1px solid #ddd;background:#f5f5f2;overflow:hidden;
+}
+.coverMiniLogos{
+  position:absolute;left:clamp(28px,2.5vw,42px);bottom:clamp(18px,2.2vh,30px);
+  display:flex;align-items:flex-end;gap:22px;color:#111;
+}
+.coverMiniLogos .aims{font-family:Georgia,serif;font-size:30px;line-height:.8}
+.coverMiniLogos .c2{font-weight:950;font-size:11px;line-height:.9;text-transform:lowercase}
+.program{grid-column:2;grid-row:1/3;background:#f8f7f2}
+.day{display:grid;grid-template-columns:74px 1fr;gap:8px 14px;margin:12px 0 17px;padding-top:12px;border-top:3px solid #111}
+.day h3{grid-column:1/-1;margin:0 0 2px;font-family:"Arial Black",Arial,sans-serif;font-size:clamp(17px,1.28vw,22px);line-height:.9;text-transform:uppercase;display:flex;justify-content:space-between;gap:12px}
+.time,.item{font-weight:950;font-size:clamp(10px,.78vw,12px);text-transform:uppercase}
+.item{border-bottom:1px solid #c9c4bb;padding-bottom:3px}
+.programNote{position:absolute;left:clamp(22px,2.3vw,38px);right:clamp(22px,2.3vw,38px);bottom:clamp(22px,2.3vw,38px)}
+
+.expect{grid-column:3;grid-row:1;background:#fff}
+.expectList{display:grid;gap:clamp(10px,1.7vh,18px);margin-top:clamp(14px,2.6vh,28px)}
+.expectItem{display:grid;grid-template-columns:48px 1fr;align-items:start;gap:12px}
+.expectItem::before{content:"";width:48px;height:5px;background:var(--red);margin-top:.6em}
+.expectItem span{font-family:"Arial Black",Arial,sans-serif;font-size:clamp(16px,1.42vw,27px);line-height:.96;letter-spacing:-.04em;text-transform:uppercase}
+
+.installation{grid-column:4;grid-row:1;cursor:pointer}
+.installation .title{margin-top:clamp(26px,5.8vh,58px);text-shadow:none;color:#050505}
+.installation .releaseText{position:absolute;left:clamp(24px,2.3vw,38px);right:clamp(22px,2.3vw,38px);bottom:clamp(14px,1.6vw,24px);background:linear-gradient(90deg,rgba(191,200,196,.95),rgba(191,200,196,.68),transparent);padding:8px 8px 0 0;text-shadow:none;color:#050505}
+.installation::after{content:none}
+
+.exhibition{grid-column:3;grid-row:2;cursor:pointer}
+.exhibition .title{margin-top:clamp(42px,9vh,92px);text-shadow:0 0 14px rgba(0,0,0,.95)}
+.exhibition .releaseText{position:absolute;left:clamp(24px,2.3vw,38px);right:clamp(24px,2.3vw,38px);bottom:clamp(20px,2.3vw,38px);background:linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.38),transparent);padding:8px 8px 0 0;text-shadow:0 0 10px rgba(0,0,0,.98)}
+.exhibition::after{content:none}
+.photoFrame{display:none}.photoFrame.f2{right:10%;top:26%;width:18%;height:21%}
+
+.venue{grid-column:4;grid-row:2;background:#fff}
+.venue .placeTop{position:absolute;left:clamp(26px,2.4vw,40px);right:clamp(26px,2.4vw,40px);top:clamp(24px,2.4vw,38px)}
+.venue .city{font-family:"Arial Black",Arial,sans-serif;font-size:clamp(40px,3.4vw,62px);line-height:.9;letter-spacing:-.06em;text-transform:uppercase;margin:18px 0 18px}
+.venue .loc{font-family:"Arial Black",Arial,sans-serif;font-size:clamp(20px,1.8vw,34px);line-height:.9;letter-spacing:-.045em;text-transform:uppercase;margin-bottom:6px}
+.logoStrip{
+  position:absolute;left:clamp(20px,1.9vw,32px);right:clamp(20px,1.9vw,32px);bottom:clamp(22px,2.5vh,34px);
+  height:clamp(44px,5.8vh,62px);background:#0b0b0b;overflow:hidden;border:1px solid #222;
+  display:flex;align-items:center;justify-content:center;padding:6px 20px;
+}
+.logoRow{display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.25vw,18px);width:100%;height:100%}
+.logoRow img{max-height:100%;max-width:23%;object-fit:contain;filter:grayscale(1) contrast(1.15) brightness(1.12)}
+.logoFallback{color:#fff;font-family:Georgia,serif;font-size:22px;letter-spacing:.12em;opacity:.9}
+.footer{position:absolute;left:clamp(26px,2.4vw,40px);right:clamp(26px,2.4vw,40px);bottom:clamp(18px,2.3vh,30px)}
+
+.tab{position:absolute;top:0;bottom:0;width:20px;background:var(--red);z-index:6;opacity:.96;mix-blend-mode:multiply}
+.tab.t1{left:24.15%} .tab.t2{left:74.9%}
+
+.releaseModal{
+  position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:100;
+  display:none;align-items:center;justify-content:center;padding:24px;
+}
+.releaseModal.open{display:flex}
+.modalCard{
+  width:min(760px,calc(100vw - 40px));max-height:min(760px,calc(100vh - 40px));
+  overflow:auto;background:#f8f6ee;color:#080808;border:2px solid #111;
+  box-shadow:18px 18px 0 rgba(215,25,32,.85);padding:34px 38px;
+}
+.modalCard h2{font-family:"Arial Black",Arial,sans-serif;font-size:44px;line-height:.9;letter-spacing:-.06em;text-transform:uppercase;margin:0 0 18px}
+.modalCard p{font-size:15px;line-height:1.45;font-weight:650;text-transform:none;white-space:pre-line}
+.closeBtn{
+  position:sticky;top:0;float:right;margin:-16px -16px 12px 16px;
+  border:0;background:#050505;color:#fff;padding:10px 13px;cursor:pointer;
+  font-weight:950;text-transform:uppercase;letter-spacing:.1em;
+}
+.clickHint{font-weight:950;letter-spacing:.16em;text-transform:uppercase;color:#bbb;font-size:11px;margin-top:8px}
+.projectMeta{font-weight:950;text-transform:uppercase;color:var(--red);font-size:clamp(11px,.9vw,14px);line-height:1.08;margin-top:8px}
+
+.mobilePager{display:none}
+
+@media(max-width:1100px){
+  body{overflow:auto}
+  .stage{height:auto;min-height:100vh;padding:0;background:#d3d2cc;display:block}
+  .booklet{
+    width:100%;height:auto;min-height:0;display:block;border:0;box-shadow:none;background:#d3d2cc;overflow:visible;
+  }
+  .booklet::before,.booklet::after,.tab{display:none}
+  .panel{
+    min-height:100svh;border:0;border-bottom:1px solid #bcb7ad;padding:32px 24px;
+    display:block;
+  }
+  .expect{min-height:auto;padding-bottom:46px}
+  .expectList{margin-top:24px;gap:18px}
+  .venue{min-height:auto;padding-bottom:36px}
+  .cover .title{font-size:clamp(38px,12vw,70px)}
+  .cover .date{font-size:clamp(48px,14vw,86px)}
+  .squareBox{left:24px;right:24px;bottom:76px;height:30%;min-height:190px}
+  .programNote{position:relative;left:auto;right:auto;bottom:auto;margin-top:22px}
+  .day{grid-template-columns:62px 1fr}
+  .time,.item{font-size:12px}
+  .expectList{gap:26px;margin-top:36px}
+  .expectItem span{font-size:clamp(24px,7.4vw,42px)}
+  .installation .title,.exhibition .title{margin-top:16vh;font-size:clamp(44px,14vw,78px)}
+  .installation .releaseText,.exhibition .releaseText{position:absolute;left:clamp(24px,2.3vw,38px);right:clamp(24px,2.3vw,38px);bottom:clamp(20px,2.3vw,38px);background:linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.38),transparent);padding:8px 8px 0 0;text-shadow:0 0 10px rgba(0,0,0,.98)}
+  .venue .placeTop,.footer{position:relative;left:auto;right:auto;top:auto;bottom:auto}
+  .venue .city{font-size:clamp(48px,15vw,88px)}
+  .venue .loc{font-size:clamp(24px,8vw,44px)}
+  .logoStrip{position:relative;left:auto;right:auto;bottom:auto;margin:26px 0 0;height:58px}
+  .mobilePager{display:none!important}
+}
+
+.mobileHint{display:none}
+@media(max-width:1100px){
+  .mobileHint{
+    display:block;position:fixed;right:12px;bottom:12px;z-index:90;
+    background:#050505;color:#fff;padding:8px 10px;
+    font-weight:950;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  }
+}
+
+.mobileHint{display:none}
+@media(max-width:1100px){
+  .mobileHint{
+    display:block;position:fixed;right:12px;bottom:12px;z-index:90;
+    background:#050505;color:#fff;padding:8px 10px;
+    font-weight:950;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  }
+  .expect{min-height:auto;padding-bottom:46px}
+  .expectList{margin-top:24px;gap:18px}
+}
+
+/* v15 overrides */
+.booklet{grid-template-columns:.92fr 1.02fr 1.08fr 1.08fr!important}
+.tab.t1,.tab.t2{display:none!important}
+.program{border-left:18px solid var(--red);padding-left:clamp(22px,2.3vw,38px)!important}
+.exhibition{grid-column:3!important;grid-row:1/3!important;min-height:100%!important;padding-right:clamp(22px,2.3vw,38px)!important}
+.installation{grid-column:4!important;grid-row:1!important;min-height:0!important}
+.venue{grid-column:4!important;grid-row:2!important}
+.exhibition .title{margin-top:clamp(86px,18vh,160px)!important}
+.exhibition .releaseText{bottom:clamp(26px,3vh,44px)!important}
+.installation .title{margin-top:clamp(32px,6.5vh,68px)!important}
+.installation .releaseText{bottom:clamp(18px,2.2vh,30px)!important}
+@media(max-width:1100px){
+  .booklet{display:flex!important;flex-direction:column!important}
+  .program{border-left:0!important;padding-left:24px!important}
+  .cover{order:1}.program{order:2}.installation{order:3}.exhibition{order:4}.venue{order:5}
+  .exhibition{grid-column:auto!important;grid-row:auto!important;min-height:100svh!important}
+  .installation{grid-column:auto!important;grid-row:auto!important;min-height:100svh!important}
+}
+
+
+/* v17 layout: two long exhibition panels + shared bottom location strip */
+.booklet{
+  grid-template-columns:.92fr 1.02fr 1.08fr 1.08fr!important;
+  grid-template-rows:3fr 1fr!important;
+}
+.exhibition{
+  grid-column:3!important;
+  grid-row:1!important;
+  min-height:0!important;
+  padding-right:clamp(22px,2.3vw,38px)!important;
+}
+.installation{
+  grid-column:4!important;
+  grid-row:1!important;
+  min-height:0!important;
+}
+.venue{
+  grid-column:3/5!important;
+  grid-row:2!important;
+  z-index:2!important;
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:clamp(18px,2vw,34px)!important;
+  align-items:center!important;
+  padding:clamp(18px,2vw,30px)!important;
+}
+.venue .placeTop{
+  position:relative!important;
+  left:auto!important;right:auto!important;top:auto!important;
+}
+.venue .city{
+  font-size:clamp(28px,2.35vw,44px)!important;
+  margin:0 0 8px!important;
+}
+.venue .loc{
+  font-size:clamp(15px,1.18vw,22px)!important;
+  margin:0 0 4px!important;
+}
+.logoStrip{
+  position:relative!important;
+  left:auto!important;right:auto!important;bottom:auto!important;
+  height:clamp(44px,6vh,64px)!important;
+  margin:0!important;
+}
+.footer{display:none!important}
+.exhibition .title{
+  margin-top:clamp(46px,8vh,90px)!important;
+}
+.installation .title{
+  margin-top:clamp(42px,7vh,82px)!important;
+}
+.exhibition .releaseText,
+.installation .releaseText{
+  bottom:clamp(18px,2.2vh,32px)!important;
+}
+@media(max-width:1100px){
+  .booklet{
+    grid-template-rows:none!important;
+    display:flex!important;
+    flex-direction:column!important;
+  }
+  .cover{order:1}
+  .program{order:2}
+  .installation{order:3}
+  .exhibition{order:4}
+  .venue{
+    order:5;
+    grid-column:auto!important;
+    grid-row:auto!important;
+    display:block!important;
+    min-height:auto!important;
+    padding:32px 24px 38px!important;
+  }
+  .logoStrip{
+    height:58px!important;
+    margin-top:24px!important;
+  }
+}
+
+
+/* v18 fixes */
+.booklet{
+  grid-template-columns:.88fr 1fr 1fr 1fr!important;
+  grid-template-rows:3fr 1fr!important;
+}
+.program,.exhibition,.installation{width:auto!important}
+.tab,.tab.t1,.tab.t2{display:none!important}
+.program{
+  border-left:0!important;
+  padding-left:clamp(22px,2.3vw,38px)!important;
+}
+.exhibition{
+  grid-column:3!important;
+  grid-row:1!important;
+  min-height:0!important;
+}
+.installation{
+  grid-column:4!important;
+  grid-row:1!important;
+  min-height:0!important;
+}
+.venue{
+  grid-column:3/5!important;
+  grid-row:2!important;
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:clamp(18px,2vw,34px)!important;
+  align-items:center!important;
+  padding:clamp(18px,2vw,30px)!important;
+  box-shadow:none!important;
+}
+.booklet:after{
+  background:
+    linear-gradient(90deg,
+      transparent 21.75%,rgba(0,0,0,.11) 22%,transparent 22.35%,
+      transparent 46.5%,rgba(0,0,0,.13) 46.75%,transparent 47.1%,
+      transparent 71.5%,rgba(0,0,0,.11) 71.75%,transparent 72.1%)!important;
+}
+.exhibition::after{
+  content:""!important;
+  position:absolute!important;
+  right:-10%!important;
+  top:22%!important;
+  width:min(23vw,260px)!important;
+  height:min(23vw,260px)!important;
+  border-radius:50%!important;
+  background:rgba(215,25,32,.38)!important;
+  z-index:1!important;
+  mix-blend-mode:screen!important;
+  pointer-events:none!important;
+}
+.exhibition .title{margin-top:clamp(48px,8vh,92px)!important}
+.installation .title{margin-top:clamp(42px,7vh,82px)!important}
+.venue .placeTop{
+  position:relative!important;
+  left:auto!important;right:auto!important;top:auto!important;
+}
+.venue .city{font-size:clamp(28px,2.35vw,44px)!important;margin:0 0 8px!important}
+.venue .loc{font-size:clamp(15px,1.18vw,22px)!important;margin:0 0 4px!important}
+.logoStrip{
+  position:relative!important;
+  left:auto!important;right:auto!important;bottom:auto!important;
+  height:clamp(44px,6vh,64px)!important;
+  margin:0!important;
+}
+.footer{display:none!important}
+@media(max-width:1100px){
+  .booklet{display:flex!important;flex-direction:column!important}
+  .cover{order:1}.program{order:2}.installation{order:3}.exhibition{order:4}.venue{order:5}
+  .installation,.exhibition{min-height:100svh!important;grid-column:auto!important;grid-row:auto!important}
+  .venue{
+    grid-column:auto!important;grid-row:auto!important;
+    display:block!important;min-height:auto!important;
+    padding:32px 24px 38px!important;
+  }
+  .logoStrip{height:58px!important;margin-top:24px!important}
+  .booklet:after{display:none!important}
+}
+
+
+/* v19 fixes */
+.booklet{
+  grid-template-columns:.88fr 1fr 1fr 1fr!important;
+  grid-template-rows:3fr 1fr!important;
+}
+.booklet:after{display:none!important}
+.tab,.tab.t1,.tab.t2{display:none!important}
+
+/* keep both exhibition panels black on all sizes and keep titles visible */
+.installation,
+.installation.dark{
+  background:#050505!important;
+  color:#f7f5ee!important;
+}
+.installation .title{
+  color:#f7f5ee!important;
+  margin-top:clamp(34px,6.2vh,70px)!important;
+  text-shadow:0 0 14px rgba(0,0,0,.95)!important;
+}
+.installation .releaseText{
+  background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.36),transparent)!important;
+  color:#f7f5ee!important;
+  text-shadow:0 0 10px rgba(0,0,0,.98)!important;
+  bottom:clamp(16px,2vh,30px)!important;
+}
+.exhibition .title{
+  margin-top:clamp(44px,7vh,82px)!important;
+}
+.exhibition .releaseText{
+  bottom:clamp(16px,2vh,30px)!important;
+}
+
+/* flat, compact location/partners strip */
+.venue{
+  grid-column:3/5!important;
+  grid-row:2!important;
+  display:grid!important;
+  grid-template-columns:auto 1fr!important;
+  gap:clamp(16px,2vw,28px)!important;
+  align-items:center!important;
+  min-height:0!important;
+  padding:clamp(12px,1.45vw,20px) clamp(18px,2vw,28px)!important;
+  box-shadow:none!important;
+}
+.venue .placeTop{
+  position:relative!important;
+  left:auto!important;right:auto!important;top:auto!important;
+}
+.venue .city{display:none!important}
+.venue .kicker{margin-bottom:8px!important}
+.venue .loc{
+  font-size:clamp(18px,1.45vw,26px)!important;
+  margin:0 0 4px!important;
+  line-height:.92!important;
+}
+.venue .meta{
+  font-size:clamp(10px,.72vw,12px)!important;
+}
+.logoStrip{
+  position:relative!important;
+  left:auto!important;right:auto!important;bottom:auto!important;
+  height:clamp(38px,5vh,54px)!important;
+  margin:0!important;
+  padding:5px 10px!important;
+}
+.logoRow{
+  justify-content:flex-end!important;
+  gap:clamp(12px,1.6vw,24px)!important;
+}
+.logoRow img{
+  max-height:100%!important;
+  max-width:22%!important;
+}
+.footer{display:none!important}
+
+@media(max-width:1100px){
+  .booklet{
+    display:flex!important;
+    flex-direction:column!important;
+    grid-template-rows:none!important;
+  }
+  .booklet:after{display:none!important}
+  .cover{order:1}
+  .program{order:2}
+  .installation{order:3}
+  .exhibition{order:4}
+  .venue{order:5}
+  .installation,.exhibition{
+    min-height:100svh!important;
+    grid-column:auto!important;
+    grid-row:auto!important;
+  }
+  .installation .title,.exhibition .title{
+    margin-top:clamp(52px,12vh,96px)!important;
+  }
+  .venue{
+    display:block!important;
+    min-height:auto!important;
+    padding:24px 24px 28px!important;
+  }
+  .logoStrip{
+    height:54px!important;
+    margin-top:20px!important;
+  }
+  .logoRow{justify-content:center!important}
+}
+
+
+/* v20 requested fixes */
+html,body{overflow-x:hidden!important}
+.stage{overflow-x:hidden!important}
+.booklet{grid-template-columns:.98fr 1fr 1fr 1fr!important}
+.cover .title{font-size:clamp(30px,2.55vw,48px)!important;max-width:92%!important}
+.cover .date{font-size:clamp(36px,3.28vw,60px)!important}
+.logoStrip{background:#fff!important;border:1px solid rgba(0,0,0,.12)!important}
+.logoRow img{filter:grayscale(1) invert(1) contrast(1.2)!important;mix-blend-mode:multiply!important}
+.mobileHint{
+  min-width:34px!important;height:34px!important;display:none;align-items:center!important;justify-content:center!important;
+  padding:0!important;font-size:22px!important;line-height:1!important;letter-spacing:0!important;
+}
+.cardBack{position:absolute;inset:0;z-index:8;display:none;padding:clamp(24px,2.3vw,38px);overflow:auto}
+.installation .cardBack,.exhibition .cardBack{background:#050505;color:#f7f5ee}
+.flipped > canvas,.flipped > .kicker,.flipped > .title,.flipped > .releaseText{visibility:hidden}
+.flipped .cardBack{display:block}
+.cardBack .title{margin-top:clamp(16px,3vh,34px)!important}
+.cardBack p{max-width:92%;font-size:clamp(11px,.82vw,14px);line-height:1.28}
+.cardBack .clickHint{position:absolute;left:clamp(24px,2.3vw,38px);bottom:clamp(18px,2.2vh,30px)}
+@media(max-width:1100px){
+  html,body{width:100%!important;max-width:100%!important;overflow-x:hidden!important}
+  .stage{width:100%!important;overflow-x:hidden!important}
+  .booklet{width:100%!important;max-width:100%!important;overflow-x:hidden!important}
+  .panel{width:100%!important;max-width:100%!important;overflow:hidden!important}
+  .cover .title{font-size:clamp(36px,11vw,64px)!important;max-width:100%!important}
+  .cover .date{font-size:clamp(46px,13vw,82px)!important;max-width:100%!important}
+  .squareBox{position:relative!important;left:auto!important;right:auto!important;bottom:auto!important;width:100%!important;height:32vh!important;min-height:190px!important;margin-top:26px!important}
+  .cover{min-height:auto!important;padding-bottom:38px!important}
+  .mobileHint{display:flex!important}
+  .mobilePager{display:none!important}
+  .logoStrip{background:#fff!important}
+  .exhibition .releaseText{right:80px!important}
+  .cardBack{padding:32px 24px}
+  .cardBack p{font-size:14px;line-height:1.34;max-width:100%}
+}
+
+
+/* v21 final refinements */
+@media(max-width:1100px){
+  .program{
+    min-height:auto!important;
+    padding-bottom:34px!important;
+  }
+  .program .day:last-of-type{margin-bottom:0!important}
+}
+
+/* align short descriptions in installation/exhibition */
+.installation .releaseText,
+.exhibition .releaseText{
+  top:auto!important;
+  bottom:clamp(18px,2.2vh,30px)!important;
+  min-height:122px!important;
+}
+.installation .releaseText{
+  background:rgba(255,255,255,.05)!important;
+  backdrop-filter:blur(7px)!important;
+  -webkit-backdrop-filter:blur(7px)!important;
+  padding:10px 10px 4px!important;
+  border:1px solid rgba(255,255,255,.08)!important;
+}
+.exhibition .releaseText{
+  padding:10px 10px 4px!important;
+}
+
+/* location and partners: flatter, less air, no frame around partners */
+.booklet{
+  grid-template-rows:3.35fr .65fr!important;
+}
+.venue{
+  padding:clamp(8px,.9vw,14px) clamp(16px,1.5vw,22px)!important;
+  gap:clamp(12px,1.4vw,22px)!important;
+}
+.venue .kicker{margin-bottom:4px!important}
+.venue .loc{
+  font-size:clamp(14px,1.05vw,20px)!important;
+  line-height:.95!important;
+}
+.venue .meta{font-size:clamp(9px,.64vw,11px)!important}
+.logoStrip{
+  border:0!important;
+  background:transparent!important;
+  height:clamp(34px,4.5vh,48px)!important;
+  padding:0!important;
+}
+.logoRow img{
+  filter:grayscale(1) invert(1) contrast(1.2)!important;
+  mix-blend-mode:multiply!important;
+}
+.logoRow{gap:clamp(10px,1.2vw,18px)!important}
+
+/* flip-card releases: keep much more text in a controlled scroll */
+.releaseFull{
+  padding:clamp(20px,2vw,32px)!important;
+}
+.releaseFull .title{
+  margin-top:clamp(10px,1.8vh,24px)!important;
+  font-size:clamp(28px,2.35vw,46px)!important;
+}
+.releaseScroll{
+  max-height:calc(100% - 155px);
+  overflow:auto;
+  padding-right:8px;
+  margin-top:12px;
+}
+.releaseScroll p{
+  font-size:clamp(10px,.72vw,13px)!important;
+  line-height:1.26!important;
+  font-weight:650!important;
+  max-width:96%!important;
+  margin-bottom:8px!important;
+}
+.releaseFull .projectMeta{
+  position:absolute;
+  left:clamp(20px,2vw,32px);
+  right:clamp(20px,2vw,32px);
+  bottom:36px;
+}
+.releaseFull .clickHint{
+  bottom:14px!important;
+}
+@media(max-width:1100px){
+  .booklet{grid-template-rows:none!important}
+  .venue{padding:18px 24px 24px!important}
+  .logoStrip{height:44px!important;margin-top:14px!important}
+  .installation .releaseText,
+  .exhibition .releaseText{
+    min-height:118px!important;
+  }
+  .releaseScroll{
+    max-height:calc(100% - 180px);
+  }
+  .releaseScroll p{
+    font-size:13px!important;
+    line-height:1.3!important;
+  }
+}
+
+
+/* v24 stable rollback/final fixes */
+html,body{overflow-x:hidden!important}
+.stage{overflow-x:hidden!important}
+
+/* desktop composition */
+.booklet{
+  grid-template-columns:.88fr 1fr 1fr 1fr!important;
+  grid-template-rows:3.35fr .65fr!important;
+}
+.booklet:after{display:none!important}
+.tab,.tab.t1,.tab.t2{display:none!important}
+
+.cover .title{
+  font-size:clamp(30px,2.55vw,48px)!important;
+  max-width:92%!important;
+}
+.cover .date{
+  font-size:clamp(36px,3.28vw,60px)!important;
+}
+
+/* Program */
+.program{
+  grid-column:2!important;
+  grid-row:1/3!important;
+  border-left:0!important;
+  padding-left:clamp(22px,2.3vw,38px)!important;
+}
+.programNote{display:none!important}
+
+/* exhibitions */
+#voices{
+  grid-column:4!important;
+  grid-row:1!important;
+}
+#line{
+  grid-column:3!important;
+  grid-row:1!important;
+}
+#voices,#line{
+  min-height:0!important;
+  overflow:hidden!important;
+}
+
+/* location strip */
+.venue{
+  grid-column:3/5!important;
+  grid-row:2!important;
+  display:grid!important;
+  grid-template-columns:auto 1fr!important;
+  gap:clamp(12px,1.5vw,22px)!important;
+  align-items:center!important;
+  min-height:0!important;
+  padding:clamp(8px,.9vw,14px) clamp(16px,1.5vw,22px)!important;
+  box-shadow:none!important;
+}
+.venue .placeTop{
+  position:relative!important;
+  left:auto!important;right:auto!important;top:auto!important;
+}
+.venue .city{display:none!important}
+.venue .kicker{margin-bottom:4px!important}
+.venue .loc{
+  font-size:clamp(14px,1.05vw,20px)!important;
+  line-height:.95!important;
+  margin:0 0 3px!important;
+}
+.venue .meta{font-size:clamp(9px,.64vw,11px)!important}
+.logoStrip{
+  position:relative!important;
+  left:auto!important;right:auto!important;bottom:auto!important;
+  height:clamp(34px,4.5vh,48px)!important;
+  margin:0!important;
+  padding:0!important;
+  background:transparent!important;
+  border:0!important;
+}
+.logoRow{
+  justify-content:flex-end!important;
+  gap:clamp(10px,1.2vw,18px)!important;
+}
+.logoRow img{
+  max-height:100%!important;
+  max-width:22%!important;
+  object-fit:contain!important;
+  filter:grayscale(1) invert(1) contrast(1.2)!important;
+  mix-blend-mode:multiply!important;
+}
+.footer{display:none!important}
+
+/* Voices front: grey river panel on every size */
+#voices:not(.flipped),
+#voices:not(.flipped).dark{
+  background:#bfc8c4!important;
+  color:#050505!important;
+}
+#voices:not(.flipped) .kicker,
+#voices:not(.flipped) .title,
+#voices:not(.flipped) .releaseText,
+#voices:not(.flipped) .projectMeta,
+#voices:not(.flipped) .clickHint{
+  color:#050505!important;
+  text-shadow:none!important;
+  visibility:visible!important;
+}
+#voices:not(.flipped) .title{
+  margin-top:clamp(42px,7vh,82px)!important;
+}
+#voices:not(.flipped) .releaseText{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+#voices:not(.flipped) canvas{
+  visibility:visible!important;
+  opacity:1!important;
+}
+
+/* On the Line front */
+#line:not(.flipped){
+  background:#050505!important;
+  color:#f7f5ee!important;
+  position:relative!important;
+}
+#line:not(.flipped)::after{
+  content:""!important;
+  position:absolute!important;
+  right:clamp(-70px,-4.5vw,-34px)!important;
+  top:clamp(96px,20%,180px)!important;
+  width:clamp(150px,16vw,230px)!important;
+  height:clamp(150px,16vw,230px)!important;
+  border-radius:50%!important;
+  background:rgba(215,25,32,.42)!important;
+  z-index:1!important;
+  mix-blend-mode:screen!important;
+  pointer-events:none!important;
+}
+#line:not(.flipped) .kicker,
+#line:not(.flipped) .title,
+#line:not(.flipped) .releaseText{
+  position:relative!important;
+  z-index:3!important;
+}
+#line:not(.flipped) .title{
+  margin-top:clamp(44px,7vh,82px)!important;
+}
+#line:not(.flipped) .releaseText{
+  background:linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.34),transparent)!important;
+  bottom:clamp(18px,2.2vh,30px)!important;
+}
+
+/* align card-front descriptions */
+#voices:not(.flipped) .releaseText,
+#line:not(.flipped) .releaseText{
+  height:132px!important;
+  min-height:132px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-start!important;
+  padding:10px 10px 4px!important;
+}
+#voices:not(.flipped) .releaseText > p:first-child,
+#line:not(.flipped) .releaseText > p:first-child{
+  min-height:42px!important;
+  margin-bottom:8px!important;
+}
+#voices:not(.flipped) .cardBack,
+#line:not(.flipped) .cardBack{display:none!important}
+
+/* Flip side */
+#voices.flipped,
+#line.flipped{
+  background:#050505!important;
+  color:#f7f5ee!important;
+  overflow:hidden!important;
+}
+.flipped > canvas,
+.flipped > .kicker,
+.flipped > .title,
+.flipped > .releaseText{
+  visibility:hidden!important;
+}
+.flipped .cardBack{
+  display:flex!important;
+  flex-direction:column!important;
+  position:absolute!important;
+  inset:0!important;
+  background:#050505!important;
+  color:#f7f5ee!important;
+  padding:clamp(20px,2vw,32px)!important;
+  overflow:hidden!important;
+  z-index:10!important;
+}
+.cardBack .title{
+  color:#f7f5ee!important;
+  visibility:visible!important;
+  margin-top:clamp(10px,1.8vh,24px)!important;
+  font-size:clamp(28px,2.35vw,46px)!important;
+}
+.releaseScroll{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  padding-right:10px!important;
+  margin-top:12px!important;
+  scrollbar-width:thin!important;
+  scrollbar-color:rgba(215,25,32,.8) rgba(255,255,255,.08)!important;
+}
+.releaseScroll::-webkit-scrollbar{width:7px!important}
+.releaseScroll::-webkit-scrollbar-track{
+  background:rgba(255,255,255,.08)!important;
+  border-radius:999px!important;
+}
+.releaseScroll::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,rgba(215,25,32,.25),rgba(215,25,32,.95),rgba(215,25,32,.25))!important;
+  border-radius:999px!important;
+}
+.releaseScroll p{
+  font-size:clamp(10px,.72vw,13px)!important;
+  line-height:1.26!important;
+  font-weight:650!important;
+  max-width:96%!important;
+  margin-bottom:8px!important;
+}
+.releaseFull .projectMeta{
+  position:relative!important;
+  bottom:auto!important;
+  left:auto!important;
+  right:auto!important;
+  background:#050505!important;
+  padding-top:6px!important;
+  margin-top:8px!important;
+}
+.releaseFull .clickHint{
+  position:relative!important;
+  bottom:auto!important;
+  left:auto!important;
+  background:#050505!important;
+  padding-top:4px!important;
+  margin-top:4px!important;
+}
+
+/* Mobile */
+@media(max-width:1100px){
+  .stage,.booklet,.panel{
+    max-width:100%!important;
+    overflow-x:hidden!important;
+  }
+  .booklet{
+    display:flex!important;
+    flex-direction:column!important;
+    grid-template-rows:none!important;
+    width:100%!important;
+  }
+  .cover{order:1}
+  .program{order:2}
+  #voices{order:3}
+  #line{order:4}
+  .venue{order:5}
+
+  .program{
+    min-height:auto!important;
+    grid-column:auto!important;
+    grid-row:auto!important;
+    padding-bottom:34px!important;
+    border-left:0!important;
+    padding-left:24px!important;
+  }
+  #voices,#line{
+    grid-column:auto!important;
+    grid-row:auto!important;
+    min-height:100svh!important;
+    width:100%!important;
+    max-width:100%!important;
+    padding:32px 24px!important;
+  }
+  #voices:not(.flipped){
+    background:#bfc8c4!important;
+    color:#050505!important;
+  }
+  #voices:not(.flipped) .title,
+  #line:not(.flipped) .title{
+    margin-top:clamp(52px,12vh,96px)!important;
+    font-size:clamp(44px,14vw,78px)!important;
+    line-height:.88!important;
+  }
+  #voices:not(.flipped) .releaseText,
+  #line:not(.flipped) .releaseText{
+    height:150px!important;
+    min-height:150px!important;
+    bottom:34px!important;
+    left:24px!important;
+    right:24px!important;
+  }
+  #line:not(.flipped) .releaseText{
+    right:92px!important;
+  }
+  #line:not(.flipped)::after{
+    right:clamp(-58px,-14vw,-28px)!important;
+    top:clamp(155px,23%,245px)!important;
+    width:clamp(136px,36vw,190px)!important;
+    height:clamp(136px,36vw,190px)!important;
+  }
+  .venue{
+    grid-column:auto!important;
+    grid-row:auto!important;
+    display:block!important;
+    min-height:auto!important;
+    padding:18px 24px 24px!important;
+  }
+  .logoStrip{
+    height:44px!important;
+    margin-top:14px!important;
+  }
+  .logoRow{justify-content:center!important}
+
+  .releaseScroll p{
+    font-size:13px!important;
+    line-height:1.3!important;
+  }
+  .flipped .cardBack{
+    padding:32px 24px!important;
+  }
+}
+
+/* Light arrow with context-aware color */
+.mobileHint{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  text-shadow:none!important;
+  opacity:.82!important;
+  font-size:19px!important;
+  font-weight:400!important;
+  color:#fff!important;
+}
+.mobileHint.darkArrow{color:#050505!important}
+.mobileHint.lightArrow{color:#fff!important}
+.mobileHint::before{content:"⌄";font-weight:400}
+.mobileHint.atBottom::before{content:"⌃"}
+
+
+/* v25 composition fix */
+#line:not(.flipped)::after{
+  right:clamp(-105px,-7vw,-58px)!important;
+  top:clamp(112px,22%,190px)!important;
+  width:clamp(135px,13.5vw,205px)!important;
+  height:clamp(135px,13.5vw,205px)!important;
+  opacity:.9!important;
+}
+#line:not(.flipped) .releaseText,
+#voices:not(.flipped) .releaseText{
+  bottom:clamp(54px,7.8vh,86px)!important;
+  height:132px!important;
+  min-height:132px!important;
+}
+#line:not(.flipped) .releaseText{
+  max-width:72%!important;
+  right:auto!important;
+  left:clamp(24px,2.3vw,38px)!important;
+  background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.42),transparent)!important;
+}
+#voices:not(.flipped) .releaseText{
+  left:clamp(24px,2.3vw,38px)!important;
+  right:clamp(24px,2.3vw,38px)!important;
+}
+#voices:not(.flipped) .projectMeta{
+  color:var(--red)!important;
+}
+@media(max-width:1100px){
+  #line:not(.flipped) .releaseText,
+  #voices:not(.flipped) .releaseText{
+    bottom:34px!important;
+    height:150px!important;
+    min-height:150px!important;
+  }
+  #line:not(.flipped) .releaseText{
+    max-width:calc(100% - 116px)!important;
+    right:auto!important;
+  }
+  #line:not(.flipped)::after{
+    right:clamp(-76px,-18vw,-42px)!important;
+    top:clamp(165px,24%,250px)!important;
+    width:clamp(120px,32vw,168px)!important;
+    height:clamp(120px,32vw,168px)!important;
+  }
+}
+
+
+/* v26: final placement correction */
+
+/* Put On the Line front text to the same lower level as Voices */
+#line:not(.flipped) .releaseText{
+  position:absolute!important;
+  left:clamp(24px,2.3vw,38px)!important;
+  right:auto!important;
+  top:auto!important;
+  bottom:clamp(54px,7.8vh,86px)!important;
+  max-width:68%!important;
+  height:132px!important;
+  min-height:132px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-start!important;
+  background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.38),transparent)!important;
+  padding:10px 10px 4px!important;
+  z-index:4!important;
+}
+
+/* Keep the title clear and separate from the description */
+#line:not(.flipped) .title{
+  margin-top:clamp(44px,7vh,82px)!important;
+  max-width:72%!important;
+  z-index:4!important;
+}
+
+/* Move the red circle and rectangle to the right so they do not invade text */
+#line:not(.flipped)::after{
+  right:clamp(-105px,-7vw,-58px)!important;
+  top:clamp(112px,22%,190px)!important;
+  width:clamp(135px,13.5vw,205px)!important;
+  height:clamp(135px,13.5vw,205px)!important;
+  opacity:.86!important;
+}
+
+/* Keep Voices and On the Line card-front descriptions aligned */
+#voices:not(.flipped) .releaseText{
+  position:absolute!important;
+  top:auto!important;
+  bottom:clamp(54px,7.8vh,86px)!important;
+  height:132px!important;
+  min-height:132px!important;
+}
+
+/* Mobile: preserve the same internal composition as desktop, only scaled */
+@media(max-width:1100px){
+  #voices:not(.flipped),
+  #line:not(.flipped){
+    min-height:100svh!important;
+    padding:32px 24px!important;
+  }
+
+  #voices:not(.flipped) .title,
+  #line:not(.flipped) .title{
+    margin-top:clamp(52px,12vh,96px)!important;
+    font-size:clamp(44px,14vw,78px)!important;
+    line-height:.88!important;
+    max-width:76%!important;
+  }
+
+  #voices:not(.flipped) .releaseText,
+  #line:not(.flipped) .releaseText{
+    position:absolute!important;
+    top:auto!important;
+    bottom:34px!important;
+    left:24px!important;
+    height:150px!important;
+    min-height:150px!important;
+    max-width:none!important;
+    width:auto!important;
+  }
+
+  #voices:not(.flipped) .releaseText{
+    right:24px!important;
+  }
+
+  #line:not(.flipped) .releaseText{
+    right:96px!important;
+    background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.38),transparent)!important;
+  }
+
+  #line:not(.flipped)::after{
+    right:clamp(-76px,-18vw,-42px)!important;
+    top:clamp(155px,23%,245px)!important;
+    width:clamp(120px,32vw,168px)!important;
+    height:clamp(120px,32vw,168px)!important;
+  }
+}
+
+
+/* v27: align card front typography and tighten bottom venue strip */
+
+/* give more vertical height to exhibition/installation, less to venue */
+.booklet{
+  grid-template-rows:3.7fr .3fr!important;
+}
+
+/* make venue flatter and remove excessive bottom air */
+.venue{
+  padding:clamp(6px,.72vw,10px) clamp(16px,1.4vw,22px)!important;
+  gap:clamp(10px,1.2vw,18px)!important;
+}
+.venue .kicker{
+  margin-bottom:2px!important;
+  font-size:clamp(9px,.68vw,11px)!important;
+}
+.venue .loc{
+  font-size:clamp(13px,.95vw,18px)!important;
+  line-height:.92!important;
+  margin:0 0 2px!important;
+}
+.venue .meta{
+  font-size:clamp(8px,.58vw,10px)!important;
+}
+.logoStrip{
+  height:clamp(30px,3.8vh,42px)!important;
+}
+
+/* front descriptions: same vertical rhythm for both cards */
+#line:not(.flipped) .releaseText,
+#voices:not(.flipped) .releaseText{
+  bottom:clamp(34px,5.2vh,58px)!important;
+  height:148px!important;
+  min-height:148px!important;
+  display:grid!important;
+  grid-template-rows:auto auto auto!important;
+  align-content:start!important;
+  row-gap:12px!important;
+  padding:10px 10px 4px!important;
+}
+
+#line:not(.flipped) .releaseText > p:first-child,
+#voices:not(.flipped) .releaseText > p:first-child{
+  min-height:54px!important;
+  margin:0!important;
+}
+
+#line:not(.flipped) .projectMeta,
+#voices:not(.flipped) .projectMeta{
+  margin:0!important;
+  padding:0!important;
+  line-height:1.08!important;
+  align-self:start!important;
+}
+
+#line:not(.flipped) .clickHint,
+#voices:not(.flipped) .clickHint{
+  margin:0!important;
+  padding:0!important;
+  align-self:start!important;
+  line-height:1.1!important;
+}
+
+/* On the Line: keep red project text below white description, no overlap */
+#line:not(.flipped) .releaseText{
+  max-width:72%!important;
+  background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.36),transparent)!important;
+}
+
+/* Mobile: keep the same card composition logic, just scaled */
+@media(max-width:1100px){
+  .booklet{
+    grid-template-rows:none!important;
+  }
+  #voices:not(.flipped),
+  #line:not(.flipped){
+    min-height:100svh!important;
+    padding:32px 24px!important;
+  }
+
+  #voices:not(.flipped) .title,
+  #line:not(.flipped) .title{
+    margin-top:clamp(52px,12vh,96px)!important;
+    font-size:clamp(44px,14vw,78px)!important;
+    line-height:.88!important;
+    max-width:76%!important;
+  }
+
+  #voices:not(.flipped) .releaseText,
+  #line:not(.flipped) .releaseText{
+    bottom:34px!important;
+    height:170px!important;
+    min-height:170px!important;
+    display:grid!important;
+    grid-template-rows:auto auto auto!important;
+    row-gap:12px!important;
+    align-content:start!important;
+  }
+
+  #voices:not(.flipped) .releaseText{
+    left:24px!important;
+    right:24px!important;
+  }
+
+  #line:not(.flipped) .releaseText{
+    left:24px!important;
+    right:96px!important;
+    max-width:none!important;
+  }
+
+  #voices:not(.flipped) .releaseText > p:first-child,
+  #line:not(.flipped) .releaseText > p:first-child{
+    min-height:66px!important;
+    margin:0!important;
+  }
+
+  #voices:not(.flipped) .projectMeta,
+  #line:not(.flipped) .projectMeta,
+  #voices:not(.flipped) .clickHint,
+  #line:not(.flipped) .clickHint{
+    margin:0!important;
+  }
+
+  .venue{
+    padding:14px 24px 18px!important;
+  }
+  .logoStrip{
+    height:38px!important;
+    margin-top:10px!important;
+  }
+}
+
+
+/* v28: mobile card fronts must match desktop composition */
+@media(max-width:1100px){
+  #voices:not(.flipped){
+    background:#bfc8c4!important;
+    color:#050505!important;
+    min-height:100svh!important;
+    position:relative!important;
+    overflow:hidden!important;
+    padding:32px 24px!important;
+  }
+
+  #voices:not(.flipped) canvas{
+    visibility:visible!important;
+    opacity:1!important;
+    z-index:0!important;
+  }
+
+  #voices:not(.flipped) .kicker{
+    display:block!important;
+    visibility:visible!important;
+    position:relative!important;
+    z-index:3!important;
+    color:#050505!important;
+    text-shadow:none!important;
+    margin-bottom:0!important;
+  }
+
+  #voices:not(.flipped) .title{
+    display:block!important;
+    visibility:visible!important;
+    position:relative!important;
+    z-index:3!important;
+    color:#050505!important;
+    text-shadow:none!important;
+    margin-top:clamp(52px,12vh,96px)!important;
+    font-size:clamp(44px,14vw,78px)!important;
+    line-height:.88!important;
+    max-width:86%!important;
+  }
+
+  #voices:not(.flipped) .releaseText{
+    display:grid!important;
+    visibility:visible!important;
+    position:absolute!important;
+    z-index:3!important;
+    left:24px!important;
+    right:24px!important;
+    bottom:34px!important;
+    height:170px!important;
+    min-height:170px!important;
+    grid-template-rows:auto auto auto!important;
+    row-gap:12px!important;
+    align-content:start!important;
+    background:transparent!important;
+    border:0!important;
+    box-shadow:none!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+    color:#050505!important;
+    text-shadow:none!important;
+    padding:10px 10px 4px!important;
+  }
+
+  #voices:not(.flipped) .releaseText p,
+  #voices:not(.flipped) .projectMeta,
+  #voices:not(.flipped) .clickHint{
+    color:#050505!important;
+    text-shadow:none!important;
+    visibility:visible!important;
+    margin:0!important;
+  }
+
+  #voices:not(.flipped) .projectMeta{
+    color:var(--red)!important;
+  }
+
+  #voices:not(.flipped) .releaseText > p:first-child{
+    min-height:66px!important;
+  }
+
+  #line:not(.flipped){
+    min-height:100svh!important;
+    position:relative!important;
+    overflow:hidden!important;
+    padding:32px 24px!important;
+  }
+
+  #line:not(.flipped) .kicker,
+  #line:not(.flipped) .title,
+  #line:not(.flipped) .releaseText{
+    visibility:visible!important;
+    display:block!important;
+    z-index:3!important;
+  }
+
+  #line:not(.flipped) .title{
+    margin-top:clamp(52px,12vh,96px)!important;
+    font-size:clamp(44px,14vw,78px)!important;
+    line-height:.88!important;
+    max-width:76%!important;
+  }
+
+  #line:not(.flipped) .releaseText{
+    position:absolute!important;
+    left:24px!important;
+    right:96px!important;
+    bottom:34px!important;
+    height:170px!important;
+    min-height:170px!important;
+    display:grid!important;
+    grid-template-rows:auto auto auto!important;
+    row-gap:12px!important;
+    align-content:start!important;
+    padding:10px 10px 4px!important;
+  }
+}
+
+/* desktop: keep descriptions aligned and visible */
+#voices:not(.flipped) .projectMeta{
+  color:var(--red)!important;
+}
+
+#voices:not(.flipped) .releaseText,
+#line:not(.flipped) .releaseText{
+  bottom:clamp(34px,5.2vh,58px)!important;
+}
+
+/* smaller bottom strip, more room for cards */
+.booklet{
+  grid-template-rows:3.7fr .3fr!important;
+}
+.venue{
+  padding:clamp(6px,.72vw,10px) clamp(16px,1.4vw,22px)!important;
+}
+.logoStrip{
+  height:clamp(30px,3.8vh,42px)!important;
+}
+
+
+/* v29 hard mobile/front fix */
+#voices:not(.flipped){
+  background:#bfc8c4!important;
+  color:#050505!important;
+}
+#voices:not(.flipped) canvas#river{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+#voices:not(.flipped) > .kicker,
+#voices:not(.flipped) > .title,
+#voices:not(.flipped) > .releaseText{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  color:#050505!important;
+  text-shadow:none!important;
+}
+#voices:not(.flipped) > .title{
+  position:relative!important;
+  z-index:4!important;
+}
+#voices:not(.flipped) > .releaseText{
+  position:absolute!important;
+  z-index:4!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+#voices:not(.flipped) .projectMeta{
+  color:var(--red)!important;
+}
+#line:not(.flipped) canvas#lineCanvas{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+@media(max-width:1100px){
+  .booklet{display:flex!important;flex-direction:column!important}
+  #voices{order:3!important}
+  #line{order:4!important}
+  #voices:not(.flipped){
+    min-height:100svh!important;
+    background:#bfc8c4!important;
+    padding:32px 24px!important;
+  }
+  #voices:not(.flipped) > .kicker{
+    margin-bottom:0!important;
+  }
+  #voices:not(.flipped) > .title{
+    margin-top:clamp(52px,12vh,96px)!important;
+    font-size:clamp(44px,14vw,78px)!important;
+    line-height:.88!important;
+    max-width:86%!important;
+  }
+  #voices:not(.flipped) > .releaseText{
+    left:24px!important;
+    right:24px!important;
+    bottom:34px!important;
+    height:170px!important;
+    min-height:170px!important;
+    display:grid!important;
+    grid-template-rows:auto auto auto!important;
+    row-gap:12px!important;
+    align-content:start!important;
+  }
+  #line:not(.flipped){
+    min-height:100svh!important;
+    padding:32px 24px!important;
+  }
+}
+
+
+/* v30 final alignment and mobile composition */
+
+/* Voices title red on front */
+#voices:not(.flipped) > .title{
+  color:var(--red)!important;
+}
+
+/* Both front cards: one common text grid, lifted slightly */
+#line:not(.flipped) .releaseText,
+#voices:not(.flipped) .releaseText{
+  bottom:clamp(46px,6.5vh,74px)!important;
+  height:142px!important;
+  min-height:142px!important;
+  display:grid!important;
+  grid-template-rows:minmax(54px,auto) 26px 22px!important;
+  row-gap:10px!important;
+  align-content:start!important;
+  padding:10px 10px 4px!important;
+}
+#line:not(.flipped) .releaseText > p:first-child,
+#voices:not(.flipped) .releaseText > p:first-child{
+  min-height:54px!important;
+  margin:0!important;
+}
+#line:not(.flipped) .projectMeta,
+#voices:not(.flipped) .projectMeta{
+  color:var(--red)!important;
+  margin:0!important;
+  padding:0!important;
+  line-height:1.08!important;
+  align-self:start!important;
+}
+#line:not(.flipped) .clickHint,
+#voices:not(.flipped) .clickHint{
+  margin:0!important;
+  padding:0!important;
+  line-height:1.1!important;
+  align-self:start!important;
+}
+
+/* keep On the Line text away from circle/rectangle */
+#line:not(.flipped) .releaseText{
+  max-width:70%!important;
+  right:auto!important;
+}
+
+/* Venue strip: add bottom padding so logos/address are not cut */
+.venue{
+  padding-top:clamp(7px,.75vw,12px)!important;
+  padding-bottom:clamp(12px,1.2vw,20px)!important;
+}
+.logoStrip{
+  padding-bottom:2px!important;
+}
+
+/* Voices flip back uses the same river-colour system, not black */
+#voices.flipped{
+  background:#bfc8c4!important;
+  color:#050505!important;
+}
+#voices.flipped .cardBack{
+  background:#bfc8c4!important;
+  color:#050505!important;
+}
+#voices.flipped .cardBack .title{
+  color:var(--red)!important;
+}
+#voices.flipped .releaseScroll,
+#voices.flipped .releaseScroll p,
+#voices.flipped .projectMeta,
+#voices.flipped .clickHint{
+  color:#050505!important;
+}
+#voices.flipped .releaseFull .projectMeta,
+#voices.flipped .releaseFull .clickHint{
+  background:#bfc8c4!important;
+}
+#voices.flipped .releaseScroll{
+  scrollbar-color:rgba(215,25,32,.8) rgba(0,0,0,.10)!important;
+}
+#voices.flipped .releaseScroll::-webkit-scrollbar-track{
+  background:rgba(0,0,0,.10)!important;
+}
+
+/* Mobile: preserve desktop card composition, only scaled */
+@media(max-width:1100px){
+  #voices:not(.flipped),
+  #line:not(.flipped){
+    min-height:100svh!important;
+    padding:32px 24px!important;
+    position:relative!important;
+    overflow:hidden!important;
+  }
+
+  #voices:not(.flipped){
+    background:#bfc8c4!important;
+    color:#050505!important;
+  }
+
+  #voices:not(.flipped) > .kicker,
+  #line:not(.flipped) > .kicker{
+    position:relative!important;
+    z-index:4!important;
+    display:block!important;
+    visibility:visible!important;
+  }
+
+  #voices:not(.flipped) > .title,
+  #line:not(.flipped) > .title{
+    position:relative!important;
+    z-index:4!important;
+    display:block!important;
+    visibility:visible!important;
+    margin-top:clamp(52px,12vh,96px)!important;
+    font-size:clamp(44px,14vw,78px)!important;
+    line-height:.88!important;
+    max-width:78%!important;
+  }
+
+  #voices:not(.flipped) > .title{
+    color:var(--red)!important;
+    text-shadow:none!important;
+  }
+
+  #voices:not(.flipped) > .releaseText,
+  #line:not(.flipped) > .releaseText{
+    position:absolute!important;
+    z-index:4!important;
+    left:24px!important;
+    bottom:40px!important;
+    height:170px!important;
+    min-height:170px!important;
+    display:grid!important;
+    grid-template-rows:minmax(66px,auto) 28px 24px!important;
+    row-gap:12px!important;
+    align-content:start!important;
+    padding:10px 10px 4px!important;
+  }
+
+  #voices:not(.flipped) > .releaseText{
+    right:24px!important;
+    background:transparent!important;
+    color:#050505!important;
+  }
+
+  #line:not(.flipped) > .releaseText{
+    right:96px!important;
+    max-width:none!important;
+    background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.38),transparent)!important;
+  }
+
+  #voices:not(.flipped) .releaseText > p:first-child,
+  #line:not(.flipped) .releaseText > p:first-child{
+    min-height:66px!important;
+    margin:0!important;
+  }
+
+  #voices:not(.flipped) .projectMeta,
+  #line:not(.flipped) .projectMeta{
+    color:var(--red)!important;
+    margin:0!important;
+  }
+
+  #voices:not(.flipped) .clickHint,
+  #line:not(.flipped) .clickHint{
+    margin:0!important;
+  }
+
+  #line:not(.flipped)::after{
+    right:clamp(-76px,-18vw,-42px)!important;
+    top:clamp(155px,23%,245px)!important;
+    width:clamp(120px,32vw,168px)!important;
+    height:clamp(120px,32vw,168px)!important;
+  }
+
+  .venue{
+    padding-bottom:24px!important;
+  }
+
+  /* flip back on mobile */
+  #voices.flipped .cardBack{
+    background:#bfc8c4!important;
+    color:#050505!important;
+  }
+}
+
+
+/* v31: circle motion, mobile rectangle, voices flip shadows, venue padding */
+
+/* subtle motion for red circle on On the Line */
+#line:not(.flipped)::after{
+  animation: lineCircleDrift 7.5s ease-in-out infinite alternate!important;
+  will-change:transform!important;
+}
+@keyframes lineCircleDrift{
+  0%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(-10px,6px,0) scale(1.025)}
+  100%{transform:translate3d(8px,-4px,0) scale(.985)}
+}
+
+/* Voices release back: no shadows, no glow, no black remnants */
+#voices.flipped,
+#voices.flipped .cardBack,
+#voices.flipped .cardBack *,
+#voices.flipped .releaseScroll,
+#voices.flipped .releaseScroll p,
+#voices.flipped .projectMeta,
+#voices.flipped .clickHint{
+  text-shadow:none!important;
+  box-shadow:none!important;
+  filter:none!important;
+}
+#voices.flipped .releaseFull .projectMeta,
+#voices.flipped .releaseFull .clickHint{
+  background:#bfc8c4!important;
+}
+
+/* Venue strip: more bottom breathing room */
+.venue{
+  padding-bottom:clamp(18px,1.7vw,28px)!important;
+}
+.logoStrip{
+  margin-bottom:4px!important;
+}
+
+/* Mobile: keep rectangle farther right and away from text */
+@media(max-width:1100px){
+  #line:not(.flipped)::after{
+    right:clamp(-88px,-22vw,-52px)!important;
+    top:clamp(160px,23%,245px)!important;
+  }
+  .venue{
+    padding-bottom:30px!important;
+  }
+  .logoStrip{
+    margin-bottom:6px!important;
+  }
+}
+
+
+/* v32: mobile On the Line geometry + front text baseline + bottom strip */
+
+/* Make front meta rows visually comparable after the <br> on Voices */
+#voices:not(.flipped) .releaseText,
+#line:not(.flipped) .releaseText{
+  grid-template-rows:minmax(54px,auto) 38px 22px!important;
+  row-gap:8px!important;
+}
+#voices:not(.flipped) .projectMeta,
+#line:not(.flipped) .projectMeta{
+  line-height:1.05!important;
+}
+
+/* Bottom venue strip: more safe padding at the bottom */
+.booklet{
+  grid-template-rows:3.62fr .38fr!important;
+}
+.venue{
+  padding-top:clamp(8px,.8vw,12px)!important;
+  padding-bottom:clamp(22px,2vw,34px)!important;
+}
+.logoStrip{
+  margin-bottom:8px!important;
+  height:clamp(32px,4.2vh,46px)!important;
+}
+
+/* Mobile: bigger circle and rectangle visually attached to the main line */
+@media(max-width:1100px){
+  #line:not(.flipped)::after{
+    right:clamp(-96px,-23vw,-62px)!important;
+    top:clamp(148px,22%,238px)!important;
+    width:clamp(170px,48vw,240px)!important;
+    height:clamp(170px,48vw,240px)!important;
+  }
+
+  #voices:not(.flipped) .releaseText,
+  #line:not(.flipped) .releaseText{
+    grid-template-rows:minmax(66px,auto) 40px 24px!important;
+    row-gap:10px!important;
+  }
+
+  .venue{
+    padding-bottom:34px!important;
+  }
+  .logoStrip{
+    margin-bottom:10px!important;
+  }
+}
+
+
+/* v33: program day slider */
+.programSlider{
+  position:relative;
+  overflow:hidden;
+  min-height:clamp(280px,47vh,470px);
+}
+.dayTabs{
+  display:flex;
+  gap:clamp(8px,1vw,14px);
+  margin:clamp(12px,1.5vh,18px) 0 clamp(12px,1.7vh,22px);
+  position:relative;
+  z-index:8;
+}
+.dayTab{
+  appearance:none;
+  border:2px solid #111;
+  background:#050505;
+  color:#fff;
+  padding:clamp(8px,.8vw,12px) clamp(10px,1.15vw,18px);
+  font-weight:950;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font-size:clamp(9px,.72vw,12px);
+  line-height:1;
+  cursor:pointer;
+  transition:background .18s ease,color .18s ease,border-color .18s ease,transform .18s ease;
+  white-space:nowrap;
+}
+.dayTab.active{
+  background:var(--red);
+  border-color:var(--red);
+  color:#fff;
+}
+.dayTab:focus-visible{
+  outline:3px solid rgba(215,25,32,.45);
+  outline-offset:3px;
+}
+.slideDay{
+  position:absolute!important;
+  inset:0 0 auto 0!important;
+  opacity:0;
+  transform:translateX(22px);
+  pointer-events:none;
+  transition:opacity .28s ease,transform .28s ease;
+  margin:0!important;
+}
+.slideDay.active{
+  position:relative!important;
+  opacity:1;
+  transform:translateX(0);
+  pointer-events:auto;
+}
+.program .day{
+  padding-top:clamp(12px,1.6vh,18px)!important;
+}
+.program .day h3{
+  font-size:clamp(22px,1.75vw,31px)!important;
+  margin-bottom:clamp(8px,1.2vh,14px)!important;
+}
+.program .time,
+.program .item{
+  font-size:clamp(11px,.86vw,14px)!important;
+}
+@media(max-width:1100px){
+  .dayTabs{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:10px;
+    margin:22px 0 20px;
+  }
+  .dayTab{
+    width:100%;
+    text-align:left;
+    padding:13px 15px;
+    font-size:13px;
+  }
+  .programSlider{
+    min-height:auto;
+  }
+  .slideDay{
+    min-height:0;
+  }
+}
+
+
+/* v34: make desktop day tabs fit in one row */
+.dayTabs{
+  display:grid!important;
+  grid-template-columns:repeat(3,1fr)!important;
+  gap:clamp(7px,.75vw,12px)!important;
+}
+.dayTab{
+  width:100%!important;
+  text-align:center!important;
+  padding:clamp(8px,.75vw,11px) clamp(6px,.8vw,12px)!important;
+  font-size:clamp(10px,.74vw,12px)!important;
+  letter-spacing:.09em!important;
+}
+@media(max-width:1100px){
+  .dayTabs{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+  }
+  .dayTab{
+    text-align:left!important;
+    font-size:13px!important;
+    padding:13px 15px!important;
+  }
+}
+
+
+/* v35 subtle kinetic details */
+@media (prefers-reduced-motion: reduce){
+  #line:not(.flipped)::after{
+    animation:none!important;
+  }
+}
+
+
+
+/* v36: detailed AIMs programme, mobile-safe */
+.programSlider{
+  min-height:clamp(460px,66vh,720px)!important;
+}
+.program .day{
+  grid-template-columns:clamp(48px,4.2vw,68px) 1fr!important;
+  gap:clamp(6px,.7vw,10px) clamp(8px,.9vw,13px)!important;
+  border-top:3px solid #111!important;
+}
+.program .time{
+  font-size:clamp(9px,.66vw,11px)!important;
+  line-height:1.08!important;
+  white-space:nowrap!important;
+  padding-top:2px!important;
+}
+.program .item{
+  text-transform:none!important;
+  font-size:clamp(9.5px,.69vw,12px)!important;
+  line-height:1.16!important;
+  padding-bottom:clamp(5px,.65vh,8px)!important;
+  border-bottom:1px solid rgba(0,0,0,.18)!important;
+}
+.program .talkTitle,
+.program .talkSpeaker,
+.program .talkMeta,
+.program .talkCat{
+  display:block!important;
+}
+.program .talkTitle{
+  font-weight:950!important;
+  letter-spacing:-.015em!important;
+}
+.program .talkSpeaker{
+  margin-top:2px!important;
+  font-weight:950!important;
+  color:var(--red)!important;
+}
+.program .talkMeta{
+  margin-top:1px!important;
+  font-weight:750!important;
+  color:#38362f!important;
+}
+.program .talkCat{
+  margin-top:3px!important;
+  font-size:clamp(8px,.58vw,10px)!important;
+  font-weight:950!important;
+  letter-spacing:.08em!important;
+  text-transform:uppercase!important;
+  color:#050505!important;
+}
+.program .pause{
+  font-weight:950!important;
+  text-transform:uppercase!important;
+  letter-spacing:.08em!important;
+  color:var(--red)!important;
+}
+.program .freeDay{
+  background:rgba(215,25,32,.055)!important;
+  padding:8px 9px!important;
+  border-left:4px solid var(--red)!important;
+}
+@media(max-width:1100px){
+  .programSlider{
+    min-height:auto!important;
+  }
+  .program .day{
+    grid-template-columns:58px 1fr!important;
+    gap:8px 10px!important;
+  }
+  .program .time{
+    font-size:11px!important;
+  }
+  .program .item{
+    font-size:12px!important;
+    line-height:1.22!important;
+    overflow-wrap:anywhere!important;
+  }
+  .program .talkTitle{
+    font-size:13px!important;
+  }
+  .program .talkMeta{
+    font-size:11.5px!important;
+  }
+  .program .talkCat{
+    font-size:9px!important;
+  }
+}
+
+
+
+/* v37 requested programme refinements */
+.program .time .mode{
+  display:block!important;
+  margin-top:3px!important;
+  font-size:clamp(7.5px,.52vw,9px)!important;
+  line-height:1!important;
+  letter-spacing:.08em!important;
+  text-transform:uppercase!important;
+  color:var(--red)!important;
+}
+.program .talkKeywords{
+  display:block!important;
+  margin-top:3px!important;
+  font-size:clamp(8px,.56vw,9.5px)!important;
+  line-height:1.12!important;
+  font-weight:850!important;
+  color:#6a675f!important;
+}
+.program .talkCat{
+  color:#050505!important;
+}
+.programBottomTabs{display:none}
+@media(min-width:1101px){
+  .programSlider{
+    max-height:calc(100% - 112px)!important;
+    min-height:0!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    padding-right:7px!important;
+    scrollbar-width:thin!important;
+    scrollbar-color:rgba(215,25,32,.8) rgba(0,0,0,.08)!important;
+  }
+  .programSlider::-webkit-scrollbar{width:7px!important}
+  .programSlider::-webkit-scrollbar-track{background:rgba(0,0,0,.08)!important;border-radius:999px!important}
+  .programSlider::-webkit-scrollbar-thumb{background:rgba(215,25,32,.85)!important;border-radius:999px!important}
+  .program .day{padding-bottom:18px!important}
+}
+@media(max-width:1100px){
+  .programBottomTabs{
+    display:grid!important;
+    grid-template-columns:repeat(3,1fr)!important;
+    gap:7px!important;
+    margin-top:18px!important;
+  }
+  .programBottomTabs .dayTab{
+    padding:9px 8px!important;
+    font-size:10px!important;
+    text-align:center!important;
+    letter-spacing:.06em!important;
+  }
+  .program .time .mode{font-size:9px!important}
+  .program .talkKeywords{font-size:10px!important;line-height:1.18!important}
+}
+
+
+
+
+/* v39: programme paging instead of desktop scroll, mobile fixes */
+.programSlider{
+  overflow:hidden!important;
+  max-height:none!important;
+  min-height:clamp(440px,62vh,690px)!important;
+  padding-right:0!important;
+}
+.programDayPage.active{display:contents!important}
+.programDayPage:not(.active){display:none!important}
+.programPageNav{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:10px;
+  margin-top:8px;
+  position:relative;
+  z-index:9;
+}
+.programArrow{
+  appearance:none;
+  width:34px;
+  height:34px;
+  border:2px solid #111;
+  background:#050505;
+  color:#fff;
+  font-weight:950;
+  font-size:24px;
+  line-height:1;
+  cursor:pointer;
+}
+.programArrow:disabled{
+  opacity:.35;
+  cursor:default;
+}
+.programPageIndicator{
+  min-width:38px;
+  text-align:center;
+  font-weight:950;
+  font-size:10px;
+  letter-spacing:.12em;
+  color:#050505;
+}
+.sessionHeader{
+  grid-column:1/-1;
+  margin:3px 0 7px;
+  padding:7px 8px;
+  background:#050505;
+  color:#fff;
+  font-weight:950;
+  font-size:clamp(9px,.68vw,12px);
+  line-height:1.12;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.program .time .mode{
+  white-space:normal!important;
+}
+@media(min-width:1101px){
+  .programSlider{
+    overflow:hidden!important;
+    max-height:none!important;
+    scrollbar-width:none!important;
+  }
+  .programSlider::-webkit-scrollbar{display:none!important}
+}
+@media(max-width:1100px){
+  .programSlider{min-height:auto!important;overflow:visible!important}
+  .programDayPage,
+  .programDayPage.active,
+  .programDayPage:not(.active){display:contents!important}
+  .programPageNav{display:none!important}
+  .program .freeDay{
+    padding:12px 12px!important;
+    border-left-width:3px!important;
+    overflow-wrap:normal!important;
+    word-break:normal!important;
+  }
+  .program .freeDay .talkTitle{font-size:14px!important;line-height:1.08!important}
+  .program .freeDay .talkMeta{font-size:11px!important;line-height:1.18!important}
+  .program .freeDay .talkCat{font-size:9px!important;line-height:1.05!important}
+  .sessionHeader{font-size:11px!important;line-height:1.15!important;margin:4px 0 8px!important}
+}
+
+
+/* v40: compact programme pages and clearer page navigation */
+.program .item{padding-bottom:4px!important}
+.program .talkTitle{font-size:clamp(10.5px,.72vw,13px)!important;line-height:1.08!important}
+.program .talkSpeaker{font-size:clamp(10px,.66vw,12px)!important;line-height:1.08!important}
+.program .talkMeta{font-size:clamp(9px,.60vw,11px)!important;line-height:1.08!important}
+.program .talkKeywords{font-size:clamp(7.8px,.52vw,9px)!important;line-height:1.08!important;margin-top:2px!important}
+.program .day{gap:6px 12px!important}
+.program .time{font-size:clamp(9px,.62vw,11px)!important;line-height:1.05!important}
+.program .time .mode{font-size:clamp(7px,.48vw,8.4px)!important;line-height:1.02!important}
+.programPageNav{justify-content:flex-end!important;gap:8px!important;margin-top:10px!important}
+.programArrow{width:auto!important;min-width:34px!important;height:34px!important;padding:0 10px!important;font-size:11px!important;letter-spacing:.08em!important;text-transform:uppercase!important}
+.programPageIndicator{min-width:0!important;font-size:10px!important;text-transform:uppercase!important;letter-spacing:.08em!important;color:var(--red)!important}
+.programPageNav:has(.programPrev:not(:disabled)) .programPageIndicator{color:#050505!important}
+.programArrow:disabled{display:none!important}
+@media(max-width:1100px){
+  .program .talkTitle{font-size:13px!important;line-height:1.12!important}
+  .program .talkSpeaker{font-size:12px!important}
+  .program .talkMeta{font-size:11px!important}
+  .program .talkKeywords{font-size:10px!important}
+  .programPageNav{display:none!important}
+}
+
+
+
+/* v41: day 20 fits in one page; minimal pause pager */
+.program .slideDay[data-day-panel="2"] .day{gap:5px 10px!important}
+.program .slideDay[data-day-panel="2"] .sessionHeader{margin:2px 0 5px!important;padding:6px 8px!important;font-size:clamp(8.4px,.58vw,10.4px)!important;line-height:1.05!important}
+.program .slideDay[data-day-panel="2"] .item{padding-bottom:3px!important}
+.program .slideDay[data-day-panel="2"] .talkSpeaker{font-size:clamp(9px,.58vw,10.5px)!important}
+.program .slideDay[data-day-panel="2"] .talkMeta{font-size:clamp(8px,.52vw,9.5px)!important}
+.program .slideDay[data-day-panel="2"] .talkCat{font-size:clamp(7.5px,.48vw,8.4px)!important;color:#6a675f!important}
+.program .slideDay[data-day-panel="2"] .time{font-size:clamp(8.8px,.58vw,10px)!important}
+.program .slideDay[data-day-panel="2"] .freeDay{border-left-width:3px!important;padding:6px 8px!important}
+.programPageIndicator{display:none!important}
+.programArrow{min-width:34px!important;width:34px!important;padding:0!important;font-size:0!important;letter-spacing:0!important}
+.programPrev::before{content:"‹";font-size:24px!important;line-height:1!important}
+.programNext::before{content:"›";font-size:24px!important;line-height:1!important}
+@media(max-width:1100px){
+  .program .slideDay[data-day-panel="2"] .sessionHeader{font-size:10px!important}
+  .program .slideDay[data-day-panel="2"] .talkSpeaker{font-size:12px!important}
+  .program .slideDay[data-day-panel="2"] .talkMeta{font-size:11px!important}
+}
+
+
+
+/* v42: readable desktop programme, explicit pause navigation, online label commented */
+@media(min-width:1101px){
+  .program .talkTitle{font-size:clamp(11.8px,.82vw,14.5px)!important;line-height:1.1!important}
+  .program .talkSpeaker{font-size:clamp(11.2px,.74vw,13px)!important;line-height:1.08!important}
+  .program .talkMeta{font-size:clamp(10px,.66vw,12px)!important;line-height:1.08!important}
+  .program .talkKeywords{font-size:clamp(8.6px,.56vw,10px)!important;line-height:1.1!important}
+  .program .time{font-size:clamp(9.8px,.66vw,11.6px)!important;line-height:1.05!important}
+  .program .day{gap:7px 12px!important}
+}
+.programArrow{
+  width:auto!important;
+  min-width:0!important;
+  height:34px!important;
+  padding:0 12px!important;
+  font-size:10px!important;
+  line-height:1!important;
+  letter-spacing:.08em!important;
+  text-transform:uppercase!important;
+  white-space:nowrap!important;
+}
+.programPrev::before,.programNext::before{content:none!important}
+.programPageNav{justify-content:flex-end!important;gap:8px!important}
+
+
+/* v43: fit May 19 page navigation and enlarge May 20 speakers */
+@media(min-width:1101px){
+  /* May 19 needs to fit the pause navigation below the first half */
+  .program .slideDay[data-day-panel="1"] .talkTitle{
+    font-size:clamp(10.6px,.72vw,12.8px)!important;
+    line-height:1.06!important;
+  }
+  .program .slideDay[data-day-panel="1"] .talkSpeaker{
+    font-size:clamp(10.2px,.66vw,11.8px)!important;
+    line-height:1.05!important;
+  }
+  .program .slideDay[data-day-panel="1"] .talkMeta{
+    font-size:clamp(9px,.58vw,10.4px)!important;
+    line-height:1.05!important;
+  }
+  .program .slideDay[data-day-panel="1"] .talkKeywords{
+    font-size:clamp(7.6px,.49vw,8.6px)!important;
+    line-height:1.05!important;
+    margin-top:1px!important;
+  }
+  .program .slideDay[data-day-panel="1"] .day,
+  .program .slideDay[data-day-panel="1"]{
+    gap:5px 10px!important;
+  }
+  .program .slideDay[data-day-panel="1"] .item{
+    padding-bottom:2px!important;
+  }
+  .program .slideDay[data-day-panel="1"] .time{
+    font-size:clamp(9px,.58vw,10.4px)!important;
+    line-height:1!important;
+  }
+  .programPageNav{
+    margin-top:6px!important;
+  }
+
+  /* May 20 has fewer details, so speakers can be larger */
+  .program .slideDay[data-day-panel="2"] .sessionHeader{
+    font-size:clamp(10px,.7vw,12.4px)!important;
+    line-height:1.08!important;
+    padding:7px 9px!important;
+  }
+  .program .slideDay[data-day-panel="2"] .talkSpeaker{
+    font-size:clamp(12px,.82vw,14.4px)!important;
+    line-height:1.12!important;
+  }
+  .program .slideDay[data-day-panel="2"] .talkMeta{
+    font-size:clamp(10.2px,.68vw,12.2px)!important;
+    line-height:1.12!important;
+  }
+  .program .slideDay[data-day-panel="2"] .time{
+    font-size:clamp(10px,.68vw,11.8px)!important;
+  }
+}
+
+@media(max-width:1100px){
+  .program .slideDay[data-day-panel="2"] .talkSpeaker{font-size:14px!important;line-height:1.15!important}
+  .program .slideDay[data-day-panel="2"] .talkMeta{font-size:12px!important;line-height:1.15!important}
+}
+
+
+/* v44: mobile jump alignment, stronger desktop programme, compact partner logos */
+@media(min-width:1101px){
+  .program .slideDay[data-day-panel="1"] .talkTitle{
+    font-size:clamp(11.4px,.78vw,13.6px)!important;
+    line-height:1.075!important;
+  }
+  .program .slideDay[data-day-panel="1"] .talkSpeaker{
+    font-size:clamp(10.8px,.70vw,12.4px)!important;
+    line-height:1.06!important;
+  }
+  .program .slideDay[data-day-panel="1"] .talkMeta{
+    font-size:clamp(9.6px,.62vw,11.1px)!important;
+    line-height:1.055!important;
+  }
+  .program .slideDay[data-day-panel="1"] .talkKeywords{
+    font-size:clamp(8px,.52vw,9.2px)!important;
+    line-height:1.055!important;
+    margin-top:1px!important;
+  }
+  .program .slideDay[data-day-panel="1"] .item{padding-bottom:2px!important}
+
+  .program .slideDay[data-day-panel="2"] .sessionHeader{
+    font-size:clamp(11.5px,.82vw,14.2px)!important;
+    line-height:1.08!important;
+    padding:8px 10px!important;
+  }
+  .program .slideDay[data-day-panel="2"] .talkSpeaker{
+    font-size:clamp(13.4px,.92vw,16px)!important;
+    line-height:1.12!important;
+  }
+  .program .slideDay[data-day-panel="2"] .talkMeta{
+    font-size:clamp(11.4px,.76vw,13.2px)!important;
+    line-height:1.12!important;
+  }
+  .program .slideDay[data-day-panel="2"] .time{
+    font-size:clamp(10.8px,.72vw,12.4px)!important;
+  }
+}
+
+/* partner logos: restored from first version, adapted only for the added OPENS logo */
+.logoStrip{
+  position:relative!important;
+  left:auto!important;
+  right:auto!important;
+  bottom:auto!important;
+  height:clamp(32px,4.2vh,46px)!important;
+  margin:0 0 8px 0!important;
+  padding:0!important;
+  background:transparent!important;
+  border:0!important;
+  overflow:hidden!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+.logoRow{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  gap:clamp(8px,1vw,16px)!important;
+  width:100%!important;
+  height:100%!important;
+  margin:0!important;
+  flex-wrap:nowrap!important;
+}
+.logoRow img.partner-logo{
+  display:block!important;
+  flex:0 1 18%!important;
+  max-width:18%!important;
+  max-height:100%!important;
+  width:auto!important;
+  height:auto!important;
+  object-fit:contain!important;
+  filter:grayscale(1) invert(1) contrast(1.2)!important;
+  mix-blend-mode:multiply!important;
+  opacity:1!important;
+  transform:none!important;
+}
+@media(max-width:1100px){
+  .logoStrip{
+    height:38px!important;
+    margin-top:10px!important;
+    margin-bottom:10px!important;
+    overflow:visible!important;
+  }
+  .logoRow{
+    justify-content:center!important;
+    gap:clamp(8px,2.2vw,13px)!important;
+    width:100%!important;
+    flex-wrap:nowrap!important;
+  }
+  .logoRow img.partner-logo{
+    flex:0 1 18%!important;
+    max-width:18%!important;
+    max-height:100%!important;
+  }
+}
+
+
+/* logo section compact alignment fix: keep first-version style, but group logos to the right */
+.venue{
+  grid-template-columns:auto minmax(0,1fr)!important;
+  column-gap:clamp(44px,5.4vw,86px)!important;
+}
+.logoStrip{
+  justify-content:flex-end!important;
+  overflow:visible!important;
+}
+.logoRow{
+  width:auto!important;
+  max-width:min(650px,100%)!important;
+  margin-left:auto!important;
+  justify-content:flex-end!important;
+  gap:clamp(18px,1.9vw,32px)!important;
+  flex-wrap:nowrap!important;
+}
+.logoRow img.partner-logo{
+  flex:0 0 auto!important;
+  max-width:clamp(58px,6.2vw,112px)!important;
+  max-height:clamp(28px,4.2vh,44px)!important;
+  width:auto!important;
+  height:auto!important;
+  object-fit:contain!important;
+}
+@media(max-width:1100px){
+  .venue{
+    display:block!important;
+  }
+  .logoStrip{
+    justify-content:center!important;
+    overflow:visible!important;
+  }
+  .logoRow{
+    width:100%!important;
+    max-width:100%!important;
+    margin-left:0!important;
+    justify-content:center!important;
+    gap:clamp(8px,2.3vw,14px)!important;
+  }
+  .logoRow img.partner-logo{
+    flex:0 1 auto!important;
+    max-width:16.5vw!important;
+    max-height:38px!important;
+  }
+}
+
+
+
+/* v45: May 19 headers + safe pause navigation position */
+@media(min-width:1101px){
+  .programSlider{
+    min-height:clamp(420px,58vh,650px)!important;
+  }
+
+  .programPageNav{
+    margin-top:-8px!important;
+    padding-bottom:10px!important;
+    transform:translateY(-4px)!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .sessionHeader{
+    margin:0 0 5px!important;
+    padding:6px 8px!important;
+    font-size:clamp(8.8px,.58vw,10.8px)!important;
+    line-height:1.05!important;
+    letter-spacing:.035em!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkTitle{
+    font-size:clamp(10.2px,.70vw,12.5px)!important;
+    line-height:1.045!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkSpeaker{
+    font-size:clamp(9.9px,.64vw,11.6px)!important;
+    line-height:1.04!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkMeta{
+    font-size:clamp(8.8px,.56vw,10.2px)!important;
+    line-height:1.04!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkKeywords{
+    font-size:clamp(7.4px,.47vw,8.4px)!important;
+    line-height:1.04!important;
+    margin-top:1px!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .item{
+    padding-bottom:1px!important;
+  }
+
+  .program .slideDay[data-day-panel="1"]{
+    gap:4px 10px!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .time{
+    font-size:clamp(8.8px,.56vw,10.2px)!important;
+    line-height:1!important;
+  }
+}
+
+@media(max-width:1100px){
+  .program .slideDay[data-day-panel="1"] .sessionHeader{
+    font-size:11px!important;
+    line-height:1.15!important;
+    margin:4px 0 8px!important;
+  }
+}
+
+
+
+/* v46: normalize programme typography for May 19 and May 20 */
+@media(min-width:1101px){
+  /* one shared desktop scale for both dense programme days */
+  .program .slideDay[data-day-panel="1"] .sessionHeader,
+  .program .slideDay[data-day-panel="2"] .sessionHeader{
+    margin:0 0 5px!important;
+    padding:6px 8px!important;
+    font-size:clamp(8.9px,.59vw,10.9px)!important;
+    line-height:1.05!important;
+    letter-spacing:.035em!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkTitle,
+  .program .slideDay[data-day-panel="2"] .talkTitle{
+    font-size:clamp(10.4px,.71vw,12.7px)!important;
+    line-height:1.05!important;
+    letter-spacing:-.015em!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkSpeaker,
+  .program .slideDay[data-day-panel="2"] .talkSpeaker{
+    font-size:clamp(10px,.65vw,11.7px)!important;
+    line-height:1.045!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkMeta,
+  .program .slideDay[data-day-panel="2"] .talkMeta{
+    font-size:clamp(8.9px,.57vw,10.3px)!important;
+    line-height:1.045!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkKeywords,
+  .program .slideDay[data-day-panel="2"] .talkKeywords,
+  .program .slideDay[data-day-panel="2"] .talkCat{
+    font-size:clamp(7.5px,.48vw,8.5px)!important;
+    line-height:1.045!important;
+    margin-top:1px!important;
+    color:#6a675f!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .time,
+  .program .slideDay[data-day-panel="2"] .time{
+    font-size:clamp(8.9px,.57vw,10.3px)!important;
+    line-height:1!important;
+  }
+
+  .program .slideDay[data-day-panel="1"],
+  .program .slideDay[data-day-panel="2"] .day{
+    gap:4px 10px!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .item,
+  .program .slideDay[data-day-panel="2"] .item{
+    padding-bottom:1px!important;
+  }
+
+  .program .slideDay[data-day-panel="2"] .freeDay{
+    padding:6px 8px!important;
+  }
+
+  /* keep the pause navigation visible and a little higher, but not clipped */
+  .programPageNav{
+    margin-top:-4px!important;
+    padding-bottom:16px!important;
+    transform:none!important;
+  }
+}
+
+@media(max-width:1100px){
+  .program .slideDay[data-day-panel="1"] .sessionHeader,
+  .program .slideDay[data-day-panel="2"] .sessionHeader{
+    font-size:11px!important;
+    line-height:1.15!important;
+    margin:4px 0 8px!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkTitle,
+  .program .slideDay[data-day-panel="2"] .talkTitle{
+    font-size:13px!important;
+    line-height:1.12!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkSpeaker,
+  .program .slideDay[data-day-panel="2"] .talkSpeaker{
+    font-size:12px!important;
+    line-height:1.15!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkMeta,
+  .program .slideDay[data-day-panel="2"] .talkMeta{
+    font-size:11px!important;
+    line-height:1.15!important;
+  }
+}
+
+
+/* v47: lower and enlarge programme pause navigation button */
+@media(min-width:1101px){
+  .programPageNav{
+    margin-top:8px!important;
+    padding-bottom:20px!important;
+    transform:none!important;
+  }
+
+  .programArrow{
+    min-width:38px!important;
+    height:38px!important;
+    padding:0 14px!important;
+    font-size:12.5px!important;
+    line-height:1!important;
+    letter-spacing:.09em!important;
+  }
+}
+
+
+/* v48: smaller pause navigation button, slightly larger schedule typography */
+@media(min-width:1101px){
+  /* keep the button lower, but make the rectangle and label more compact */
+  .programPageNav{
+    margin-top:10px!important;
+    padding-bottom:24px!important;
+    transform:none!important;
+  }
+
+  .programArrow{
+    min-width:auto!important;
+    height:27px!important;
+    padding:0 8px!important;
+    font-size:9.4px!important;
+    line-height:1!important;
+    letter-spacing:.075em!important;
+  }
+
+  /* May 19 + May 20: shared larger programme scale */
+  .program .slideDay[data-day-panel="1"] .sessionHeader,
+  .program .slideDay[data-day-panel="2"] .sessionHeader{
+    font-size:clamp(9.4px,.62vw,11.4px)!important;
+    line-height:1.045!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkTitle,
+  .program .slideDay[data-day-panel="2"] .talkTitle{
+    font-size:clamp(11.1px,.75vw,13.5px)!important;
+    line-height:1.035!important;
+    letter-spacing:-.018em!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkSpeaker,
+  .program .slideDay[data-day-panel="2"] .talkSpeaker{
+    font-size:clamp(10.6px,.69vw,12.3px)!important;
+    line-height:1.035!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkMeta,
+  .program .slideDay[data-day-panel="2"] .talkMeta{
+    font-size:clamp(9.3px,.6vw,10.8px)!important;
+    line-height:1.035!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .talkKeywords,
+  .program .slideDay[data-day-panel="2"] .talkKeywords,
+  .program .slideDay[data-day-panel="2"] .talkCat{
+    font-size:clamp(7.8px,.5vw,8.9px)!important;
+    line-height:1.035!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .time,
+  .program .slideDay[data-day-panel="2"] .time{
+    font-size:clamp(9.3px,.6vw,10.8px)!important;
+    line-height:1!important;
+  }
+}
+
+
+
+/* v49: May 20 as one full page, no internal pause slider */
+@media(min-width:1101px){
+  .program .slideDay[data-day-panel="2"].noPaging{
+    gap:4px 10px!important;
+  }
+
+  .program .slideDay[data-day-panel="2"].noPaging .sessionHeader{
+    font-size:clamp(8.4px,.56vw,10px)!important;
+    line-height:1.02!important;
+    padding:5px 7px!important;
+    margin:2px 0 3px!important;
+  }
+
+  .program .slideDay[data-day-panel="2"].noPaging .talkTitle{
+    font-size:clamp(9.4px,.62vw,10.9px)!important;
+    line-height:1.01!important;
+  }
+
+  .program .slideDay[data-day-panel="2"].noPaging .talkSpeaker{
+    font-size:clamp(9.2px,.6vw,10.6px)!important;
+    line-height:1.01!important;
+  }
+
+  .program .slideDay[data-day-panel="2"].noPaging .talkMeta,
+  .program .slideDay[data-day-panel="2"].noPaging .talkCat{
+    font-size:clamp(7.6px,.5vw,9px)!important;
+    line-height:1.02!important;
+  }
+
+  .program .slideDay[data-day-panel="2"].noPaging .time{
+    font-size:clamp(8.6px,.55vw,9.8px)!important;
+    line-height:1!important;
+  }
+
+  .program .slideDay[data-day-panel="2"].noPaging .item{
+    padding-bottom:2px!important;
+  }
+
+  .program .slideDay[data-day-panel="2"].noPaging .pause{
+    padding-top:2px!important;
+    padding-bottom:2px!important;
+  }
+}
+
+
+
+/* SPB 2026: original animations/layout, no On the Line */
+:root{
+  --red:#1fb8de!important;
+  --paper:#f4f4f0!important;
+  --paper2:#fbfaf7!important;
+}
+body.lang-en .ruText{display:none!important}
+body.lang-ru .enText{display:none!important}
+
+.booklet{
+  grid-template-columns:1.06fr 1.24fr 1.24fr .98fr!important;
+  grid-template-rows:3.45fr .55fr!important;
+}
+.cover{
+  grid-column:1!important;
+  grid-row:1/3!important;
+}
+.cover .title{
+  font-size:clamp(31px,2.8vw,54px)!important;
+  max-width:100%!important;
+}
+.cover .date{
+  font-size:clamp(42px,3.85vw,70px)!important;
+}
+.program{
+  grid-column:2/4!important;
+  grid-row:1!important;
+  border-left:0!important;
+  padding-left:clamp(22px,2.3vw,38px)!important;
+  padding-right:clamp(22px,2.3vw,38px)!important;
+}
+.program .kicker.programKicker{
+  display:flex!important;
+  align-items:center!important;
+  gap:14px!important;
+  margin-bottom:clamp(14px,1.8vh,20px)!important;
+}
+.programLangSwitch{
+  display:inline-flex;
+  gap:7px;
+  margin-left:2px;
+}
+.programLangSwitch button{
+  appearance:none;
+  border:2px solid #050505;
+  background:#fff;
+  color:#050505;
+  padding:7px 10px;
+  font-weight:950;
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  cursor:pointer;
+  line-height:1;
+}
+.programLangSwitch button.active{
+  background:var(--red);
+  border-color:var(--red);
+  color:#fff;
+}
+.programSlider{
+  min-height:clamp(470px,60vh,635px)!important;
+}
+.program .slideDay{
+  gap:6px 12px!important;
+}
+.program .slideDay .sessionHeader{
+  font-size:clamp(9.6px,.68vw,12px)!important;
+  line-height:1.05!important;
+  padding:7px 8px!important;
+  margin:3px 0 5px!important;
+}
+.program .slideDay .talkTitle{
+  font-size:clamp(11.2px,.78vw,13.2px)!important;
+  line-height:1.08!important;
+}
+.program .slideDay .talkSpeaker{
+  font-size:clamp(10.7px,.74vw,12.4px)!important;
+  line-height:1.08!important;
+}
+.program .slideDay .talkMeta,
+.program .slideDay .talkKeywords,
+.program .slideDay .talkCat{
+  font-size:clamp(8.6px,.58vw,10px)!important;
+  line-height:1.08!important;
+}
+.program .slideDay .time{
+  font-size:clamp(9.7px,.66vw,11.3px)!important;
+  line-height:1.05!important;
+}
+.program .slideDay .item{
+  padding-bottom:4px!important;
+}
+.programDayPage{display:none!important}
+.programDayPage.active{display:grid!important;grid-template-columns:74px 1fr;gap:6px 12px}
+.programPageNav{
+  display:flex!important;
+  position:absolute!important;
+  right:clamp(22px,2.3vw,38px)!important;
+  bottom:clamp(16px,2vh,24px)!important;
+  z-index:9!important;
+  align-items:center!important;
+  gap:8px!important;
+}
+.programArrow{
+  border:0;
+  background:#050505;
+  color:#fff;
+  padding:10px 13px;
+  font-weight:950;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  cursor:pointer;
+}
+.programArrow:disabled{
+  opacity:.38;
+  cursor:default;
+}
+.programPageIndicator{display:none!important}
+
+#voices{
+  grid-column:4!important;
+  grid-row:1!important;
+  min-height:0!important;
+  background:#bfc8c4!important;
+  color:#050505!important;
+}
+#voices:not(.flipped) .kicker,
+#voices:not(.flipped) .title,
+#voices:not(.flipped) .releaseText,
+#voices:not(.flipped) .projectMeta,
+#voices:not(.flipped) .clickHint{
+  color:#050505!important;
+  text-shadow:none!important;
+}
+#voices:not(.flipped) .title{
+  color:var(--red)!important;
+}
+#voices:not(.flipped) .releaseText{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+#voices canvas{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+#voices.flipped,
+#voices.flipped .cardBack{
+  background:#bfc8c4!important;
+  color:#050505!important;
+}
+#voices.flipped .cardBack .title{
+  color:var(--red)!important;
+}
+#voices.flipped .releaseScroll,
+#voices.flipped .releaseScroll p,
+#voices.flipped .projectMeta,
+#voices.flipped .clickHint{
+  color:#050505!important;
+  text-shadow:none!important;
+}
+#voices.flipped .releaseFull .projectMeta,
+#voices.flipped .releaseFull .clickHint{
+  background:#bfc8c4!important;
+}
+.venue{
+  grid-column:2/5!important;
+  grid-row:2!important;
+  display:grid!important;
+  grid-template-columns:minmax(280px,auto) 1fr!important;
+  gap:clamp(18px,2vw,30px)!important;
+  align-items:center!important;
+  min-height:0!important;
+  padding:clamp(14px,1.4vw,22px) clamp(20px,1.8vw,30px) clamp(20px,1.8vw,30px)!important;
+  background:#fff!important;
+}
+.venue .city{display:none!important}
+.venue .placeTop{
+  position:relative!important;
+  left:auto!important;
+  right:auto!important;
+  top:auto!important;
+}
+.venue .kicker{
+  margin-bottom:5px!important;
+  font-size:clamp(10px,.72vw,12px)!important;
+}
+.venue .loc{
+  font-size:clamp(18px,1.55vw,30px)!important;
+  line-height:.9!important;
+  margin:0 0 5px!important;
+}
+.venue .meta{
+  font-size:clamp(9px,.68vw,12px)!important;
+}
+.logoStrip{
+  position:relative!important;
+  left:auto!important;
+  right:auto!important;
+  bottom:auto!important;
+  height:clamp(52px,7vh,78px)!important;
+  margin:0!important;
+  padding:0!important;
+  background:transparent!important;
+  border:0!important;
+  overflow:visible!important;
+}
+.logoRow{
+  justify-content:flex-end!important;
+  align-items:center!important;
+  gap:clamp(18px,2.2vw,38px)!important;
+  height:100%!important;
+}
+.logoRow img.partner-logo{
+  display:block!important;
+  max-height:100%!important;
+  max-width:17%!important;
+  object-fit:contain!important;
+  filter:grayscale(1) invert(1) contrast(1.25)!important;
+  mix-blend-mode:multiply!important;
+}
+.logoRow img.partner-logo.logo-c2{max-width:20%!important}
+.logoRow img.partner-logo.logo-dpls{max-width:18%!important}
+
+.mobilePager{display:none!important}
+.releaseFull .title{letter-spacing:-.055em!important}
+
+@media(max-width:1100px){
+  .booklet{
+    display:flex!important;
+    flex-direction:column!important;
+    grid-template-rows:none!important;
+  }
+  .cover{order:1}
+  .program{order:2; grid-column:auto!important; grid-row:auto!important}
+  #voices{order:3; grid-column:auto!important; grid-row:auto!important; min-height:100svh!important}
+  .venue{
+    order:4;
+    grid-column:auto!important;
+    grid-row:auto!important;
+    display:block!important;
+    min-height:auto!important;
+    padding:22px 24px 34px!important;
+  }
+  .programSlider{min-height:590px!important}
+  .programDayPage.active{grid-template-columns:58px 1fr!important}
+  .programPageNav{
+    position:relative!important;
+    right:auto!important;
+    bottom:auto!important;
+    margin-top:16px!important;
+    justify-content:flex-end!important;
+  }
+  .logoStrip{
+    height:auto!important;
+    min-height:84px!important;
+    margin-top:18px!important;
+  }
+  .logoRow{
+    justify-content:flex-start!important;
+    align-items:center!important;
+    flex-wrap:wrap!important;
+    gap:18px 24px!important;
+  }
+  .logoRow img.partner-logo{
+    max-height:54px!important;
+    width:auto!important;
+    max-width:30%!important;
+  }
+  .logoRow img.partner-logo.logo-dpls{
+    max-width:38%!important;
+  }
+}
+@media(max-width:520px){
+  .cover .title{font-size:clamp(34px,11vw,48px)!important}
+  .cover .date{font-size:clamp(44px,14vw,62px)!important}
+  .program .kicker.programKicker{flex-wrap:wrap!important}
+  .programLangSwitch{width:100%}
+  .programLangSwitch button{flex:0 0 auto}
+  .programSlider{min-height:620px!important}
+  .logoRow img.partner-logo{
+    max-width:42%!important;
+  }
+  .logoRow img.partner-logo.logo-dpls{
+    max-width:62%!important;
+  }
+}
+
+
+/* v3 fixes after screenshot: make paged programme use full programme width */
+.booklet{
+  grid-template-columns:1.18fr 1.18fr 1.18fr .92fr!important;
+}
+.cover .title{
+  font-size:clamp(30px,2.65vw,52px)!important;
+  max-width:100%!important;
+}
+.cover .date{
+  font-size:clamp(40px,3.65vw,68px)!important;
+}
+.programDayPage{
+  grid-column:1/-1!important;
+  width:100%!important;
+}
+.programDayPage.active{
+  display:grid!important;
+  grid-template-columns:86px minmax(0,1fr)!important;
+  gap:7px 16px!important;
+  align-items:start!important;
+}
+.program .slideDay.active{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  width:100%!important;
+}
+.program .slideDay h3{
+  grid-column:1/-1!important;
+}
+.program .slideDay .sessionHeader{
+  grid-column:1/-1!important;
+  width:100%!important;
+}
+.program .slideDay .item{
+  min-width:0!important;
+}
+.program .slideDay .talkTitle{
+  font-size:clamp(13px,.9vw,15px)!important;
+  line-height:1.12!important;
+}
+.program .slideDay .talkSpeaker{
+  font-size:clamp(12px,.82vw,13.8px)!important;
+  line-height:1.1!important;
+}
+.program .slideDay .talkMeta,
+.program .slideDay .talkKeywords,
+.program .slideDay .talkCat{
+  font-size:clamp(9.5px,.64vw,11px)!important;
+  line-height:1.1!important;
+}
+.program .slideDay .time{
+  font-size:clamp(10.5px,.7vw,12px)!important;
+}
+.programSlider{
+  min-height:clamp(490px,61vh,650px)!important;
+}
+.programPageNav{
+  bottom:clamp(10px,1.2vh,16px)!important;
+}
+.venue{
+  grid-template-columns:minmax(350px,auto) 1fr!important;
+}
+.logoStrip{
+  height:clamp(56px,7.5vh,82px)!important;
+}
+@media(max-width:1100px){
+  .programDayPage.active{
+    grid-template-columns:64px minmax(0,1fr)!important;
+  }
+  .programSlider{
+    min-height:650px!important;
+  }
+  .booklet{
+    grid-template-columns:none!important;
+  }
+}
+@media(max-width:520px){
+  .programDayPage.active{
+    grid-template-columns:56px minmax(0,1fr)!important;
+    gap:7px 10px!important;
+  }
+}
+
+
+/* v4 requested fixes */
+.coverLangSwitch{
+  display:flex;
+  gap:7px;
+  margin:0 0 18px;
+  position:relative;
+  z-index:3;
+}
+.coverLangSwitch button{
+  appearance:none;
+  border:2px solid #050505;
+  background:#fff;
+  color:#050505;
+  padding:7px 10px;
+  font-weight:950;
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  cursor:pointer;
+  line-height:1;
+}
+.coverLangSwitch button.active{
+  background:var(--red);
+  border-color:var(--red);
+  color:#fff;
+}
+.programLangSwitch{display:none!important}
+.coverLogos.c2Only{
+  display:block!important;
+  width:min(190px,58%);
+}
+.coverLogos.c2Only img{
+  width:100%;
+  height:auto;
+  display:block;
+  filter:grayscale(1) invert(1) contrast(1.25)!important;
+  mix-blend-mode:multiply!important;
+}
+.program .kicker.programKicker{
+  gap:18px!important;
+}
+.programDayPage.active{
+  grid-template-columns:86px minmax(0,1fr)!important;
+}
+.pauseWithButton{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:16px!important;
+}
+.inlineNext{
+  margin-left:auto!important;
+  flex:0 0 auto!important;
+  white-space:nowrap!important;
+  padding:9px 12px!important;
+}
+.programPageNav .programArrow[data-page-dir="next"]{
+  display:none!important;
+}
+.programPageNav{
+  bottom:clamp(12px,1.4vh,18px)!important;
+}
+body.lang-ru .programArrow .enText,
+body.lang-en .programArrow .ruText{display:none!important}
+body.lang-en .programArrow .enText,
+body.lang-ru .programArrow .ruText{display:inline!important}
+#voices.flipped .releaseFull .clickHint{
+  display:none!important;
+}
+@media(max-width:1100px){
+  .coverLangSwitch{margin-bottom:16px}
+  .coverLogos.c2Only{width:170px;max-width:62%}
+  .programDayPage.active{
+    grid-template-columns:64px minmax(0,1fr)!important;
+  }
+}
+@media(max-width:520px){
+  .pauseWithButton{
+    display:block!important;
+  }
+  .inlineNext{
+    margin-top:10px!important;
+    margin-left:0!important;
+  }
+}
+
+
+/* v5: extra talks, mobile release/logos, RU slogan air */
+body.lang-ru .cover .squareBox{
+  height:22%!important;
+  min-height:154px!important;
+  bottom:clamp(72px,8.6vh,104px)!important;
+}
+body.lang-ru .cover .tagline{
+  margin-bottom:18px!important;
+}
+.program .slideDay .talkTitle{
+  font-size:clamp(12.4px,.84vw,14.4px)!important;
+}
+.program .slideDay .talkSpeaker{
+  font-size:clamp(11.6px,.78vw,13.2px)!important;
+}
+.program .slideDay .talkMeta,
+.program .slideDay .talkCat{
+  font-size:clamp(9px,.6vw,10.6px)!important;
+}
+.programDayPage.active{
+  gap:5px 15px!important;
+}
+.pauseWithButton{
+  padding-top:7px!important;
+  padding-bottom:7px!important;
+}
+.logoRow img.partner-logo,
+.logoRow img.partner-logo.logo-c2,
+.logoRow img.partner-logo.logo-dpls{
+  height:clamp(54px,6.4vh,74px)!important;
+  width:auto!important;
+  max-height:none!important;
+  max-width:none!important;
+  object-fit:contain!important;
+}
+.logoRow img.partner-logo.logo-c2{
+  height:clamp(52px,6.2vh,70px)!important;
+}
+.logoStrip{
+  height:clamp(64px,8.2vh,92px)!important;
+}
+.venue{
+  padding-bottom:clamp(24px,2.2vw,38px)!important;
+}
+#voices.flipped .releaseScroll{
+  scrollbar-color:var(--red) rgba(0,0,0,.10)!important;
+}
+#voices.flipped .releaseScroll::-webkit-scrollbar-thumb{
+  background:var(--red)!important;
+}
+@media(max-width:1100px){
+  .releaseScroll{
+    overflow:visible!important;
+    max-height:none!important;
+    padding-right:0!important;
+  }
+  #voices.flipped{
+    min-height:auto!important;
+    overflow:visible!important;
+  }
+  #voices.flipped .cardBack{
+    position:relative!important;
+    inset:auto!important;
+    overflow:visible!important;
+    min-height:auto!important;
+    display:flex!important;
+  }
+  .venue{
+    padding-bottom:56px!important;
+  }
+  .logoStrip{
+    min-height:190px!important;
+    height:auto!important;
+    overflow:visible!important;
+  }
+  .logoRow{
+    align-items:center!important;
+    gap:24px 28px!important;
+    padding-bottom:18px!important;
+  }
+  .logoRow img.partner-logo,
+  .logoRow img.partner-logo.logo-c2,
+  .logoRow img.partner-logo.logo-dpls{
+    height:54px!important;
+    max-width:42%!important;
+  }
+  .logoRow img.partner-logo.logo-c2{
+    height:54px!important;
+  }
+  .logoRow img.partner-logo.logo-dpls{
+    height:62px!important;
+    max-width:60%!important;
+  }
+}
+@media(max-width:520px){
+  body.lang-ru .cover .squareBox{
+    height:190px!important;
+    min-height:190px!important;
+    bottom:auto!important;
+  }
+  .logoStrip{
+    min-height:220px!important;
+  }
+  .logoRow img.partner-logo,
+  .logoRow img.partner-logo.logo-c2{
+    height:50px!important;
+    max-width:46%!important;
+  }
+  .logoRow img.partner-logo.logo-dpls{
+    height:58px!important;
+    max-width:70%!important;
+  }
+}
+
+
+/* v7: smaller day tabs/header on desktop; one continuous programme on mobile */
+@media(min-width:1101px){
+  .program .kicker.programKicker{
+    margin-bottom:clamp(8px,1.1vh,12px)!important;
+  }
+  .dayTabs{
+    margin-bottom:8px!important;
+    gap:10px!important;
+  }
+  .dayTab{
+    padding:8px 18px!important;
+    min-height:38px!important;
+    line-height:1!important;
+  }
+  .program .slideDay h3{
+    padding-top:8px!important;
+    margin-bottom:6px!important;
+  }
+  .program .slideDay .sessionHeader{
+    padding-top:6px!important;
+    padding-bottom:6px!important;
+    margin-bottom:4px!important;
+  }
+  .programSlider{
+    min-height:clamp(505px,63vh,670px)!important;
+  }
+  .programDayPage.active{
+    gap:4px 15px!important;
+  }
+  .program .slideDay .item{
+    padding-bottom:3px!important;
+  }
+}
+
+/* mobile: no before/after coffee break pagination; show programme as one continuous list */
+@media(max-width:1100px){
+  .program .slideDay.active .programDayPage{
+    display:grid!important;
+    grid-template-columns:64px minmax(0,1fr)!important;
+    gap:7px 12px!important;
+  }
+  .program .slideDay.active .programDayPage[data-page="1"]{
+    margin-top:0!important;
+  }
+  .program .slideDay.active .programDayPage[data-page="1"] .sessionHeader{
+    display:none!important;
+  }
+  .programPageNav,
+  .inlineNext{
+    display:none!important;
+  }
+  .programSlider{
+    min-height:auto!important;
+  }
+}
+@media(max-width:520px){
+  .program .slideDay.active .programDayPage{
+    grid-template-columns:56px minmax(0,1fr)!important;
+    gap:7px 10px!important;
+  }
+}
+
+
+/* v8: desktop coffee-break pager must be visible */
+.desktopCoffeeJump{
+  display:none;
+}
+@media(min-width:1101px){
+  .program{
+    padding-top:clamp(20px,1.6vw,28px)!important;
+    padding-bottom:clamp(18px,1.6vw,28px)!important;
+  }
+  .programDayPage[data-page="0"].active ~ .desktopCoffeeJump{
+    position:absolute!important;
+    left:clamp(22px,2.3vw,38px)!important;
+    right:clamp(22px,2.3vw,38px)!important;
+    bottom:clamp(8px,1vh,14px)!important;
+    display:grid!important;
+    grid-template-columns:86px 1fr auto!important;
+    gap:12px!important;
+    align-items:center!important;
+    background:rgba(251,250,246,.96)!important;
+    border-top:1px solid rgba(0,0,0,.16)!important;
+    padding:8px 0 0!important;
+    z-index:15!important;
+  }
+  .desktopCoffeeJump .coffeeTime{
+    font-weight:950!important;
+    font-size:clamp(10.5px,.7vw,12px)!important;
+  }
+  .desktopCoffeeJump .coffeeLabel{
+    color:var(--red)!important;
+    font-weight:950!important;
+    text-transform:uppercase!important;
+    font-size:clamp(10px,.68vw,12px)!important;
+    letter-spacing:.04em!important;
+  }
+  .desktopCoffeeJump .inlineNext{
+    display:inline-block!important;
+    margin:0!important;
+  }
+  .programDayPage[data-page="0"].active .pauseWithButton{
+    display:none!important;
+  }
+  .program .dashaBeforePause .talkMeta{
+    display:none!important;
+  }
+  .program .dashaBeforePause .talkCat{
+    display:none!important;
+  }
+  .programSlider{
+    min-height:clamp(500px,62vh,660px)!important;
+  }
+  .program .slideDay .talkTitle{
+    font-size:clamp(12px,.81vw,14px)!important;
+  }
+  .program .slideDay .talkSpeaker{
+    font-size:clamp(11.2px,.74vw,12.8px)!important;
+  }
+  .program .slideDay .talkMeta,
+  .program .slideDay .talkCat{
+    font-size:clamp(8.7px,.58vw,10.2px)!important;
+  }
+}
+@media(max-width:1100px){
+  .desktopCoffeeJump{
+    display:none!important;
+  }
+  .programDayPage[data-page="0"].active .pauseWithButton{
+    display:block!important;
+  }
+}
+
+
+/* v9: blue addresses in black programme banners */
+.sessionHeader .bannerAddress{
+  color:var(--red)!important;
+}
+
+
+/* v10: smaller date buttons and day title; remove duplicate 14:50 time */
+@media(min-width:1101px){
+  .dayTabs{
+    gap:8px!important;
+    margin-bottom:6px!important;
+  }
+  .dayTab{
+    padding:7px 15px!important;
+    min-height:34px!important;
+    font-size:clamp(10px,.68vw,12px)!important;
+  }
+  .program .slideDay h3{
+    font-size:clamp(24px,2.05vw,38px)!important;
+    padding-top:7px!important;
+    margin-bottom:5px!important;
+  }
+  .program .slideDay h3 .red{
+    font-size:clamp(24px,2.05vw,38px)!important;
+  }
+  .desktopCoffeeJump{
+    grid-template-columns:1fr auto!important;
+  }
+  .desktopCoffeeJump .coffeeTime{
+    display:none!important;
+  }
+}
+
+
+/* v11: smaller main-day/date labels, more compact date tabs, normal after-pause button */
+@media(min-width:1101px){
+  .dayTab{
+    padding:6px 13px!important;
+    min-height:31px!important;
+    font-size:clamp(9px,.58vw,10.5px)!important;
+  }
+  .dayTabs{
+    margin-bottom:5px!important;
+  }
+  .program .slideDay h3{
+    font-size:clamp(20px,1.72vw,32px)!important;
+    padding-top:5px!important;
+    margin-bottom:4px!important;
+  }
+  .program .slideDay h3 .red{
+    font-size:clamp(20px,1.72vw,32px)!important;
+  }
+  .desktopCoffeeJump{
+    grid-template-columns:1fr max-content!important;
+  }
+  .desktopCoffeeJump .inlineNext{
+    width:auto!important;
+    min-width:0!important;
+    padding:9px 14px!important;
+    justify-self:end!important;
+  }
+  .desktopCoffeeJump .coffeeLabel{
+    white-space:nowrap!important;
+  }
+}
+
+
+/* v12: 22 June scheduled slot, affiliations normalized */
+.program .slideDay[data-day-panel="0"] .talkTitle{
+  font-size:clamp(12px,.8vw,13.8px)!important;
+}
+.program .slideDay[data-day-panel="0"] .talkSpeaker{
+  font-size:clamp(11.2px,.74vw,12.8px)!important;
+}
+
+
+/* v14: lower desktop coffee-break line so it does not overlap the last talk */
+@media(min-width:1101px){
+  .program{
+    overflow:visible!important;
+  }
+  .programDayPage[data-page="0"].active ~ .desktopCoffeeJump{
+    bottom:clamp(-28px,-2.6vh,-18px)!important;
+    padding-top:10px!important;
+    background:rgba(251,250,246,.98)!important;
+  }
+  .desktopCoffeeJump{
+    z-index:30!important;
+  }
+}
+
+
+/* v15: remove empty gap between programme and footer */
+@media(min-width:1101px){
+  .booklet{
+    grid-template-rows:3.18fr .82fr!important;
+  }
+  .programDayPage[data-page="0"].active ~ .desktopCoffeeJump{
+    bottom:clamp(6px,.8vh,12px)!important;
+    padding-top:8px!important;
+  }
+  .venue{
+    padding-top:clamp(16px,1.5vw,24px)!important;
+    padding-bottom:clamp(22px,2vw,34px)!important;
+  }
+}
+
+
+/* v16: put coffee-break line at the very bottom of the programme area */
+@media(min-width:1101px){
+  .booklet{
+    grid-template-rows:3.45fr .55fr!important;
+  }
+  .programDayPage[data-page="0"].active ~ .desktopCoffeeJump{
+    bottom:clamp(-44px,-4.8vh,-34px)!important;
+    padding-top:6px!important;
+    background:rgba(251,250,246,.98)!important;
+    border-top:1px solid rgba(0,0,0,.16)!important;
+  }
+  .programPageNav{
+    bottom:clamp(-44px,-4.8vh,-34px)!important;
+  }
+}
+
+
+/* v17: fix escaped pager button and footer logos */
+@media(min-width:1101px){
+  .booklet{
+    height:min(820px,calc(100vh - 54px))!important;
+    min-height:690px!important;
+    grid-template-rows:minmax(0,1fr) 112px!important;
+  }
+
+  .program{
+    overflow:hidden!important;
+    padding-bottom:56px!important;
+  }
+
+  .programSlider{
+    min-height:0!important;
+  }
+
+  #program:has(.programDayPage[data-page="0"].active) .programPageNav{
+    display:none!important;
+  }
+
+  #program:has(.programDayPage[data-page="1"].active) .desktopCoffeeJump{
+    display:none!important;
+  }
+
+  .programDayPage[data-page="0"].active ~ .desktopCoffeeJump{
+    position:absolute!important;
+    left:clamp(22px,2.3vw,38px)!important;
+    right:clamp(22px,2.3vw,38px)!important;
+    bottom:14px!important;
+    display:grid!important;
+    grid-template-columns:1fr max-content!important;
+    gap:12px!important;
+    align-items:center!important;
+    background:rgba(251,250,246,.98)!important;
+    border-top:1px solid rgba(0,0,0,.16)!important;
+    padding:8px 0 0!important;
+    z-index:15!important;
+  }
+
+  .programPageNav{
+    display:flex!important;
+    position:absolute!important;
+    right:clamp(22px,2.3vw,38px)!important;
+    bottom:14px!important;
+    z-index:15!important;
+    align-items:center!important;
+    justify-content:flex-end!important;
+    gap:8px!important;
+  }
+
+  .programPageNav .programArrow[data-page-dir="next"]{
+    display:none!important;
+  }
+
+  .desktopCoffeeJump .coffeeTime{
+    display:none!important;
+  }
+
+  .desktopCoffeeJump .coffeeLabel{
+    color:var(--red)!important;
+    font-weight:950!important;
+    text-transform:uppercase!important;
+    font-size:clamp(10px,.68vw,12px)!important;
+    white-space:nowrap!important;
+  }
+
+  .desktopCoffeeJump .inlineNext,
+  .programPageNav .programArrow{
+    width:auto!important;
+    min-width:0!important;
+    padding:9px 14px!important;
+    white-space:nowrap!important;
+  }
+
+  .venue{
+    overflow:visible!important;
+    padding:16px 24px 24px!important;
+    grid-template-columns:minmax(320px,auto) 1fr!important;
+  }
+
+  .logoStrip{
+    height:62px!important;
+    overflow:visible!important;
+  }
+
+  .logoRow{
+    align-items:center!important;
+    gap:clamp(18px,2vw,34px)!important;
+    overflow:visible!important;
+  }
+
+  .logoRow img.partner-logo,
+  .logoRow img.partner-logo.logo-c2,
+  .logoRow img.partner-logo.logo-dpls{
+    height:54px!important;
+    max-height:54px!important;
+    width:auto!important;
+    max-width:18%!important;
+    object-fit:contain!important;
+  }
+
+  .logoRow img.partner-logo.logo-c2{
+    height:54px!important;
+    max-height:54px!important;
+  }
+
+  .logoRow img.partner-logo.logo-dpls{
+    height:58px!important;
+    max-height:58px!important;
+  }
+
+  .venue .loc{
+    font-size:clamp(17px,1.45vw,27px)!important;
+  }
+}
+
+
+/* v18: cleaner coffee-break bar, better second-page banner, tablet layout fix */
+@media(min-width:1101px){
+  /* make the bottom coffee row part of the grid, not a huge awkward block */
+  .programDayPage[data-page="0"].active ~ .desktopCoffeeJump{
+    left:clamp(22px,2.3vw,38px)!important;
+    right:clamp(22px,2.3vw,38px)!important;
+    bottom:16px!important;
+    display:grid!important;
+    grid-template-columns:86px minmax(0,1fr) max-content!important;
+    gap:15px!important;
+    align-items:center!important;
+    background:transparent!important;
+    border-top:1px solid rgba(0,0,0,.16)!important;
+    padding:8px 0 0!important;
+  }
+  .desktopCoffeeJump .coffeeTime{
+    display:block!important;
+    font-weight:950!important;
+    font-size:clamp(10.2px,.68vw,11.8px)!important;
+    color:#050505!important;
+  }
+  .desktopCoffeeJump .coffeeLabel{
+    color:var(--red)!important;
+    font-weight:950!important;
+    text-transform:uppercase!important;
+    font-size:clamp(9.5px,.62vw,11px)!important;
+    letter-spacing:.035em!important;
+    white-space:nowrap!important;
+  }
+  .desktopCoffeeJump .inlineNext{
+    padding:8px 12px!important;
+    font-size:10px!important;
+    line-height:1!important;
+  }
+
+  /* second page header should look like the first thematic AIMs banner */
+  .programDayPage[data-page="1"] .sessionHeader{
+    font-size:clamp(9px,.62vw,11px)!important;
+    line-height:1.06!important;
+    padding:7px 8px!important;
+    margin-bottom:8px!important;
+  }
+
+  /* slightly reduce dense rows so the first page breathes */
+  .program .slideDay .talkTitle{
+    font-size:clamp(11.7px,.79vw,13.7px)!important;
+  }
+  .program .slideDay .talkSpeaker{
+    font-size:clamp(11px,.72vw,12.6px)!important;
+  }
+  .program .slideDay .talkMeta,
+  .program .slideDay .talkCat{
+    font-size:clamp(8.6px,.56vw,10px)!important;
+  }
+}
+
+/* tablet: avoid oversized horizontal square and clipped date */
+@media(min-width:701px) and (max-width:1100px){
+  .stage{
+    padding:0!important;
+  }
+  .booklet{
+    width:100%!important;
+    max-width:100%!important;
+  }
+  .cover{
+    min-height:auto!important;
+    padding:28px 26px 34px!important;
+    overflow:hidden!important;
+  }
+  .cover .title{
+    font-size:clamp(30px,5.2vw,48px)!important;
+    max-width:560px!important;
+  }
+  .cover .date{
+    font-size:clamp(42px,7vw,64px)!important;
+    line-height:.78!important;
+    max-width:560px!important;
+  }
+  .cover .tagline{
+    max-width:360px!important;
+  }
+  .squareBox{
+    position:relative!important;
+    left:auto!important;
+    right:auto!important;
+    bottom:auto!important;
+    width:min(430px,58vw)!important;
+    height:210px!important;
+    min-height:0!important;
+    margin-top:28px!important;
+  }
+  .coverBottom{
+    position:relative!important;
+    left:auto!important;
+    right:auto!important;
+    bottom:auto!important;
+    margin-top:20px!important;
+  }
+}
+
+/* phone: keep mobile one-column but don't let the square crush the date */
+@media(max-width:700px){
+  .cover{
+    min-height:auto!important;
+    padding-bottom:34px!important;
+  }
+  .cover .date{
+    font-size:clamp(44px,13vw,62px)!important;
+    line-height:.78!important;
+  }
+  .squareBox{
+    width:100%!important;
+    height:190px!important;
+    min-height:190px!important;
+    margin-top:26px!important;
+  }
+}
+
+
+/* v19 final: clean coffee-break pager, footer button, tablet cover */
+@media(min-width:1101px){
+  .booklet{
+    height:min(820px,calc(100vh - 54px))!important;
+    min-height:690px!important;
+    grid-template-rows:minmax(0,1fr) 112px!important;
+  }
+
+  .program{
+    overflow:hidden!important;
+    padding-bottom:58px!important;
+  }
+
+  .programSlider{
+    min-height:0!important;
+  }
+
+  /* First page: hide the in-list coffee row completely; use clean bottom row */
+  #program:has(.programDayPage[data-page="0"].active) .coffeeInlineTime,
+  #program:has(.programDayPage[data-page="0"].active) .pauseWithButton{
+    display:none!important;
+  }
+
+  #program:has(.programDayPage[data-page="0"].active) .programPageNav{
+    display:none!important;
+  }
+
+  #program:has(.programDayPage[data-page="0"].active) .desktopCoffeeJump{
+    position:absolute!important;
+    left:clamp(22px,2.3vw,38px)!important;
+    right:clamp(22px,2.3vw,38px)!important;
+    bottom:14px!important;
+    display:grid!important;
+    grid-template-columns:86px minmax(0,1fr) max-content!important;
+    gap:15px!important;
+    align-items:center!important;
+    background:rgba(251,250,246,.98)!important;
+    border-top:1px solid rgba(0,0,0,.16)!important;
+    padding:8px 0 0!important;
+    z-index:20!important;
+  }
+
+  .desktopCoffeeJump .coffeeTime{
+    display:block!important;
+    font-weight:950!important;
+    font-size:clamp(10.2px,.68vw,11.8px)!important;
+    color:#050505!important;
+  }
+
+  .desktopCoffeeJump .coffeeLabel{
+    color:var(--red)!important;
+    font-weight:950!important;
+    text-transform:uppercase!important;
+    font-size:clamp(9.5px,.62vw,11px)!important;
+    white-space:nowrap!important;
+  }
+
+  .desktopCoffeeJump .inlineNext{
+    display:inline-block!important;
+    width:auto!important;
+    min-width:0!important;
+    padding:8px 12px!important;
+    font-size:10px!important;
+    line-height:1!important;
+    white-space:nowrap!important;
+  }
+
+  /* Second page: show only the back button, inside programme, not in footer */
+  #program:has(.programDayPage[data-page="1"].active) .desktopCoffeeJump{
+    display:none!important;
+  }
+
+  #program:has(.programDayPage[data-page="1"].active) .programPageNav{
+    display:flex!important;
+    position:absolute!important;
+    right:clamp(22px,2.3vw,38px)!important;
+    bottom:14px!important;
+    z-index:20!important;
+    align-items:center!important;
+    justify-content:flex-end!important;
+    gap:8px!important;
+  }
+
+  .programPageNav .programArrow[data-page-dir="next"]{
+    display:none!important;
+  }
+
+  .programPageNav .programArrow[data-page-dir="prev"]{
+    display:inline-block!important;
+    width:auto!important;
+    min-width:0!important;
+    padding:8px 12px!important;
+    font-size:10px!important;
+    line-height:1!important;
+    white-space:nowrap!important;
+  }
+
+  .programPageIndicator{
+    display:none!important;
+  }
+
+  .venue{
+    overflow:visible!important;
+    padding:16px 24px 24px!important;
+    grid-template-columns:minmax(320px,auto) 1fr!important;
+  }
+
+  .logoStrip{
+    height:62px!important;
+    overflow:visible!important;
+  }
+
+  .logoRow{
+    align-items:center!important;
+    gap:clamp(18px,2vw,34px)!important;
+    overflow:visible!important;
+  }
+
+  .logoRow img.partner-logo,
+  .logoRow img.partner-logo.logo-c2,
+  .logoRow img.partner-logo.logo-dpls{
+    height:54px!important;
+    max-height:54px!important;
+    width:auto!important;
+    max-width:18%!important;
+    object-fit:contain!important;
+  }
+
+  .logoRow img.partner-logo.logo-dpls{
+    height:58px!important;
+    max-height:58px!important;
+  }
+}
+
+/* Tablet: keep square below the date; no overlap */
+@media(min-width:701px) and (max-width:1100px){
+  .cover{
+    min-height:auto!important;
+    padding:28px 26px 36px!important;
+    overflow:hidden!important;
+  }
+  .cover .date{
+    display:block!important;
+    margin-bottom:20px!important;
+    max-width:560px!important;
+    font-size:clamp(42px,7vw,64px)!important;
+    line-height:.78!important;
+  }
+  .squareBox{
+    position:relative!important;
+    left:auto!important;
+    right:auto!important;
+    bottom:auto!important;
+    width:min(520px,72vw)!important;
+    height:190px!important;
+    min-height:0!important;
+    margin-top:24px!important;
+    clear:both!important;
+  }
+  .coverBottom{
+    position:relative!important;
+    left:auto!important;
+    right:auto!important;
+    bottom:auto!important;
+    margin-top:20px!important;
+  }
+}
+
+@media(max-width:700px){
+  .cover .date{
+    margin-bottom:20px!important;
+  }
+  .squareBox{
+    position:relative!important;
+    left:auto!important;
+    right:auto!important;
+    bottom:auto!important;
+    width:100%!important;
+    height:180px!important;
+    min-height:180px!important;
+    margin-top:24px!important;
+  }
+}
+
+
+/* v20: coffee break stays in the programme grid; only the button is below */
+@media(min-width:1101px){
+  #program:has(.programDayPage[data-page="0"].active) .coffeeInlineTime{
+    display:block!important;
+  }
+
+  #program:has(.programDayPage[data-page="0"].active) .pauseWithButton{
+    display:block!important;
+  }
+
+  #program:has(.programDayPage[data-page="0"].active) .pauseWithButton .inlineNext{
+    display:none!important;
+  }
+
+  #program:has(.programDayPage[data-page="0"].active) .desktopCoffeeJump{
+    display:block!important;
+    position:absolute!important;
+    right:clamp(22px,2.3vw,38px)!important;
+    bottom:14px!important;
+    left:auto!important;
+    width:auto!important;
+    background:transparent!important;
+    border-top:0!important;
+    padding:0!important;
+    z-index:20!important;
+  }
+
+  #program:has(.programDayPage[data-page="0"].active) .desktopCoffeeJump .coffeeTime,
+  #program:has(.programDayPage[data-page="0"].active) .desktopCoffeeJump .coffeeLabel{
+    display:none!important;
+  }
+
+  #program:has(.programDayPage[data-page="0"].active) .desktopCoffeeJump .inlineNext{
+    display:inline-block!important;
+    width:auto!important;
+    min-width:0!important;
+    padding:8px 12px!important;
+    font-size:10px!important;
+    line-height:1!important;
+    white-space:nowrap!important;
+  }
+
+  .pauseWithButton{
+    color:var(--red)!important;
+    font-weight:950!important;
+    text-transform:uppercase!important;
+    font-size:clamp(9.5px,.62vw,11px)!important;
+    letter-spacing:.035em!important;
+  }
+
+  .coffeeInlineTime{
+    font-weight:950!important;
+    color:#050505!important;
+  }
+}
+
+
+/* v21: clean pager placement + tablet cover overlap fix */
+@media(min-width:1101px){
+  /* coffee break stays only as a normal grid row */
+  .pauseWithButton .inlineNext{
+    display:none!important;
+  }
+
+  /* page 1: only one separate button, lower/right in the empty space */
+  #program:has(.programDayPage[data-page="0"].active) .desktopCoffeeJump{
+    display:block!important;
+    position:absolute!important;
+    left:auto!important;
+    right:clamp(22px,2.3vw,38px)!important;
+    bottom:34px!important;
+    width:auto!important;
+    height:auto!important;
+    background:transparent!important;
+    border:0!important;
+    padding:0!important;
+    margin:0!important;
+    z-index:30!important;
+  }
+
+  #program:has(.programDayPage[data-page="0"].active) .desktopCoffeeJump .coffeeTime,
+  #program:has(.programDayPage[data-page="0"].active) .desktopCoffeeJump .coffeeLabel{
+    display:none!important;
+  }
+
+  #program:has(.programDayPage[data-page="0"].active) .desktopCoffeeJump .inlineNext{
+    display:inline-block!important;
+    width:auto!important;
+    min-width:0!important;
+    max-width:max-content!important;
+    padding:9px 14px!important;
+    font-size:10px!important;
+    line-height:1!important;
+    white-space:nowrap!important;
+    background:#050505!important;
+    color:#fff!important;
+    opacity:1!important;
+  }
+
+  /* page 2: no "after coffee break" duplicate at all */
+  #program:has(.programDayPage[data-page="1"].active) .desktopCoffeeJump,
+  #program:has(.programDayPage[data-page="1"].active) .desktopCoffeeJump *,
+  #program:has(.programDayPage[data-page="1"].active) .inlineNext{
+    display:none!important;
+  }
+
+  #program:has(.programDayPage[data-page="1"].active) .programPageNav{
+    display:flex!important;
+    position:absolute!important;
+    right:clamp(22px,2.3vw,38px)!important;
+    bottom:34px!important;
+    z-index:30!important;
+  }
+
+  #program:has(.programDayPage[data-page="1"].active) .programPageNav .programArrow[data-page-dir="prev"]{
+    display:inline-block!important;
+    width:auto!important;
+    max-width:max-content!important;
+    padding:9px 14px!important;
+    font-size:10px!important;
+    line-height:1!important;
+    white-space:nowrap!important;
+    background:#050505!important;
+    color:#fff!important;
+    opacity:1!important;
+  }
+}
+
+/* tablet: rectangular square is allowed, but it must sit below the date */
+@media(min-width:701px) and (max-width:1100px){
+  .cover{
+    min-height:auto!important;
+    height:auto!important;
+    padding:28px 26px 42px!important;
+    overflow:hidden!important;
+  }
+  .cover .date{
+    position:relative!important;
+    z-index:4!important;
+    display:block!important;
+    margin:18px 0 34px!important;
+    padding:0!important;
+    font-size:clamp(44px,7.2vw,66px)!important;
+    line-height:.78!important;
+    max-width:620px!important;
+    overflow:visible!important;
+  }
+  .cover .squareBox{
+    position:relative!important;
+    z-index:1!important;
+    left:auto!important;
+    right:auto!important;
+    top:auto!important;
+    bottom:auto!important;
+    display:block!important;
+    width:min(620px,78vw)!important;
+    max-width:100%!important;
+    height:190px!important;
+    min-height:190px!important;
+    margin:0 0 0!important;
+    clear:both!important;
+  }
+  .coverBottom{
+    position:relative!important;
+    left:auto!important;
+    right:auto!important;
+    top:auto!important;
+    bottom:auto!important;
+    margin-top:22px!important;
+  }
+}
+
+@media(max-width:700px){
+  .cover .date{
+    position:relative!important;
+    z-index:4!important;
+    margin-bottom:30px!important;
+    overflow:visible!important;
+  }
+  .cover .squareBox{
+    position:relative!important;
+    z-index:1!important;
+    left:auto!important;
+    right:auto!important;
+    top:auto!important;
+    bottom:auto!important;
+    width:100%!important;
+    height:180px!important;
+    min-height:180px!important;
+    margin:0!important;
+  }
+}
+
+
+/* v22: place desktop "after coffee break" button in the lower empty area */
+@media(min-width:1101px){
+  #program:has(.programDayPage[data-page="0"].active) .desktopCoffeeJump{
+    right:clamp(22px,2.3vw,38px)!important;
+    bottom:clamp(-34px,-3.5vh,-24px)!important;
+    z-index:35!important;
+  }
+  #program:has(.programDayPage[data-page="0"].active) .desktopCoffeeJump .inlineNext{
+    padding:10px 18px!important;
+    font-size:11px!important;
+  }
+}
+
+
+/* v23: make the desktop after-pause button visible in the empty area */
+@media(min-width:1101px){
+  #program:has(.programDayPage[data-page="0"].active) .desktopCoffeeJump{
+    display:block!important;
+    position:absolute!important;
+    left:auto!important;
+    right:clamp(22px,2.3vw,38px)!important;
+    bottom:38px!important;
+    width:auto!important;
+    height:auto!important;
+    min-height:0!important;
+    overflow:visible!important;
+    background:transparent!important;
+    border:0!important;
+    padding:0!important;
+    margin:0!important;
+    z-index:80!important;
+  }
+
+  #program:has(.programDayPage[data-page="0"].active) .desktopCoffeeJump .coffeeTime,
+  #program:has(.programDayPage[data-page="0"].active) .desktopCoffeeJump .coffeeLabel{
+    display:none!important;
+  }
+
+  #program:has(.programDayPage[data-page="0"].active) .desktopCoffeeJump .inlineNext{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:auto!important;
+    min-width:0!important;
+    max-width:none!important;
+    height:auto!important;
+    min-height:34px!important;
+    padding:10px 18px!important;
+    border:0!important;
+    background:#050505!important;
+    color:#fff!important;
+    opacity:1!important;
+    font-size:11px!important;
+    line-height:1!important;
+    white-space:nowrap!important;
+    overflow:visible!important;
+  }
+
+  #program:has(.programDayPage[data-page="0"].active) .desktopCoffeeJump .inlineNext .ruText,
+  #program:has(.programDayPage[data-page="0"].active) .desktopCoffeeJump .inlineNext .enText{
+    line-height:1!important;
+  }
+}
+
+
+/* v24: move desktop "after coffee break" button lower, under the coffee-break row */
+@media(min-width:1101px){
+  #program:has(.programDayPage[data-page="0"].active) .desktopCoffeeJump{
+    bottom:6px!important;
+  }
+}
+
+
+/* v25: move desktop "after coffee break" button down by one button height */
+@media(min-width:1101px){
+  #program:has(.programDayPage[data-page="0"].active) .desktopCoffeeJump{
+    bottom:-30px!important;
+  }
+}
+
+
+/* v26: rewrite pager logic — no absolute overlay buttons */
+@media(min-width:1101px){
+  .desktopCoffeeJump,
+  .programPageNav,
+  .pauseWithButton .inlineNext{
+    display:none!important;
+  }
+
+  .program{
+    overflow:hidden!important;
+    padding-bottom:clamp(18px,1.6vw,28px)!important;
+  }
+
+  .programDayPage.active{
+    display:grid!important;
+    grid-template-columns:86px minmax(0,1fr)!important;
+    gap:4px 15px!important;
+    align-items:start!important;
+  }
+
+  .pagerRow{
+    grid-column:1 / -1!important;
+    display:flex!important;
+    justify-content:flex-end!important;
+    align-items:center!important;
+    margin-top:18px!important;
+    padding-right:0!important;
+  }
+
+  .cleanPagerButton{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:auto!important;
+    min-width:0!important;
+    max-width:max-content!important;
+    height:auto!important;
+    min-height:34px!important;
+    padding:10px 18px!important;
+    border:0!important;
+    background:#050505!important;
+    color:#fff!important;
+    opacity:1!important;
+    font-size:11px!important;
+    line-height:1!important;
+    white-space:nowrap!important;
+    cursor:pointer!important;
+  }
+
+  .cleanPagerButton .ruText,
+  .cleanPagerButton .enText{
+    line-height:1!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .programDayPage[data-page="0"].active .pagerRow{
+    margin-top:22px!important;
+  }
+
+  .program .slideDay[data-day-panel="1"] .programDayPage[data-page="1"].active .pagerRow{
+    margin-top:26px!important;
+  }
+
+  .programSlider{
+    min-height:0!important;
+  }
+}
+
+@media(max-width:1100px){
+  .pagerRow,
+  .desktopCoffeeJump,
+  .programPageNav,
+  .pauseWithButton .inlineNext{
+    display:none!important;
+  }
+}
+
+
+/* v27: only clean grid pager buttons; grey and softer */
+@media(min-width:1101px){
+  .programPageNav,
+  .desktopCoffeeJump{
+    display:none!important;
+  }
+
+  .cleanPagerButton{
+    background:#8b8b86!important;
+    color:#fff!important;
+    opacity:1!important;
+  }
+
+  .cleanPagerButton:hover{
+    background:#6f6f6a!important;
+  }
+}
+
+
+/* v28: remove old black pager artifacts, move clean button slightly up, make release scrollbar visible */
+@media(min-width:1101px){
+  /* Kill all legacy pager elements completely */
+  .programPageNav,
+  .programPageNav *,
+  .desktopCoffeeJump,
+  .desktopCoffeeJump *,
+  .pauseWithButton .inlineNext{
+    display:none!important;
+    visibility:hidden!important;
+    opacity:0!important;
+    pointer-events:none!important;
+  }
+
+  /* Keep only the clean pager row button */
+  .pagerRow{
+    display:flex!important;
+    justify-content:flex-end!important;
+    align-items:center!important;
+    margin-top:11px!important; /* 7px up from previous 18px */
+  }
+
+  .cleanPagerButton{
+    display:inline-flex!important;
+    visibility:visible!important;
+    opacity:1!important;
+    pointer-events:auto!important;
+    background:#8b8b86!important;
+    color:#fff!important;
+    border:0!important;
+    min-height:34px!important;
+    padding:10px 18px!important;
+    font-size:11px!important;
+    line-height:1!important;
+    white-space:nowrap!important;
+  }
+
+  .cleanPagerButton:hover{
+    background:#6f6f6a!important;
+  }
+
+  /* Desktop release: make scrollbar clearly visible */
+  #voices.flipped .releaseScroll{
+    overflow-y:scroll!important;
+    scrollbar-width:auto!important;
+    scrollbar-color:var(--red) rgba(0,0,0,.18)!important;
+    padding-right:12px!important;
+  }
+
+  #voices.flipped .releaseScroll::-webkit-scrollbar{
+    width:10px!important;
+  }
+
+  #voices.flipped .releaseScroll::-webkit-scrollbar-track{
+    background:rgba(0,0,0,.16)!important;
+    border-radius:999px!important;
+  }
+
+  #voices.flipped .releaseScroll::-webkit-scrollbar-thumb{
+    background:var(--red)!important;
+    border-radius:999px!important;
+    border:2px solid rgba(191,200,196,.95)!important;
+  }
+}
+
+
+/* v29: precise pager lift, visible release scroll cue, author order checked */
+@media(min-width:1101px){
+  .pagerRow{
+    transform:translateY(-7px)!important;
+  }
+
+  #voices.flipped .cardBack::after{
+    content:"";
+    position:absolute;
+    right:14px;
+    top:96px;
+    bottom:88px;
+    width:9px;
+    border-radius:999px;
+    background:linear-gradient(
+      to bottom,
+      var(--red) 0%,
+      var(--red) 26%,
+      rgba(0,0,0,.20) 26%,
+      rgba(0,0,0,.20) 100%
+    );
+    opacity:1;
+    pointer-events:none;
+    z-index:20;
+  }
+
+  #voices.flipped .releaseScroll{
+    padding-right:24px!important;
+  }
+}
+
+
+/* v30: reduce release scroll noise, stable pager, tablet/mobile refinements */
+
+/* One scrollbar only in the release: remove fake cue, keep native turquoise scrollbar */
+@media(min-width:1101px){
+  #voices.flipped .cardBack::after{
+    content:none!important;
+    display:none!important;
+  }
+
+  #voices.flipped .releaseScroll{
+    overflow-y:auto!important;
+    scrollbar-width:thin!important;
+    scrollbar-color:var(--red) rgba(0,0,0,.14)!important;
+    padding-right:14px!important;
+  }
+
+  #voices.flipped .releaseScroll::-webkit-scrollbar{
+    width:8px!important;
+  }
+
+  #voices.flipped .releaseScroll::-webkit-scrollbar-track{
+    background:rgba(0,0,0,.12)!important;
+    border-radius:999px!important;
+  }
+
+  #voices.flipped .releaseScroll::-webkit-scrollbar-thumb{
+    background:var(--red)!important;
+    border-radius:999px!important;
+    border:1px solid rgba(191,200,196,.95)!important;
+  }
+
+  /* Clean stable pager: no legacy buttons, no absolute overlays */
+  .programPageNav,
+  .programPageNav *,
+  .desktopCoffeeJump,
+  .desktopCoffeeJump *,
+  .pauseWithButton .inlineNext{
+    display:none!important;
+    visibility:hidden!important;
+    opacity:0!important;
+    pointer-events:none!important;
+  }
+
+  .program{
+    overflow:hidden!important;
+    padding-bottom:clamp(20px,2vw,32px)!important;
+  }
+
+  .pagerRow{
+    grid-column:1/-1!important;
+    display:flex!important;
+    justify-content:flex-end!important;
+    align-items:center!important;
+    margin-top:10px!important;
+    transform:none!important;
+    min-height:36px!important;
+  }
+
+  .cleanPagerButton{
+    display:inline-flex!important;
+    visibility:visible!important;
+    opacity:1!important;
+    pointer-events:auto!important;
+    align-items:center!important;
+    justify-content:center!important;
+    background:#8b8b86!important;
+    color:#fff!important;
+    border:0!important;
+    width:auto!important;
+    min-width:0!important;
+    max-width:max-content!important;
+    min-height:34px!important;
+    padding:10px 18px!important;
+    font-size:11px!important;
+    line-height:1!important;
+    white-space:nowrap!important;
+    cursor:pointer!important;
+  }
+
+  .cleanPagerButton:hover{
+    background:#6f6f6a!important;
+  }
+
+  .coverLogos.c2Only img,
+  body.lang-en .coverLogos.c2Only img,
+  body.lang-ru .coverLogos.c2Only img{
+    width:100%!important;
+    max-width:100%!important;
+    height:auto!important;
+    max-height:none!important;
+    object-fit:contain!important;
+    filter:grayscale(1) invert(1) contrast(1.25)!important;
+    mix-blend-mode:multiply!important;
+  }
+}
+
+/* Smaller desktop: keep the pager inside the visible programme area */
+@media(min-width:1101px) and (max-height:780px){
+  .program .slideDay .talkTitle{
+    font-size:clamp(11.1px,.76vw,12.8px)!important;
+    line-height:1.05!important;
+  }
+  .program .slideDay .talkSpeaker{
+    font-size:clamp(10.5px,.7vw,12px)!important;
+  }
+  .program .slideDay .talkMeta,
+  .program .slideDay .talkCat{
+    font-size:clamp(8.2px,.54vw,9.4px)!important;
+  }
+  .programDayPage.active{
+    gap:3px 14px!important;
+  }
+  .pagerRow{
+    margin-top:6px!important;
+  }
+  .cleanPagerButton{
+    min-height:31px!important;
+    padding:8px 14px!important;
+    font-size:10px!important;
+  }
+}
+
+/* Tablet: rectangular square under the date; slogan goes under the rectangle */
+@media(min-width:701px) and (max-width:1100px){
+  .cover{
+    display:flex!important;
+    flex-direction:column!important;
+    min-height:auto!important;
+    height:auto!important;
+    padding:28px 26px 42px!important;
+    overflow:hidden!important;
+  }
+
+  .coverLangSwitch{order:1}
+  .cover .kicker{order:2}
+  .cover .title{order:3}
+  .cover .meta.red{order:4}
+  .cover .date{
+    order:5;
+    position:relative!important;
+    z-index:4!important;
+    display:block!important;
+    margin:18px 0 28px!important;
+    padding:0!important;
+    font-size:clamp(44px,7.2vw,66px)!important;
+    line-height:.78!important;
+    max-width:620px!important;
+    overflow:visible!important;
+  }
+
+  .cover .squareBox{
+    order:6;
+    position:relative!important;
+    z-index:1!important;
+    left:auto!important;
+    right:auto!important;
+    top:auto!important;
+    bottom:auto!important;
+    display:block!important;
+    width:min(620px,78vw)!important;
+    max-width:100%!important;
+    height:190px!important;
+    min-height:190px!important;
+    margin:0 0 22px!important;
+    clear:both!important;
+  }
+
+  .cover .tagline{
+    order:7;
+    margin-top:0!important;
+    max-width:420px!important;
+  }
+
+  .coverBottom{
+    order:8;
+    position:relative!important;
+    left:auto!important;
+    right:auto!important;
+    top:auto!important;
+    bottom:auto!important;
+    margin-top:22px!important;
+  }
+}
+
+/* Mobile: opened release starts higher; no internal/fake scrollbar noise */
+@media(max-width:700px){
+  .cover .date{
+    margin-bottom:26px!important;
+  }
+
+  .cover .squareBox{
+    position:relative!important;
+    z-index:1!important;
+    left:auto!important;
+    right:auto!important;
+    top:auto!important;
+    bottom:auto!important;
+    width:100%!important;
+    height:180px!important;
+    min-height:180px!important;
+    margin:0 0 20px!important;
+  }
+
+  #voices.flipped{
+    padding-top:22px!important;
+  }
+
+  #voices.flipped .cardBack{
+    padding-top:22px!important;
+  }
+
+  #voices.flipped .releaseFull .title{
+    margin-top:0!important;
+  }
+
+  #voices.flipped .releaseScroll{
+    overflow:visible!important;
+    max-height:none!important;
+    padding-right:0!important;
+  }
+
+  #voices.flipped .cardBack::after{
+    content:none!important;
+    display:none!important;
+  }
+}
+
+
+/* v31: final logo/scroll/release-spacing fixes */
+
+/* C2 logo must be visually large everywhere */
+.coverLogos.c2Only{
+  width:min(260px,78%)!important;
+  max-width:260px!important;
+}
+.coverLogos.c2Only img{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  max-width:none!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  filter:grayscale(1) invert(1) contrast(1.25)!important;
+  mix-blend-mode:multiply!important;
+}
+
+/* Footer logos: make c2 comparable/large on desktop and mobile */
+.logoRow img.partner-logo.logo-c2,
+.logoRow img.partner-logo[alt*="c2"],
+.logoRow img.partner-logo[alt*="command"]{
+  height:clamp(70px,8.6vh,96px)!important;
+  max-height:none!important;
+  max-width:none!important;
+  width:auto!important;
+  object-fit:contain!important;
+}
+
+/* keep other footer logos balanced */
+.logoRow img.partner-logo:not(.logo-c2):not([alt*="c2"]):not([alt*="command"]){
+  height:clamp(62px,7.5vh,86px)!important;
+  max-height:none!important;
+  width:auto!important;
+  object-fit:contain!important;
+}
+
+/* Desktop release: one native scrollbar, visible by default; no artificial duplicate */
+@media(min-width:1101px){
+  #voices.flipped .cardBack::after,
+  #voices.flipped .releaseFull::after,
+  #voices.flipped::after{
+    content:none!important;
+    display:none!important;
+  }
+
+  #voices.flipped .releaseScroll{
+    overflow-y:scroll!important;
+    scrollbar-width:auto!important;
+    scrollbar-color:var(--red) rgba(0,0,0,.16)!important;
+    padding-right:18px!important;
+  }
+
+  #voices.flipped .releaseScroll::-webkit-scrollbar{
+    width:10px!important;
+    display:block!important;
+  }
+
+  #voices.flipped .releaseScroll::-webkit-scrollbar-track{
+    background:rgba(0,0,0,.14)!important;
+    border-radius:999px!important;
+  }
+
+  #voices.flipped .releaseScroll::-webkit-scrollbar-thumb{
+    background:var(--red)!important;
+    border-radius:999px!important;
+    border:2px solid rgba(191,200,196,.95)!important;
+  }
+}
+
+/* Tablet/mobile: C2 remains large but wraps safely */
+@media(max-width:1100px){
+  .coverLogos.c2Only{
+    width:230px!important;
+    max-width:72%!important;
+  }
+
+  .logoRow img.partner-logo.logo-c2,
+  .logoRow img.partner-logo[alt*="c2"],
+  .logoRow img.partner-logo[alt*="command"]{
+    height:72px!important;
+    max-height:none!important;
+    max-width:60%!important;
+  }
+
+  .logoRow img.partner-logo:not(.logo-c2):not([alt*="c2"]):not([alt*="command"]){
+    height:60px!important;
+    max-height:none!important;
+    max-width:46%!important;
+  }
+}
+
+/* Mobile opened release: remove unjustified top blank space */
+@media(max-width:700px){
+  #voices.flipped{
+    min-height:auto!important;
+    padding:14px 24px 26px!important;
+    background:#bfc8c4!important;
+  }
+
+  #voices.flipped > canvas,
+  #voices.flipped > .kicker,
+  #voices.flipped > .title,
+  #voices.flipped > .releaseText{
+    display:none!important;
+  }
+
+  #voices.flipped .cardBack{
+    position:relative!important;
+    inset:auto!important;
+    top:auto!important;
+    left:auto!important;
+    right:auto!important;
+    bottom:auto!important;
+    display:block!important;
+    min-height:auto!important;
+    height:auto!important;
+    padding:0!important;
+    margin:0!important;
+    overflow:visible!important;
+    background:#bfc8c4!important;
+  }
+
+  #voices.flipped .releaseFull .title{
+    margin:0 0 14px!important;
+    padding:0!important;
+    line-height:.86!important;
+  }
+
+  #voices.flipped .releaseScroll{
+    overflow:visible!important;
+    max-height:none!important;
+    height:auto!important;
+    padding-right:0!important;
+    margin:0!important;
+  }
+
+  #voices.flipped .releaseScroll p:first-child{
+    margin-top:0!important;
+  }
+
+  #voices.flipped .releaseFull .projectMeta{
+    margin-top:16px!important;
+  }
+}
+
+@media(max-width:520px){
+  .logoRow img.partner-logo.logo-c2,
+  .logoRow img.partner-logo[alt*="c2"],
+  .logoRow img.partner-logo[alt*="command"]{
+    height:68px!important;
+    max-width:74%!important;
+  }
+}
+
+
+/* v32: tablet cover/date fix, mobile release spacing, footer logo balance */
+
+/* Desktop footer: keep c2 large, but stop it from colliding with the venue text */
+@media(min-width:1101px){
+  .venue{
+    grid-template-columns:minmax(300px, 0.72fr) 1.28fr!important;
+    gap:clamp(18px,2.2vw,36px)!important;
+    align-items:center!important;
+  }
+
+  .venue .loc{
+    font-size:clamp(15px,1.28vw,24px)!important;
+    line-height:.92!important;
+    max-width:340px!important;
+  }
+
+  .venue .meta{
+    font-size:clamp(8px,.6vw,10px)!important;
+  }
+
+  .logoRow{
+    justify-content:flex-end!important;
+    gap:clamp(18px,2vw,34px)!important;
+    overflow:visible!important;
+  }
+
+  .logoRow img.partner-logo.logo-c2,
+  .logoRow img.partner-logo[alt*="c2"],
+  .logoRow img.partner-logo[alt*="command"]{
+    height:clamp(54px,6.3vh,72px)!important;
+    max-height:72px!important;
+    width:auto!important;
+    max-width:22%!important;
+  }
+
+  .logoRow img.partner-logo:not(.logo-c2):not([alt*="c2"]):not([alt*="command"]){
+    height:clamp(54px,6.2vh,72px)!important;
+    max-height:72px!important;
+    width:auto!important;
+    max-width:18%!important;
+  }
+
+  .logoRow img.partner-logo.logo-dpls{
+    max-width:20%!important;
+  }
+}
+
+/* Tablet cover: no overlap between the date and the grey rectangle; remove huge empty area */
+@media(min-width:701px) and (max-width:1100px){
+  .cover{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    min-height:0!important;
+    height:auto!important;
+    padding:28px 26px 34px!important;
+    overflow:hidden!important;
+  }
+
+  .coverLangSwitch{order:1!important}
+  .cover .kicker{order:2!important}
+  .cover .title{order:3!important}
+  .cover .meta.red{order:4!important}
+
+  .cover .date{
+    order:5!important;
+    position:relative!important;
+    z-index:3!important;
+    display:block!important;
+    margin:18px 0 24px!important;
+    padding:0!important;
+    font-size:clamp(42px,6.5vw,60px)!important;
+    line-height:.78!important;
+    max-width:620px!important;
+    overflow:visible!important;
+  }
+
+  .cover .squareBox,
+  body.lang-ru .cover .squareBox,
+  body.lang-en .cover .squareBox{
+    order:6!important;
+    position:relative!important;
+    z-index:1!important;
+    left:auto!important;
+    right:auto!important;
+    top:auto!important;
+    bottom:auto!important;
+    display:block!important;
+    width:min(620px,76vw)!important;
+    max-width:100%!important;
+    height:172px!important;
+    min-height:172px!important;
+    margin:0 0 22px!important;
+    clear:both!important;
+    transform:none!important;
+  }
+
+  .cover .tagline{
+    order:7!important;
+    position:relative!important;
+    z-index:3!important;
+    margin:0!important;
+    max-width:430px!important;
+  }
+
+  .coverBottom{
+    order:8!important;
+    position:relative!important;
+    left:auto!important;
+    right:auto!important;
+    top:auto!important;
+    bottom:auto!important;
+    margin-top:20px!important;
+  }
+}
+
+/* Mobile cover: same principle, but more compact */
+@media(max-width:700px){
+  .cover{
+    display:flex!important;
+    flex-direction:column!important;
+    min-height:0!important;
+    height:auto!important;
+    padding-bottom:28px!important;
+    overflow:hidden!important;
+  }
+
+  .cover .date{
+    order:5!important;
+    position:relative!important;
+    z-index:3!important;
+    margin:16px 0 24px!important;
+    font-size:clamp(42px,12.6vw,58px)!important;
+    line-height:.78!important;
+    overflow:visible!important;
+  }
+
+  .cover .squareBox,
+  body.lang-ru .cover .squareBox,
+  body.lang-en .cover .squareBox{
+    order:6!important;
+    position:relative!important;
+    z-index:1!important;
+    left:auto!important;
+    right:auto!important;
+    top:auto!important;
+    bottom:auto!important;
+    width:100%!important;
+    height:168px!important;
+    min-height:168px!important;
+    margin:0 0 20px!important;
+    transform:none!important;
+  }
+
+  .cover .tagline{
+    order:7!important;
+    margin:0!important;
+  }
+}
+
+/* Mobile opened release: remove top blank space more aggressively */
+@media(max-width:700px){
+  #voices.flipped{
+    min-height:0!important;
+    height:auto!important;
+    padding:0 24px 24px!important;
+    overflow:visible!important;
+  }
+
+  #voices.flipped > canvas,
+  #voices.flipped > .kicker,
+  #voices.flipped > .title,
+  #voices.flipped > .releaseText{
+    display:none!important;
+  }
+
+  #voices.flipped .cardBack{
+    position:relative!important;
+    inset:auto!important;
+    min-height:0!important;
+    height:auto!important;
+    padding:16px 0 0!important;
+    margin:0!important;
+    overflow:visible!important;
+    background:#bfc8c4!important;
+  }
+
+  #voices.flipped .releaseFull .title{
+    margin:0 0 12px!important;
+    padding:0!important;
+  }
+
+  #voices.flipped .releaseScroll{
+    margin:0!important;
+    padding:0!important;
+    max-height:none!important;
+    height:auto!important;
+    overflow:visible!important;
+  }
+}
+
+
+/* v33: larger c2 logo and smaller top gap in opened release on tablet */
+@media(min-width:1101px){
+  .logoRow img.partner-logo.logo-c2,
+  .logoRow img.partner-logo[alt*="c2"],
+  .logoRow img.partner-logo[alt*="command"]{
+    height:clamp(68px,8vh,92px)!important;
+    max-height:92px!important;
+    max-width:28%!important;
+  }
+}
+
+/* tablet footer logo: c2 larger but still safe */
+@media(min-width:701px) and (max-width:1100px){
+  .logoRow img.partner-logo.logo-c2,
+  .logoRow img.partner-logo[alt*="c2"],
+  .logoRow img.partner-logo[alt*="command"]{
+    height:82px!important;
+    max-height:none!important;
+    max-width:70%!important;
+  }
+
+  /* opened release: cut top blank space roughly in half */
+  #voices.flipped{
+    padding-top:10px!important;
+  }
+
+  #voices.flipped .cardBack{
+    padding-top:10px!important;
+    margin-top:0!important;
+  }
+
+  #voices.flipped .releaseFull .title{
+    margin-top:0!important;
+  }
+}
+
+/* mobile: c2 also remains visibly large */
+@media(max-width:700px){
+  .logoRow img.partner-logo.logo-c2,
+  .logoRow img.partner-logo[alt*="c2"],
+  .logoRow img.partner-logo[alt*="command"]{
+    height:76px!important;
+    max-height:none!important;
+    max-width:78%!important;
+  }
+
+  #voices.flipped{
+    padding-top:6px!important;
+  }
+
+  #voices.flipped .cardBack{
+    padding-top:8px!important;
+  }
+}
+
+
+
+/* v-user-affiliations-and-address-case */
+.sessionHeader .bannerAddress{
+  text-transform:none!important;
+  letter-spacing:.02em!important;
+}
+.program .dashaBeforePause .talkMeta{
+  display:block!important;
+}
+.program .dashaBeforePause .talkCat{
+  display:block!important;
+}
+.program .slideDay[data-day-panel="1"] .talkMeta{
+  font-size:clamp(8.2px,.54vw,9.4px)!important;
+  line-height:1.06!important;
+}
+
+
+/* v31 requested edits: lift coffee-break pager by half a button and keep address case */
+@media(min-width:1101px){
+  .program .slideDay[data-day-panel="1"] .programDayPage[data-page="0"].active .pagerRow{
+    transform:translateY(-17px)!important;
+  }
+}
+.bannerAddress,
+.venue .loc{
+  text-transform:none!important;
+}
+
+
+
+/* v32 hard corrections requested: museum names, no durations, lifted coffee button, address not caps */
+@media(min-width:1101px){
+  .program .slideDay[data-day-panel="1"] .programDayPage[data-page="0"].active .pagerRow{
+    transform:translateY(-17px)!important;
+  }
+}
+.sessionHeader .bannerAddress,
+.bannerAddress,
+.venue .loc{
+  text-transform:none!important;
+  letter-spacing:.02em!important;
+}
+.program .dashaBeforePause .talkMeta{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+
+
+
+/* v33: raise the after-coffee-break button by half its height */
+@media(min-width:1101px){
+  .program .slideDay[data-day-panel="1"] .programDayPage[data-page="0"].active .pagerRow{
+    margin-top:5px!important;
+  }
+}
+
+</style>
+</head>
+<body class="lang-en">
+
+<div class="stage">
+  <main class="booklet" id="booklet">
+    <section class="panel cover page" id="cover">
+      <div class="coverLangSwitch" aria-label="Language switcher">
+        <button type="button" data-lang-btn="ru">RU</button>
+        <button type="button" data-lang-btn="en">EN</button>
+      </div>
+      <div class="kicker"><span class="enText">International seminar</span><span class="ruText">Международный семинар</span></div>
+      <h1 class="title">
+        <span class="enText">Art &<br>Innovations<br>in Museums</span>
+        <span class="ruText">Искусство и<br>инновации<br>в музеях</span>
+      </h1>
+      <div class="meta red" style="margin-top:18px">
+        <span class="enText">Saint Petersburg, Russia</span>
+        <span class="ruText">Санкт-Петербург, Россия</span>
+      </div>
+      <div class="date">22–<br>24.06.2026</div>
+      <div class="meta tagline">
+        <span class="enText">Discover. Discuss.<br>Find like-minded people.</span>
+        <span class="ruText">Исследуйте. Обсуждайте.<br>Находите единомышленников.</span>
+      </div>
+      <div class="squareBox"><canvas class="canvas" id="square"></canvas></div>
+    </section>
+
+    <section class="panel program page" id="program">
+      <div class="kicker programKicker">
+        <span class="enText">Program</span><span class="ruText">Программа</span>
+        <span class="rule"></span>
+        
+      </div>
+      <div class="dayTabs" role="tablist" aria-label="Program days">
+        <button class="dayTab" type="button" data-day="0" aria-label="June 22">
+          <span class="enText">June 22</span><span class="ruText">22 июня</span>
+        </button>
+        <button class="dayTab active" type="button" data-day="1" aria-label="June 24">
+          <span class="enText">June 24</span><span class="ruText">24 июня</span>
+        </button>
+      </div>
+
+      <div class="programSlider">
+        <div class="day slideDay" data-day-panel="0">
+          <h3>
+            <span><span class="enText">Special Session</span><span class="ruText">Специальная сессия</span></span>
+            <span class="red"><span class="enText">June 22</span><span class="ruText">22 июня</span></span>
+          </h3>
+          <div class="programDayPage active" data-page="0">
+            <div class="sessionHeader compactHeader">
+              <span class="enText">AIMs × CompLing Joint Session: Language, AI and Cultural Heritage<br><span class="bannerAddress">ITMO University, Lomonosova 9</span></span>
+              <span class="ruText">Совместная сессия AIMs × CompLing: язык, ИИ и культурное наследие<br><span class="bannerAddress">Университет ИТМО, Ломоносова, 9</span></span>
+            </div>
+            <div class="time">12:00</div>
+            <div class="item talk offline">
+              <span class="talkTitle">
+                <span class="enText">IDOS_ARTS: International Institutions’ Hub on Digital Technology in Visual and Performing Arts</span>
+                <span class="ruText">IDOS_ARTS: международный исследовательский хаб институтов по цифровым технологиям в визуальных и перформативных искусствах</span>
+              </span>
+              <span class="talkSpeaker">Donatella Gavrilovich</span><span class="talkMeta"><span class="enText">Tor Vergata University of Rome; Director of the IDOS_ARTS International Research Centre; Italy</span><span class="ruText">Римский университет Тор Вергата; директор международного исследовательского центра IDOS_ARTS; Италия</span></span>
+            </div>
+
+            <div class="time">12:45</div>
+            <div class="item talk offline">
+              <span class="talkTitle">
+                <span class="enText">Applied Linguistics at the Crossroads: Scope, Limitations, and Contemporary Challenges</span>
+                <span class="ruText">Прикладная лингвистика на перепутье: область применения, ограничения и современные вызовы</span>
+              </span>
+              <span class="talkSpeaker">Borko Kovačević</span><span class="talkMeta"><span class="enText">Faculty of Philology, University of Belgrade; Doctor of Linguistics, Professor; Serbia</span><span class="ruText">филологический факультет Белградского университета; доктор лингвистических наук, профессор; Сербия</span></span>
+            </div>
+
+            <div class="time">13:05</div>
+            <div class="item talk offline">
+              <span class="talkTitle">
+                <span class="enText">Balkan Museum Narratives as Seen by Russian-Speaking Audiences: Russia, Cultural Memory, and Interpretive Routes in Serbian, Bosnian, and Montenegrin Museums</span>
+                <span class="ruText">Балканские музейные нарративы глазами русскоязычной аудитории: Россия, культурная память и маршруты интерпретации в сербских, боснийских и черногорских музеях</span>
+              </span>
+              <span class="talkSpeaker"><span class="enText">Egor Korolev</span><span class="ruText">Егор Королёв</span></span><span class="talkMeta"><span class="enText">“Zakroma i zakoulki” project; PhD in Political Science, researcher of Balkan cultural heritage; Montenegro</span><span class="ruText">проект «Закрома и закоулки»; кандидат политических наук, исследователь культурного наследия Балкан; Черногория</span></span>
+            </div>
+
+            <div class="time">13:20</div>
+            <div class="item talk offline">
+              <span class="talkTitle">
+                <span class="enText">The AIDA Framework: Clustering and Emotional Structure of Noisy AI Discourse</span>
+                <span class="ruText">Фреймворк AIDA: кластеризация и эмоциональная структура шумного дискурса об ИИ</span>
+              </span>
+              <span class="talkSpeaker"><span class="enText">Anna Chizhik</span><span class="ruText">Анна Чижик</span></span><span class="talkMeta"><span class="enText">Saint Petersburg State University; ITMO University; PhD in Cultural Studies, Associate Professor, Senior Research Fellow; Russia</span><span class="ruText">Санкт-Петербургский государственный университет; Университет ИТМО; кандидат культурологии, доцент, старший научный сотрудник; Россия</span></span>
+            </div>
+
+            <div class="time">13:30</div>
+            <div class="item talk offline">
+              <span class="talkTitle">
+                <span class="enText">Creating Audio Descriptions of Exhibits with a Language Model</span>
+                <span class="ruText">Создание тифлоописаний экспонатов с помощью языковой модели</span>
+              </span>
+              <span class="talkSpeaker"><span class="enText">Zoya Vilis</span><span class="ruText">Зоя Вилис</span></span>
+              <span class="talkMeta"><span class="enText">ITMO University</span><span class="ruText">Университет ИТМО</span></span>
+            </div>
+
+            <div class="time">13:45</div>
+            <div class="item talk offline">
+              <span class="talkTitle">TBA</span>
+              <span class="talkSpeaker"><span class="enText">Talk to be announced</span><span class="ruText">Доклад будет анонсирован</span></span>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="day slideDay active" data-day-panel="1">
+          <h3>
+            <span><span class="enText">Main Day</span><span class="ruText">Главный день</span></span>
+            <span class="red"><span class="enText">June 24</span><span class="ruText">24 июня</span></span>
+          </h3>
+
+          <div class="programDayPage active" data-page="0">
+            <div class="sessionHeader compactHeader">
+              <span class="enText">AIMs: New Media, AI, Museum Interfaces and Exhibition Practices<br><span class="bannerAddress">St Petersburg Union of Artists, Bolshaya Morskaya St. 38</span></span>
+              <span class="ruText">AIMs: новые медиа, ИИ, музейные интерфейсы и выставочные практики<br><span class="bannerAddress">Союз художников СПб, Большая Морская ул., 38</span></span>
+            </div>
+
+            <div class="time">12:00</div>
+            <div class="item talk offline compactTalk"><span class="talkTitle"><span class="enText">Opening of the seminar</span><span class="ruText">Открытие семинара</span></span></div>
+
+            <div class="time">12:10</div>
+            <div class="item talk offline compactTalk"><span class="talkTitle"><span class="enText">Multimedia Technologies in Modern Exhibitions: The Minus-Reception</span><span class="ruText">Мультимедийные технологии в современных экспозициях: минус-приём</span></span><span class="talkSpeaker"><span class="enText">Irina Mamonova</span><span class="ruText">Ирина Мамонова</span></span><span class="talkMeta"><span class="enText">Saint Petersburg State University</span><span class="ruText">Санкт-Петербургский государственный университет, куратор</span></span></div>
+
+            <div class="time">12:30</div>
+            <div class="item talk offline compactTalk"><span class="talkTitle"><span class="enText">Managing Art Projects and Research with AI Tools: The Case of a Service for Studying Engravings and Editioned Art</span><span class="ruText">Особенности ведения проектов и исследований в области искусства с применением инструментов ИИ на примере сервиса по изучению гравюр и тиражируемого искусства</span></span><span class="talkSpeaker"><span class="enText">Anastasia Starobykhovskaya</span><span class="ruText">Анастасия Старобыховская</span></span><span class="talkMeta"><span class="enText">European University at St Petersburg, Head of the Art and AI Laboratory</span><span class="ruText">Европейский университет в Санкт-Петербурге, руководитель Лаборатории «Искусство и ИИ»</span></span></div>
+
+            <div class="time">12:50</div>
+            <div class="item talk offline compactTalk"><span class="talkTitle"><span class="enText">How a Museum Sounds: Why a Cultural Institution Needs Audio Branding and How to Create It</span><span class="ruText">Как звучит музей: зачем культурной институции аудиобрендинг и как его создавать?</span></span><span class="talkSpeaker"><span class="enText">Dmitry A. Petrovich</span><span class="ruText">Петрович Дмитрий Александрович</span></span><span class="talkMeta"><span class="enText">Moscow Transport Museum, creative producer; author of the museum audio branding project</span><span class="ruText">Музей Транспорта Москвы, креативный продюсер; автор проекта аудиобрендинга музея</span></span></div>
+
+            <div class="time">13:10</div>
+            <div class="item talk offline compactTalk"><span class="talkTitle"><span class="enText">Developing and Using Interactive Exhibits at the Baikal Museum, Siberian Branch of the Russian Academy of Sciences</span><span class="ruText">Практика разработки и использования интерактивных экспонатов в Байкальском музее СО РАН</span></span><span class="talkSpeaker"><span class="enText">Igor Bulygin</span><span class="ruText">Игорь Булыгин</span></span><span class="talkMeta"><span class="enText">Baikal Museum</span><span class="ruText">Байкальский музей</span></span></div>
+
+            <div class="time">13:30</div>
+            <div class="item talk offline compactTalk"><span class="talkTitle"><span class="enText">Copyright in the Age of AI</span><span class="ruText">Авторское право в эпоху ИИ</span></span><span class="talkSpeaker"><span class="enText">Olga Kokorina</span><span class="ruText">Ольга Кокорина</span></span><span class="talkMeta"><span class="enText">ITMO University</span><span class="ruText">Университет ИТМО</span></span></div>
+
+            <div class="time">13:50</div>
+            <div class="item talk offline compactTalk"><span class="talkTitle"><span class="enText">An Exploration of Interactive Landscape Art Design for an Open-Air Museum of Industrial Heritage Based on Low-Carbon Principles</span><span class="ruText">Исследование интерактивного ландшафтного арт-дизайна для музея индустриального наследия под открытым небом на основе низкоуглеродных принципов</span></span><span class="talkSpeaker">Liyun Zeng; Zitong Tang</span><span class="talkMeta">Panzhihua University</span></div>
+
+            <div class="time">14:00</div>
+            <div class="item talk offline compactTalk dashaBeforePause"><span class="talkTitle"><span class="enText">Pixels and Spaces. New Media in Architecture, the City, and the Gallery</span><span class="ruText">Пиксели и пространства. Новые медиа в архитектуре, городе и галерее</span></span><span class="talkSpeaker"><span class="enText">Dasha Zakharova</span><span class="ruText">Даша Захарова</span></span><span class="talkMeta"><span class="enText">Media artist; curator and art director of technological art projects</span><span class="ruText">Медиахудожник; куратор и арт-директор проектов в сфере технологичного искусства</span></span></div>
+
+            <div class="time coffeeInlineTime">14:40</div>
+            <div class="item pause pauseWithButton"><span class="enText">Coffee break</span><span class="ruText">Кофе-брейк</span></div>
+
+            <div class="pagerRow">
+              <button class="programArrow cleanPagerButton" type="button" data-page-dir="next">
+                <span class="enText">after coffee break ›</span><span class="ruText">после кофе-брейка ›</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="desktopCoffeeJump">
+            <span class="coffeeTime">14:40</span>
+            <span class="coffeeLabel"><span class="enText">Coffee break</span><span class="ruText">Кофе-брейк</span></span>
+            <button class="programArrow inlineNext" type="button" data-page-dir="next"><span class="enText">after coffee break ›</span><span class="ruText">после кофе-брейка ›</span></button>
+          </div>
+
+          <div class="programDayPage" data-page="1">
+            <div class="sessionHeader compactHeader">
+              <span class="enText">AIMs: Expography, Museum Mapping, Scenography and Exhibition Opening</span>
+              <span class="ruText">AIMs: экспография, музейная карта, сценография и открытие выставки</span>
+            </div>
+
+            <div class="time">15:10</div>
+            <div class="item talk offline compactTalk"><span class="talkTitle"><span class="enText">Expography: Puzzle, Show, Drama</span><span class="ruText">Экспография: пазл, шоу, драма</span></span><span class="talkSpeaker"><span class="enText">Irina Klimovitskaya</span><span class="ruText">Ирина Климовицкая</span></span><span class="talkMeta"><span class="enText">Saint Petersburg Museum of Theatre and Music, curator</span><span class="ruText">Санкт-Петербургский музей театрального и музыкального искусства, куратор</span></span></div>
+
+            <div class="time">15:40</div>
+            <div class="item talk offline compactTalk"><span class="talkTitle"><span class="enText">Clustering of Paintings Using Visual Semantics: Revealing Latent Relationships in a Museum Map</span><span class="ruText">Кластеризация живописи с использованием визуальной семантики: выявление скрытых связей на музейной карте</span></span><span class="talkSpeaker">Katarina Čokrlić; <span class="enText">Anna Chizhik</span><span class="ruText">Анна Чижик</span></span><span class="talkMeta"><span class="enText">Affiliations and roles respectively: c<sup>2</sup>, University of Bologna; curator and exhibition designer / c<sup>2</sup>, Saint Petersburg State University, ITMO University; data scientist and media artist</span><span class="ruText">Аффилиации и роли соответственно: c<sup>2</sup>, Болонский университет; куратор и дизайнер выставок / c<sup>2</sup>, Санкт-Петербургский государственный университет, Университет ИТМО; дата-сайентист и медиахудожник</span></span></div>
+
+            <div class="time">16:00</div>
+            <div class="item talk offline compactTalk"><span class="talkTitle"><span class="enText">Topic to be announced</span><span class="ruText">Тема будет анонсирована</span></span><span class="talkSpeaker"><span class="enText">Alexander Khramtsov</span><span class="ruText">Александр Храмцов</span></span><span class="talkMeta"><span class="enText">Affiliation to be confirmed</span><span class="ruText">Аффилиация уточняется</span></span></div>
+
+            <div class="time">16:20</div>
+            <div class="item talk offline compactTalk"><span class="talkTitle"><span class="enText">Scenography in Theatre and Museum: Space, Image and the Dramaturgy of Display</span><span class="ruText">Сценография в театре и музее: пространство, образ и драматургия показа</span></span><span class="talkSpeaker"><span class="enText">Public talk</span><span class="ruText">Public talk</span></span></div>
+
+            <div class="time">18:00</div>
+            <div class="item talk offline compactTalk"><span class="talkTitle"><span class="enText">Opening of “Voices of Rivers”</span><span class="ruText">Открытие выставки «Голоса рек»</span></span><span class="talkCat"><span class="enText">Exhibition opening</span><span class="ruText">Открытие выставки</span></span></div>
+
+            <div class="pagerRow">
+              <button class="programArrow cleanPagerButton" type="button" data-page-dir="prev">
+                <span class="enText">‹ before coffee break</span><span class="ruText">‹ до кофе-брейка</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="programPageNav" aria-label="Program page navigation">
+        <button class="programArrow" type="button" data-page-dir="prev">‹ before coffee break</button>
+        <span class="programPageIndicator"></span>
+        <button class="programArrow" type="button" data-page-dir="next">after coffee break ›</button>
+      </div>
+    </section>
+
+    <section class="panel dark installation page" id="voices" data-release="voices" tabindex="0" aria-label="Voices of Rivers">
+      <canvas class="canvas" id="river"></canvas>
+      <div class="kicker"><span class="enText">Exhibition</span><span class="ruText">Выставка</span></div>
+      <h2 class="title sm"><span class="enText">Voices<br>of Rivers</span><span class="ruText">Голоса<br>рек</span></h2>
+      <div class="releaseText">
+        <p><span class="enText">A multimedia exposition about how rivers shape identity, memory and cultural connection.</span><span class="ruText">Мультимедийная экспозиция о том, как реки формируют идентичность, память и культурную связь.</span></p><br>
+        <p class="projectMeta"><span class="enText">Opening on June 24 at 18:00</span><span class="ruText">Открытие 24 июня в 18:00</span></p>
+        <div class="clickHint"><br><span class="enText">Click to read release</span><br><span class="ruText">Открыть релиз</span></div>
+      </div>
+      <div class="cardBack releaseFull">
+        <h2 class="title sm"><span class="enText">Voices<br>of Rivers</span><span class="ruText">Голоса<br>рек</span></h2>
+        <div class="releaseScroll">
+          <p class="enText">The project started from a personal encounter of photographer Anna Frantsuzova, one of the authors of the exposition. In a conversation with a ninety-year-old man from Serbia, he said that if you get into a boat in his town, you can reach Saint Petersburg, the city where she is from. This simple phrase made her think that a continuous water path is not only geographic. It became a way to think about how places, histories and lives are connected.</p>
+          <p class="enText">This remark led to the main question of the project: how does a river shape the way people think and feel in different cultural contexts. Reflecting on her own long connection with the Neva, Anna came to a simple idea. A river can become an anchor through which a person builds both personal and collective identity, through memory, everyday life and culture.</p>
+          <p class="enText">The project is designed as research. The relation to the river is not analyzed from a distance. It is seen through sound, image, memory, personal stories and physical objects. The viewer becomes part of this research, instead of observing a finished result.</p>
+          <p class="enText">The co-authors of the project are Katarina Čokrlić, Irina Mamonova and Tijana Jevrić. The exposition brings together photography, sound, video, personal stories and small physical objects. It invites associations, memories and personal reflections.</p>
+          <p class="ruText">Проект начался с личной встречи фотографа Анны Французовой, одной из авторов экспозици, с девяностолетним мужчиной из Сербии. В разговоре с ним прозвучала фраза: если сесть в лодку в его городе, можно добраться до Санкт-Петербурга. Эта простая мысль превратилась в образ непрерывного водного пути: не только в очевидном географическом смысле, но и как метафора культурной связи, чья жизнь тесно связана с рекой.</p>
+          <p class="ruText">Так возник главный вопрос проекта: как река формирует мышление, память и чувство места в разных культурных контекстах. Через связь с Невой река осмысляется как якорь личной и коллективной идентичности, повседневности и культурной памяти.</p>
+          <p class="ruText">Проект устроен как исследование. Отношение к реке рассматривается не дистанционно, а через звук, изображение, воспоминания, личные истории и физические объекты. Зритель становится частью этого исследования, а не только наблюдателем готового результата.</p>
+          <p class="ruText">Соавторы проекта — Катарина Чокрлич, Ирина Мамонова и Тияна Йеврич. Экспозиция объединяет фотографию, звук, видео, личные истории и небольшие физические объекты, приглашая к ассоциациям, воспоминаниям и личным размышлениям.</p>
+        </div>
+        <p class="projectMeta"><span class="enText">Opening on June 24 at 18:00 → Open through June 28</span><span class="ruText">Открытие 24 июня в 18:00 <br>→ выставка работает до 28 июня</span></p>
+        
+      </div>
+    </section>
+
+    <section class="panel venue page" id="venue">
+      <div class="placeTop">
+        <div class="kicker">AIMs 2026</div>
+        <div class="city"><span class="enText">Saint Petersburg</span><span class="ruText">Санкт-Петербург</span></div>
+        <div class="loc"><span class="enText">St Petersburg Union of Artists</span><span class="ruText">Союз художников СПб</span></div>
+        <div class="meta"><span class="enText">Bolshaya Morskaya St. 38</span><span class="ruText">Большая Морская ул., 38</span></div>
+      </div>
+      <div class="logoStrip">
+        <div class="logoRow">
+          <img src="https://raw.githubusercontent.com/Frantsuzova/aims/main/logo.png" alt="c2-command project" class="partner-logo logo-c2">
+          <img src="https://raw.githubusercontent.com/Frantsuzova/aims/main/aims_logo.png" alt="AIMs" class="partner-logo">
+          <img src="https://raw.githubusercontent.com/Frantsuzova/aims/main/ims-logo.png" alt="ims" class="partner-logo">
+          <img src="https://raw.githubusercontent.com/Frantsuzova/aims/main/sh.png" alt="St Petersburg Union of Artists" class="partner-logo">
+          <img src="https://raw.githubusercontent.com/Frantsuzova/aims/main/DPLS1.png" alt="Association for Applied Linguistics of Serbia" class="partner-logo logo-dpls">
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="mobileHint" id="mobileHint" aria-hidden="true"></div>
+</div>
+
+<script>
+
+const releases = {
+  voices: { title: "Voices of Rivers", text: "VOICES OF RIVERS\n\nExhibition\nMay 18\u201320, 2026\nNovi Sad, Serbia, BIRO, Kreativni Distrikt\n\nVernissage\nMay 20, opening time to be announced\n\nThe project started from a personal encounter of photographer Anna Frantsuzova, one of the authors of the exposition. In a conversation with a ninety-year-old man from Serbia, he said that if you get into a boat in his town, you can reach Saint Petersburg, the city where she is from. This simple phrase made her think that a continuous water path is not only geographic. It became a way to think about how places, histories and lives are connected.\n\nThis remark led to the main question of the project: how does a river shape the way people think and feel in different cultural contexts. Reflecting on her own long connection with the Neva, Anna came to a simple idea. A river can become an anchor through which a person builds both personal and collective identity, through memory, everyday life and culture.\n\nThe project is designed as research. The relation to the river is not analyzed from a distance. It is seen through sound, image, memory, personal stories and physical objects. The viewer becomes part of this research, instead of observing a finished result.\n\nThe co-authors of the project are Katarina \u010cokrli\u0107 and Tijana Jevri\u0107. The exposition brings together photography, sound, video, personal stories and small physical objects. It invites associations, memories and personal reflections.\n\nProduced by C\u00b2 Command in collaboration with Tijana Jevri\u0107, presented as part of the AIMs 2026 program." },
+  line: { title: "On the Line", text: "ON THE LINE\n\nExhibition\nMay 18\u201320, 2026\nNovi Sad, Serbia, BIRO, Kreativni Distrikt\n\nVernissage\nMay 20, opening time to be announced\n\nTheatre is an art that exists in the moment. It emerges and disappears like drawings in the sand, washed away by the wave of time.\n\nTheatrical photography is an attempt to resist this. A theatre photographer captures a moment, extends its life, and brings into the image their own perspective, point of view and relationship to what unfolds on stage. The image is no longer identical to the performance, yet it retains its tension, gesture and atmosphere.\n\nThe exhibition space is constructed as a set of symbolic theatrical boards. A wooden structure defines the boundary of the stage. The images captured by photographers return to the space of theatrical ritual. Within this exhibition, photography once again enters a state of temporality. The photographs are not fixed, but held only for a time, like a pause, like a suspended gesture.\n\nThe viewer moves through this space as through a performance: sequentially, in time, assembling individual frames into a single experience. In the end, this logic is deliberately disrupted. The photographs can be taken away by visitors and the exhibition itself disappears.\n\nThe title On the Line captures this condition: the image exists on the line between holding and disappearance, between the stage and what lies beyond it.\n\nThe project is realized in collaboration between AIMs-2026 and the International Theatre Photography Competition THEATRE EXPOSED." }
+};
+
+const DPR = Math.min(window.devicePixelRatio || 1, 2);
+function fit(c) {
+  const r = c.getBoundingClientRect();
+  c.width = Math.max(1, r.width * DPR);
+  c.height = Math.max(1, r.height * DPR);
+  const ctx = c.getContext("2d");
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  return [ctx, r.width, r.height];
+}
+
+function square() {
+  const c = document.getElementById("square");
+  let t = 0;
+
+  function drawPartialRect(ctx,x,y,w,h,p){
+    const len=2*(w+h), target=p*len;
+    ctx.beginPath(); ctx.moveTo(x,y);
+    let d=target;
+    if(d<=w){ ctx.lineTo(x+d,y); }
+    else{
+      ctx.lineTo(x+w,y); d-=w;
+      if(d<=h){ ctx.lineTo(x+w,y+d); }
+      else{
+        ctx.lineTo(x+w,y+h); d-=h;
+        if(d<=w){ ctx.lineTo(x+w-d,y+h); }
+        else{ ctx.lineTo(x,y+h); d-=w; ctx.lineTo(x,y+h-d); }
+      }
+    }
+    ctx.stroke();
+  }
+
+  function draw() {
+    const [ctx,w,h] = fit(c);
+    t += 0.012;
+    ctx.clearRect(0,0,w,h);
+    ctx.fillStyle = "#ecebe7";
+    ctx.fillRect(0,0,w,h);
+
+    const bg = ctx.createRadialGradient(w*.5,h*.66,8,w*.5,h*.66,Math.max(w,h)*.72);
+    bg.addColorStop(0,"rgba(100,100,100,.24)");
+    bg.addColorStop(.42,"rgba(165,165,165,.15)");
+    bg.addColorStop(1,"rgba(255,255,255,.56)");
+    ctx.fillStyle = bg;
+    ctx.fillRect(0,0,w,h);
+
+    for(let i=0;i<25;i++){
+      const p=i/24;
+      const ww=w*(.14+p*.84);
+      const hh=h*(.10+p*.86);
+      const x0=w/2-ww/2;
+      const y0=h*.52-hh/2;
+      const progress=(t*.52+i*.045)%1;
+      ctx.strokeStyle=`rgba(85,85,85,${0.09+p*.12})`;
+      ctx.lineWidth=1;
+      drawPartialRect(ctx,x0,y0,ww,hh,progress);
+    }
+
+    const fg = ctx.createLinearGradient(0,h*.70,0,h);
+    fg.addColorStop(0,"rgba(255,255,255,0)");
+    fg.addColorStop(1,"rgba(130,130,130,.07)");
+    ctx.fillStyle=fg;
+    ctx.fillRect(0,h*.70,w,h*.30);
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+function river() {
+  const c = document.getElementById("river");
+  let t = 0;
+
+  function drawBoat(ctx, w, h, cx, cy, s, col, rot=0) {
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(rot);
+    ctx.translate(-cx, -cy);
+    ctx.strokeStyle = col;
+    ctx.lineWidth = 1.45;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+
+    // Continuous wave line: left river line folds into a paper boat and exits right.
+    ctx.beginPath();
+    ctx.moveTo(-40, cy + s*.25);
+    ctx.bezierCurveTo(cx-s*1.60, cy+s*.42, cx-s*1.08, cy+s*.30, cx-s*.72, cy+s*.12);
+
+    // left wall, bottom hull, sail, right wing, and outgoing waterline
+    ctx.lineTo(cx-s*.47, cy+s*.08);
+    ctx.lineTo(cx-s*.62, cy-s*.31);
+    ctx.lineTo(cx-s*.03, cy-s*.04);
+    ctx.lineTo(cx+s*.20, cy-s*.62);
+    ctx.lineTo(cx+s*.35, cy-s*.16);
+    ctx.lineTo(cx+s*.72, cy-s*.38);
+    ctx.lineTo(cx+s*.50, cy+s*.12);
+    ctx.lineTo(cx-s*.36, cy+s*.19);
+    ctx.lineTo(cx+s*.74, cy+s*.03);
+    ctx.bezierCurveTo(cx+s*1.05, cy+s*.00, w+5, cy+s*.17, w+42, cy+s*.22);
+    ctx.stroke();
+
+    // restrained internal folds
+    ctx.globalAlpha = .72;
+    ctx.beginPath();
+    ctx.moveTo(cx-s*.62, cy-s*.31);
+    ctx.lineTo(cx-s*.36, cy+s*.19);
+    ctx.moveTo(cx-s*.03, cy-s*.04);
+    ctx.lineTo(cx+s*.50, cy+s*.12);
+    ctx.moveTo(cx-s*.03, cy-s*.04);
+    ctx.lineTo(cx+s*.72, cy-s*.38);
+    ctx.moveTo(cx+s*.20, cy-s*.62);
+    ctx.lineTo(cx+s*.04, cy-s*.05);
+    ctx.moveTo(cx-s*.47, cy+s*.08);
+    ctx.lineTo(cx+s*.50, cy+s*.12);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function draw() {
+    const [ctx,w,h] = fit(c);
+    t += 0.01;
+    ctx.clearRect(0,0,w,h);
+
+    ctx.fillStyle = "#bfc8c4";
+    ctx.fillRect(0,0,w,h);
+
+    const waveCol = "rgba(0,0,0,.15)";
+    const boatCol = "rgba(0,0,0,.46)";
+
+    for(let j=0;j<22;j++){
+      ctx.beginPath();
+      const yBase = h*(.18 + j*.034);
+      for(let x=-20;x<=w+20;x+=7){
+        const y = yBase
+          + Math.sin(x*.010 + t*1.35 + j*.38)*8
+          + Math.sin(x*.004 + t*.50)*16;
+        if(x===-20) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      }
+      ctx.strokeStyle = waveCol;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    drawBoat(ctx, w, h, w*.69, h*.49 + Math.sin(t*1.7)*2.8, Math.min(92, w*.25), boatCol, Math.sin(t*1.15)*0.018);
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+function lineCanvas() {
+  const c = document.getElementById("lineCanvas");
+  let t=0;
+  function draw() {
+    const [ctx,w,h]=fit(c);
+    t += 0.006;
+    ctx.clearRect(0,0,w,h);
+    ctx.fillStyle="#050505";
+    ctx.fillRect(0,0,w,h);
+
+    ctx.globalCompositeOperation="screen";
+
+    for(let i=0;i<34;i++) {
+      const y1 = h*(.16+i*.023) + Math.sin(t*1.2+i*.45)*4;
+      const y2 = h*(.11+i*.025) + Math.cos(t+i*.35)*10;
+      ctx.beginPath();
+      ctx.moveTo(-20, y1);
+      ctx.lineTo(w+20, y2);
+      ctx.strokeStyle = i%5===0 ? "rgba(255,255,255,.20)" : "rgba(255,255,255,.10)";
+      ctx.lineWidth = i%6===0 ? 1.2 : .75;
+      ctx.stroke();
+    }
+
+    for(let i=0;i<8;i++) {
+      const y1 = h*(.36+i*.04) + Math.sin(t+i)*3;
+      const y2 = h*(.31+i*.041) + Math.cos(t*.8+i)*7;
+      ctx.beginPath();
+      ctx.moveTo(w*.18, y1);
+      ctx.lineTo(w+30, y2);
+      ctx.strokeStyle = "rgba(215,25,32,.12)";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    const mainY = h*.45 + Math.sin(t)*2.5;
+    ctx.beginPath();
+    ctx.moveTo(0, mainY);
+    ctx.lineTo(w, mainY - 7 + Math.cos(t)*2.5);
+    ctx.strokeStyle="rgba(255,255,255,.58)";
+    ctx.lineWidth=1.55;
+    ctx.stroke();
+
+    const rectW = Math.min(innerWidth < 1101 ? 54 : 58, w*.16);
+    const rectH = Math.min(innerWidth < 1101 ? 106 : 116, h*.20);
+    const rectX = (innerWidth < 1101 ? w*.79 : w*.73) + Math.sin(t*1.15)*3.5;
+    const rectY = mainY - rectH*.54 + Math.cos(t*1.05)*2.4;
+    ctx.strokeStyle = "rgba(255,255,255,.55)";
+    ctx.lineWidth = 1;
+    ctx.strokeRect(rectX, rectY, rectW, rectH);
+
+    ctx.beginPath();
+    ctx.moveTo(rectX, mainY);
+    ctx.lineTo(rectX, rectY);
+    ctx.moveTo(rectX + rectW, mainY - 2);
+    ctx.lineTo(rectX + rectW, rectY);
+    ctx.strokeStyle = "rgba(255,255,255,.25)";
+    ctx.stroke();
+
+    ctx.globalCompositeOperation="source-over";
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+function setupModal() {
+  document.querySelectorAll("[data-release]").forEach(el=>{
+    const toggle = (e) => {
+      e.preventDefault();
+      el.classList.toggle("flipped");
+    };
+    el.addEventListener("click", toggle);
+    el.addEventListener("keydown", e=>{
+      if(e.key==="Enter"||e.key===" "){
+        e.preventDefault();
+        el.classList.toggle("flipped");
+      }
+    });
+  });
+}
+
+function setupMobilePager(){
+  const links=[...document.querySelectorAll(".mobilePager a")];
+  if(!links.length) return;
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        links.forEach(a=>a.classList.toggle("active", a.getAttribute("href")==="#"+en.target.id));
+      }
+    });
+  },{threshold:.55});
+  document.querySelectorAll(".page").forEach(p=>obs.observe(p));
+}
+
+function setupScrollArrow(){
+  const hint = document.getElementById("mobileHint");
+  if(!hint) return;
+
+  const sections = [...document.querySelectorAll(".page")];
+
+  const update = () => {
+    const nearBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80;
+    hint.classList.toggle("atBottom", nearBottom);
+
+    let active = null;
+    let best = Infinity;
+    for(const section of sections){
+      const r = section.getBoundingClientRect();
+      const visible = r.bottom > 0 && r.top < window.innerHeight;
+      const dist = Math.abs(r.top);
+      if(visible && dist < best){
+        best = dist;
+        active = section;
+      }
+    }
+
+    const lightBackground =
+      active &&
+      (active.id === "cover" || active.id === "program" || active.id === "venue" ||
+       (active.id === "voices" && !active.classList.contains("flipped")));
+
+    hint.classList.toggle("darkArrow", !!lightBackground);
+    hint.classList.toggle("lightArrow", !lightBackground);
+  };
+
+  window.addEventListener("scroll", update, {passive:true});
+  window.addEventListener("resize", update);
+  update();
+}
+
+
+function setupProgramSlider(){
+  const program = document.getElementById("program");
+  if(!program) return;
+  const tabs = [...program.querySelectorAll(".dayTab")];
+  const panels = [...program.querySelectorAll(".slideDay")];
+  const slider = program.querySelector(".programSlider");
+  const pageNav = program.querySelector(".programPageNav");
+  const pageIndicator = program.querySelector(".programPageIndicator");
+  const pageButtons = [...program.querySelectorAll(".programArrow")];
+  let currentDay = "1";
+  const pageState = {"0":0,"1":0,"2":0};
+
+  const scrollProgramTop = () => {
+    if(!window.matchMedia("(max-width: 1100px)").matches) return;
+    const activePanel = program.querySelector('.slideDay.active');
+    const dayTitle = activePanel ? (activePanel.querySelector('h3') || activePanel) : program;
+    const y = dayTitle.getBoundingClientRect().top + window.scrollY - 8;
+    window.scrollTo({top:y, behavior:"smooth"});
+  };
+
+  const getPages = (day) => {
+    const panel = panels.find((p) => p.dataset.dayPanel === String(day));
+    return panel ? [...panel.querySelectorAll(".programDayPage")] : [];
+  };
+
+  const setPage = (day, page) => {
+    const pages = getPages(day);
+    if(!pages.length){
+      if(pageNav) pageNav.style.visibility = "hidden";
+      if(pageIndicator) pageIndicator.textContent = "";
+      return;
+    }
+    const next = Math.max(0, Math.min(page, pages.length - 1));
+    pageState[day] = next;
+    pages.forEach((p, index) => p.classList.toggle("active", index === next));
+    if(pageIndicator){
+      if(pages.length <= 1){
+        pageIndicator.textContent = "";
+      } else if(currentDay === "2"){
+        pageIndicator.textContent = "";
+      } else if(currentDay === "1"){
+        pageIndicator.textContent = "";
+      } else {
+        pageIndicator.textContent = "";
+      }
+    }
+    if(pageNav) pageNav.style.visibility = pages.length > 1 ? "visible" : "hidden";
+    pageButtons.forEach((button) => {
+      const dir = button.dataset.pageDir;
+      button.disabled = (dir === "prev" && next === 0) || (dir === "next" && next === pages.length - 1);
+      button.textContent = dir === "prev" ? "‹ before coffee break" : "after coffee break ›";
+    });
+    if(slider) slider.scrollTop = 0;
+  };
+
+  const setDay = (day, shouldScroll=false) => {
+    const key = String(day);
+    currentDay = key;
+    tabs.forEach((tab) => {
+      const active = tab.dataset.day === key;
+      tab.classList.toggle("active", active);
+      tab.setAttribute("aria-selected", active ? "true" : "false");
+    });
+    panels.forEach((panel) => {
+      const active = panel.dataset.dayPanel === key;
+      panel.classList.toggle("active", active);
+      panel.toggleAttribute("hidden", !active);
+    });
+    if(slider) slider.scrollTop = 0;
+    setPage(key, pageState[key] || 0);
+    if(shouldScroll) window.requestAnimationFrame(scrollProgramTop);
+  };
+
+  tabs.forEach((tab) => {
+    tab.setAttribute("role", "tab");
+    tab.setAttribute("aria-selected", tab.dataset.day === "1" ? "true" : "false");
+    tab.addEventListener("click", (e) => {
+      e.stopPropagation();
+      setDay(tab.dataset.day || "1", true);
+    });
+  });
+
+  pageButtons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const pages = getPages(currentDay);
+      const delta = button.dataset.pageDir === "next" ? 1 : -1;
+      setPage(currentDay, (pageState[currentDay] || 0) + delta);
+      window.requestAnimationFrame(scrollProgramTop);
+    });
+  });
+
+  panels.forEach((panel) => {
+    panel.setAttribute("role", "tabpanel");
+    if(panel.dataset.dayPanel !== "1") panel.setAttribute("hidden", "");
+  });
+
+  setDay(1, false);
+}
+
+window.addEventListener("load", ()=>{ setupProgramSlider(); setupScrollArrow(); square(); river(); setupModal(); setupLangSwitch(); });
+
+
+function setupLangSwitch(){
+  const buttons = [...document.querySelectorAll("[data-lang-btn]")];
+  const arrows = [...document.querySelectorAll(".programArrow")];
+
+  function updateArrowLabels(){
+    const isRu = document.body.classList.contains("lang-ru");
+    arrows.forEach(button => {
+      const dir = button.dataset.pageDir;
+      button.textContent = dir === "prev"
+        ? (isRu ? "‹ до кофе-брейка" : "‹ before coffee break")
+        : (isRu ? "после кофе-брейка ›" : "after coffee break ›");
+    });
+  }
+
+  function setLang(lang){
+    document.body.classList.toggle("lang-ru", lang === "ru");
+    document.body.classList.toggle("lang-en", lang === "en");
+    buttons.forEach(btn => btn.classList.toggle("active", btn.dataset.langBtn === lang));
+    document.documentElement.lang = lang;
+    try{ localStorage.setItem("aims-lang", lang); }catch(e){}
+    window.setTimeout(updateArrowLabels, 0);
+  }
+
+  buttons.forEach(btn => btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    setLang(btn.dataset.langBtn || "en");
+  }));
+
+  arrows.forEach(btn => btn.addEventListener("click", () => window.setTimeout(updateArrowLabels, 0)));
+
+  let saved = "en";
+  try{ saved = localStorage.getItem("aims-lang") || "en"; }catch(e){}
+  if(saved !== "ru" && saved !== "en") saved = "en";
+  setLang(saved);
+}
+
+</script>
+</body>
+</html>
