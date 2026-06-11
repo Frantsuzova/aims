@@ -5963,6 +5963,69 @@ body.lang-ru .cover .tagline{
   }
 }
 
+
+/* final header duplicate registration and cover home link */
+.coverHomeLink{
+  color:inherit!important;
+  text-decoration:none!important;
+  display:inline-block!important;
+}
+.coverHomeLink:hover{
+  opacity:.86!important;
+}
+
+.programHead{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:18px!important;
+}
+
+.programRegLink{
+  color:var(--red)!important;
+  text-decoration:none!important;
+  font-weight:950!important;
+  font-size:clamp(9px,.72vw,12px)!important;
+  letter-spacing:.14em!important;
+  text-transform:uppercase!important;
+  white-space:nowrap!important;
+}
+.programRegLink:hover{
+  text-decoration:underline!important;
+}
+
+@media(max-width:1212px){
+  .programHead{
+    align-items:flex-start!important;
+    gap:10px!important;
+  }
+  .programRegLink{
+    font-size:11px!important;
+    letter-spacing:.12em!important;
+  }
+}
+
+
+/* final programKicker registration alignment */
+.programKicker{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:18px!important;
+}
+.programKicker .rule{
+  flex:0 0 48px!important;
+}
+.programKicker .programRegLink{
+  margin-left:auto!important;
+}
+@media(max-width:1212px){
+  .programKicker{
+    align-items:flex-start!important;
+    gap:12px!important;
+  }
+}
+
 </style>
 </head>
 <body class="lang-en">
@@ -5974,11 +6037,11 @@ body.lang-ru .cover .tagline{
         <button type="button" data-lang-btn="ru">RU</button>
         <button type="button" data-lang-btn="en">EN</button>
       </div>
-      <div class="kicker"><span class="enText">International seminar</span><span class="ruText">Международный семинар</span></div>
+      <a class="coverHomeLink" href="http://aims-seminar.space"><div class="kicker"><span class="enText">International seminar</span><span class="ruText">Международный семинар</span></div>
       <h1 class="title">
         <span class="enText">Art &<br>Innovations<br>in Museums</span>
         <span class="ruText">Искусство и<br>инновации<br>в музеях</span>
-      </h1>
+      </h1></a>
       <div class="meta red" style="margin-top:18px">
         <span class="enText">Saint Petersburg, Russia</span>
         <span class="ruText">Санкт-Петербург, Россия</span>
@@ -5996,7 +6059,7 @@ body.lang-ru .cover .tagline{
         <span class="enText">Program</span><span class="ruText">Программа</span>
         <span class="rule"></span>
         
-      </div>
+      <a class="programRegLink" href="https://aim-seminar.timepad.ru/event/3881547/"><span class="enText">Listener registration &gt;</span><span class="ruText">Регистрация слушателей &gt;</span></a></div>
       <div class="dayTabs" role="tablist" aria-label="Program days">
         <button class="dayTab" type="button" data-day="0" aria-label="June 22">
           <span class="enText">June 22</span><span class="ruText">22 июня</span>
