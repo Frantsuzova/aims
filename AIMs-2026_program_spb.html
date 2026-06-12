@@ -6755,53 +6755,20 @@ function setupLangSwitch(){
 
   arrows.forEach(btn => btn.addEventListener("click", () => window.setTimeout(updateArrowLabels, 0)));
 
-  let saved = "en";
-  try{ saved = localStorage.getItem("aims-lang") || "en"; }catch(e){}
-  if(saved !== "ru" && saved !== "en") saved = "en";
-  setLang(saved);
-}
-
-</script>
-
-<script>
-(function(){
   function getPreferredLang(){
-    var langs = (navigator.languages && navigator.languages.length)
+    const langs = (navigator.languages && navigator.languages.length)
       ? navigator.languages
       : [navigator.language || navigator.userLanguage || "en"];
-    var first = String(langs[0] || "en").toLowerCase();
-    return first.indexOf("ru") === 0 ? "ru" : "en";
+    const first = String(langs[0] || "en").toLowerCase();
+    return first.startsWith("ru") ? "ru" : "en";
   }
 
-  function applyLang(lang, save){
-    lang = lang === "ru" ? "ru" : "en";
-    document.documentElement.lang = lang;
-    document.body.classList.toggle("ru", lang === "ru");
-    document.body.classList.toggle("en", lang === "en");
+  let saved = null;
+  try{ saved = localStorage.getItem("aims-lang"); }catch(e){}
+  if(saved !== "ru" && saved !== "en") saved = null;
+  setLang(saved || getPreferredLang());
+}
 
-    document.querySelectorAll("[data-lang]").forEach(function(btn){
-      btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
-    });
-
-    if (save) {
-      try { localStorage.setItem("aimsLang", lang); } catch(e) {}
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", function(){
-    var saved = null;
-    try { saved = localStorage.getItem("aimsLang"); } catch(e) {}
-    applyLang(saved || getPreferredLang(), false);
-
-    document.querySelectorAll("[data-lang]").forEach(function(btn){
-      btn.addEventListener("click", function(){
-        applyLang(btn.getAttribute("data-lang"), true);
-      });
-    });
-  });
-
-  window.setLang = function(lang){ applyLang(lang, true); };
-})();
 </script>
 
 </body>
