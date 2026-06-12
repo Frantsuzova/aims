@@ -3030,6 +3030,7 @@ a:hover {
 
 
 .registration-main-btn {
+  text-align: center;
   display: inline-block;
   margin: 32px auto 10px;
   padding: 12px 40px;
