@@ -3681,7 +3681,7 @@ a:hover {
 
 @media screen and (max-width: 1123px) {
   .hero-locations {
-    top: 72px;
+    top: 100px;
     left: 18px;
 
     gap: 6px;
@@ -3923,8 +3923,7 @@ body:has(#burger-toggle:checked) .hero-locations {
     align-items: center !important;
     justify-content: flex-start !important;
 
-    /* ширина специально ограничена, чтобы логотипы стали в 2 строки */
-    width: 330px !important;
+    width: auto !important;
     max-width: calc(100vw - 125px) !important;
 
     gap: 7px 9px !important;
@@ -3946,15 +3945,33 @@ body:has(#burger-toggle:checked) .hero-locations {
     object-fit: contain !important;
   }
 
-  /* последнее длинное лого не распирает строку */
   .logo-group a:last-child img {
     max-width: 105px !important;
+  }
+
+  /* первые 4 логотипа — первая строка */
+  .logo-group a:nth-child(-n + 4) {
+    order: 1 !important;
+  }
+
+  /* искусственный перенос строки после 4-го логотипа */
+  .logo-group::before {
+    content: "" !important;
+    display: block !important;
+    flex-basis: 100% !important;
+    width: 0 !important;
+    height: 0 !important;
+    order: 2 !important;
+  }
+
+  /* последние 3 логотипа — вторая строка */
+  .logo-group a:nth-child(n + 5) {
+    order: 3 !important;
   }
 }
 
 @media (max-width: 382px) {
   .logo-group {
-    width: 250px !important;
     max-width: calc(100vw - 112px) !important;
     gap: 6px 8px !important;
   }
