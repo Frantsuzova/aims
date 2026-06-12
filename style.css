@@ -3811,3 +3811,160 @@ a:hover {
 @media (max-width: 520px) {
   .logo-group { gap: 6px; }
 }
+
+
+/* =========================================================
+   STEP FIX: burger + hero left menu + title offset
+   не трогаем header и logo-group
+   ========================================================= */
+
+
+/* 1. Открытый бургер должен быть выше всего и ничего не просвечивать */
+@media (max-width: 1123px) {
+  .overlay {
+    z-index: 9000 !important;
+  }
+
+  .burger-nav {
+    z-index: 9010 !important;
+  }
+
+  .burger-nav ul {
+    z-index: 9020 !important;
+  }
+
+  .burger-menu {
+    z-index: 9030 !important;
+  }
+
+  .language-switcher {
+    z-index: 9040 !important;
+  }
+}
+
+#burger-toggle:checked ~ .overlay {
+  position: fixed !important;
+  inset: 0 !important;
+
+  width: 100vw !important;
+  height: 100vh !important;
+
+  border-radius: 0 !important;
+  background: #35a3ed !important;
+
+  opacity: 1 !important;
+  transform: none !important;
+  pointer-events: auto !important;
+
+  z-index: 9000 !important;
+}
+
+#burger-toggle:checked ~ .burger-nav {
+  pointer-events: auto !important;
+  z-index: 9010 !important;
+}
+
+#burger-toggle:checked ~ .burger-nav ul {
+  z-index: 9020 !important;
+}
+
+#burger-toggle:checked ~ .burger-menu {
+  z-index: 9030 !important;
+}
+
+
+/* 2. Левое меню: с 630px чуть ниже */
+@media (max-width: 630px) {
+  .hero-locations {
+    top: 112px !important;
+  }
+}
+
+@media (max-width: 382px) {
+  .hero-locations {
+    top: 126px !important;
+  }
+}
+
+
+/* 3. Заголовок/подзаголовок/кнопка: с 630px чуть ниже */
+@media (max-width: 630px) {
+  main .intro-section h1,
+  main .intro-section h2,
+  main .intro-section .btn {
+    transform: translateY(84px) !important;
+  }
+}
+
+@media (max-width: 382px) {
+  main .intro-section h1,
+  main .intro-section h2,
+  main .intro-section .btn {
+    transform: translateY(104px) !important;
+  }
+}
+
+
+/* 4. Когда бургер открыт, левое меню не кликается под ним */
+body:has(#burger-toggle:checked) .hero-locations {
+  pointer-events: none !important;
+}
+
+
+/* =========================================================
+   LOGOS: force two rows from 630px
+   не трогаем header
+   ========================================================= */
+
+@media (max-width: 630px) {
+  .logo-group {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+
+    /* ширина специально ограничена, чтобы логотипы стали в 2 строки */
+    width: 330px !important;
+    max-width: calc(100vw - 125px) !important;
+
+    gap: 7px 9px !important;
+    white-space: normal !important;
+    overflow: visible !important;
+  }
+
+  .logo-group a {
+    flex: 0 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    line-height: 0 !important;
+  }
+
+  .logo-group img {
+    height: 26px !important;
+    width: auto !important;
+    max-width: 72px !important;
+    object-fit: contain !important;
+  }
+
+  /* последнее длинное лого не распирает строку */
+  .logo-group a:last-child img {
+    max-width: 105px !important;
+  }
+}
+
+@media (max-width: 382px) {
+  .logo-group {
+    width: 250px !important;
+    max-width: calc(100vw - 112px) !important;
+    gap: 6px 8px !important;
+  }
+
+  .logo-group img {
+    height: 24px !important;
+    max-width: 62px !important;
+  }
+
+  .logo-group a:last-child img {
+    max-width: 82px !important;
+  }
+}
